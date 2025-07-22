@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root {
+  /* Custom font sizes */
+  --font-size-tiny: 0.625rem;
+  --font-size-huge: 5rem;
+  --font-size-banner: 6rem;
+  
+  /* Custom colors */
+  --color-brand: #3b82f6;
+  --color-accent: #8b5cf6;
+}
+
+@custom-variant 3xl {
+  @media (width >= 2500px) {
+    @slot;
+  }
+}
+
+@theme {
+  /* Custom colors */
+  --color-red: #EB0000;
+  --color-darkGray: #282728;
+  --color-purple: #373251;
+  --color-darkRed: #5A2812;
+  --color-yellow: #F1E7CE;
+  --color-lightYellow: #E2A002;
+  --color-green: #263824;
+  --color-thinGray: #305D62;
+  --color-primary: #282728;
+  --color-primary-red: #EB0000;
+  --color-primary-white: #ffffff;
+  --color-primary-black: #000000;
+  --color-primary-dark-gray: #282728;
+  --color-secondary: #0284c7;
+  --color-secondary-gray: #D3D7D7;
+  --color-secondary-dark-gray: #C4C4C4;
+  --color-secondary-light-gray: #F4F5F4;
+  --color-secondary-blue: #80DDF9;
+  --color-secondary-dark-blue: #10ADDC;
+  --color-secondary-gold: #305D62;
+  --color-secondary-green: #263824;
+
+  /* Custom spacing for mb-15, mb-25, mb-34 */
+  --spacing-10: 2.75rem; /* 10 * 0.25rem */
+  --spacing-15: 3.75rem; /* 15 * 0.25rem */
+  --spacing-25: 6.25rem; /* 25 * 0.25rem */
+  --spacing-34: 8.5rem;  /* 34 * 0.25rem */
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1, .h1 {
+    @apply text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl font-bold leading-none tracking-normal 2xl:tracking-tighter;
+  }
+  h2 {
+    @apply text-3xl xl:text-4xl 2xl:text-5xl 3xl:text-7xl font-semibold leading-tight tracking-tight;
+  }
+  h3 {
+    @apply text-xl lg:text-2xl 2xl:text-3xl 3xl:text-5xl font-semibold leading-none 2xl:leading-tight tracking-normal;
+  }
+  h4 {
+    @apply text-sm xl:text-xl 2xl:text-2xl 3xl:text-4xl font-semibold leading-tight tracking-normal;
+  }
+  h5 {
+    @apply text-[24px] font-semibold leading-[1.2] tracking-[0.1px];
+  }
+  h6 {
+    @apply text-[20px] font-semibold leading-[1.2] tracking-[0.1px];
+  }
+  .body-large {
+    @apply text-lg xl:text-xl 2xl:text-2xl 3xl:text-4xl font-medium leading-tight tracking-normal;
+  }
+  p, .body-regular {
+    @apply text-base 2xl:text-xl 3xl:text-3xl font-medium leading-normal 2xl:leading-snug tracking-normal;
+  }
+  .body-small {
+    @apply text-xs 2xl:text-base 3xl:text-2xl font-medium leading-normal 2xl:leading-snug tracking-tight;
+  }
+  .button-text {
+    @apply text-xs 2xl:text-base 3xl:text-xl font-bold leading-tight 3xl:leading-none tracking-wide;
+  }
+  .stat {
+    @apply text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-9xl font-normal leading-tight tracking-tighter;
+  }
+  .stat-text {
+    @apply text-xs 2xl:text-base 3xl:text-2xl font-normal leading-tight tracking-tight;
+  }
+  quote {
+    @apply text-xl xl:text-2xl 2xl:text-3xl 3xl:text-5xl font-medium leading-normal tracking-tight;
+  }
+  section {
+    @apply relative w-full overflow-hidden py-10 md:py-10 xl:py-10 2xl:py-10 3xl:py-10;
+  }
+  .no-padding {
+    @apply p-0;
+  }
+  .no-padding-top {
+    @apply pt-0;
+  }
+  .no-padding-bottom {
+    @apply pb-0;
+  }
+  .container {
+    @apply relative w-full !max-w-[1200px] 3xl:!max-w-[1000px] mx-auto px-6 lg:px-8 xl:px-16;
+  }
+}
+
+@layer utilities {
+  .text-tiny { font-size: var(--font-size-tiny); }
+  .text-huge { font-size: var(--font-size-huge); }
+  .text-banner { font-size: var(--font-size-banner); }
+  .text-brand { color: var(--color-brand); }
+  .text-accent { color: var(--color-accent); }
+  .bg-brand { background-color: var(--color-brand); }
+  .bg-accent { background-color: var(--color-accent); }
+}
+
+/* Remove conflicting raw CSS to avoid overriding @apply */
+.container {
+  /* width: 100%;
+  padding: 0 20px;
+  max-width: 1000px;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto; */
+  /* Comment out or remove to use the @apply version */
+}

@@ -1,0 +1,32 @@
+{
+    productID: 1,
+    floorID: 4,
+    categories: [
+        {
+            id: 10,
+            name: "Exterior",
+            subcategories: [
+                {
+                    id: 9,
+                    name: "Exterior Color",
+                    options: [
+                        {
+                            name: "Black Matte",
+                            price: 11
+                        }
+                    ]
+                },
+                {
+                    id: 14,
+                    name: "Pick Windows",
+                    options: [
+                        {
+                            name: "White",
+                            price: 87
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
