@@ -8,7 +8,7 @@ const Header = () => {
         <div className="wrapper flex items-center justify-between w-full">
           <div className="logo w-[140px] h-[70px]">
             <Link to="/">
-              <img src="./src/assets/image/Group 2@2x.png" alt="logo" />
+              <img src="/image/Group 2@2x.png" alt="logo" />
             </Link>
           </div>
           <div className="links-with-button flex items-center gap-12">

@@ -42,7 +42,7 @@ const StepTwo = ({ selectedProduct }) => {
       <div className="container">
         <div className="image-wrap my-30">
           <img
-            src="./src/assets/image/Line 18.png"
+            src="/image/Line 18.png"
             alt="big-arrow"
             className="mx-auto block"
           />
