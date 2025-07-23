@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_DOMAIN}/admin/api/products/`)
+      .get(`${import.meta.env.VITE_API_DOMAIN}/admin/api/products`)
       .then((res) => setProducts(res.data))
       .catch((err) => console.error(err));
   }, []);
