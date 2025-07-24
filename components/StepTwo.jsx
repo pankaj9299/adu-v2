@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { useDispatch, useSelector } from 'react-redux';
+import { setProduct } from "../src/store/slices/configuratorSlice";
 
 const StepTwo = ({ selectedProduct }) => {
+  let navigate = useNavigate();
   const [floors, setFloors] = useState([]);
   const [selectedFloor, setSelectedFloor] = useState(null);
+
+  const selectedProductState = useSelector((state) => state.configurator.selectedProduct);
+  const dispatch = useDispatch();
   
   // Fetch floors for the selected product
   useEffect(() => {
@@ -33,8 +40,14 @@ const StepTwo = ({ selectedProduct }) => {
 
   // Placeholder for choosing customizations (e.g., navigate to StepThree)
   const handleChooseCustomizations = () => {
-    console.log(`Selected Floor: ${selectedFloor?.id}`);
+    console.log(`Selected Floor: ${selectedFloor}`, selectedFloor);
+
+    dispatch(setProduct({...selectedProductState,
+      floor_id: selectedFloor.id,
+      floor_name: selectedFloor.name
+    }));
     // TODO: Implement navigation to StepThree or customization logic
+    navigate('/configurator', { replace: true });
   };
 
   return (
@@ -60,7 +73,7 @@ const StepTwo = ({ selectedProduct }) => {
                 clipPath: "polygon(10% 0%, 99% 0%, 99% 100%, 0% 100%, 0% 30%)",
               }}
             >
-              {selectedProduct.name}
+              {selectedProductState.product_name}
             </span>
           </div>
           {floors.length === 0 ? (
@@ -196,12 +209,12 @@ const StepTwo = ({ selectedProduct }) => {
 
         <div className="mt-10 flex justify-center gap-4">
           {selectedFloor && (
-            <Link
+            <button
               className="border-lightYellow text-white bg-lightYellow text-[25px] font-bold rounded-md py-2 px-8"
-              to="/configurator"
+              onClick={handleChooseCustomizations}
             >
               Choose Your Customizations
-            </Link>
+            </button>
           )}
         </div>
       </div>

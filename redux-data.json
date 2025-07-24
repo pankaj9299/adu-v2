@@ -1,28 +1,99 @@
 {
-    productID: 1,
-    floorID: 4,
-    categories: [
+    "product_id": 1,
+    "product_name": "Sideb by side container",
+    "floor_id": 4,
+    "floor_name": "Floor 4",
+    "categories": [
         {
-            id: 10,
-            name: "Exterior",
-            subcategories: [
+            "id": 10,
+            "type": "default",
+            "name": "Exterior",
+            "subcategories": [
                 {
-                    id: 9,
-                    name: "Exterior Color",
-                    options: [
+                    "id": "9",
+                    "name": "Exterior Color",
+                    "label": "Pick an Exterior Color",
+                    "options": {
+                        "id": "3",
+                        "name": "Black Matte",
+                        "image": "uploads/category_options/1753111790_c371ccfbe276e09b0c2d.png",
+                        "price": 0
+                    }
+                },
+                {
+                    "id": "14",
+                    "name": "Pick Windows",
+                    "label": "Pick Windows",
+                    "options": {
+                        "id": "5",
+                        "name": "White",
+                        "image": "uploads/category_options/1753114940_27e3f3a381aba7c9a41d.png",
+                        "price": 0
+                    }
+                }
+            ],
+            "addons": [
+                {
+                    "id": "6",
+                    "name": "Roof Add On",
+                    "price": 98
+                },
+                {
+                    "id": "7",
+                    "name": "Patio Add On",
+                    "price": 90
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "type": "tabbed",
+            "name": "Kitchen",
+            "tabs": [
+                {
+                    "id": "1",
+                    "name": "Light & Airy",
+                    "image": "uploads/tabs/1753264336_07d91fd28684e52112d9.png",
+                    "subcategories": [
                         {
-                            name: "Black Matte",
-                            price: 11
+                            "id": "15",
+                            "name": "Flooring",
+                            "label": "Light Brown",
+                            "options": {
+                                "id": "12",
+                                "name": "Light Brown",
+                                "image": "uploads/category_options/1753116720_9a7098b29da537cd7b3a.png",
+                                "price": 500
+                            }
+                        },
+                        {
+                            "id": "16",
+                            "name": "Backsplash",
+                            "label": "Backsplash",
+                            "options": {
+                                "id": "4",
+                                "name": "Raisin",
+                                "image": "uploads/category_options/1753112059_cc880119e736a8439813.png",
+                                "price": 0
+                            }
                         }
                     ]
                 },
                 {
-                    id: 14,
-                    name: "Pick Windows",
-                    options: [
+                    "id": "2",
+                    "name": "Sophisticated",
+                    "image": "",
+                    "subcategories": [
                         {
-                            name: "White",
-                            price: 87
+                            "id": "16",
+                            "name": "Backsplash",
+                            "label": "Backsplash",
+                            "options": {
+                                "id": "4",
+                                "name": "Raisin",
+                                "image": "uploads/category_options/1753112059_cc880119e736a8439813.png",
+                                "price": 0
+                            }
                         }
                     ]
                 }

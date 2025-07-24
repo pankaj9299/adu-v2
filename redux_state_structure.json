@@ -1,0 +1,34 @@
+{
+    selectedProduct: {
+      product_id: 1,
+      product_name: "Sideb by side container",
+      product_price: $100
+      floor_id: 4,
+      floor_name: "Floor 4",
+      categories: [ /* same as your structure */ ]
+    },
+    selections: {
+      // key: subcategory id, value: selected option
+      "9": { id: "3", name: "Black Matte", price: 0 },
+      "14": { id: "5", name: "White", price: 0 },
+      "15": { id: "12", name: "Light Brown", price: 500 },
+      "16": { id: "4", name: "Raisin", price: 0 }
+    },
+    activeTab: {
+      // category_id => tab_id mapping
+      "11": "1"
+    },
+}
+
+### STEP 1: selectedProduct
+This is the main object holding your selected product, floor, and all category/subcategory data.
+
+### STEP 2: selections
+This keeps track of which subcategory options the user has selected, regardless of category type.
+
+### STEP 3: activeTab
+This tracks which tab is currently active for each tabbed category.
+
+### STEP 4: selectedAddons
+This is an array of addon IDs the user has selected.
+  

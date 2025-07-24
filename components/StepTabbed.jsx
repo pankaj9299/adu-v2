@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import HeroBanner from "./HeroBanner";
 import CostSummary from "./CostSummary";
 
+import { useSelector } from 'react-redux';
+
 export default function StepTabbed({ category }) {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
   const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null); // new state
   const currentTab = category.tabs[activeTab];
+
+  const selectedProduct = useSelector((state) => state.configurator.selectedProduct);
 
   const handleColorOptionClick = (subId) => {
     setSelectedSubcategoryId(subId);
@@ -188,7 +192,7 @@ export default function StepTabbed({ category }) {
           )}
         </div>
       </section>
-      <CostSummary />
+      {selectedProduct?.product_name && <CostSummary />}
     </>
   );
 }

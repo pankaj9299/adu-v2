@@ -6,20 +6,31 @@ import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Configurator from "../components/Configurator";
 
+import { useDispatch } from 'react-redux';
+import { setProduct } from './store/slices/configuratorSlice';
+
 function App() {
   const stepTwoRef = useRef(null);
-  const [products, setProducts] = useState([]);
+  const [apiProducts, setApiProducts] = useState([]);
   const [selectedProductId, setSelectedProductId] = useState(null);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_DOMAIN}/admin/api/products`)
-      .then((res) => setProducts(res.data))
+      .then((res) => setApiProducts(res.data))
       .catch((err) => console.error(err));
   }, []);
 
-  const handleSelectProduct = (productId) => {
-    setSelectedProductId(productId);
+  const handleSelectProduct = (product) => {
+    console.log('product: ', product);
+    setSelectedProductId(product.id);
+    dispatch(setProduct({
+      product_id: product.id,
+      product_name: product.name,
+      product_price: `$${product.price.toLocaleString()}`
+    }));
   };
 
   const handleBackToStepOne = () => {
@@ -42,13 +53,13 @@ function App() {
           element={
             <>
               <StepOne
-                products={products}
+                products={apiProducts}
                 onSelectProduct={handleSelectProduct}
               />
               <div ref={stepTwoRef}>
                 {selectedProductId && (
                   <StepTwo
-                    selectedProduct={products.find(
+                    selectedProduct={apiProducts.find(
                       (p) => p.id === selectedProductId
                     )}
                     onBack={handleBackToStepOne}

@@ -50,7 +50,7 @@ const StepOne = ({ products, onSelectProduct }) => {
                     <button
                       className="text-yellow-600 hover:text-black underline underline-offset-6 decoration-2 text-3xl cursor-pointer"
                       onClick={() => {
-                        onSelectProduct(product.id);
+                        onSelectProduct(product);
                       }}
                     >
                       Select

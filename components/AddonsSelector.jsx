@@ -1,25 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setProduct } from "../src/store/slices/configuratorSlice";
 
-export default function AddonsSelector({ addons, categoryId, categoryName }) {
-  const [selectedAddons, setSelectedAddons] = useState([]);
+export default function AddonsSelector({ addons, categoryId }) {
+  const dispatch = useDispatch();
+  const selectedProduct = useSelector((state) => state.configurator.selectedProduct);
+
+  // Get selected addons from Redux for this category
+  const selectedAddons =
+    selectedProduct.categories
+      ?.find((cat) => cat.id === categoryId)
+      ?.addons || [];
 
   const toggleAddon = (addon) => {
-    setSelectedAddons((prev) => {
-      const exists = prev.find((a) => a.addonId === parseInt(addon.id));
-      if (exists) {
-        return prev.filter((a) => a.addonId !== parseInt(addon.id));
-      } else {
-        return [...prev, { 
-          addonName: addon.name, 
-          addonId: parseInt(addon.id),
-          categoryId,
-          categoryName 
-        }];
-      }
-    });
-  };
+    const updatedCategories = selectedProduct.categories.map((cat) => {
+      if (cat.id !== categoryId) return cat;
 
-  console.log("selectedAddons", selectedAddons);
+      const exists = selectedAddons.find((a) => a.id === parseInt(addon.id));
+      let updatedAddons;
+
+      if (exists) {
+        updatedAddons = selectedAddons.filter((a) => a.id !== parseInt(addon.id));
+      } else {
+        updatedAddons = [
+          ...selectedAddons,
+          {
+            id: parseInt(addon.id),
+            name: addon.name,
+            price: addon.price
+          },
+        ];
+      }
+
+      return {
+        ...cat,
+        addons: updatedAddons || [],
+      };
+    });
+
+    dispatch(setProduct({
+      ...selectedProduct,
+      categories: updatedCategories,
+    }));
+  };
 
   return (
     <div className="third-option">
@@ -28,7 +51,10 @@ export default function AddonsSelector({ addons, categoryId, categoryName }) {
       </h3>
       <div className="buttons flex gap-6 flex-wrap">
         {addons.map((addon, idx) => {
-          const isSelected = selectedAddons.some(item => item.addonId === parseInt(addon.id));
+          const isSelected = selectedAddons.some(
+            (item) => item.id === parseInt(addon.id)
+          );
+
           return (
             <div className="mt-2" key={idx}>
               <button
