@@ -21,34 +21,67 @@ export default function StepDefault({ category }) {
     setSelectedImageOption(selectedOption);
   };
 
+  // useEffect(() => {
+  //   if (!selectedProduct?.categories?.length) {
+  //     const updatedSubcategories = category.subcategories.map((sub) => {
+  //       const firstOption = sub.options?.[0] || null;
+  
+  //       return {
+  //         ...sub,
+  //         selectedOption: firstOption, // keep only the first option
+  //         options: sub?.options || [], 
+  //       };
+  //     });
+  
+  //     const updatedCategory = {
+  //       ...category,
+  //       subcategories: updatedSubcategories,
+  //       addons: [],
+  //     };
+  
+  //     dispatch(
+  //       setProduct({
+  //         ...selectedProduct,
+  //         categories: [updatedCategory],
+  //       })
+  //     );
+  //   }
+  // }, [category, dispatch, selectedProduct]);  
+  
+
   useEffect(() => {
-    if (!selectedProduct?.categories?.length) {
+    if (!category || !category.id) return;
+  
+    const existingCategories = selectedProduct?.categories || [];
+  
+    const categoryExists = existingCategories.some(cat => cat.id === category.id);
+  
+    if (!categoryExists) {
       const updatedSubcategories = category.subcategories.map((sub) => {
         const firstOption = sub.options?.[0] || null;
   
         return {
           ...sub,
-          selectedOption: firstOption, // keep only the first option
-          options: sub?.options || [], 
+          selectedOption: firstOption,
+          options: sub.options || [],
         };
       });
   
-      const updatedCategory = {
+      const newCategory = {
         ...category,
         subcategories: updatedSubcategories,
         addons: [],
       };
   
-      dispatch(
-        setProduct({
-          ...selectedProduct,
-          categories: [updatedCategory],
-        })
-      );
-    }
-  }, [category, dispatch, selectedProduct]);  
+      const updatedProduct = {
+        ...selectedProduct,
+        categories: [...existingCategories, newCategory],
+      };
   
-
+      dispatch(setProduct(updatedProduct));
+    }
+  }, [category, dispatch, selectedProduct]);
+  
   return (
     <div>
       <HeroBanner selectedOption={selectedImageOption} />
