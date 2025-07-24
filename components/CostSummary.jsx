@@ -1,12 +1,43 @@
 import React from "react";
-
 import { useSelector } from "react-redux";
 
 const CostSummary = () => {
   const selectedProductState = useSelector(
     (state) => state.configurator.selectedProduct
   );
-  console.log("cost summary selectedProductState", selectedProductState);
+
+  const parsePrice = (priceStr) => Number(priceStr?.replace(/[^\d]/g, "")) || 0;
+
+  const calculateTotal = () => {
+    const basePrice = parsePrice(selectedProductState.product_price);
+
+    const categories = selectedProductState.categories || [];
+
+    const categoryTotal = categories.reduce((catSum, category) => {
+      // Handle subcategories (default)
+      const subcatTotal =
+        category.subcategories?.reduce((sum, sub) => {
+          return sum + (sub.selectedOption?.price || 0);
+        }, 0) || 0;
+
+      // Handle tabbed subcategories (tabbed)
+      const tabTotal =
+        category.tab?.reduce((sum, tab) => {
+          return sum + (tab.selectedOption?.price || 0);
+        }, 0) || 0;
+
+      // Handle addons
+      const addonTotal =
+        category.addons?.reduce((sum, addon) => {
+          return sum + (addon.price || 0);
+        }, 0) || 0;
+
+      return catSum + subcatTotal + tabTotal + addonTotal;
+    }, 0);
+
+    return (basePrice + categoryTotal).toLocaleString();
+  };
+
   return (
     <section className="cost-summary">
       <div className="container mx-auto">
@@ -34,15 +65,16 @@ const CostSummary = () => {
           </div>
         </div>
 
+        {/* Categories */}
         {selectedProductState.categories?.map((category) => (
           <div key={category.id} className="exterior-info mt-15">
             <h3 className="text-secondary-green text-3xl inline-block w-1/2 mb-10">
               {category.name}
             </h3>
 
-            <div className="discription">
+            <div className="description">
               <div className="column flex flex-col divide-y divide-transparent">
-                {/* Render Subcategories */}
+                {/* For default (subcategories) */}
                 {category.subcategories?.map((sub) => (
                   <div
                     key={sub.id}
@@ -68,10 +100,36 @@ const CostSummary = () => {
                   </div>
                 ))}
 
-                {/* Render Addons */}
+                {/* For tabbed (tab) */}
+                {category.tab?.map((tab) => (
+                  <div
+                    key={tab.id}
+                    className="flex justify-between border-b border-secondary-dark-gray"
+                  >
+                    <div className="left flex gap-4">
+                      <div className="first w-[173px] text-center">
+                        <p className="font-normal bg-yellow py-2">{tab.name}</p>
+                      </div>
+                      <div className="second">
+                        <p className="font-normal py-2">
+                          {tab.selectedOption?.name || "Not Selected"}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="right">
+                      <div className="third">
+                        <p className="font-normal py-2">
+                          ${tab.selectedOption?.price?.toLocaleString() || "0"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Addons */}
                 {category.addons?.map((addon) => (
                   <div
-                    key={`addon-${addon.addonId}`}
+                    key={`addon-${addon.id}`}
                     className="flex justify-between border-b border-secondary-dark-gray"
                   >
                     <div className="left flex gap-4">
@@ -93,51 +151,24 @@ const CostSummary = () => {
                 ))}
               </div>
             </div>
-
-            {/* Final Total */}
-            <div className="final-result mt-10">
-              <div className="flex justify-end">
-                <div className="flex w-1/2 justify-between border-b border-secondary-dark-gray items-center">
-                  <div className="text-right">
-                    <h3 className="font-bold text-lightYellow py-2">
-                      Current Total
-                    </h3>
-                  </div>
-                  <div>
-                    <p className="font-bold py-2">
-                      $
-                      {// Parse the product base price from "$40,000" to number
-                      (
-                        Number(
-                          selectedProductState.product_price.replace(
-                            /[^\d]/g,
-                            ""
-                          )
-                        ) +
-                        // Sum of all subcategory selected option prices
-                        selectedProductState.categories?.reduce(
-                          (catSum, category) => {
-                            const subcatTotal = category.subcategories?.reduce(
-                              (sum, sub) =>
-                                sum + (sub.selectedOption?.price || 0),
-                              0
-                            );
-                            const addonTotal = category.addons?.reduce(
-                              (sum, addon) => sum + (addon.price || 0),
-                              0
-                            );
-                            return catSum + subcatTotal + addonTotal;
-                          },
-                          0
-                        )
-                      ).toLocaleString()}
-                    </p>
-                  </div>
-                </div>
+          </div>
+        ))}
+        
+        {/* Total for all */}
+        <div className="final-result mt-10">
+          <div className="flex justify-end">
+            <div className="flex w-1/2 justify-between border-b border-secondary-dark-gray items-center">
+              <div className="text-right">
+                <h3 className="font-bold text-lightYellow py-2">
+                  Current Total
+                </h3>
+              </div>
+              <div>
+                <p className="font-bold py-2">${calculateTotal()}</p>
               </div>
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );
