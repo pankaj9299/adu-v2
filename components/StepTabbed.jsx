@@ -99,6 +99,8 @@ export default function StepTabbed({ category }) {
         id: category.id,
         name: category.name,
         type: category.type,
+        tabNo: idx,
+        image: category.tabs[idx].image,
         tab: updatedSubcategories,
       };
 
@@ -125,7 +127,24 @@ export default function StepTabbed({ category }) {
   }
 
   useEffect(() => {
-    setSelectedImageOption(category);
+    if (!selectedStateProduct?.categories?.length) return;
+  
+    const currentCategoryFromRedux = selectedStateProduct.categories.find(
+      (cat) => cat.id === category.id
+    );
+  
+    // Having no redux state data
+    if (!currentCategoryFromRedux || !currentCategoryFromRedux.tab?.length) {
+      setSelectedImageOption(category);
+      return;  
+    } 
+  
+    const tabIndex = currentCategoryFromRedux.tabNo ?? 0;
+  
+    setActiveTab(tabIndex);
+    setIsTabActive(true);
+  
+    setSelectedImageOption(currentCategoryFromRedux);
   }, [category]);  
   console.log("selectedStateProduct", selectedStateProduct);
   // console.log('selectedOptions', selectedOptions);
