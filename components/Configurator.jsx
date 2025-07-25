@@ -60,14 +60,14 @@ export default function Configurator() {
       console.log('currentStep', currentStep);
 
       // Clone categories and remove the one at currentStep
-      const updatedCategories = [...selectedProduct.categories];
-      updatedCategories.splice(currentStep, 1); // remove the category at currentStep
+      // const updatedCategories = [...selectedProduct.categories];
+      // updatedCategories.splice(currentStep, 1); // remove the category at currentStep
 
-      const updatedProduct = {
-        ...selectedProduct,
-        categories: updatedCategories,
-      };
-      dispatch(setProduct(updatedProduct)); // update Redux state
+      // const updatedProduct = {
+      //   ...selectedProduct,
+      //   categories: updatedCategories,
+      // };
+      // dispatch(setProduct(updatedProduct)); // update Redux state
       
       setCurrentStep((prev) => prev - 1);
       window.scrollTo({ top: 0, behavior: "smooth" });

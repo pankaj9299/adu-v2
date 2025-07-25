@@ -126,7 +126,7 @@ export default function StepTabbed({ category }) {
 
   useEffect(() => {
     setSelectedImageOption(category);
-  }, [category]);
+  }, [category]);  
   console.log("selectedStateProduct", selectedStateProduct);
   // console.log('selectedOptions', selectedOptions);
 

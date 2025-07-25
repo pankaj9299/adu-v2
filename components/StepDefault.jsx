@@ -49,7 +49,14 @@ export default function StepDefault({ category }) {
   // }, [category, dispatch, selectedProduct]);  
   
   useEffect(() => {
-    setSelectedImageOption(category);
+    const existing = selectedProduct?.categories?.find(cat => cat.id === category.id);
+    const hasFirstSubcategory = existing?.subcategories?.length > 0;
+    const firstSelectedOption = existing?.subcategories?.[0]?.selectedOption;
+    if (hasFirstSubcategory) {
+      setSelectedImageOption(firstSelectedOption);
+    } else {
+      setSelectedImageOption(category);
+    }
   }, [category]);
 
   useEffect(() => {
