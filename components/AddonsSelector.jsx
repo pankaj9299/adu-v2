@@ -4,7 +4,7 @@ import { setProduct } from "../src/store/slices/configuratorSlice";
 
 export default function AddonsSelector({ addons, categoryId }) {
   const dispatch = useDispatch();
-  const selectedProduct = useSelector((state) => state.configurator.selectedProduct);
+  const selectedProduct = useSelector((state) => state.configurator.selectedProduct) || {};
 
   // Get selected addons from Redux for this category
   const selectedAddons =

@@ -9,7 +9,7 @@ export default function SubcategorySelector({
 }) {
   // const [selectedOption, setSelectedOption] = useState({});
   const dispatch = useDispatch();
-  const selectedProduct = useSelector((state) => state.configurator.selectedProduct);
+  const selectedProduct = useSelector((state) => state.configurator.selectedProduct) || {};
 
   // Get the selected option for this subcategory from Redux
   const selectedOption =

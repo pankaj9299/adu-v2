@@ -73,7 +73,7 @@ const StepTwo = ({ selectedProduct }) => {
                 clipPath: "polygon(10% 0%, 99% 0%, 99% 100%, 0% 100%, 0% 30%)",
               }}
             >
-              {selectedProductState.product_name}
+              {selectedProductState?.product_name}
             </span>
           </div>
           {floors.length === 0 ? (

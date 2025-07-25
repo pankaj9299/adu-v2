@@ -68,10 +68,11 @@ const CostSummary = () => {
         {/* Categories */}
         {selectedProductState.categories?.map((category) => (
           <div key={category.id} className="exterior-info mt-15">
+            
             <h3 className="text-secondary-green text-3xl inline-block w-1/2 mb-10">
               {category.name}
             </h3>
-
+            
             <div className="description">
               <div className="column flex flex-col divide-y divide-transparent">
                 {/* For default (subcategories) */}
