@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HeroBanner from "./HeroBanner";
 import CostSummary from "./CostSummary";
 
@@ -10,8 +10,10 @@ export default function StepTabbed({ category }) {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
   const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null); // new state
-  const currentTab = category.tabs[activeTab];
+  const [selectedImageOption, setSelectedImageOption] = useState(null);
 
+  const currentTab = category.tabs[activeTab];
+  
   const dispatch = useDispatch();
   const selectedStateProduct = useSelector((state) => state.configurator.selectedProduct);
 
@@ -72,6 +74,7 @@ export default function StepTabbed({ category }) {
   };  
 
   const handleTab = (idx) => {
+    setSelectedImageOption(category.tabs[idx]);
     setIsTabActive(true);
     setActiveTab(idx);
     setSelectedSubcategoryId(null); // reset on tab change
@@ -121,12 +124,15 @@ export default function StepTabbed({ category }) {
     }
   }
 
+  useEffect(() => {
+    setSelectedImageOption(category);
+  }, [category]);
   console.log("selectedStateProduct", selectedStateProduct);
   // console.log('selectedOptions', selectedOptions);
 
   return (
     <>
-      <HeroBanner defaultImage={`/light_airy.png`} selectedOption={null} />
+      <HeroBanner selectedOption={selectedImageOption} />
       <section className="tab-with-slider">
         <div className="container">
           {/* Heading */}

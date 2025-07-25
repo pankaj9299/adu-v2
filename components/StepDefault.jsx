@@ -48,6 +48,9 @@ export default function StepDefault({ category }) {
   //   }
   // }, [category, dispatch, selectedProduct]);  
   
+  useEffect(() => {
+    setSelectedImageOption(category);
+  }, [category]);
 
   useEffect(() => {
     if (!category || !category.id) return;
