@@ -1,7 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 
 const CostSummary = () => {
+  const location = useLocation();
   const selectedProductState = useSelector(
     (state) => state.configurator.selectedProduct
   );
@@ -68,11 +70,10 @@ const CostSummary = () => {
         {/* Categories */}
         {selectedProductState.categories?.map((category) => (
           <div key={category.id} className="exterior-info mt-15">
-            
             <h3 className="text-secondary-green text-3xl inline-block w-1/2 mb-10">
               {category.name}
             </h3>
-            
+
             <div className="description">
               <div className="column flex flex-col divide-y divide-transparent">
                 {/* For default (subcategories) */}
@@ -154,7 +155,7 @@ const CostSummary = () => {
             </div>
           </div>
         ))}
-        
+
         {/* Total for all */}
         <div className="final-result mt-10">
           <div className="flex justify-end">
@@ -170,6 +171,22 @@ const CostSummary = () => {
             </div>
           </div>
         </div>
+
+        {location.pathname === "/checkout" && (
+        <div className="back-button text-center mt-10">
+          <h3 className="text-[30px] text-thinGray mb-5">
+            Want to make a change?
+          </h3>
+          <div className="button">
+            <Link
+              to="/"
+              className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 text-[19px] font-bold hover:bg-blue-700 transition"
+            >
+              Go Back to Customization
+            </Link>
+          </div>
+        </div>
+        )}
       </div>
     </section>
   );

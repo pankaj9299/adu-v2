@@ -51,6 +51,7 @@ export default function Configurator() {
       setCurrentStep(currentStep + 1);
     } else {
       console.log("Configuration complete!");
+      navigate('/checkout', { replace: true });
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

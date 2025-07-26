@@ -44,7 +44,8 @@ const StepTwo = ({ selectedProduct }) => {
 
     dispatch(setProduct({...selectedProductState,
       floor_id: selectedFloor.id,
-      floor_name: selectedFloor.name
+      floor_name: selectedFloor.name,
+      floor_image: selectedFloor.image      
     }));
     // TODO: Implement navigation to StepThree or customization logic
     navigate('/configurator', { replace: true });

@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import StepOne from "../components/StepOne";
 import StepTwo from "../components/StepTwo";
 import Configurator from "../components/Configurator";
+import CheckoutForm from "../components/CheckoutForm";
 import { useDispatch } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { setProduct } from "./store/slices/configuratorSlice";
@@ -32,7 +33,9 @@ export default function AppRoutes() {
     dispatch(setProduct({
       product_id: product.id,
       product_name: product.name,
-      product_price: `$${product.price.toLocaleString()}`
+      product_subtitle: product.subtitle,
+      product_price: `$${product.price.toLocaleString()}`,
+      product_image: product.image
     }));
   };
 
@@ -70,6 +73,7 @@ export default function AppRoutes() {
         }
       />
       <Route path="/configurator" element={<Configurator />} />
+      <Route path="/checkout" element={<CheckoutForm />} />
     </Routes>
   );
 }
