@@ -25,6 +25,7 @@ export default function AppRoutes() {
   useEffect(() => {
     if (location.pathname === "/") {
       setSelectedProductId(null);
+      dispatch(setProduct(null)); // Reset redux state
     }
   }, [location.pathname]);
 
