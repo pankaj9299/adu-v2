@@ -9,10 +9,10 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
     <section className="hero-banner pb-3 pt-0">
       <div className="container">
         <div className="intro">
-          <h3 className="text-[30px] inline-block w-1/2 text-lightYellow mb-2">
+          <h3 className="text-[30px] font-helvetica-neue-bold font-bold inline-block w-1/2 text-lightYellow mb-2">
             Your are customizing
           </h3>
-          <h1 className="text-[87px] font-normal text-secondary-green mb-5">
+          <h1 className="text-[87px] font-normal font-arial text-secondary-green mb-5">
             Floor Plan 4
           </h1>
           <div className="heading">

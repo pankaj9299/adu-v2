@@ -5,11 +5,11 @@ const StepOne = ({ products, onSelectProduct }) => {
     <section className="step-one">
       <div className="container">
         <div className="intro text-center">
-          <h1 className="text-[87px] font-normal text-secondary-green mb-25">
+          <h1 className="text-[87px] font-normal text-dark-green mb-25">
             Lorem ipsum dolor sit
           </h1>
-          <h3 className="text-secondary-gold text-3xl mb-3">Step 1</h3>
-          <h2 className="text-[87px] inline-block w-1/2 text-secondary-green border-b-4 border-yellow mb-15">
+          <h3 className="text-dark-teal text-3xl mb-3 font-helvetica-neue-bold">Step 1</h3>
+          <h2 className="text-[87px] inline-block w-1/2 text-dark-green border-b-4 border-yellow mb-15">
             Pick a Base
           </h2>
         </div>
@@ -19,7 +19,7 @@ const StepOne = ({ products, onSelectProduct }) => {
               <div key={product.id} className="wrap text-center">
                 <div className="heading mb-5">
                   <h3
-                    className={`font-normal inline-block text-center flex flex-col rounded-[5px] rounded-l-none overflow-hidden py-2 px-2 text-white ${
+                    className={`text-28 inline-block text-center flex flex-col rounded-[5px] rounded-l-none overflow-hidden py-2 px-3 text-white ${
                       index === 0
                         ? "bg-secondary-gold"
                         : index === 1
@@ -42,13 +42,13 @@ const StepOne = ({ products, onSelectProduct }) => {
                   />
                 </div>
                 <div className="text-wrap mt-5">
-                  <p className="text-2xl font-normal">{product.subtitle}</p>
-                  <p className="text-2xl font-normal my-9">
+                  <p className="text-2xl font-normal font-arial text-dark-green">{product.subtitle}</p>
+                  <p className="text-2xl font-normal font-arial text-dark-green my-9">
                     Starts at <br /> ${product.price.toLocaleString()}
                   </p>
                   <div className="button">
                     <button
-                      className="text-yellow-600 hover:text-black underline underline-offset-6 decoration-2 text-3xl cursor-pointer"
+                      className="text-yellow-600 hover:text-black underline underline-offset-6 decoration-2 text-3xl cursor-pointer font-helvetica-neue-bold font-bold"
                       onClick={() => {
                         onSelectProduct(product);
                       }}

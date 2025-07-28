@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import Button from "./Button";
 import HeroBanner from "./HeroBanner";
 import CostSummary from "./CostSummary";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
 
-export default function StepTabbed({ category }) {
+export default function StepTabbed({ category, goBack, goNext, currentStep, isLastStep }) {
   const [isTabActive, setIsTabActive] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
@@ -156,14 +157,14 @@ export default function StepTabbed({ category }) {
         <div className="container">
           {/* Heading */}
           <div className="heading">
-            <h2 className="text-[68px] inline-block w-1/2 text-secondary-green mb-5">
+            <h2 className="text-[68px] inline-block w-1/2 text-dark-green mb-5">
               {category.name}
             </h2>
           </div>
 
           {/* Tabs */}
           <div className="tabs">
-            <h3 className="text-[30px] inline-block text-thinGray mb-5">
+            <h3 className="text-[30px] inline-block text-dark-teal mb-5">
               Pick a Style
             </h3>
             <div className="buttons flex gap-6">
@@ -311,7 +312,21 @@ export default function StepTabbed({ category }) {
           )}
         </div>
       </section>
-      {selectedProduct?.product_name && <CostSummary />}
+      {selectedProduct?.product_name && (
+        <>
+          <section className="button pb-10 pt-10">
+            <div className="container flex gap-5">
+              <Button onClick={goBack} disabled={currentStep === 0}>
+                {"< Back"}
+              </Button>
+              <Button onClick={goNext}>
+                {isLastStep ? "Review >" : "Next >"}
+              </Button>
+            </div>
+          </section>
+          <CostSummary />
+        </>
+      )}
     </>
   );
 }

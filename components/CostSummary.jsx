@@ -44,10 +44,10 @@ const CostSummary = () => {
     <section className="cost-summary">
       <div className="container mx-auto">
         <div className="intro">
-          <h2 className="text-secondary-gold text-6xl mb-3">
+          <h2 className="text-dark-green text-6xl mb-3">
             Project Cost Summary
           </h2>
-          <h3 className="text-secondary-green text-3xl inline-block w-1/2 mb-10">
+          <h3 className="text-dark-teal font-helvetica-neue-bold text-3xl inline-block w-1/2 mb-10">
             Base + Floor Plan
           </h3>
           <div className="title flex gap-6 items-center">
@@ -59,18 +59,18 @@ const CostSummary = () => {
             >
               {selectedProductState.product_name}
             </h3>
-            <h3 className="font-normal">
+            <h3 className="font-normal font-arial text-dark-green">
               Floor Plan {selectedProductState.floor_name}
             </h3>
-            <span className="w-[436px] border-b border-secondary-dark-gray mt-[14px]"></span>
-            <p>{selectedProductState.product_price}</p>
+            <span className="w-[436px] border-b border-secondary-dark-gray text-dark-green font-arial mt-[14px]"></span>
+            <p className="text-dark-green">{selectedProductState.product_price}</p>
           </div>
         </div>
 
         {/* Categories */}
         {selectedProductState.categories?.map((category) => (
           <div key={category.id} className="exterior-info mt-15">
-            <h3 className="text-secondary-green text-3xl inline-block w-1/2 mb-10">
+            <h3 className="text-dark-teal text-3xl inline-block w-1/2 mb-10">
               {category.name}
             </h3>
 
@@ -84,17 +84,17 @@ const CostSummary = () => {
                   >
                     <div className="left flex gap-4">
                       <div className="first w-[173px] text-center">
-                        <p className="font-normal bg-yellow py-2">{sub.name}</p>
+                        <p className="font-normal bg-yellow text-dark-green py-2">{sub.name}</p>
                       </div>
                       <div className="second">
-                        <p className="font-normal py-2">
+                        <p className="font-normal text-dark-green py-2">
                           {sub.selectedOption?.name || "Not Selected"}
                         </p>
                       </div>
                     </div>
                     <div className="right">
                       <div className="third">
-                        <p className="font-normal py-2">
+                        <p className="font-normal text-dark-green py-2">
                           ${sub.selectedOption?.price?.toLocaleString() || "0"}
                         </p>
                       </div>
@@ -110,17 +110,17 @@ const CostSummary = () => {
                   >
                     <div className="left flex gap-4">
                       <div className="first w-[173px] text-center">
-                        <p className="font-normal bg-yellow py-2">{tab.name}</p>
+                        <p className="font-normal text-dark-green bg-yellow py-2">{tab.name}</p>
                       </div>
                       <div className="second">
-                        <p className="font-normal py-2">
+                        <p className="font-normal py-2 text-dark-green">
                           {tab.selectedOption?.name || "Not Selected"}
                         </p>
                       </div>
                     </div>
                     <div className="right">
                       <div className="third">
-                        <p className="font-normal py-2">
+                        <p className="font-normal py-2 text-dark-green">
                           ${tab.selectedOption?.price?.toLocaleString() || "0"}
                         </p>
                       </div>
@@ -136,15 +136,15 @@ const CostSummary = () => {
                   >
                     <div className="left flex gap-4">
                       <div className="first w-[173px] text-center">
-                        <p className="font-normal bg-yellow py-2">Add-On</p>
+                        <p className="font-normal bg-yellow py-2 font-helvetica-neue-bold">Add-On</p>
                       </div>
                       <div className="second">
-                        <p className="font-normal py-2">{addon.name}</p>
+                        <p className="font-normal py-2 text-dark-green">{addon.name}</p>
                       </div>
                     </div>
                     <div className="right">
                       <div className="third">
-                        <p className="font-normal py-2">
+                        <p className="font-normal py-2 text-dark-green">
                           ${addon.price?.toLocaleString() || "0"}
                         </p>
                       </div>
@@ -161,12 +161,12 @@ const CostSummary = () => {
           <div className="flex justify-end">
             <div className="flex w-1/2 justify-between border-b border-secondary-dark-gray items-center">
               <div className="text-right">
-                <h3 className="font-bold text-lightYellow py-2">
+                <h3 className="font-bold text-lightYellow py-2 text-3xl font-helvetica-neue-bold">
                   Current Total
                 </h3>
               </div>
               <div>
-                <p className="font-bold py-2">${calculateTotal()}</p>
+                <p className="font-bold py-2 text-dark-green">${calculateTotal()}</p>
               </div>
             </div>
           </div>
@@ -174,7 +174,7 @@ const CostSummary = () => {
 
         {location.pathname === "/checkout" && (
         <div className="back-button text-center mt-10">
-          <h3 className="text-[30px] text-thinGray mb-5">
+          <h3 className="text-[30px] text-thinGray mb-5 font-helvetica-neue-bold">
             Want to make a change?
           </h3>
           <div className="button">

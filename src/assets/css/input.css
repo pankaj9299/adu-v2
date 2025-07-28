@@ -1,14 +1,31 @@
 @import "tailwindcss";
 
+/* Add font-face here */
+@font-face {
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("/fonts/ARIAL.ttf") format("truetype");
+}
+
 :root {
   /* Custom font sizes */
   --font-size-tiny: 0.625rem;
+  --font-size-28: 1.75rem;
   --font-size-huge: 5rem;
   --font-size-banner: 6rem;
   
   /* Custom colors */
   --color-brand: #3b82f6;
   --color-accent: #8b5cf6;
+  --color-dark-green: #263824;
+  --color-khaki: #F1E7CE;
+  --color-marigold: #E2A002;
+  --color-dark-teal: #305D62;
+
+  --font-family-arial: 'Arial', sans-serif;
+  --font-family-helvetica-neue-bold: 'Helvetica Neue Bold', sans-serif;
 }
 
 @custom-variant 3xl {
@@ -40,15 +57,30 @@
   --color-secondary-dark-blue: #10ADDC;
   --color-secondary-gold: #305D62;
   --color-secondary-green: #263824;
+  --color-dark-green: #263824;
+  --color-khaki: #F1E7CE;
+  --color-marigold: #E2A002;
+  --color-dark-teal: #305D62;
 
   /* Custom spacing for mb-15, mb-25, mb-34 */
   --spacing-10: 2.75rem; /* 10 * 0.25rem */
   --spacing-15: 3.75rem; /* 15 * 0.25rem */
   --spacing-25: 6.25rem; /* 25 * 0.25rem */
   --spacing-34: 8.5rem;  /* 34 * 0.25rem */
+
+  --font-arial: "Arial", sans-serif;
+  --font-helvetica-neue-bold: 'Helvetica Neue Bold', sans-serif;
 }
 
 @layer base {
+  @font-face {
+    font-family: 'Helvetica Neue Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/helvetica-neue/HelveticaNeueBold.otf") format("opentype");
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -56,29 +88,33 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-arial;
+  }
+
   h1, .h1 {
-    @apply text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl font-bold leading-none tracking-normal 2xl:tracking-tighter;
+    @apply text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl leading-none tracking-normal 2xl:tracking-tighter;
   }
   h2 {
-    @apply text-3xl xl:text-4xl 2xl:text-5xl 3xl:text-7xl font-semibold leading-tight tracking-tight;
+    @apply text-3xl xl:text-4xl 2xl:text-5xl 3xl:text-7xl leading-tight tracking-tight;
   }
   h3 {
-    @apply text-xl lg:text-2xl 2xl:text-3xl 3xl:text-5xl font-semibold leading-none 2xl:leading-tight tracking-normal;
+    @apply text-xl lg:text-2xl 2xl:text-3xl 3xl:text-5xl leading-none 2xl:leading-tight tracking-normal;
   }
   h4 {
-    @apply text-sm xl:text-xl 2xl:text-2xl 3xl:text-4xl font-semibold leading-tight tracking-normal;
+    @apply text-sm xl:text-xl 2xl:text-2xl 3xl:text-4xl leading-tight tracking-normal;
   }
   h5 {
-    @apply text-[24px] font-semibold leading-[1.2] tracking-[0.1px];
+    @apply text-[24px] leading-[1.2] tracking-[0.1px];
   }
   h6 {
-    @apply text-[20px] font-semibold leading-[1.2] tracking-[0.1px];
+    @apply text-[20px] leading-[1.2] tracking-[0.1px];
   }
   .body-large {
     @apply text-lg xl:text-xl 2xl:text-2xl 3xl:text-4xl font-medium leading-tight tracking-normal;
   }
   p, .body-regular {
-    @apply text-base 2xl:text-xl 3xl:text-3xl font-medium leading-normal 2xl:leading-snug tracking-normal;
+    @apply text-base 2xl:text-xl 3xl:text-3xl font-medium font-arial leading-normal 2xl:leading-snug tracking-normal;
   }
   .body-small {
     @apply text-xs 2xl:text-base 3xl:text-2xl font-medium leading-normal 2xl:leading-snug tracking-tight;
@@ -114,6 +150,7 @@
 
 @layer utilities {
   .text-tiny { font-size: var(--font-size-tiny); }
+  .text-28 { font-size: var(--font-size-28); }
   .text-huge { font-size: var(--font-size-huge); }
   .text-banner { font-size: var(--font-size-banner); }
   .text-brand { color: var(--color-brand); }

@@ -46,7 +46,7 @@ export default function AddonsSelector({ addons, categoryId }) {
 
   return (
     <div className="third-option">
-      <h3 className="text-[30px] inline-block w-1/2 text-secondary-green mb-5 mt-10">
+      <h3 className="text-[30px] inline-block w-1/2 text-dark-teal font-helvetica-neue-bold mb-5 mt-10">
         Add-Ons
       </h3>
       <div className="buttons flex gap-6 flex-wrap">
@@ -60,7 +60,7 @@ export default function AddonsSelector({ addons, categoryId }) {
               <button
                 type="button"
                 onClick={() => toggleAddon(addon)}
-                className={`border-lightYellow text-[19px] cursor-pointer font-bold px-6 py-2 ${
+                className={`border-lightYellow text-[19px] cursor-pointer font-bold font-helvetica-neue-bold px-6 py-2 ${
                   isSelected ? "bg-lightYellow text-white border-2" : "border-2"
                 }`}
               >

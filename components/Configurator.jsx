@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import StepDefault from "./StepDefault";
 import StepTabbed from "./StepTabbed";
 import axios from "axios";
-import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -83,11 +82,23 @@ export default function Configurator() {
   return (
     <div>
       {currentCategory.type === "default" ? (
-        <StepDefault category={currentCategory} />
+        <StepDefault 
+          category={currentCategory} 
+          goBack={goBack}
+          goNext={goNext} 
+          currentStep={currentStep}
+          isLastStep={currentStep === categories.length - 1}
+        />
       ) : (
-        <StepTabbed category={currentCategory} />
+        <StepTabbed 
+          category={currentCategory} 
+          goBack={goBack}
+          goNext={goNext} 
+          currentStep={currentStep}
+          isLastStep={currentStep === categories.length - 1}
+        />
       )}
-      <section className="button pb-10 pt-0">
+      {/* <section className="button pb-10 pt-0">
         <div className="container flex justify-between">
           <Button onClick={goBack} disabled={currentStep === 0}>
             {"< Back"}
@@ -96,7 +107,7 @@ export default function Configurator() {
             {currentStep === categories.length - 1 ? "Review >" : "Next >"}
           </Button>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

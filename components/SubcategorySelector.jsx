@@ -50,7 +50,7 @@ export default function SubcategorySelector({
 
   return (
     <div className="subcategory mt-10">
-      <h3 className="text-[30px] inline-block w-full text-secondary-green mb-10">
+      <h3 className="text-[30px] font-helvetica-neue-bold inline-block w-full text-dark-teal mb-10">
         {subcategory.label}
       </h3>
       <div className="multiple-options flex flex-wrap gap-6">
@@ -60,19 +60,19 @@ export default function SubcategorySelector({
           return (
             <div
               key={idx}
-              className={`color-options w-[150px] text-center cursor-pointer border-2 p-2 transition-all duration-150 w-[120px] ${
+              className={`color-options w-[150px] text-center cursor-pointer border-2 p-2 transition-all duration-150 w-[112px] ${
                 isSelected ? "border-lightYellow" : "border-transparent"
               }`}
               onClick={() => handleSelect(opt, subcategory)}
             >
-              <div className="image-wrap overflow-hidden w-full h-[120px]">
+              <div className="image-wrap overflow-hidden w-full h-[130px]">
                 <img
                   src={`${import.meta.env.VITE_API_DOMAIN}/${opt.image}`}
                   alt={opt.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h4 className="text-secondary-green text-sm font-bold mt-3">
+              <h4 className="text-dark-green text-[19px] font-helvetica-neue-bold font-bold mt-3">
                 {opt.name}
               </h4>
             </div>

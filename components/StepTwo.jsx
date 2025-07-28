@@ -62,14 +62,14 @@ const StepTwo = ({ selectedProduct }) => {
           />
         </div>
         <div className="intro text-center">
-          <h3 className="text-secondary-gold text-3xl mb-3">Step 2</h3>
-          <h2 className="text-[87px] inline-block w-1/2 text-secondary-green border-b-4 border-yellow mb-15">
+          <h3 className="text-dark-teal text-3xl mb-3 font-helvetica-neue-bold">Step 2</h3>
+          <h2 className="text-[87px] inline-block text-secondary-green border-b-4 border-yellow mb-15 font-normal font-arial">
             Pick a Floor Plan
           </h2>
           <div className="title flex items-center justify-center gap-2">
             <h3 className="text-[25px] font-normal">You selected</h3>
             <span
-              className="font-normal text-[28px] inline-block text-center flex flex-col bg-darkRed rounded-[5px] rounded-l-none overflow-hidden py-2 px-2 text-white"
+              className="font-normal font-arial text-[28px] inline-block text-center flex flex-col bg-darkRed rounded-[5px] rounded-l-none overflow-hidden py-2 px-2 text-white"
               style={{
                 clipPath: "polygon(10% 0%, 99% 0%, 99% 100%, 0% 100%, 0% 30%)",
               }}
@@ -88,16 +88,16 @@ const StepTwo = ({ selectedProduct }) => {
               <ul className="flex justify-center gap-4 mb-5">
                 {floors.map((floor) => (
                   <li
-                    key={floor.id}
-                    className={`flex items-center justify-center rounded-full border-lightYellow text-5xl font-bold w-[68px] h-[68px] cursor-pointer ${
-                      selectedFloor?.id === floor.id
-                        ? "text-white bg-lightYellow border-1"
-                        : "text-lightYellow border-1"
-                    }`}
-                    onClick={() => handleSelectFloor(floor)}
+                  key={floor.id}
+                  className={`flex items-center justify-center pt-[10px] aspect-square w-[68px] text-[48px] font-bold rounded-full border-lightYellow cursor-pointer font-helvetica-neue-bold leading-none ${
+                    selectedFloor?.id === floor.id
+                      ? "text-white bg-lightYellow border-1"
+                      : "text-lightYellow border-1"
+                  }`}
+                  onClick={() => handleSelectFloor(floor)}
                   >
-                    {floor.label}
-                  </li>
+                  {floor.label}
+                  </li>                               
                 ))}
               </ul>
             </div>
@@ -115,7 +115,7 @@ const StepTwo = ({ selectedProduct }) => {
             </div>
 
             <div className="floor-plan">
-              <h2 className="text-[64px] font-normal text-green mt-4 mb-4">
+              <h2 className="text-[64px] font-normal font-arial text-dark-green mt-4 mb-4">
                 {selectedFloor.name}
               </h2>
               {/* <div
@@ -125,11 +125,11 @@ const StepTwo = ({ selectedProduct }) => {
               <div
                 className="body text-xl font-normal mb-5"
                 dangerouslySetInnerHTML={{ __html: selectedFloor.body }}
-              /> */}
+              />  */}
               <div className="detail flex gap-12">
                 <div className="left w-1/2">
                   <div className="heading">
-                    <h3 className="text-[43px] font-bold text-lightYellow">
+                    <h3 className="text-[43px] font-helvetica-neue-bold text-lightYellow">
                       Areas
                     </h3>
                   </div>
@@ -145,10 +145,10 @@ const StepTwo = ({ selectedProduct }) => {
                           key={index}
                           className="step-line flex gap-4 items-center border-b-2 border-lightYellow mb-7"
                         >
-                          <span className="step-number text-[34px] font-bold text-lightYellow">
+                          <span className="step-number text-[34px] font-bold font-helvetica-neue-bold text-lightYellow">
                             {item.number}
                           </span>
-                          <h4 className="step-title text-[26px] font-light">
+                          <h4 className="step-title text-[26px] font-normal font-arial">
                             {item.title}
                           </h4>
                         </div>
@@ -165,10 +165,10 @@ const StepTwo = ({ selectedProduct }) => {
                           key={index}
                           className="step-line flex gap-4 items-center border-b-2 border-lightYellow mb-7"
                         >
-                          <span className="step-number text-[34px] font-bold text-lightYellow">
+                          <span className="step-number font-bold font-helvetica-neue-bold text-[34px] text-lightYellow">
                             {item.number}
                           </span>
-                          <h4 className="step-title text-[26px] font-light">
+                          <h4 className="step-title text-[26px] font-normal font-arial">
                             {item.title}
                           </h4>
                         </div>
@@ -178,7 +178,7 @@ const StepTwo = ({ selectedProduct }) => {
                 </div>
                 <div className="right w-1/2">
                   <div className="heading">
-                    <h3 className="text-[42px] mb-4">Customizations & Add-Ons</h3>
+                    <h3 className="text-[42px] mb-4 font-helvetica-neue-bold font-bold text-dark-green">Customizations & Add-Ons</h3>
                   </div>
                   <div className="options">
                     {[
@@ -193,10 +193,10 @@ const StepTwo = ({ selectedProduct }) => {
                         key={index}
                         className="step-line flex gap-4 items-center border-b-2 border-lightYellow mb-7"
                       >
-                        <span className="step-number text-[34px] font-bold text-green">
+                        <span className="step-number text-[34px] font-bold font-helvetica-neue-bold text-dark-green">
                           {item.number}
                         </span>
-                        <h4 className="step-title text-[27px] font-light">
+                        <h4 className="step-title text-[27px] font-normal font-arial">
                           {item.title}
                         </h4>
                       </div>
@@ -211,7 +211,7 @@ const StepTwo = ({ selectedProduct }) => {
         <div className="mt-10 flex justify-center gap-4">
           {selectedFloor && (
             <button
-              className="border-lightYellow text-white bg-lightYellow text-[25px] font-bold rounded-md py-2 px-8"
+              className="border-lightYellow text-white bg-lightYellow text-[25px] font-bold font-helvetica-neue-bold rounded-md py-2 px-8"
               onClick={handleChooseCustomizations}
             >
               Choose Your Customizations

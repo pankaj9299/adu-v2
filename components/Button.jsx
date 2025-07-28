@@ -5,7 +5,7 @@ export default function Button({ children, onClick, className = "" }) {
   return (
     <button
       onClick={onClick}
-      className={`text-lightYellow text-[19px] font-bold cursor-pointer transition-colors ${className}`}
+      className={`text-lightYellow font-helvetica-neue-bold font-bold text-2xl cursor-pointer transition-colors ${className}`}
     >
       {children} 
     </button>
