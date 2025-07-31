@@ -32,7 +32,7 @@ export default function Configurator() {
       .get(
         `${
           import.meta.env.VITE_API_DOMAIN
-        }/admin/api/products/1/floors/4/presentation`
+        }/admin/api/products/${selectedProduct.product_id}/floors/${selectedProduct.floor_id}/presentation`
       )
       .then((res) => setConfig(res.data))
       .catch((err) => console.error(err));

@@ -136,7 +136,7 @@ const CostSummary = () => {
                   >
                     <div className="left flex gap-4">
                       <div className="first w-[173px] text-center">
-                        <p className="font-normal bg-yellow py-2 font-helvetica-neue-bold">Add-On</p>
+                        <p className="font-normal bg-yellow py-2">Add-On</p>
                       </div>
                       <div className="second">
                         <p className="font-normal py-2 text-dark-green">{addon.name}</p>
