@@ -38,7 +38,7 @@ const StepOne = ({ products, onSelectProduct }) => {
                   <img
                     src={`${import.meta.env.VITE_API_DOMAIN}/${product.image}`}
                     alt={product.name}
-                    className="h-72 w-full object-cover"
+                    className="h-72 w-full object-contain"
                   />
                 </div>
                 <div className="text-wrap mt-5">
