@@ -3,6 +3,10 @@ import Button from "./Button";
 import HeroBanner from "./HeroBanner";
 import CostSummary from "./CostSummary";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
 import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
 
@@ -12,6 +16,15 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
   const [activeTab, setActiveTab] = useState(0);
   const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null); // new state
   const [selectedImageOption, setSelectedImageOption] = useState(null);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    arrows: true, // ✅ ensure this is true
+  };  
 
   const currentTab = category.tabs[activeTab];
   
@@ -248,57 +261,59 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
             <div className="inner-wrap p-15 [box-shadow:0px_0px_19.4px_0px_#00000033] mt-12">
               {" "}
               {/* Inner Options Selector - only shown if a subcategory is selected */}
-              <div className="multiple-options flex gap-12 flex-wrap">
-                {selectedSubcategory.options.map((opt, index) => {
-                  const selectedForThisSub = selectedOptions.find(
-                    (o) => o.subcategoryId === selectedSubcategory.id
-                  );
+              <div className="slider-container w-full overflow-hidden">
+                <Slider {...settings}>
+                  {selectedSubcategory.options.map((opt, index) => {
+                    const selectedForThisSub = selectedOptions.find(
+                      (o) => o.subcategoryId === selectedSubcategory.id
+                    );
 
-                  const isSelected = selectedForThisSub
-                    ? selectedForThisSub.optionId === opt.id
-                    : index === 0;
+                    const isSelected = selectedForThisSub
+                      ? selectedForThisSub.optionId === opt.id
+                      : index === 0;
 
-                  return (
-                    <div
-                      key={`${selectedSubcategory.id}-${opt.id}`}
-                      className={`color-options w-[160px] text-center cursor-pointer border-2 p-2 ${
-                        isSelected ? "border-lightYellow" : "border-transparent"
-                      }`}
-                      onClick={() =>
-                        handleOptionSelect(selectedSubcategory.id, opt)
-                      }
-                    >
-                      <div className="image-wrap overflow-hidden h-[120px]">
-                        <img
-                          src={
-                            opt.image
-                              ? `${import.meta.env.VITE_API_DOMAIN}/${
-                                  opt.image
-                                }`
-                              : `https://placehold.co/250x250?text=ADU`
-                          }
-                          alt={opt.name}
-                          className="h-full w-full object-cover"
-                        />
+                    return (
+                      <div
+                        key={`${selectedSubcategory.id}-${opt.id}`}
+                        className={`w-full max-w-[160px] text-center cursor-pointer border-2 p-2 mx-auto ${
+                          isSelected ? "border-lightYellow" : "border-transparent"
+                        }`}
+                        onClick={() =>
+                          handleOptionSelect(selectedSubcategory.id, opt)
+                        }
+                      >
+                        <div className="image-wrap overflow-hidden h-[120px]">
+                          <img
+                            src={
+                              opt.image
+                                ? `${import.meta.env.VITE_API_DOMAIN}/${
+                                    opt.image
+                                  }`
+                                : `https://placehold.co/250x250?text=ADU`
+                            }
+                            alt={opt.name}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                        <div className="details">
+                          <h4 className="text-secondary-green text-xl font-bold mt-5">
+                            {opt.name}
+                          </h4>
+                          <h5 className="text-green text-[15px]">
+                            {selectedSubcategory.label}
+                          </h5>
+                          {index === 0 && (
+                            <div className="button mt-2">
+                              <span className="bg-thinGray text-white text-[15px] px-1 py-0.5 rounded">
+                                Default
+                              </span>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                      <div className="details">
-                        <h4 className="text-secondary-green text-xl font-bold mt-5">
-                          {opt.name}
-                        </h4>
-                        <h5 className="text-green text-[15px]">
-                          {selectedSubcategory.label}
-                        </h5>
-                        {index === 0 && (
-                          <div className="button mt-2">
-                            <span className="bg-thinGray text-white text-[15px] px-1 py-0.5 rounded">
-                              Default
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </Slider>
               </div>
               <div className="button text-end mt-5">
                 <button
