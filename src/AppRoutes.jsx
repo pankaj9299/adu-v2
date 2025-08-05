@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { setProduct } from "./store/slices/configuratorSlice";
 import axios from "axios";
+import TestSlider from "../components/TestSlider";
 
 export default function AppRoutes() {
   const location = useLocation();
@@ -75,6 +76,7 @@ export default function AppRoutes() {
       />
       <Route path="/configurator" element={<Configurator />} />
       <Route path="/checkout" element={<CheckoutForm />} />
+      <Route path="/test" element={<TestSlider />} />
     </Routes>
   );
 }

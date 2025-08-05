@@ -3,12 +3,38 @@ import Button from "./Button";
 import HeroBanner from "./HeroBanner";
 import CostSummary from "./CostSummary";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
+
+function SampleNextArrow({ className, style, onClick }) {
+  return (
+    <div
+      className={`${className} !block absolute top-1/2 -translate-y-1/2 right-0 z-20`}
+      style={{
+        ...style,
+        color: "red",
+        width: "30px",
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow({ className, style, onClick }) {
+  return (
+    <div
+      className={`${className} !block absolute top-1/2 -translate-y-1/2 left-0 z-20`}
+      style={{
+        ...style,
+        color: "green",
+        width: "30px",
+      }}
+      onClick={onClick}
+    />
+  );
+}
 
 export default function StepTabbed({ category, goBack, goNext, currentStep, isLastStep }) {
   const [isTabActive, setIsTabActive] = useState(false);
@@ -20,10 +46,11 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
     arrows: true, // ✅ ensure this is true
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />
   };  
 
   const currentTab = category.tabs[activeTab];
@@ -261,7 +288,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
             <div className="inner-wrap p-15 [box-shadow:0px_0px_19.4px_0px_#00000033] mt-12">
               {" "}
               {/* Inner Options Selector - only shown if a subcategory is selected */}
-              <div className="slider-container w-full overflow-hidden">
+              <div className="slick-wrapper w-full overflow-hidden relative">
                 <Slider {...settings}>
                   {selectedSubcategory.options.map((opt, index) => {
                     const selectedForThisSub = selectedOptions.find(
