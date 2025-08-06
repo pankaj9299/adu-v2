@@ -240,7 +240,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                     <div
                       key={sub.id}
                       onClick={() => handleColorOptionClick(sub.id)}
-                      className="w-1/5 min-w-[200px] cursor-pointer relative"
+                      className="flex-[1_1_20%] max-w-[20%] cursor-pointer relative"
                     >
                       {/* Shadow layer */}
                       {isActive && (
