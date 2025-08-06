@@ -185,7 +185,9 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
   }
 
   useEffect(() => {
-    if (!selectedStateProduct?.categories?.length) return;
+    if (!selectedStateProduct?.categories?.length) {
+      return;
+    } 
   
     const currentCategoryFromRedux = selectedStateProduct.categories.find(
       (cat) => cat.id === category.id
@@ -194,6 +196,8 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
     // Having no redux state data
     if (!currentCategoryFromRedux || !currentCategoryFromRedux.tab?.length) {
       setSelectedImageOption(category);
+      setActiveTab(0);
+      setIsTabActive(false);
       return;  
     } 
   
@@ -372,7 +376,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
               </div>
             </div>
           )}
-          {category.addons.length > 0 && (
+          {(category.addons.length > 0 && isTabActive) && (
             <AddonsSelector
               addons={category.addons}
               categoryId={category.id}
