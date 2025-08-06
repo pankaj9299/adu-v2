@@ -46,8 +46,8 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 6,
+    slidesToScroll: 1,
     arrows: true, // ✅ ensure this is true
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />
@@ -240,7 +240,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                     <div
                       key={sub.id}
                       onClick={() => handleColorOptionClick(sub.id)}
-                      className="w-[250px] cursor-pointer relative"
+                      className="w-1/5 min-w-[200px] cursor-pointer relative"
                     >
                       {/* Shadow layer */}
                       {isActive && (
