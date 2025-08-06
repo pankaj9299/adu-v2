@@ -40,8 +40,6 @@ export default function Configurator() {
     }
   }, []);
 
-  console.log("config", config);
-
   if (!config) return <div>Loading...</div>;
 
   const categories = config.categories;
@@ -51,7 +49,6 @@ export default function Configurator() {
     if (currentStep < categories.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      console.log("Configuration complete!");
       navigate('/checkout', { replace: true });
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -59,8 +56,7 @@ export default function Configurator() {
 
   const goBack = () => {
     if (currentStep > 0) {
-      console.log('currentStep', currentStep);
-
+      
       // Clone categories and remove the one at currentStep
       // const updatedCategories = [...selectedProduct.categories];
       // updatedCategories.splice(currentStep, 1); // remove the category at currentStep

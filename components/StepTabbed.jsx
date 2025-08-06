@@ -137,8 +137,6 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
     setActiveTab(idx);
     setSelectedSubcategoryId(null); // reset on tab change
 
-    console.log('idxidx: ', category.tabs[idx]);
-    console.log('V2 idxidx: ', category);
     // State
     if (selectedStateProduct?.categories) {
       const updatedSubcategories = category.tabs[idx].subcategories.map(
@@ -208,7 +206,6 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
   
     setSelectedImageOption(currentCategoryFromRedux);
   }, [category]);  
-  console.log("selectedStateProduct", selectedStateProduct);
   // console.log('selectedOptions', selectedOptions);
 
   return (
