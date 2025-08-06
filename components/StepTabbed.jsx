@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "./Button";
 import HeroBanner from "./HeroBanner";
 import CostSummary from "./CostSummary";
+import AddonsSelector from "./AddonsSelector";
 
 import Slider from "react-slick";
 
@@ -370,6 +371,13 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                 </button>
               </div>
             </div>
+          )}
+          {category.addons.length > 0 && (
+            <AddonsSelector
+              addons={category.addons}
+              categoryId={category.id}
+              categoryName={category.name}
+            />
           )}
         </div>
       </section>
