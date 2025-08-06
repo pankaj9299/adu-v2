@@ -276,7 +276,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                                 : `https://placehold.co/250x250?text=ADU`
                             }
                             alt={sub.label}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                         </div>
 
@@ -339,7 +339,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                                 : `https://placehold.co/250x250?text=ADU`
                             }
                             alt={opt.name}
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-contain"
                           />
                         </div>
                         <div className="details">
