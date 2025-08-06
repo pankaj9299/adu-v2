@@ -232,7 +232,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
               <h3 className="text-[25px] inline-block w-3/4 text-thinGray my-10">
                 This style comes with the following finishes:
               </h3>
-              <div className="multiple-options flex gap-5 flex-wrap">
+              <div className="multiple-options flex gap-5">
                 {currentTab?.subcategories?.map((sub) => {
                   const firstOption = sub.options[0];
                   const isActive = selectedSubcategoryId === sub.id;
