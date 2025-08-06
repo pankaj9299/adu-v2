@@ -41,17 +41,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
   const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null); // new state
-  const [selectedImageOption, setSelectedImageOption] = useState(null);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    arrows: true, // ✅ ensure this is true
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />
-  };  
+  const [selectedImageOption, setSelectedImageOption] = useState(null); 
 
   const currentTab = category.tabs[activeTab];
   
@@ -69,6 +59,32 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
   const selectedSubcategory = currentTab?.subcategories?.find(
     (sub) => sub.id === selectedSubcategoryId
   );  
+
+  // Slick configurations
+  const optionCount = selectedSubcategory?.options?.length || 0;
+  const settings = {
+    dots: true,
+    infinite: optionCount > 6, // Only infinite if more than 6
+    slidesToShow: optionCount > 6 ? 6 : 3,
+    slidesToScroll: 1,
+    arrows: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: optionCount > 6 ? 4 : Math.min(optionCount, 2),
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: Math.min(optionCount, 1),
+        },
+      },
+    ],
+  };
 
   const handleOptionSelect = (subcategoryId, option) => {
     // 🔄 Update local UI state
@@ -302,7 +318,10 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                     return (
                       <div
                         key={`${selectedSubcategory.id}-${opt.id}`}
-                        className={`w-full max-w-[160px] text-center cursor-pointer border-2 p-2 mx-auto ${
+                        // className={`w-full max-w-[160px] text-center cursor-pointer border-2 p-2 mx-auto ${
+                        //   isSelected ? "border-lightYellow" : "border-transparent"
+                        // }`}
+                        className={`w-full px-2 text-center cursor-pointer border-2 p-2 ${
                           isSelected ? "border-lightYellow" : "border-transparent"
                         }`}
                         onClick={() =>
