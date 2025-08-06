@@ -28,14 +28,16 @@ export default function Configurator() {
 
   useEffect(() => {
     // fetch from your CodeIgniter backend
-    axios
-      .get(
-        `${
-          import.meta.env.VITE_API_DOMAIN
-        }/admin/api/products/${selectedProduct.product_id}/floors/${selectedProduct.floor_id}/presentation`
-      )
-      .then((res) => setConfig(res.data))
-      .catch((err) => console.error(err));
+    if (selectedProduct) {
+      axios
+        .get(
+          `${import.meta.env.VITE_API_DOMAIN}/admin/api/products/${
+            selectedProduct.product_id
+          }/floors/${selectedProduct.floor_id}/presentation`
+        )
+        .then((res) => setConfig(res.data))
+        .catch((err) => console.error(err));
+    }
   }, []);
 
   console.log("config", config);
