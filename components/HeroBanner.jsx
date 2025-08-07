@@ -6,7 +6,7 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
     : defaultImage ? defaultImage : `${import.meta.env.VITE_API_DOMAIN}/uploads/category_options/1753111703_d87a932b81637b70ee4b.png`;
     
   return (
-    <section className="hero-banner pb-3 pt-0">
+    <section className="hero-banner pb-3 pt-0 mt-10">
       <div className="container">
         <div className="intro">
           <h3 className="text-[30px] font-helvetica-neue-bold font-bold inline-block w-1/2 text-lightYellow mb-2">
