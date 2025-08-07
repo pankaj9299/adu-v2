@@ -23,6 +23,7 @@
   --color-khaki: #F1E7CE;
   --color-marigold: #E2A002;
   --color-dark-teal: #305D62;
+  --color-gray: #D9D9D9;
 
   --font-family-arial: 'Arial', sans-serif;
   --font-family-helvetica-neue-bold: 'Helvetica Neue Bold', sans-serif;
@@ -61,6 +62,7 @@
   --color-khaki: #F1E7CE;
   --color-marigold: #E2A002;
   --color-dark-teal: #305D62;
+  --color-gray: #D9D9D9;
 
   /* Custom spacing for mb-15, mb-25, mb-34 */
   --spacing-10: 2.75rem; /* 10 * 0.25rem */
