@@ -49,11 +49,11 @@ export default function SubcategorySelector({
   };
 
   return (
-    <div className="subcategory mt-10">
-      <h3 className="text-[30px] font-helvetica-neue-bold inline-block w-full text-dark-teal mb-10">
+    <div className="subcategory">
+      <h3 className="text-2xl font-helvetica-neue-bold inline-block w-full text-dark-teal mb-5">
         {subcategory.label}
       </h3>
-      <div className="multiple-options flex flex-wrap gap-6">
+      <div className="multiple-options flex flex-wrap gap-6 mb-10">
         {subcategory.options.map((opt, idx) => {
           const isSelected = selectedOption?.id === opt.id;
 

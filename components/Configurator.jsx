@@ -78,7 +78,7 @@ export default function Configurator() {
   };
 
   return (
-    <div>
+    <div className="relative">
       {currentCategory.type === "default" ? (
         <StepDefault 
           category={currentCategory} 

@@ -97,7 +97,7 @@ export default function StepDefault({ category, goBack, goNext, currentStep, isL
     <div>
       <HeroBanner selectedOption={selectedImageOption} />
       <Intro name={category.name} />
-      <section className="multiple-color pt-0">
+      <section className="multiple-color pt-0 relative -top-15">
         <div className="container">
           {category.subcategories.map((sub, index) => (
             <SubcategorySelector

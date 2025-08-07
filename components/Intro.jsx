@@ -1,9 +1,9 @@
 const Intro = ({ name }) => {
   return (
-    <section className="intro p-0">
+    <section className="intro p-0 relative -top-15">
       <div className="container">
         <div className="intro">
-          <h2 className="text-dark-green text-[68px] mb-3 font-normal">{name}</h2>
+          <h2 className="text-marigold text-5xl mb-3 font-helvetica-neue-bold">{name}</h2>
         </div>
       </div>
     </section>
