@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
 /* Add font-face here */
 @font-face {
   font-family: 'Arial';

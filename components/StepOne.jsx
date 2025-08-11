@@ -7,18 +7,18 @@ const StepOne = ({ products, onSelectProduct }) => {
     >
       <div className="container">
         <div className="intro text-center">
-          <h1 className="text-[55px] font-normal text-dark-green my-7">
+          <h1 className="md:text-[55px] font-normal text-dark-green my-7">
             Make it Your Own
           </h1>
           <h3 className="text-dark-teal text-2xl font-helvetica-neue-bold">
             Step 1
           </h3>
-          <h2 className="text-[40px] font-normal inline-block w-1/2 text-marigold mb-10 font-helvetica-neue-bold">
+          <h2 className="text-[40px] font-normal inline-block md:w-1/2 text-marigold mb-10 font-helvetica-neue-bold">
             Pick a Base
           </h2>
         </div>
         <div className="col-three-wrap">
-          <div className="wrapper grid grid-cols-3 gap-x-7">
+          <div className="wrapper grid grid-cols-1 md:grid-cols-3 gap-x-7">
             {products.map((product, index) => (
               <div key={product.id} className="wrap text-center">
                 <div className="heading mb-2">

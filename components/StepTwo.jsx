@@ -77,10 +77,10 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
           <h3 className="text-dark-teal text-2xl mt-10 font-helvetica-neue-bold">
             Step 2
           </h3>
-          <h2 className="text-[40px] inline-block text-marigold mb-2 font-normal font-helvetica-neue-bold">
+          <h2 className="text-[40px] inline-block text-marigold mb-2 max-sm:my-7 font-normal font-helvetica-neue-bold">
             Pick a Floor Plan
           </h2>
-          <div className="title flex items-center justify-center gap-2">
+          <div className="title flex flex-col md:flex-row items-center justify-center gap-2">
             <h3 className="text-[25px] font-normal">You selected</h3>
             <span
               className="font-normal font-arial text-[28px] inline-block text-center flex flex-col bg-darkRed rounded-[5px] rounded-l-none overflow-hidden py-2 px-2 text-white"
@@ -94,8 +94,8 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
           {floors.length === 0 ? (
             <div className="text-center">No floor plans available.</div>
           ) : (
-            <div className="flex items-center gap-5">
-              <div className="image-wrap w-1/2">
+            <div className="flex flex-col md:flex-row items-center gap-5">
+              <div className="image-wrap w-full md:w-1/2">
                 <img
                   src={`${import.meta.env.VITE_API_DOMAIN}/${
                     selectedFloor.image
@@ -104,7 +104,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                   className="mx-auto block"
                 />
               </div>
-              <div className="description w-1/2">
+              <div className="description w-full md:w-1/2">
                 <h4 className="text-xl text-left font-normal my-3">
                   {/* {floors.length} Floor Plan Options: */}
                   Floor Plan Options:
