@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
@@ -96,12 +97,15 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
           ) : (
             <div className="flex flex-col md:flex-row items-center gap-5">
               <div className="image-wrap w-full md:w-1/2">
-                <img
-                  src={`${import.meta.env.VITE_API_DOMAIN}/${
-                    selectedFloor.image
-                  }`}
-                  alt={selectedFloor.name}
+                <LazyLoadImage
                   className="mx-auto block"
+                  alt={selectedFloor.name}
+                  effect="blur"
+                  wrapperProps={{
+                    // If you need to, you can tweak the effect transition using the wrapper style.
+                    style: { transitionDelay: "1s" },
+                  }}
+                  src={`${import.meta.env.VITE_API_DOMAIN}/${selectedFloor.image}`}
                 />
               </div>
               <div className="description w-full md:w-1/2">

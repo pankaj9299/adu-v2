@@ -1,3 +1,5 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 const HeroBanner = ({ selectedOption, defaultImage }) => {
   const imageSrc = selectedOption?.image
     ? selectedOption.image.startsWith("http")
@@ -20,7 +22,8 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
               <h3
                 className="font-normal inline-block text-center flex flex-col bg-darkRed rounded-[5px] rounded-l-none overflow-hidden py-2 px-3 mb-10 max-sm:mb-0 text-white"
                 style={{
-                  clipPath: "polygon(10% 0%, 99% 0%, 99% 100%, 0% 100%, 0% 30%)",
+                  clipPath:
+                    "polygon(10% 0%, 99% 0%, 99% 100%, 0% 100%, 0% 30%)",
                 }}
               >
                 Side-by-Side Container
@@ -28,10 +31,15 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
             </div>
           </div>
           <div className="image-wrap w-full md:w-3/5">
-            <img
+            <LazyLoadImage
               src={imageSrc || "https://placehold.co/1072x500?text=ADU"}
               className="w-full max-h-[419px] object-contain"
               alt="rooftop"
+              effect="blur"
+              wrapperProps={{
+                // If you need to, you can tweak the effect transition using the wrapper style.
+                style: { transitionDelay: "1s" },
+              }}
             />
           </div>
         </div>
