@@ -24,13 +24,13 @@ const CheckoutForm = () => {
       <section className="hero-banner">
         <div className="container">
           <div className="intro">
-            <h1 className="text-[87px] font-normal text-secondary-green mb-10">
+            <h1 className="md:text-[87px] font-normal text-secondary-green mb-10">
               Get Your Budget Proposal
             </h1>
-            <h3 className="text-[30px] text-lightYellow mb-2">
+            <h3 className="md:text-[30px] text-lightYellow mb-2">
               You created something beautiful. Now let’s make it yours.
             </h3>
-            <h3 className="text-[30px] text-thinGray mb-10">
+            <h3 className="md:text-[30px] text-thinGray mb-10 max-sm:my-5">
               Request your full Budget Proposal below.
             </h3>
           </div>
@@ -152,13 +152,13 @@ const CheckoutForm = () => {
       <section className="step-two">
         <div className="container">
           <div className="intro">
-            <h2 className="text-[87px] text-green font-normal mb-10">
+            <h2 className="md:text-[87px] text-green font-normal md:mb-10">
               Your Selections
             </h2>
           </div>
 
-          <div className="content-with-image flex gap-10 items-center mb-20">
-            <div className="image-wrap w-3/5 h-[350px] overflow-hidden">
+          <div className="content-with-image flex flex-col md:flex-row gap-10 items-center md:mb-20">
+            <div className="image-wrap w-full md:w-3/5 h-[350px] overflow-hidden">
               <img
                 src={`${import.meta.env.VITE_API_DOMAIN}/${
                   selectedProductState?.product_image
@@ -167,7 +167,7 @@ const CheckoutForm = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="text-wrap w-2/5">
+            <div className="text-wrap w-full md:w-2/5">
               <h3
                 className="font-normal inline-block text-center flex flex-col bg-darkRed rounded-[5px] rounded-l-none overflow-hidden py-1 px-2 text-white"
                 style={{
@@ -177,10 +177,10 @@ const CheckoutForm = () => {
               >
                 {selectedProductState?.product_name}
               </h3>
-              <h4 className="text-[28px] text-green font-normal">
+              <h4 className="max-sm:text-[20px] max-sm:my-2 md:text-[28px] text-green font-normal">
                 {selectedProductState?.floor_name}
               </h4>
-              <p className="text-[25px] mt-2 text-green font-normal">
+              <p className="md:text-[25px] mt-2 text-green font-normal">
                 {selectedProductState?.product_subtitle}
               </p>
             </div>

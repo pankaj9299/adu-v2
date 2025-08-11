@@ -97,7 +97,7 @@ export default function StepDefault({ category, goBack, goNext, currentStep, isL
     <div>
       <HeroBanner selectedOption={selectedImageOption} />
       <Intro name={category.name} />
-      <section className="multiple-color pt-0 relative -top-15">
+      <section className="multiple-color pt-0 relative md:-top-15">
         <div className="container">
           {category.subcategories.map((sub, index) => (
             <SubcategorySelector
@@ -117,7 +117,7 @@ export default function StepDefault({ category, goBack, goNext, currentStep, isL
       {/* {selectedProduct?.product_name && <CostSummary />} */}
       {selectedProduct?.product_name && (
         <>
-          <section className="button pb-10 pt-10">
+          <section className="button md:py-10 max-sm:py-0">
             <div className="container flex gap-5">
               <Button onClick={goBack} disabled={currentStep === 0}>
                 {"< Back"}

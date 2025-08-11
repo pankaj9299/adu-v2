@@ -8,8 +8,8 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
   return (
     <section className="hero-banner pb-3 pt-0 mt-10">
       <div className="container mx-auto w-full">
-        <div className=" flex w-full items-center gap-5">
-          <div className="intro w-2/5">
+        <div className=" flex flex-col md:flex-row w-full items-center gap-5">
+          <div className="intro w-full md:w-2/5">
             <h3 className="text-3xl font-helvetica-neue-bold font-bold inline-block text-lightYellow mb-2">
               Your are customizing
             </h3>
@@ -18,7 +18,7 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
             </h1>
             <div className="heading">
               <h3
-                className="font-normal inline-block text-center flex flex-col bg-darkRed rounded-[5px] rounded-l-none overflow-hidden py-2 px-3 mb-10 text-white"
+                className="font-normal inline-block text-center flex flex-col bg-darkRed rounded-[5px] rounded-l-none overflow-hidden py-2 px-3 mb-10 max-sm:mb-0 text-white"
                 style={{
                   clipPath: "polygon(10% 0%, 99% 0%, 99% 100%, 0% 100%, 0% 30%)",
                 }}
@@ -27,7 +27,7 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
               </h3>
             </div>
           </div>
-          <div className="image-wrap w-3/5">
+          <div className="image-wrap w-full md:w-3/5">
             <img
               src={imageSrc || "https://placehold.co/1072x500?text=ADU"}
               className="w-full max-h-[419px] object-contain"

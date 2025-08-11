@@ -223,7 +223,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                 <div className="mt-10 flex gap-4">
                   {selectedFloor && (
                     <button
-                      className="border-lightYellow text-white bg-lightYellow text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5"
+                      className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5"
                       onClick={handleChooseCustomizations}
                     >
                       Choose Your Customizations

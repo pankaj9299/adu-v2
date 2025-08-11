@@ -53,14 +53,14 @@ export default function SubcategorySelector({
       <h3 className="text-2xl font-helvetica-neue-bold inline-block w-full text-dark-teal mb-5">
         {subcategory.label}
       </h3>
-      <div className="multiple-options flex flex-wrap gap-6 mb-10">
+      <div className="multiple-options flex flex-wrap gap-x-0 sm:gap-6 mb-10">
         {subcategory.options.map((opt, idx) => {
           const isSelected = selectedOption?.id === opt.id;
 
           return (
             <div
               key={idx}
-              className={`color-options w-[150px] text-center cursor-pointer border-2 p-2 transition-all duration-150 w-[112px] ${
+              className={`color-options w-1/2 [@media(max-width:370px)]:w-full sm:w-[150px] text-center cursor-pointer border-2 p-2 transition-all duration-150 ${
                 isSelected ? "border-lightYellow" : "border-transparent"
               }`}
               onClick={() => handleSelect(opt, subcategory)}

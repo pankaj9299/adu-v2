@@ -44,13 +44,13 @@ const CostSummary = () => {
     <section className="cost-summary">
       <div className="container mx-auto">
         <div className="intro">
-          <h2 className="text-dark-green text-6xl mb-3">
+          <h2 className="text-dark-green md:text-6xl mb-3">
             Project Cost Summary
           </h2>
-          <h3 className="text-dark-teal font-helvetica-neue-bold text-3xl inline-block w-1/2 mb-10">
+          <h3 className="text-dark-teal font-helvetica-neue-bold text-3xl inline-block w-full md:w-1/2 mb-10">
             Base + Floor Plan
           </h3>
-          <div className="title flex gap-6 items-center">
+          <div className="title flex flex-col md:flex-row gap-6 items-center">
             <h3
               className="font-normal text-center flex flex-col bg-darkRed rounded-r-[5px] overflow-hidden py-2 px-2 text-white"
               style={{
@@ -158,10 +158,10 @@ const CostSummary = () => {
 
         {/* Total for all */}
         <div className="final-result mt-10">
-          <div className="flex justify-end">
-            <div className="flex w-1/2 justify-between border-b border-secondary-dark-gray items-center">
+          <div className="flex flex-row md:flex-col justify-end">
+            <div className="flex w-full md:w-1/2 justify-between border-b border-secondary-dark-gray items-center">
               <div className="text-right">
-                <h3 className="font-bold text-lightYellow py-2 text-3xl font-helvetica-neue-bold">
+                <h3 className="font-bold text-lightYellow py-2 md:text-3xl font-helvetica-neue-bold">
                   Current Total
                 </h3>
               </div>
@@ -174,13 +174,13 @@ const CostSummary = () => {
 
         {location.pathname === "/checkout" && (
         <div className="back-button text-center mt-10">
-          <h3 className="text-[30px] text-thinGray mb-5 font-helvetica-neue-bold">
+          <h3 className="md:text-[30px] text-thinGray mb-5 font-helvetica-neue-bold">
             Want to make a change?
           </h3>
           <div className="button">
             <Link
               to="/"
-              className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 text-[19px] font-bold hover:bg-blue-700 transition"
+              className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 md:text-[19px] font-bold hover:bg-blue-700 transition"
             >
               Go Back to Customization
             </Link>
