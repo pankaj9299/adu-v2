@@ -35,11 +35,8 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
               src={imageSrc || "https://placehold.co/1072x500?text=ADU"}
               className="w-full max-h-[419px] object-contain"
               alt="rooftop"
-              effect="blur"
-              wrapperProps={{
-                // If you need to, you can tweak the effect transition using the wrapper style.
-                style: { transitionDelay: "1s" },
-              }}
+              effect="opacity"
+              threshold={100}
             />
           </div>
         </div>

@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
 import { useNavigate } from "react-router-dom";
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 const CheckoutForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -159,12 +161,14 @@ const CheckoutForm = () => {
 
           <div className="content-with-image flex flex-col md:flex-row gap-10 items-center md:mb-20">
             <div className="image-wrap w-full md:w-3/5 h-[350px] overflow-hidden">
-              <img
+              <LazyLoadImage
                 src={`${import.meta.env.VITE_API_DOMAIN}/${
                   selectedProductState?.product_image
                 }`}
                 alt="cutout"
                 className="w-full h-full object-contain"
+                effect="opacity"
+                threshold={100}
               />
             </div>
             <div className="text-wrap w-full md:w-2/5">
@@ -187,12 +191,14 @@ const CheckoutForm = () => {
           </div>
 
           <div className="image-wrap">
-            <img
+            <LazyLoadImage
               src={`${import.meta.env.VITE_API_DOMAIN}/${
                 selectedProductState?.floor_image
               }`}
               alt="top-view"
               className="mx-auto block"
+              effect="opacity"
+              threshold={100}
             />
           </div>
         </div>

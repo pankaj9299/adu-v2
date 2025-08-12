@@ -100,11 +100,8 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                 <LazyLoadImage
                   className="mx-auto block"
                   alt={selectedFloor.name}
-                  effect="blur"
-                  wrapperProps={{
-                    // If you need to, you can tweak the effect transition using the wrapper style.
-                    style: { transitionDelay: "1s" },
-                  }}
+                  effect="opacity"
+                  threshold={100}
                   src={`${import.meta.env.VITE_API_DOMAIN}/${selectedFloor.image}`}
                 />
               </div>

@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 export default function SubcategorySelector({
   subcategory,
   category,
@@ -66,10 +68,12 @@ export default function SubcategorySelector({
               onClick={() => handleSelect(opt, subcategory)}
             >
               <div className="image-wrap overflow-hidden w-full h-[130px]">
-                <img
+                <LazyLoadImage
                   src={`${import.meta.env.VITE_API_DOMAIN}/${opt.image}`}
                   alt={opt.name}
                   className="w-full h-full object-cover"
+                  effect="opacity"
+                  threshold={100}
                 />
               </div>
               <h4 className="text-dark-green text-[19px] font-helvetica-neue-bold font-bold mt-3">

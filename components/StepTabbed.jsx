@@ -3,6 +3,7 @@ import Button from "./Button";
 import HeroBanner from "./HeroBanner";
 import CostSummary from "./CostSummary";
 import AddonsSelector from "./AddonsSelector";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import Slider from "react-slick";
 
@@ -276,7 +277,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                       {/* Main content */}
                       <div className="relative z-10">
                         <div className="image-wrap overflow-hidden h-[220px] w-full rounded-md">
-                          <img
+                          <LazyLoadImage
                             src={
                               firstOption?.image
                                 ? `${import.meta.env.VITE_API_DOMAIN}/${
@@ -286,6 +287,8 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                             }
                             alt={sub.label}
                             className="w-full h-full object-contain"
+                            effect="opacity"
+                            threshold={100}
                           />
                         </div>
 
@@ -329,7 +332,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                                   }
                                 >
                                   <div className="image-wrap overflow-hidden h-[120px]">
-                                    <img
+                                    <LazyLoadImage
                                       src={
                                         opt.image
                                           ? `${
@@ -339,6 +342,8 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                                       }
                                       alt={opt.name}
                                       className="h-full w-full object-contain"
+                                      effect="opacity"
+                                      threshold={100}
                                     />
                                   </div>
                                   <h4 className="text-secondary-green text-xl font-bold mt-5">
@@ -390,14 +395,16 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                         //   isSelected ? "border-lightYellow" : "border-transparent"
                         // }`}
                         className={`w-full px-2 text-center cursor-pointer border-2 p-2 ${
-                          isSelected ? "border-lightYellow" : "border-transparent"
+                          isSelected
+                            ? "border-lightYellow"
+                            : "border-transparent"
                         }`}
                         onClick={() =>
                           handleOptionSelect(selectedSubcategory.id, opt)
                         }
                       >
                         <div className="image-wrap overflow-hidden h-[120px]">
-                          <img
+                          <LazyLoadImage
                             src={
                               opt.image
                                 ? `${import.meta.env.VITE_API_DOMAIN}/${
@@ -407,6 +414,8 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                             }
                             alt={opt.name}
                             className="h-full w-full object-contain"
+                            effect="opacity"
+                            threshold={100}
                           />
                         </div>
                         <div className="details">

@@ -1,4 +1,5 @@
 import React from "react";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const StepOne = ({ products, onSelectProduct }) => {
   return (
@@ -39,10 +40,12 @@ const StepOne = ({ products, onSelectProduct }) => {
                   </h3>
                 </div>
                 <div className="image-wrap h-72 w-full bg-gray-100 overflow-hidden">
-                  <img
+                  <LazyLoadImage
                     src={`${import.meta.env.VITE_API_DOMAIN}/${product.image}`}
                     alt={product.name}
                     className="h-[228px] w-full object-contain"
+                    effect="opacity"
+                    threshold={100}
                   />
                 </div>
                 <div className="text-wrap mt-2">
