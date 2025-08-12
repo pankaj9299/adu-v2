@@ -93,7 +93,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
             </span>
           </div>
           {floors.length === 0 ? (
-            <div className="text-center">No floor plans available.</div>
+            <div className="text-center">Loading ...</div>
           ) : (
             <div className="flex flex-col md:flex-row items-center gap-5">
               <div className="image-wrap w-full md:w-1/2">
