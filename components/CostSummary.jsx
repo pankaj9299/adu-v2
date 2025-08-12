@@ -159,7 +159,7 @@ const CostSummary = () => {
         {/* Total for all */}
         <div className="final-result mt-10">
           <div className="flex flex-row md:flex-col justify-end">
-            <div className="flex w-full md:w-1/2 justify-between border-b border-secondary-dark-gray items-center">
+            <div className="flex w-full md:w-1/2 md:ml-auto justify-between border-b border-secondary-dark-gray items-center">
               <div className="text-right">
                 <h3 className="font-bold text-lightYellow py-2 md:text-3xl font-helvetica-neue-bold">
                   Current Total
@@ -180,7 +180,7 @@ const CostSummary = () => {
           <div className="button">
             <Link
               to="/"
-              className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 md:text-[19px] font-bold hover:bg-blue-700 transition"
+              className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 md:text-[19px] font-bold transition"
             >
               Go Back to Customization
             </Link>

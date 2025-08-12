@@ -1,5 +1,5 @@
 // components/Configurator.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import StepDefault from "./StepDefault";
 import StepTabbed from "./StepTabbed";
 import axios from "axios";
@@ -13,8 +13,43 @@ export default function Configurator() {
   let navigate = useNavigate();
   const [config, setConfig] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
+  const containerRef = useRef(null);
 
-  const selectedProduct = useSelector((state) => state.configurator.selectedProduct);
+  const selectedProduct = useSelector((state) => state.configurator.selectedProduct);  
+
+  // Function to handle scrolling to top
+  const scrollToTop = () => {
+    // Try multiple methods to ensure scrolling works
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    
+    // Also try smooth scrolling
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+    
+    // If containerRef exists, scroll that too
+    if (containerRef.current) {
+      containerRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  };
+
+  // Use effect to scroll when step changes - this ensures it happens after render
+  useEffect(() => {
+    if (currentStep > 0) { // Don't scroll on initial load
+      // Use requestAnimationFrame to wait for DOM updates, then add extra delay
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          scrollToTop();
+        }, 200); // Longer delay to ensure StepTabbed is fully rendered
+      });
+    }
+  }, [currentStep]);
 
   // Redirect if page was reloaded and no selected product exists
   useEffect(() => {
@@ -51,7 +86,7 @@ export default function Configurator() {
     } else {
       navigate('/checkout', { replace: true });
     }
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const goBack = () => {
@@ -78,7 +113,7 @@ export default function Configurator() {
   };
 
   return (
-    <div className="relative">
+    <div ref={containerRef} className="relative">
       {currentCategory.type === "default" ? (
         <StepDefault 
           category={currentCategory} 
