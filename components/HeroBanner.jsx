@@ -13,7 +13,7 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
         <div className=" flex flex-col md:flex-row w-full items-center gap-5">
           <div className="intro w-full md:w-2/5">
             <h3 className="text-3xl font-helvetica-neue-bold font-bold inline-block text-lightYellow mb-2">
-              Your are customizing
+              You are customizing
             </h3>
             <h1 className="text-5xl font-normal font-arial text-secondary-green mb-5">
               Floor Plan 4
