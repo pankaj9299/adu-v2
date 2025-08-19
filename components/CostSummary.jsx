@@ -60,7 +60,7 @@ const CostSummary = () => {
               {selectedProductState.product_name}
             </h3>
             <h3 className="font-normal font-arial text-dark-green">
-              Floor Plan {selectedProductState.floor_name}
+              {selectedProductState.floor_name}
             </h3>
             <span className="w-[436px] border-b border-secondary-dark-gray text-dark-green font-arial mt-[14px]"></span>
             <p className="text-dark-green">{selectedProductState.product_price}</p>
