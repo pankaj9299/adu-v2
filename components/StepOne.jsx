@@ -49,8 +49,9 @@ const StepOne = ({ products, onSelectProduct }) => {
                   />
                 </div>
                 <div className="text-wrap mt-2">
-                  <p className="text-xl font-normal font-arial text-dark-green">
-                    {product.subtitle}
+                  <p 
+                    className="text-xl font-normal font-arial text-dark-green"
+                    dangerouslySetInnerHTML={{ __html: product.subtitle }}>
                   </p>
                   <p className="text-xl font-normal font-arial text-dark-green my-2">
                     Starts at <br /> ${product.price.toLocaleString()}
