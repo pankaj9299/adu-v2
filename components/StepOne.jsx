@@ -8,7 +8,7 @@ const StepOne = ({ products, onSelectProduct }) => {
     >
       <div className="container">
         <div className="intro text-center">
-          <h1 className="md:text-[55px] font-normal text-dark-green my-7">
+          <h1 className="md:text-[87px] font-normal text-dark-green my-7">
             Make it Your Own
           </h1>
           <h3 className="text-dark-teal text-2xl font-helvetica-neue-bold">
@@ -39,7 +39,7 @@ const StepOne = ({ products, onSelectProduct }) => {
                     {product.name}
                   </h3>
                 </div>
-                <div className="image-wrap h-72 w-full bg-gray-100 overflow-hidden">
+                <div className="image-wrap h-72 w-full bg-white overflow-hidden">
                   <LazyLoadImage
                     src={`${import.meta.env.VITE_API_DOMAIN}/${product.image}`}
                     alt={product.name}

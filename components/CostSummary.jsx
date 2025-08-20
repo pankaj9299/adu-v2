@@ -84,7 +84,7 @@ const CostSummary = () => {
                   >
                     <div className="left flex gap-4">
                       <div className="first w-[173px] text-center">
-                        <p className="font-normal bg-yellow text-dark-green py-2">{sub.name}</p>
+                        <p className="font-normal bg-yellow pl-10 text-dark-green py-2">{sub.name}</p>
                       </div>
                       <div className="second">
                         <p className="font-normal text-dark-green py-2">

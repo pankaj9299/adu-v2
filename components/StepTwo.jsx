@@ -196,11 +196,12 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                           <div className="options flex flex-wrap justify-between gap-5">
                             {[
                               { number: "C1", title: "Dining Area" },
-                              { number: "C2", title: "Bathroom Closet" },
                               {
                                 number: "C3",
                                 title: "Bathtub or Bathtub with Spa Feature",
                               },
+                              { number: "C2", title: "Bathroom Closet" },
+                             
                             ].map((item, index) => (
                               <div
                                 key={index}

@@ -60,7 +60,7 @@ export default function AddonsSelector({ addons, categoryId }) {
               <button
                 type="button"
                 onClick={() => toggleAddon(addon)}
-                className={`border-lightYellow text-[19px] cursor-pointer font-bold font-helvetica-neue-bold px-6 py-2 ${
+                className={`border-lightYellow text-[19px] cursor-pointer font-bold font-helvetica-neue-bold px-6 py-2 flex items-center justify-center leading-none ${
                   isSelected ? "bg-lightYellow text-white border-2" : "border-2"
                 }`}
               >
