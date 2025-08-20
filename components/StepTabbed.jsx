@@ -292,7 +292,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                           />
                         </div>
 
-                        <div className="details text-center mt-4 px-3 pb-4">
+                        <div className="details text-left mt-4 px-3 pb-4">
                           <h4 className="text-secondary-green text-xl font-bold">
                             {sub?.name}
                           </h4>
