@@ -1,6 +1,11 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useSelector } from "react-redux";
+import { findImageByProduct } from '../utils/helpers';
 
 const HeroBanner = ({ selectedOption, defaultImage }) => {
+  
+  const selectedProduct = useSelector((state) => state.configurator.selectedProduct);
+  const imageUrl = findImageByProduct(selectedProduct?.product_name);
   const imageSrc = selectedOption?.image
     ? selectedOption.image.startsWith("http")
       ? selectedOption.image
@@ -19,15 +24,7 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
               Floor Plan 4
             </h1>
             <div className="heading">
-              <h3
-                className="font-normal inline-block text-center flex flex-col bg-darkRed rounded-[5px] rounded-l-none overflow-hidden py-2 px-3 mb-10 max-sm:mb-0 text-white"
-                style={{
-                  clipPath:
-                    "polygon(10% 0%, 99% 0%, 99% 100%, 0% 100%, 0% 30%)",
-                }}
-              >
-                Side-by-Side Container
-              </h3>
+              <img src={imageUrl} alt={selectedProduct?.product_name} width="290" height="38" />
             </div>
           </div>
           <div className="image-wrap w-full md:w-3/5">

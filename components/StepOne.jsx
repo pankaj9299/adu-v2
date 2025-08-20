@@ -1,11 +1,11 @@
 import React from "react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { findImageByProduct } from '../utils/helpers';
 
 const StepOne = ({ products, onSelectProduct }) => {
+  
   return (
-    <section
-      className="step-one pt-0 h-full flex items-center"
-    >
+    <section className="step-one pt-0 h-full flex items-center">
       <div className="container">
         <div className="intro text-center">
           <h1 className="md:text-[87px] font-normal text-dark-green my-7">
@@ -20,55 +20,51 @@ const StepOne = ({ products, onSelectProduct }) => {
         </div>
         <div className="col-three-wrap">
           <div className="wrapper grid grid-cols-1 md:grid-cols-3 gap-x-7">
-            {products.map((product, index) => (
-              <div key={product.id} className="wrap text-center">
-                <div className="heading mb-2">
-                  <h3
-                    className={`text-28 inline-block text-center flex flex-col rounded-[5px] rounded-l-none overflow-hidden py-2 px-3 text-white ${
-                      index === 0
-                        ? "bg-secondary-gold"
-                        : index === 1
-                        ? "bg-darkRed"
-                        : "bg-purple"
-                    }`}
-                    style={{
-                      clipPath:
-                        "polygon(10% 0%, 99% 0%, 99% 100%, 0% 100%, 0% 30%)",
-                    }}
-                  >
-                    {product.name}
-                  </h3>
-                </div>
-                <div className="image-wrap h-72 w-full bg-white overflow-hidden">
-                  <LazyLoadImage
-                    src={`${import.meta.env.VITE_API_DOMAIN}/${product.image}`}
-                    alt={product.name}
-                    className="h-[228px] w-full object-contain"
-                    effect="opacity"
-                    threshold={100}
-                  />
-                </div>
-                <div className="text-wrap mt-2">
-                  <p 
-                    className="text-xl font-normal font-arial text-dark-green"
-                    dangerouslySetInnerHTML={{ __html: product.subtitle }}>
-                  </p>
-                  <p className="text-xl font-normal font-arial text-dark-green my-2">
-                    Starts at <br /> ${product.price.toLocaleString()}
-                  </p>
-                  <div className="button">
-                    <button
-                      className="text-yellow-600 hover:text-black underline underline-offset-6 decoration-2 text-2xl cursor-pointer font-helvetica-neue-bold font-bold"
-                      onClick={() => {
-                        onSelectProduct(product);
-                      }}
-                    >
-                      Select
-                    </button>
+            {products.map((product, index) => {
+              const imageUrl = findImageByProduct(product.name);
+              return (
+                <div key={product.id} className="wrap text-center">
+                  <div className="heading mb-2">
+                    <img
+                      src={imageUrl}
+                      alt={product.name}
+                      width="385"
+                      height="58"
+                    />
+                  </div>
+                  <div className="image-wrap h-72 w-full bg-white overflow-hidden">
+                    <LazyLoadImage
+                      src={`${import.meta.env.VITE_API_DOMAIN}/${
+                        product.image
+                      }`}
+                      alt={product.name}
+                      className="h-[228px] w-full object-contain"
+                      effect="opacity"
+                      threshold={100}
+                    />
+                  </div>
+                  <div className="text-wrap mt-2">
+                    <p
+                      className="text-xl font-normal font-arial text-dark-green"
+                      dangerouslySetInnerHTML={{ __html: product.subtitle }}
+                    ></p>
+                    <p className="text-xl font-normal font-arial text-dark-green my-2">
+                      Starts at <br /> ${product.price.toLocaleString()}
+                    </p>
+                    <div className="button">
+                      <button
+                        className="text-yellow-600 hover:text-black underline underline-offset-6 decoration-2 text-2xl cursor-pointer font-helvetica-neue-bold font-bold"
+                        onClick={() => {
+                          onSelectProduct(product);
+                        }}
+                      >
+                        Select
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

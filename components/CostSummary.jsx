@@ -1,12 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { findImageByProduct } from "../utils/helpers";
 
 const CostSummary = () => {
   const location = useLocation();
   const selectedProductState = useSelector(
     (state) => state.configurator.selectedProduct
   );
+  const imageUrl = findImageByProduct(selectedProductState.product_name);
 
   const parsePrice = (priceStr) => Number(priceStr?.replace(/[^\d]/g, "")) || 0;
 
@@ -51,14 +53,7 @@ const CostSummary = () => {
             Base + Floor Plan
           </h3>
           <div className="title flex flex-col md:flex-row gap-6 items-center">
-            <h3
-              className="font-normal text-center flex flex-col bg-darkRed rounded-r-[5px] overflow-hidden py-2 px-2 text-white"
-              style={{
-                clipPath: "polygon(10% 0%, 99% 0%, 99% 100%, 0% 100%, 0% 30%)",
-              }}
-            >
-              {selectedProductState.product_name}
-            </h3>
+            <img src={imageUrl} alt={selectedProductState?.product_name} width="436" height="38" />
             <h3 className="font-normal font-arial text-dark-green">
               {selectedProductState.floor_name}
             </h3>
