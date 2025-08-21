@@ -53,11 +53,11 @@ const CostSummary = () => {
             Base + Floor Plan
           </h3>
           <div className="title flex flex-col md:flex-row gap-6 items-center">
-            <img src={imageUrl} alt={selectedProductState?.product_name} width="436" height="38" />
-            <h3 className="font-normal font-arial text-dark-green">
+            <img src={imageUrl} alt={selectedProductState?.product_name} width="436" height="38" className="h-[38px] w-auto" />
+            <h3 className="font-normal font-arial text-dark-green shrink-0">
               {selectedProductState.floor_name}
             </h3>
-            <span className="w-[436px] border-b border-secondary-dark-gray text-dark-green font-arial mt-[14px]"></span>
+            <span className="flex-1 border-b border-secondary-dark-gray text-dark-green font-arial mt-[14px]"></span>
             <p className="text-dark-green">{selectedProductState.product_price}</p>
           </div>
         </div>
@@ -78,8 +78,8 @@ const CostSummary = () => {
                     className="flex justify-between border-b border-secondary-dark-gray"
                   >
                     <div className="left flex gap-4">
-                      <div className="first w-[173px] text-center">
-                        <p className="font-normal bg-yellow pl-10 text-dark-green py-2">{sub.name}</p>
+                      <div className="first w-[173px] text-left">
+                        <p className="font-normal bg-yellow pl-5 text-dark-green py-2">{sub.name}</p>
                       </div>
                       <div className="second">
                         <p className="font-normal text-dark-green py-2">
@@ -104,8 +104,8 @@ const CostSummary = () => {
                     className="flex justify-between border-b border-secondary-dark-gray"
                   >
                     <div className="left flex gap-4">
-                      <div className="first w-[173px] text-center">
-                        <p className="font-normal text-dark-green bg-yellow py-2">{tab.name}</p>
+                      <div className="first w-[173px] text-left">
+                        <p className="font-normal text-dark-green pl-5 bg-yellow py-2">{tab.name}</p>
                       </div>
                       <div className="second">
                         <p className="font-normal py-2 text-dark-green">
@@ -130,8 +130,8 @@ const CostSummary = () => {
                     className="flex justify-between border-b border-secondary-dark-gray"
                   >
                     <div className="left flex gap-4">
-                      <div className="first w-[173px] text-center">
-                        <p className="font-normal bg-yellow py-2">Add-On</p>
+                      <div className="first w-[173px] text-left">
+                        <p className="font-normal bg-yellow py-2 pl-5 text-dark-green">Add-On</p>
                       </div>
                       <div className="second">
                         <p className="font-normal py-2 text-dark-green">{addon.name}</p>

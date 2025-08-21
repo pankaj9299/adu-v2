@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { findImageByProduct } from '../utils/helpers';
 
 import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
@@ -18,6 +19,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
   const selectedProductState = useSelector(
     (state) => state.configurator.selectedProduct
   );
+  const imageUrl = findImageByProduct(selectedProductState?.product_name);
   const dispatch = useDispatch();
   
   // Redirect if page was reloaded and no selected product exists
@@ -83,14 +85,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
           </h2>
           <div className="title flex flex-col md:flex-row items-center justify-center gap-2">
             <h3 className="text-[25px] font-normal">You selected</h3>
-            <span
-              className="font-normal font-arial text-[28px] inline-block text-center flex flex-col bg-darkRed rounded-[5px] rounded-l-none overflow-hidden py-2 px-2 text-white"
-              style={{
-                clipPath: "polygon(10% 0%, 99% 0%, 99% 100%, 0% 100%, 0% 30%)",
-              }}
-            >
-              {selectedProductState?.product_name}
-            </span>
+            <img src={imageUrl} alt={imageUrl} width="290" height="38" />
           </div>
           {floors.length === 0 ? (
             <div className="text-center">Loading ...</div>
@@ -102,7 +97,9 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                   alt={selectedFloor.name}
                   effect="opacity"
                   threshold={100}
-                  src={`${import.meta.env.VITE_API_DOMAIN}/${selectedFloor.image}`}
+                  src={`${import.meta.env.VITE_API_DOMAIN}/${
+                    selectedFloor.image
+                  }`}
                 />
               </div>
               <div className="description w-full md:w-1/2">
@@ -193,15 +190,15 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                               Add-Ons
                             </h3>
                           </div>
-                          <div className="options flex flex-wrap justify-between gap-5">
+                          <div className="options flex flex-wrap justify-between gap-5 max-w-sm">
                             {[
                               { number: "C1", title: "Dining Area" },
                               {
                                 number: "C3",
-                                title: "Bathtub or Bathtub with Spa Feature",
+                                title:
+                                  "Bathtub or Bathtub <br>with Spa Feature",
                               },
                               { number: "C2", title: "Bathroom Closet" },
-                             
                             ].map((item, index) => (
                               <div
                                 key={index}
@@ -210,9 +207,12 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                                 <span className="step-number text-[24px] font-bold font-helvetica-neue-bold text-dark-green">
                                   {item.number}
                                 </span>
-                                <h4 className="step-title text-[17px] font-normal font-arial">
-                                  {item.title}
-                                </h4>
+                                <h4
+                                  className="step-title text-[17px] font-normal font-arial max-w-3xs text-left"
+                                  dangerouslySetInnerHTML={{
+                                    __html: item.title,
+                                  }}
+                                ></h4>
                               </div>
                             ))}
                           </div>

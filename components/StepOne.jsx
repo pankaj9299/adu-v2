@@ -48,7 +48,7 @@ const StepOne = ({ products, onSelectProduct }) => {
                       className="text-xl font-normal font-arial text-dark-green"
                       dangerouslySetInnerHTML={{ __html: product.subtitle }}
                     ></p>
-                    <p className="text-xl font-normal font-arial text-dark-green my-2">
+                    <p className="text-xl font-normal font-arial text-dark-green my-4">
                       Starts at <br /> ${product.price.toLocaleString()}
                     </p>
                     <div className="button">
