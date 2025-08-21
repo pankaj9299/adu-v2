@@ -220,18 +220,18 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
   return (
     <>
       <HeroBanner selectedOption={selectedImageOption} />
-      <section className="tab-with-slider relative">
+      <section className="tab-with-slider relative md:-top-20">
         <div className="container">
           {/* Heading */}
           <div className="heading">
-            <h2 className="text-[68px] inline-block w-1/2 text-dark-green mb-5">
+            <h2 className="text-marigold text-5xl font-helvetica-neue-bold">
               {category.name}
             </h2>
           </div>
 
           {/* Tabs */}
           <div className="tabs">
-            <h3 className="text-[30px] inline-block text-dark-teal mb-5">
+            <h3 className="text-2xl font-helvetica-neue-bold inline-block w-full text-dark-teal mb-2">
               Pick a Style
             </h3>
             <div className="buttons flex flex-col md:flex-row gap-6">
@@ -256,7 +256,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
             <div className="options">
               {" "}
               {/* Selected Tab Subcategory Overview */}
-              <h3 className="text-[25px] inline-block w-3/4 text-thinGray my-10">
+              <h3 className="text-2xl font-helvetica-neue-bold inline-block w-3/4 text-thinGray mt-10 mb-5">
                 This style comes with the following finishes:
               </h3>
               <div className="multiple-options flex flex-col md:flex-row gap-5">
@@ -276,7 +276,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
 
                       {/* Main content */}
                       <div className="relative z-10">
-                        <div className="image-wrap overflow-hidden h-[220px] w-full rounded-md">
+                        <div className="image-wrap overflow-hidden h-[177px] w-full rounded-md">
                           <LazyLoadImage
                             src={
                               firstOption?.image
