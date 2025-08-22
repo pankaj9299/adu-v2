@@ -75,7 +75,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
   const settings = {
     dots: false,
     infinite: optionCount > 6, // Only infinite if more than 6
-    slidesToShow: optionCount > 6 ? 6 : 3,
+    slidesToShow: optionCount > 6 ? 6 : 6,
     slidesToScroll: 1,
     arrows: true,
     nextArrow: <SampleNextArrow />,
@@ -220,7 +220,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
   return (
     <>
       <HeroBanner selectedOption={selectedImageOption} />
-      <section className="tab-with-slider relative md:-top-20">
+      <section className="tab-with-slider p-0 relative md:-top-20">
         <div className="container">
           {/* Heading */}
           <div className="heading">
@@ -231,7 +231,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
 
           {/* Tabs */}
           <div className="tabs">
-            <h3 className="text-2xl font-helvetica-neue-bold inline-block w-full text-dark-teal mb-2">
+            <h3 className="text-2xl font-hn-bold-tight inline-block w-full text-dark-teal mb-2">
               Pick a Style
             </h3>
             <div className="buttons flex flex-col md:flex-row gap-6">
@@ -256,7 +256,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
             <div className="options">
               {" "}
               {/* Selected Tab Subcategory Overview */}
-              <h3 className="text-2xl font-helvetica-neue-bold inline-block w-3/4 text-thinGray mt-10 mb-5">
+              <h3 className="text-2xl font-hn-bold-tight inline-block w-3/4 text-thinGray mt-10 mb-5">
                 This style comes with the following finishes:
               </h3>
               <div className="multiple-options flex flex-col md:flex-row gap-5">
@@ -292,12 +292,12 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                           />
                         </div>
 
-                        <div className="details text-left mt-4 px-3 pb-4">
-                          <h4 className="text-secondary-green text-xl font-bold">
+                        <div className={`details text-left mt-4 ${isActive && 'px-3'} pb-4`}>
+                          <h4 className="text-secondary-green text-xl font-hn-bold-tight">
                             {sub?.name}
                           </h4>
                           <h5 className="text-green text-[15px]">
-                            {sub.label}
+                            {sub.subtitle}
                           </h5>
                           <div className="button mt-2">
                             <button className="text-thinGray text-[15px]">
@@ -423,7 +423,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                             {opt.name}
                           </h4>
                           <h5 className="text-green text-[15px]">
-                            {selectedSubcategory.label}
+                            {opt.subtitle}
                           </h5>
                           {index === 0 && (
                             <div className="button mt-2">
@@ -460,7 +460,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
       </section>
       {selectedProduct?.product_name && (
         <>
-          <section className="button pb-10 pt-10">
+          <section className="button p-0">
             <div className="container flex gap-5">
               <Button onClick={goBack} disabled={currentStep === 0}>
                 {"< Back"}

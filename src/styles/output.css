@@ -75,9 +75,8 @@
     --color-gray: #D9D9D9;
     --spacing-10: 2.75rem;
     --spacing-15: 3.75rem;
-    --spacing-25: 6.25rem;
     --font-arial: "Arial", sans-serif;
-    --font-helvetica-neue-bold: 'Helvetica Neue Bold', sans-serif;
+    --font-helvetica-neue-bold: 'Helvetica Neue Medium', sans-serif;
   }
 }
 @layer base {
@@ -289,9 +288,6 @@
   .my-7 {
     margin-block: calc(var(--spacing) * 7);
   }
-  .my-10 {
-    margin-block: var(--spacing-10);
-  }
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
@@ -381,9 +377,6 @@
   }
   .h-\[177px\] {
     height: 177px;
-  }
-  .h-\[220px\] {
-    height: 220px;
   }
   .h-\[228px\] {
     height: 228px;
@@ -670,9 +663,6 @@
   .pt-2 {
     padding-top: calc(var(--spacing) * 2);
   }
-  .pt-10 {
-    padding-top: var(--spacing-10);
-  }
   .pt-\[3px\] {
     padding-top: 3px;
   }
@@ -763,9 +753,6 @@
   }
   .text-\[40px\] {
     font-size: 40px;
-  }
-  .text-\[68px\] {
-    font-size: 68px;
   }
   .leading-none {
     --tw-leading: 1;
@@ -969,11 +956,6 @@
       top: calc(var(--spacing) * -20);
     }
   }
-  .md\:-top-25 {
-    @media (width >= 48rem) {
-      top: calc(var(--spacing-25) * -1);
-    }
-  }
   .md\:col-span-1 {
     @media (width >= 48rem) {
       grid-column: span 1 / span 1;
@@ -1144,6 +1126,13 @@ html, body {
     font-weight: 700;
     font-display: swap;
     src: url("../fonts/helvetica-neue/HelveticaNeueBold.otf") format("opentype");
+  }
+  @font-face {
+    font-family: 'Helvetica Neue Medium';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/helvetica-neue/HelveticaNeueMedium.otf") format("opentype");
   }
   * {
     margin: 0;
@@ -1449,6 +1438,11 @@ html, body {
     @media (width >= 2500px) {
       max-width: 1000px !important;
     }
+  }
+  .font-hn-bold-tight {
+    font-family: var(--font-helvetica-neue-bold);
+    --tw-tracking: -0.02em;
+    letter-spacing: -0.02em;
   }
 }
 @layer utilities {
