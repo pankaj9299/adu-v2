@@ -38,7 +38,7 @@ function SamplePrevArrow({ className, style, onClick }) {
   );
 }
 
-export default function StepTabbed({ category, goBack, goNext, currentStep, isLastStep }) {
+export default function StepTabbed({ category, goBack, goNext, errorMessage, currentStep, isLastStep }) {
   const [isMobile, setIsMobile] = useState(false);
   const [isTabActive, setIsTabActive] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -459,6 +459,11 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
               categoryName={category.name}
             />
           )}
+          {errorMessage && !isTabActive && (
+            <div className="error-message text-red-500 text-center pt-5">
+              {errorMessage}
+            </div>
+          )}
         </div>
       </section>
       {selectedProduct?.product_name && (
@@ -468,7 +473,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
               <Button onClick={goBack} disabled={currentStep === 0}>
                 {"< Back"}
               </Button>
-              <Button onClick={goNext}>
+              <Button onClick={() => goNext(isTabActive)}>
                 {isLastStep ? "Review >" : "Next >"}
               </Button>
             </div>

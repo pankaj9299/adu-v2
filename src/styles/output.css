@@ -8,6 +8,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-200: oklch(88.5% 0.062 18.334);
+    --color-red-500: oklch(63.7% 0.237 25.331);
     --color-yellow-600: oklch(68.1% 0.162 75.834);
     --color-green-200: oklch(92.5% 0.084 155.995);
     --color-blue-200: oklch(88.2% 0.059 254.128);
@@ -666,6 +667,9 @@
   .pt-2 {
     padding-top: calc(var(--spacing) * 2);
   }
+  .pt-5 {
+    padding-top: calc(var(--spacing) * 5);
+  }
   .pt-\[3px\] {
     padding-top: 3px;
   }
@@ -790,6 +794,9 @@
   }
   .text-marigold {
     color: var(--color-marigold);
+  }
+  .text-red-500 {
+    color: var(--color-red-500);
   }
   .text-secondary-green {
     color: var(--color-secondary-green);

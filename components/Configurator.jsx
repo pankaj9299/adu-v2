@@ -11,6 +11,7 @@ import { setProduct } from "../src/store/slices/configuratorSlice";
 export default function Configurator() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
   const [config, setConfig] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
   const containerRef = useRef(null);
@@ -80,9 +81,15 @@ export default function Configurator() {
   const categories = config.categories;
   const currentCategory = categories[currentStep];
 
-  const goNext = () => {
+  const goNext = (isTabActive = true) => {
+    if (!isTabActive) {
+      setErrorMessage("Please select a tab before proceeding."); // or set a state error
+      return;
+    }
+
     if (currentStep < categories.length - 1) {
       setCurrentStep(currentStep + 1);
+      setErrorMessage("");
     } else {
       navigate('/checkout', { replace: true });
     }
@@ -127,6 +134,7 @@ export default function Configurator() {
           category={currentCategory} 
           goBack={goBack}
           goNext={goNext} 
+          errorMessage={errorMessage}
           currentStep={currentStep}
           isLastStep={currentStep === categories.length - 1}
         />
