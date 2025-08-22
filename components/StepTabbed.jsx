@@ -221,7 +221,7 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
     <>
       <HeroBanner selectedOption={selectedImageOption} />
       <section className="tab-with-slider p-0 relative md:-top-20">
-        <div className="container">
+        <div className={`container ${isTabActive && 'mb-1'}`}>
           {/* Heading */}
           <div className="heading">
             <h2 className="text-marigold text-5xl font-helvetica-neue-bold">
@@ -261,7 +261,12 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
               </h3>
               <div className="multiple-options flex flex-col md:flex-row gap-5">
                 {currentTab?.subcategories?.map((sub) => {
-                  const firstOption = sub.options[0];
+                  const selectedForThisSub = selectedOptions.find(
+                    (o) => o.subcategoryId === sub.id
+                  );
+
+                  const displayImage = selectedForThisSub?.image || sub.options[0]?.image;
+                  //const firstOption = sub.options[0];
                   const isActive = selectedSubcategoryId === sub.id;
                   return (
                     <div
@@ -279,10 +284,8 @@ export default function StepTabbed({ category, goBack, goNext, currentStep, isLa
                         <div className="image-wrap overflow-hidden h-[177px] w-full rounded-md">
                           <LazyLoadImage
                             src={
-                              firstOption?.image
-                                ? `${import.meta.env.VITE_API_DOMAIN}/${
-                                    firstOption?.image
-                                  }`
+                              displayImage
+                                ? `${import.meta.env.VITE_API_DOMAIN}/${displayImage}`
                                 : `https://placehold.co/250x250?text=ADU`
                             }
                             alt={sub.label}
