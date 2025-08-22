@@ -396,9 +396,6 @@
   .max-h-96 {
     max-height: calc(var(--spacing) * 96);
   }
-  .max-h-\[419px\] {
-    max-height: 419px;
-  }
   .min-h-screen {
     min-height: 100vh;
   }
@@ -659,6 +656,9 @@
   }
   .py-5 {
     padding-block: calc(var(--spacing) * 5);
+  }
+  .py-20 {
+    padding-block: calc(var(--spacing) * 20);
   }
   .pt-0 {
     padding-top: calc(var(--spacing) * 0);

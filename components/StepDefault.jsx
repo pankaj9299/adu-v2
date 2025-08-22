@@ -97,23 +97,32 @@ export default function StepDefault({ category, goBack, goNext, currentStep, isL
     <div>
       <HeroBanner selectedOption={selectedImageOption} />
       <Intro name={category.name} />
-      <section className="multiple-color p-0 relative md:-top-15">
-        <div className="container">
-          {category.subcategories.map((sub, index) => (
-            <SubcategorySelector
-              key={sub.id}
-              subcategory={sub}
-              category={category}
-              onSelectOption={index === 0 ? handleFirstSubcategoryChange : null}
+      {(category.subcategories.length === 0 && category.addons.length === 0) ? (
+        <section className="multiple-color py-20">
+          <div className="container">
+            <h3 className="text-center">No selections to be made here. Please proceed.</h3>
+          </div>
+        </section>
+      ) : 
+      (
+        <section className="multiple-color p-0 relative md:-top-15">
+          <div className="container">
+            {category.subcategories.map((sub, index) => (
+              <SubcategorySelector
+                key={sub.id}
+                subcategory={sub}
+                category={category}
+                onSelectOption={index === 0 ? handleFirstSubcategoryChange : null}
+              />
+            ))}
+            <AddonsSelector
+              addons={category.addons}
+              categoryId={category.id}
+              categoryName={category.name}
             />
-          ))}
-          <AddonsSelector
-            addons={category.addons}
-            categoryId={category.id}
-            categoryName={category.name}
-          />
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
       {/* {selectedProduct?.product_name && <CostSummary />} */}
       {selectedProduct?.product_name && (
         <>

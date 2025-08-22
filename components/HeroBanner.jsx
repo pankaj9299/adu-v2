@@ -30,7 +30,7 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
           <div className="image-wrap w-full md:w-3/5">
             <LazyLoadImage
               src={imageSrc || "https://placehold.co/1072x500?text=ADU"}
-              className="w-full max-h-[419px] object-contain"
+              className="w-full h-full object-contain"
               alt="rooftop"
               effect="opacity"
               threshold={100}
