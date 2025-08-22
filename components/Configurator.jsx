@@ -83,7 +83,7 @@ export default function Configurator() {
 
   const goNext = (isTabActive = true) => {
     if (!isTabActive) {
-      setErrorMessage("Please select a tab before proceeding."); // or set a state error
+      setErrorMessage("Please select a style before proceeding."); // or set a state error
       return;
     }
 
