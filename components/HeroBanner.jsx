@@ -6,11 +6,18 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
   
   const selectedProduct = useSelector((state) => state.configurator.selectedProduct);
   const imageUrl = findImageByProduct(selectedProduct?.product_name);
-  const imageSrc = selectedOption?.image
+  const imageSrc = selectedOption?.image_two
+  ? selectedOption.image_two.startsWith("http")
+    ? selectedOption.image_two
+    : `${import.meta.env.VITE_API_DOMAIN}/${selectedOption.image_two}`
+  : selectedOption?.image
     ? selectedOption.image.startsWith("http")
       ? selectedOption.image
       : `${import.meta.env.VITE_API_DOMAIN}/${selectedOption.image}`
-    : defaultImage ? defaultImage : `${import.meta.env.VITE_API_DOMAIN}/uploads/category_options/1753111703_d87a932b81637b70ee4b.png`;
+    : defaultImage
+      ? defaultImage
+      : `${import.meta.env.VITE_API_DOMAIN}/uploads/category_options/1753111703_d87a932b81637b70ee4b.png`;
+
     
   return (
     <section className="hero-banner pb-3 pt-0 mt-10">
