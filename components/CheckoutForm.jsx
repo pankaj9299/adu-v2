@@ -184,8 +184,10 @@ const CheckoutForm = () => {
               <h4 className="max-sm:text-[20px] max-sm:my-2 md:text-[28px] text-green font-normal">
                 {selectedProductState?.floor_name}
               </h4>
-              <p className="md:text-[25px] mt-2 text-green font-normal">
-                {selectedProductState?.product_subtitle}
+              <p 
+                className="md:text-[25px] mt-2 text-green font-normal"
+                dangerouslySetInnerHTML={{ __html: selectedProductState?.product_subtitle }}
+                >
               </p>
             </div>
           </div>
