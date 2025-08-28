@@ -80,7 +80,11 @@ export default function Configurator() {
 
   const categories = config.categories;
   const currentCategory = categories[currentStep];
-
+  let nextCategory = '';
+  if (categories[currentStep + 1] != null) {
+    nextCategory = categories[currentStep + 1].name;
+  }
+  
   const goNext = (isTabActive = true) => {
     if (!isTabActive) {
       setErrorMessage("Please select a style before proceeding."); // or set a state error
@@ -123,7 +127,9 @@ export default function Configurator() {
     <div ref={containerRef} className="relative">
       {currentCategory.type === "default" ? (
         <StepDefault 
-          category={currentCategory} 
+          category={currentCategory}
+          categories={categories}
+          nextCategory={nextCategory} 
           goBack={goBack}
           goNext={goNext} 
           currentStep={currentStep}
@@ -132,6 +138,8 @@ export default function Configurator() {
       ) : (
         <StepTabbed 
           category={currentCategory} 
+          categories={categories}
+          nextCategory={nextCategory} 
           goBack={goBack}
           goNext={goNext} 
           errorMessage={errorMessage}

@@ -9,6 +9,7 @@ import Slider from "react-slick";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
+import StepDots from "./StepDots";
 
 function SampleNextArrow({ className, style, onClick }) {
   return (
@@ -38,7 +39,7 @@ function SamplePrevArrow({ className, style, onClick }) {
   );
 }
 
-export default function StepTabbed({ category, goBack, goNext, errorMessage, currentStep, isLastStep }) {
+export default function StepTabbed({ category, categories, nextCategory, goBack, goNext, errorMessage, currentStep, isLastStep }) {
   const [isMobile, setIsMobile] = useState(false);
   const [isTabActive, setIsTabActive] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -469,13 +470,19 @@ export default function StepTabbed({ category, goBack, goNext, errorMessage, cur
       {selectedProduct?.product_name && (
         <>
           <section className="button p-0">
-            <div className="container flex gap-5">
-              <Button onClick={goBack} disabled={currentStep === 0}>
+            {/* <div className="container flex gap-5"> */}
+              {/* <Button onClick={goBack} disabled={currentStep === 0}>
                 {"< Back"}
-              </Button>
+              </Button> */}
+              {/* <Button onClick={() => goNext(isTabActive)}>
+                {isLastStep ? "Review >" : `${nextCategory} >`}
+              </Button> */}
+            {/* </div> */}
+            <div className="container">
               <Button onClick={() => goNext(isTabActive)}>
-                {isLastStep ? "Review >" : "Next >"}
+                {isLastStep ? "Review >" : `${nextCategory} >`}
               </Button>
+              <StepDots categories={categories} currentStep={currentStep} />
             </div>
           </section>
           <CostSummary />

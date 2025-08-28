@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CostSummary from "./CostSummary";
 import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
 import { useNavigate } from "react-router-dom";
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import axios from "axios";
 
 const CheckoutForm = () => {
   const navigate = useNavigate();
@@ -21,6 +22,52 @@ const CheckoutForm = () => {
     }
   }, [selectedProductState, navigate]);
 
+  // Form state
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    zip: "",
+    phone: "",
+  });
+
+  // Handle form input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Handle submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const payload = {
+        ...formData,
+        selectedProduct: selectedProductState,
+      };
+
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_DOMAIN}/pdfgenerator-save-and-email`,
+        payload,
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: false, // set true only if using cookies/sessions
+        }
+      );
+
+      if (response.status === 200) {
+        alert("Your budget proposal has been sent!");
+        navigate("/thank-you");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again later.");
+    }
+  };
+
   return (
     <>
       <section className="hero-banner">
@@ -36,7 +83,10 @@ const CheckoutForm = () => {
               Request your full Budget Proposal below.
             </h3>
           </div>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form 
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            onSubmit={handleSubmit}
+            >
             {/* First Name */}
             <div>
               <label
@@ -49,9 +99,12 @@ const CheckoutForm = () => {
                 type="text"
                 id="firstName"
                 name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
                 placeholder=""
                 className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                 style={{ boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)" }}
+                required
               />
             </div>
 
@@ -67,6 +120,9 @@ const CheckoutForm = () => {
                 type="text"
                 id="lastName"
                 name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                required
                 placeholder=""
                 className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                 style={{ boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)" }}
@@ -85,6 +141,9 @@ const CheckoutForm = () => {
                 type="email"
                 id="email"
                 name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
                 placeholder=""
                 className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                 style={{ boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)" }}
@@ -103,6 +162,9 @@ const CheckoutForm = () => {
                 type="text"
                 id="zip"
                 name="zip"
+                value={formData.zip}
+                onChange={handleChange}
+                required
                 placeholder=""
                 className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                 style={{ boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)" }}
@@ -121,6 +183,9 @@ const CheckoutForm = () => {
                 type="text"
                 id="phone"
                 name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
                 placeholder=""
                 className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                 style={{ boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)" }}

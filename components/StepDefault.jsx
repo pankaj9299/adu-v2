@@ -9,9 +9,10 @@ import CostSummary from "./CostSummary";
 
 import { setProduct } from "../src/store/slices/configuratorSlice";
 import { useDispatch, useSelector } from "react-redux";
+import StepDots from "./StepDots";
 // import { mergeCategoryWithSubcategory } from "../utils/mergeCategory";
 
-export default function StepDefault({ category, goBack, goNext, currentStep, isLastStep }) {
+export default function StepDefault({ category, categories, nextCategory, goBack, goNext, currentStep, isLastStep }) {
   const dispatch = useDispatch();
   const selectedProduct = useSelector((state) => state.configurator.selectedProduct);
 
@@ -127,13 +128,19 @@ export default function StepDefault({ category, goBack, goNext, currentStep, isL
       {selectedProduct?.product_name && (
         <>
           <section className="button py-0">
-            <div className="container flex gap-5">
-              <Button onClick={goBack} disabled={currentStep === 0}>
+            {/* <div className="container flex gap-5"> */}
+              {/* <Button onClick={goBack} disabled={currentStep === 0}>
                 {"< Back"}
-              </Button>
+              </Button> */}
+              {/* <Button onClick={goNext}>
+                {isLastStep ? "Review >" : `${nextCategory} >`}
+              </Button> */}
+            {/* </div> */}
+            <div className="container">
               <Button onClick={goNext}>
-                {isLastStep ? "Review >" : "Next >"}
+                {isLastStep ? "Review >" : `${nextCategory} >`}
               </Button>
+              <StepDots categories={categories} currentStep={currentStep} />
             </div>
           </section>
           <CostSummary />
