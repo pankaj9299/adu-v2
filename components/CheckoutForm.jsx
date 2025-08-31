@@ -238,7 +238,7 @@ const CheckoutForm = () => {
                 href={`${filePath}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-green-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-green-700 transition"
+                className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 md:text-[19px] font-bold transition"
               >
                 Download Proposal
               </a>
