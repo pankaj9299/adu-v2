@@ -235,7 +235,7 @@ const CheckoutForm = () => {
                 ✅ Your budget proposal is ready!
               </p>
               <a
-                href={`${import.meta.env.VITE_API_DOMAIN}/${filePath}`}
+                href={`${filePath}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-green-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-green-700 transition"
