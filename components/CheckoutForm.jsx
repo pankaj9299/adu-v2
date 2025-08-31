@@ -13,6 +13,9 @@ const CheckoutForm = () => {
   const selectedProductState = useSelector(
     (state) => state.configurator.selectedProduct
   );
+
+  const [filePath, setFilePath] = useState(null);
+
   // Redirect if page was reloaded and no selected product exists
   useEffect(() => {
     if (!selectedProductState || !selectedProductState.product_id) {
@@ -58,9 +61,8 @@ const CheckoutForm = () => {
         }
       );
 
-      if (response.status === 200) {
-        alert("Your budget proposal has been sent!");
-        navigate("/thank-you");
+      if (response.status === 200 && response.data?.filePath) {
+        setFilePath(response.data.filePath); // store link
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -83,6 +85,7 @@ const CheckoutForm = () => {
               Request your full Budget Proposal below.
             </h3>
           </div>
+          {!filePath ? (
           <form 
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
             onSubmit={handleSubmit}
@@ -212,6 +215,21 @@ const CheckoutForm = () => {
               </button>
             </div>
           </form>
+          ) : (
+            <div className="success-message mt-6">
+              <p className="text-green text-xl font-semibold">
+                ✅ Your budget proposal is ready!
+              </p>
+              <a
+                href={`${import.meta.env.VITE_API_DOMAIN}/${filePath}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline mt-2 inline-block"
+              >
+                Download Proposal
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
