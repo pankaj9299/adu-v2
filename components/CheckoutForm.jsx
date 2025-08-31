@@ -234,14 +234,16 @@ const CheckoutForm = () => {
               <p className="text-green text-xl font-semibold">
                 ✅ Your budget proposal is ready!
               </p>
-              <a
-                href={`${filePath}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 md:text-[19px] font-bold transition"
-              >
-                Download Proposal
-              </a>
+              <div className="mt-[20px]">
+                <a
+                  href={`${filePath}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 md:text-[19px] font-bold transition"
+                >
+                  Download Proposal
+                </a>
+              </div>
             </div>
           )}
         </div>
