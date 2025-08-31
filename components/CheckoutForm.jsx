@@ -221,7 +221,7 @@ const CheckoutForm = () => {
                 disabled={loading}
                 className={`border-lightYellow border-1 font-semibold py-2 px-6 text-[19px] font-bold transition ${
                     loading
-                      ? "bg-gray-400 text-white cursor-not-allowed"
+                      ? "bg-lightYellow text-white cursor-not-allowed"
                       : "text-lightYellow hover:bg-blue-700"
                   }`}
               >
