@@ -15,6 +15,7 @@ const CheckoutForm = () => {
   );
 
   const [filePath, setFilePath] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   // Redirect if page was reloaded and no selected product exists
   useEffect(() => {
@@ -46,6 +47,7 @@ const CheckoutForm = () => {
   // Handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // disable form + show loading
     try {
       const payload = {
         ...formData,
@@ -67,6 +69,8 @@ const CheckoutForm = () => {
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false); // only re-enable if still showing form
     }
   };
 
@@ -103,6 +107,7 @@ const CheckoutForm = () => {
                 id="firstName"
                 name="firstName"
                 value={formData.firstName}
+                disabled={loading}
                 onChange={handleChange}
                 placeholder=""
                 className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
@@ -124,6 +129,7 @@ const CheckoutForm = () => {
                 id="lastName"
                 name="lastName"
                 value={formData.lastName}
+                disabled={loading}
                 onChange={handleChange}
                 required
                 placeholder=""
@@ -145,6 +151,7 @@ const CheckoutForm = () => {
                 id="email"
                 name="email"
                 value={formData.email}
+                disabled={loading}
                 onChange={handleChange}
                 required
                 placeholder=""
@@ -166,6 +173,7 @@ const CheckoutForm = () => {
                 id="zip"
                 name="zip"
                 value={formData.zip}
+                disabled={loading}
                 onChange={handleChange}
                 required
                 placeholder=""
@@ -187,6 +195,7 @@ const CheckoutForm = () => {
                 id="phone"
                 name="phone"
                 value={formData.phone}
+                disabled={loading}
                 onChange={handleChange}
                 required
                 placeholder=""
@@ -209,9 +218,10 @@ const CheckoutForm = () => {
             <div className="md:col-span-1">
               <button
                 type="submit"
+                disabled={loading}
                 className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 text-[19px] font-bold hover:bg-blue-700 transition"
               >
-                Get Budget Proposal
+                {loading ? "Creating Proposal ..." : "Get Budget Proposal"}
               </button>
             </div>
           </form>
