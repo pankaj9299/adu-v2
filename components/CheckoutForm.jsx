@@ -219,7 +219,11 @@ const CheckoutForm = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 text-[19px] font-bold hover:bg-blue-700 transition"
+                className={`border-lightYellow border-1 font-semibold py-2 px-6 text-[19px] font-bold transition ${
+                    loading
+                      ? "bg-gray-400 text-white cursor-not-allowed"
+                      : "text-lightYellow hover:bg-blue-700"
+                  }`}
               >
                 {loading ? "Creating Proposal ..." : "Get Budget Proposal"}
               </button>
@@ -234,7 +238,7 @@ const CheckoutForm = () => {
                 href={`${import.meta.env.VITE_API_DOMAIN}/${filePath}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 underline mt-2 inline-block"
+                className="inline-block bg-green-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-green-700 transition"
               >
                 Download Proposal
               </a>
