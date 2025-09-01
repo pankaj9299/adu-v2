@@ -51,21 +51,25 @@ export default function SubcategorySelector({
   // };
 
   const handleSelect = (opt, subCategory) => {
-    const updatedCategories = (selectedProduct.categories ?? []).map((cat) => {
+    const firstSubId = category?.subcategories?.[0]?.id;
+
+    const updatedCategories = (selectedProduct?.categories ?? []).map((cat) => {
       if (cat.id !== category.id) return cat;
+
+      const updatedSubcategories = (cat.subcategories ?? []).map((sub) => {
+        if (sub.id !== subCategory.id) return sub;
+        return {
+          ...sub,
+          selectedOption: opt,
+          options: [opt],
+        };
+      });
 
       return {
         ...cat,
-        image: opt.image, // ✅ now set on a copy, not the frozen original
-        subcategories: (cat.subcategories ?? []).map((sub) => {
-          if (sub.id !== subCategory.id) return sub;
-
-          return {
-            ...sub,
-            selectedOption: opt,
-            options: [opt], // keep only the selected one
-          };
-        }),
+        // ✅ only update category image if the clicked subcategory is the first one
+        image: subCategory.id === firstSubId ? opt.image : cat.image,
+        subcategories: updatedSubcategories,
       };
     });
 
@@ -76,11 +80,9 @@ export default function SubcategorySelector({
       })
     );
 
-    if (onSelectOption) {
-      onSelectOption(opt);
-    }
+    // Keep your callback behavior (only passed from StepDefault for index === 0)
+    onSelectOption?.(opt);
   };
-
 
   return (
     <div className="subcategory">
