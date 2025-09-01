@@ -20,36 +20,67 @@ export default function SubcategorySelector({
       ?.subcategories?.find((sub) => sub.id === subcategory.id)
       ?.selectedOption;
 
+  // const handleSelect = (opt, subCategory) => {
+  //   const updatedCategories = selectedProduct.categories.map((cat) => {
+  //     if (cat.id !== category.id) return cat;
+      
+  //     const updatedSubcategories = cat.subcategories.map((sub) => {
+  //       if (sub.id !== subCategory.id) return sub;
+
+  //       return {
+  //         ...sub,
+  //         selectedOption: opt,
+  //         options: [opt], // update with only selected
+  //       };
+  //     });
+
+  //     return {
+  //       ...cat,
+  //       subcategories: updatedSubcategories,
+  //     };
+  //   });
+
+  //   dispatch(setProduct({
+  //     ...selectedProduct,
+  //     categories: updatedCategories,
+  //   }));
+
+  //   if (onSelectOption) {
+  //     onSelectOption(opt); // trigger callback only for first subcategory
+  //   }
+  // };
+
   const handleSelect = (opt, subCategory) => {
-    const updatedCategories = selectedProduct.categories.map((cat) => {
+    const updatedCategories = (selectedProduct.categories ?? []).map((cat) => {
       if (cat.id !== category.id) return cat;
-      cat.image = opt.image; // Update category image to selected option image
-
-      const updatedSubcategories = cat.subcategories.map((sub) => {
-        if (sub.id !== subCategory.id) return sub;
-
-        return {
-          ...sub,
-          selectedOption: opt,
-          options: [opt], // update with only selected
-        };
-      });
 
       return {
         ...cat,
-        subcategories: updatedSubcategories,
+        image: opt.image, // ✅ now set on a copy, not the frozen original
+        subcategories: (cat.subcategories ?? []).map((sub) => {
+          if (sub.id !== subCategory.id) return sub;
+
+          return {
+            ...sub,
+            selectedOption: opt,
+            options: [opt], // keep only the selected one
+          };
+        }),
       };
     });
 
-    dispatch(setProduct({
-      ...selectedProduct,
-      categories: updatedCategories,
-    }));
+    dispatch(
+      setProduct({
+        ...selectedProduct,
+        categories: updatedCategories,
+      })
+    );
 
     if (onSelectOption) {
-      onSelectOption(opt); // trigger callback only for first subcategory
+      onSelectOption(opt);
     }
   };
+
 
   return (
     <div className="subcategory">
