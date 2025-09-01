@@ -89,7 +89,7 @@ export default function AddonsSelector({ addons, categoryId }) {
                 <LazyLoadImage
                   src={`${import.meta.env.VITE_API_DOMAIN}/${opt.image}`}
                   alt={opt.name}
-                  wrapperClassName="h-100"
+                  wrapperClassName="h-full"
                   className="w-full h-full object-cover"
                   effect="opacity"
                   threshold={100}
