@@ -23,6 +23,7 @@ export default function SubcategorySelector({
   const handleSelect = (opt, subCategory) => {
     const updatedCategories = selectedProduct.categories.map((cat) => {
       if (cat.id !== category.id) return cat;
+      cat.image = opt.image; // Update category image to selected option image
 
       const updatedSubcategories = cat.subcategories.map((sub) => {
         if (sub.id !== subCategory.id) return sub;
