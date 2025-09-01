@@ -52,7 +52,7 @@ export default function SubcategorySelector({
 
   const handleSelect = (opt, subCategory) => {
     const firstSubId = category?.subcategories?.[0]?.id;
-
+    console.log('opt opt:', opt);
     const updatedCategories = (selectedProduct?.categories ?? []).map((cat) => {
       if (cat.id !== category.id) return cat;
 
@@ -68,7 +68,9 @@ export default function SubcategorySelector({
       return {
         ...cat,
         // ✅ only update category image if the clicked subcategory is the first one
-        image: subCategory.id === firstSubId ? opt.image : cat.image,
+        image: subCategory.id === firstSubId
+          ? (opt.image_two && opt.image_two.trim() !== "" ? opt.image_two : opt.image)
+          : cat.image,
         subcategories: updatedSubcategories,
       };
     });
