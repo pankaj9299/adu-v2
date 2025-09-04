@@ -308,6 +308,9 @@
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
   }
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
+  }
   .mt-10 {
     margin-top: var(--spacing-10);
   }
@@ -388,6 +391,9 @@
   }
   .h-\[130px\] {
     height: 130px;
+  }
+  .h-\[165px\] {
+    height: 165px;
   }
   .h-\[177px\] {
     height: 177px;
@@ -802,6 +808,9 @@
   .text-wrap {
     text-wrap: wrap;
   }
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
   .text-dark-green {
     color: var(--color-dark-green);
   }
@@ -832,11 +841,17 @@
   .text-yellow-600 {
     color: var(--color-yellow-600);
   }
+  .line-through {
+    text-decoration-line: line-through;
+  }
   .underline {
     text-decoration-line: underline;
   }
   .decoration-2 {
     text-decoration-thickness: 2px;
+  }
+  .underline-offset-2 {
+    text-underline-offset: 2px;
   }
   .underline-offset-6 {
     text-underline-offset: 6px;
