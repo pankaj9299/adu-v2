@@ -3,7 +3,7 @@ import Button from "./Button";
 import HeroBanner from "./HeroBanner";
 import CostSummary from "./CostSummary";
 import AddonsSelector from "./AddonsSelector";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import Slider from "react-slick";
 
@@ -39,18 +39,29 @@ function SamplePrevArrow({ className, style, onClick }) {
   );
 }
 
-export default function StepTabbed({ category, categories, nextCategory, goBack, goNext, errorMessage, currentStep, isLastStep }) {
+export default function StepTabbed({
+  category,
+  categories,
+  nextCategory,
+  goBack,
+  goNext,
+  errorMessage,
+  currentStep,
+  isLastStep,
+}) {
   const [isMobile, setIsMobile] = useState(false);
   const [isTabActive, setIsTabActive] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
   const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null); // new state
-  const [selectedImageOption, setSelectedImageOption] = useState(null); 
+  const [selectedImageOption, setSelectedImageOption] = useState(null);
 
   const currentTab = category.tabs[activeTab];
-  
+
   const dispatch = useDispatch();
-  const selectedStateProduct = useSelector((state) => state.configurator.selectedProduct);
+  const selectedStateProduct = useSelector(
+    (state) => state.configurator.selectedProduct
+  );
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -69,7 +80,7 @@ export default function StepTabbed({ category, categories, nextCategory, goBack,
 
   const selectedSubcategory = currentTab?.subcategories?.find(
     (sub) => sub.id === selectedSubcategoryId
-  );  
+  );
 
   // Slick configurations
   const optionCount = selectedSubcategory?.options?.length || 0;
@@ -113,17 +124,17 @@ export default function StepTabbed({ category, categories, nextCategory, goBack,
         },
       ];
     });
-  
+
     // ✅ Update Redux state for the selected option
     if (selectedStateProduct?.categories) {
       const updatedCategories = selectedStateProduct.categories.map((cat) => {
         if (cat.id !== category.id) return cat;
-  
+
         return {
           ...cat,
           tab: cat.tab.map((sub) => {
             if (sub.id !== subcategoryId) return sub;
-  
+
             return {
               ...sub,
               selectedOption: option,
@@ -131,7 +142,7 @@ export default function StepTabbed({ category, categories, nextCategory, goBack,
           }),
         };
       });
-  
+
       dispatch(
         setProduct({
           ...selectedStateProduct,
@@ -139,7 +150,7 @@ export default function StepTabbed({ category, categories, nextCategory, goBack,
         })
       );
     }
-  };  
+  };
 
   const handleTab = (idx) => {
     setSelectedImageOption(category.tabs[idx]);
@@ -190,39 +201,39 @@ export default function StepTabbed({ category, categories, nextCategory, goBack,
         })
       );
     }
-  }
+  };
 
   useEffect(() => {
     if (!selectedStateProduct?.categories?.length) {
       return;
-    } 
-  
+    }
+
     const currentCategoryFromRedux = selectedStateProduct.categories.find(
       (cat) => cat.id === category.id
     );
-  
+
     // Having no redux state data
     if (!currentCategoryFromRedux || !currentCategoryFromRedux.tab?.length) {
       setSelectedImageOption(category);
       setActiveTab(0);
       setIsTabActive(false);
-      return;  
-    } 
-  
+      return;
+    }
+
     const tabIndex = currentCategoryFromRedux.tabNo ?? 0;
-  
+
     setActiveTab(tabIndex);
     setIsTabActive(true);
-  
+
     setSelectedImageOption(currentCategoryFromRedux);
-  }, [category]);  
+  }, [category]);
   // console.log('selectedOptions', selectedOptions);
 
   return (
     <>
       <HeroBanner selectedOption={selectedImageOption} />
       <section className="tab-with-slider p-0 relative md:-top-20">
-        <div className={`container ${isTabActive && 'mb-1'}`}>
+        <div className={`container ${isTabActive && "mb-1"}`}>
           {/* Heading */}
           <div className="heading">
             <h2 className="text-marigold text-5xl font-helvetica-neue-bold">
@@ -266,7 +277,8 @@ export default function StepTabbed({ category, categories, nextCategory, goBack,
                     (o) => o.subcategoryId === sub.id
                   );
 
-                  const displayImage = selectedForThisSub?.image || sub.options[0]?.image;
+                  const displayImage =
+                    selectedForThisSub?.image || sub.options[0]?.image;
                   //const firstOption = sub.options[0];
                   const isActive = selectedSubcategoryId === sub.id;
                   return (
@@ -286,7 +298,9 @@ export default function StepTabbed({ category, categories, nextCategory, goBack,
                           <LazyLoadImage
                             src={
                               displayImage
-                                ? `${import.meta.env.VITE_API_DOMAIN}/${displayImage}`
+                                ? `${
+                                    import.meta.env.VITE_API_DOMAIN
+                                  }/${displayImage}`
                                 : `https://placehold.co/250x250?text=ADU`
                             }
                             alt={sub.label}
@@ -296,7 +310,11 @@ export default function StepTabbed({ category, categories, nextCategory, goBack,
                           />
                         </div>
 
-                        <div className={`details text-left mt-4 ${isActive && 'px-3'} pb-4`}>
+                        <div
+                          className={`details text-left mt-4 ${
+                            isActive && "px-3"
+                          } pb-4`}
+                        >
                           <h4 className="text-secondary-green text-xl font-hn-bold-tight">
                             {sub?.name}
                           </h4>
@@ -453,7 +471,7 @@ export default function StepTabbed({ category, categories, nextCategory, goBack,
             </div>
           )}
 
-          {(category.addons.length > 0 && isTabActive) && (
+          {category.addons.length > 0 && isTabActive && (
             <AddonsSelector
               addons={category.addons}
               categoryId={category.id}
@@ -467,14 +485,113 @@ export default function StepTabbed({ category, categories, nextCategory, goBack,
           )}
         </div>
       </section>
+      <section className="Appliance">
+        <div className="container">
+          <div className="top-text">
+            <h5 className="text-green text-[15px]">
+              The following appliances are included in this floor plan:
+            </h5>
+            <div className="infomation flex gap-6 mt-1">
+              <h5 className="text-green text-[15px]  whitespace-nowrap">
+                Bespoke 2.1 Over the Range Microwave – Matte Black Stainless
+                Steel - Samsung
+              </h5>
+              <h5 className="text-green text-[15px]  whitespace-nowrap">
+                Bespoke 6.3 Cubic Fast Smart Electric Range – Stainless Steel –
+                Samsung
+              </h5>
+            </div>
+          </div>
+          <div className="add-on">
+            <div className="heading">
+              <h3 className="text-[25px] font-hn-bold-tight inline-block w-3/4 text-thinGray mt-8 mb-5">
+                Appliance Add-ons
+              </h3>
+            </div>
+            <div className="wrapper flex flex-col md:flex-row gap-5">
+              {category.microwaves.map((item, index) => (
+                <div
+                  key={item.microwave_id}
+                  className="wrap  md:flex-[1_1_20%] md:max-w-[20%] cursor-pointer relative"
+                >
+                  <div className="image-wrap overflow-hidden h-[165px] w-full ">
+                    <LazyLoadImage
+                      src={
+                        item.image
+                          ? `${import.meta.env.VITE_API_DOMAIN}/${item.image}`
+                          : `https://placehold.co/250x250?text=ADU`
+                      }
+                      alt={item.name}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="title text-left mt-6 false pb-4">
+                    <h4 className=" text-xl font-bold text-marigold">
+                      {item.name}
+                    </h4>
+                    <h5 className="text-green text-[15px] mt-1">
+                      {item.subtitle}
+                    </h5>
+                    <div className="price flex gap-2 mt-2">
+                      {item.discount_price && item.discount_price  > 0 ? (
+                        // ✅ Only show discount if it's greater than 0
+                        <>
+                          <h5 className="text-green text-[15px] line-through">
+                            ${item.price}
+                          </h5>
+                          <h5 className="text-green text-[15px] font-bold">
+                            ${item.discount_price}
+                          </h5>
+                        </>
+                      ) : (
+                        // ✅ Otherwise show only price
+                        <h5 className="text-green text-[15px] font-bold">
+                          ${item.price}
+                        </h5>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bottom-text mt-4">
+            <div className="column flex gap-10">
+              <div className="image-wrap overflow-hidden ">
+                <img src="https://placehold.co/198x66?text=ADU" alt="image" />
+              </div>
+              <div className="content-wrap ">
+                <h5 className="text-green text-[15px]">
+                  Your home comes equipped with high-quality Samsung appliances,
+                  <span className="font-bold">
+                    blending sleek design with reliable performance.
+                  </span>
+                  Each piece is built to make everyday living easier while
+                  adding a touch of style to your kitchen.
+                </h5>
+
+                <div className="button mt-2">
+                  <a
+                    href="#"
+                    className="text-thinGray underline underline-offset-2 text-[15px]"
+                  >
+                    Learn More
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {selectedProduct?.product_name && (
         <>
           <section className="button p-0">
             {/* <div className="container flex gap-5"> */}
-              {/* <Button onClick={goBack} disabled={currentStep === 0}>
+            {/* <Button onClick={goBack} disabled={currentStep === 0}>
                 {"< Back"}
               </Button> */}
-              {/* <Button onClick={() => goNext(isTabActive)}>
+            {/* <Button onClick={() => goNext(isTabActive)}>
                 {isLastStep ? "Review >" : `${nextCategory} >`}
               </Button> */}
             {/* </div> */}
