@@ -172,6 +172,10 @@ export default function StepTabbed({
         }
       );
 
+      // ✅ Preserve previous microwave selection (if any)
+      const prevCategory =
+        selectedStateProduct.categories.find((c) => c.id === category.id);
+
       const updatedCategory = {
         id: category.id,
         name: category.name,
@@ -179,6 +183,7 @@ export default function StepTabbed({
         tabNo: idx,
         image: category.tabs[idx].image,
         tab: updatedSubcategories,
+        microwave: prevCategory?.microwave ?? null, // <-- keep it
       };
 
       // 🔁 Merge into existing categories
@@ -228,6 +233,32 @@ export default function StepTabbed({
     setSelectedImageOption(currentCategoryFromRedux);
   }, [category]);
   // console.log('selectedOptions', selectedOptions);
+
+  // ✅ Helper: currently selected microwave id for this category (from Redux)
+  const selectedMicrowaveId =
+    selectedStateProduct?.categories
+      ?.find((c) => c.id === category.id)
+      ?.microwave?.microwave_id ?? null;
+
+  // ✅ NEW: handle microwave select (one at a time, replaces previous)
+  const handleMicrowaveSelect = (microwaveItem) => {
+    if (!selectedStateProduct?.categories) return;
+
+    const updatedCategories = selectedStateProduct.categories.map((cat) => {
+      if (cat.id !== category.id) return cat;
+      return {
+        ...cat,
+        microwave: microwaveItem, // <-- sibling to `tab`, `tabNo`, etc.
+      };
+    });
+
+    dispatch(
+      setProduct({
+        ...selectedStateProduct,
+        categories: updatedCategories,
+      })
+    );
+  };
 
   return (
     <>
@@ -485,87 +516,96 @@ export default function StepTabbed({
           )}
         </div>
       </section>
-      <section className="Appliance">
-        <div className="container">
-          <div className="top-text">
-            <div
-              className="infomation flex gap-6 mt-1 text-[15px]"
-              dangerouslySetInnerHTML={{ __html: category.body }}
-            ></div>
-          </div>
-          <div className="add-on">
-            <div className="heading">
-              <h3 className="text-[25px] font-hn-bold-tight inline-block w-3/4 text-thinGray mt-8 mb-5">
-                Appliance Add-ons
-              </h3>
-            </div>
-            <div className="wrapper flex flex-col md:flex-row gap-5">
-              {category.microwaves.map((item) => (
-                <div
-                  key={item.microwave_id}
-                  className="wrap  md:flex-[1_1_20%] md:max-w-[20%] cursor-pointer relative"
-                >
-                  <div className="image-wrap overflow-hidden h-[165px] w-full ">
-                    <LazyLoadImage
-                      src={
-                        item.image
-                          ? `${import.meta.env.VITE_API_DOMAIN}/${item.image}`
-                          : `https://placehold.co/250x250?text=ADU`
-                      }
-                      alt={item.name}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div className="title text-left mt-6 false pb-4">
-                    <h4 className=" text-xl font-bold text-marigold">
-                      {item.name}
-                    </h4>
-                    <h5 className="text-green text-[15px] mt-1">
-                      {item.subtitle}
-                    </h5>
-                    <div className="price flex gap-2 mt-2">
-                      {/* {typeof item.discount_price} */}
-                      {item?.discount_price > 0 && (
-                        // ✅ Only show discount if it's greater than 0
-                        <>
-                          <h5 className="text-green text-[15px] line-through">
-                            ${item.price}
-                          </h5>
-                          <h5 className="text-green text-[15px] font-bold">
-                            ${item.discount_price}
-                          </h5>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="bottom-text mt-4">
-            <div className="column flex gap-10">
-              <div className="image-wrap overflow-hidden ">
-                <LazyLoadImage
-                  src={
-                    category.microwave_root_image
-                      ? `${import.meta.env.VITE_API_DOMAIN}/${category.microwave_root_image}`
-                      : `https://placehold.co/250x250?text=ADU`
-                  }
-                  alt={category.name}
-                  className="w-full h-full object-contain"
-                />
-              </div>
+      {(isTabActive && category.microwaves.length > 0) && (
+        <section className="Appliance pt-0">
+          <div className="container">
+            <div className="top-text">
               <div
-                className="content-wrap "
-                dangerouslySetInnerHTML={{
-                  __html: category.microwave_root_description,
-                }}
+                className="infomation flex gap-6 mt-1 text-[15px]"
+                dangerouslySetInnerHTML={{ __html: category.body }}
               ></div>
             </div>
+            <div className="add-on">
+              <div className="heading">
+                <h3 className="text-[25px] font-hn-bold-tight inline-block w-3/4 text-thinGray mt-8 mb-5">
+                  Appliance Add-ons
+                </h3>
+              </div>
+              <div className="wrapper flex flex-col md:flex-row gap-5">
+                {category.microwaves.map((item, index) => {
+                  const isSelected = selectedMicrowaveId === item.microwave_id;
+                  return (
+                    <div
+                      key={item.microwave_id}
+                      onClick={() => handleMicrowaveSelect(item)}
+                      className={`wrap md:flex-[1_1_20%] md:max-w-[20%] cursor-pointer relative border-2 rounded-lg transition px-3 py-1
+                        ${
+                          isSelected ? "border-lightYellow" : "border-transparent"
+                        }`}
+                    >
+                      <div className="image-wrap overflow-hidden h-[165px] w-full ">
+                        <LazyLoadImage
+                          src={
+                            item.image
+                              ? `${import.meta.env.VITE_API_DOMAIN}/${item.image}`
+                              : `https://placehold.co/250x250?text=ADU`
+                          }
+                          alt={item.name}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <div className="title text-left">
+                        <h4
+                          className={`font-bold ${
+                            index === 0 ? "text-xl text-marigold" : "text-[18px]"
+                          }`}
+                        >
+                          {item.name}
+                        </h4>
+                        <h5 className="text-green text-[15px] mt-1">
+                          {item.subtitle}
+                        </h5>
+                        {item?.discount_price > 0 && (
+                          <div className="price flex gap-2 mt-2">
+                            <h5 className="text-green text-[15px] line-through">
+                              ${item.price}
+                            </h5>
+                            <h5 className="text-green text-[15px] font-bold">
+                              ${item.discount_price}
+                            </h5>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="bottom-text mt-4">
+              <div className="column flex gap-10">
+                <div className="image-wrap overflow-hidden ">
+                  <LazyLoadImage
+                    src={
+                      category.microwave_root_image
+                        ? `${import.meta.env.VITE_API_DOMAIN}/${category.microwave_root_image}`
+                        : `https://placehold.co/250x250?text=ADU`
+                    }
+                    alt={category.name}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div
+                  className="content-wrap "
+                  dangerouslySetInnerHTML={{
+                    __html: category.microwave_root_description,
+                  }}
+                ></div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       {selectedProduct?.product_name && (
         <>
           <section className="button p-0">

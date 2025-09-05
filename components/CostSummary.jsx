@@ -35,8 +35,17 @@ const CostSummary = () => {
         category.addons?.reduce((sum, addon) => {
           return sum + (addon.price || 0);
         }, 0) || 0;
+        
+      let microwaveTotal = 0;
+      if ("microwave" in category && category.microwave !== null) {
+        microwaveTotal =
+          category.microwave.discount_price != 0
+            ? category.microwave.discount_price
+            : category.microwave.price;
+      }
+      
 
-      return catSum + subcatTotal + tabTotal + addonTotal;
+      return catSum + subcatTotal + tabTotal + addonTotal + microwaveTotal;
     }, 0);
 
     return (basePrice + categoryTotal).toLocaleString();
@@ -145,6 +154,34 @@ const CostSummary = () => {
                         </div>
                       </div>
                     ))}
+
+                    {/* Microwave */}
+                    {"microwave" in category && category.microwave !== null && (
+                      <div
+                        key={`addon-${category?.microwave.id}`}
+                        className="flex justify-between border-b border-secondary-dark-gray"
+                      >
+                        <div className="left flex gap-4">
+                          <div className="first w-[173px] text-left">
+                            <p className="font-normal bg-yellow py-2 pl-5 text-dark-green">
+                              Microwave
+                            </p>
+                          </div>
+                          <div className="second">
+                            <p className="font-normal py-2 text-dark-green">
+                              {category?.microwave.name}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="right">
+                          <div className="third">
+                            <p className="font-normal py-2 text-dark-green">
+                              ${category?.microwave.discount_price ? category?.microwave.discount_price?.toLocaleString() || "0" : category?.microwave.price?.toLocaleString() || "0"}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
                     {/* Addons */}
                     {category.addons?.map((addon) => (
