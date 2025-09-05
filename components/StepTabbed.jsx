@@ -488,19 +488,10 @@ export default function StepTabbed({
       <section className="Appliance">
         <div className="container">
           <div className="top-text">
-            <h5 className="text-green text-[15px]">
-              The following appliances are included in this floor plan:
-            </h5>
-            <div className="infomation flex gap-6 mt-1">
-              <h5 className="text-green text-[15px]  whitespace-nowrap">
-                Bespoke 2.1 Over the Range Microwave – Matte Black Stainless
-                Steel - Samsung
-              </h5>
-              <h5 className="text-green text-[15px]  whitespace-nowrap">
-                Bespoke 6.3 Cubic Fast Smart Electric Range – Stainless Steel –
-                Samsung
-              </h5>
-            </div>
+            <div
+              className="infomation flex gap-6 mt-1 text-[15px]"
+              dangerouslySetInnerHTML={{ __html: category.body }}
+            ></div>
           </div>
           <div className="add-on">
             <div className="heading">
@@ -509,7 +500,7 @@ export default function StepTabbed({
               </h3>
             </div>
             <div className="wrapper flex flex-col md:flex-row gap-5">
-              {category.microwaves.map((item, index) => (
+              {category.microwaves.map((item) => (
                 <div
                   key={item.microwave_id}
                   className="wrap  md:flex-[1_1_20%] md:max-w-[20%] cursor-pointer relative"
@@ -533,7 +524,8 @@ export default function StepTabbed({
                       {item.subtitle}
                     </h5>
                     <div className="price flex gap-2 mt-2">
-                      {item.discount_price && item.discount_price  > 0 ? (
+                      {/* {typeof item.discount_price} */}
+                      {item?.discount_price > 0 && (
                         // ✅ Only show discount if it's greater than 0
                         <>
                           <h5 className="text-green text-[15px] line-through">
@@ -543,11 +535,6 @@ export default function StepTabbed({
                             ${item.discount_price}
                           </h5>
                         </>
-                      ) : (
-                        // ✅ Otherwise show only price
-                        <h5 className="text-green text-[15px] font-bold">
-                          ${item.price}
-                        </h5>
                       )}
                     </div>
                   </div>
@@ -559,27 +546,22 @@ export default function StepTabbed({
           <div className="bottom-text mt-4">
             <div className="column flex gap-10">
               <div className="image-wrap overflow-hidden ">
-                <img src="https://placehold.co/198x66?text=ADU" alt="image" />
+                <LazyLoadImage
+                  src={
+                    category.microwave_root_image
+                      ? `${import.meta.env.VITE_API_DOMAIN}/${category.microwave_root_image}`
+                      : `https://placehold.co/250x250?text=ADU`
+                  }
+                  alt={category.name}
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <div className="content-wrap ">
-                <h5 className="text-green text-[15px]">
-                  Your home comes equipped with high-quality Samsung appliances,
-                  <span className="font-bold">
-                    blending sleek design with reliable performance.
-                  </span>
-                  Each piece is built to make everyday living easier while
-                  adding a touch of style to your kitchen.
-                </h5>
-
-                <div className="button mt-2">
-                  <a
-                    href="#"
-                    className="text-thinGray underline underline-offset-2 text-[15px]"
-                  >
-                    Learn More
-                  </a>
-                </div>
-              </div>
+              <div
+                className="content-wrap "
+                dangerouslySetInnerHTML={{
+                  __html: category.microwave_root_description,
+                }}
+              ></div>
             </div>
           </div>
         </div>
