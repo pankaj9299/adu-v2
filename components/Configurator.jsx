@@ -114,7 +114,7 @@ export default function Configurator() {
       // dispatch(setProduct(updatedProduct)); // update Redux state
       
       setCurrentStep((prev) => prev - 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      // window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       // Reset redux state
       dispatch(setProduct(null));

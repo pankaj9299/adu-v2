@@ -137,9 +137,18 @@ export default function StepDefault({ category, categories, nextCategory, goBack
               </Button> */}
             {/* </div> */}
             <div className="container">
-              <Button onClick={goNext}>
-                {isLastStep ? "Review >" : `${nextCategory} >`}
-              </Button>
+              <div className="flex gap-3">
+                <Button 
+                  className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer"
+                  onClick={goBack} disabled={currentStep === 0}>
+                  {"< Back"}
+                </Button>
+                <Button 
+                  className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer"
+                  onClick={goNext}>
+                  {isLastStep ? "Review >" : `${nextCategory} >`}
+                </Button>
+              </div>
               <StepDots categories={categories} currentStep={currentStep} />
             </div>
           </section>

@@ -71,7 +71,7 @@ export default function AddonsSelector({ addons, categoryId }) {
           );
         })}
       </div> */}
-      <div className="multiple-options flex flex-wrap gap-x-0 sm:gap-6 mb-10">
+      <div className="multiple-options flex flex-wrap gap-x-0 sm:gap-6">
         {addons.map((opt, idx) => {
           const isSelected = selectedAddons.some(
             (item) => item.id === parseInt(opt.id)
@@ -80,12 +80,12 @@ export default function AddonsSelector({ addons, categoryId }) {
           return (
             <div
               key={idx}
-              className={`color-options w-1/2 [@media(max-width:370px)]:w-full sm:w-[150px] text-center cursor-pointer border-2 p-2 transition-all duration-150 ${
+              className={`color-options w-1/2 [@media(max-width:370px)]:w-full sm:w-[200px] text-center cursor-pointer border-2 p-2 transition-all duration-150 ${
                 isSelected ? "border-lightYellow" : "border-transparent"
               }`}
               onClick={() => toggleAddon(opt)}
             >
-              <div className="image-wrap overflow-hidden w-full h-[130px]">
+              <div className="image-wrap overflow-hidden w-full h-[170px]">
                 <LazyLoadImage
                   src={`${import.meta.env.VITE_API_DOMAIN}/${opt.image}`}
                   alt={opt.name}

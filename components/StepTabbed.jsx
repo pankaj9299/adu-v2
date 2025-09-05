@@ -335,6 +335,7 @@ export default function StepTabbed({
                                 : `https://placehold.co/250x250?text=ADU`
                             }
                             alt={sub.label}
+                            wrapperClassName="h-full"
                             className="w-full h-full object-contain"
                             effect="opacity"
                             threshold={100}
@@ -394,6 +395,7 @@ export default function StepTabbed({
                                           : `https://placehold.co/250x250?text=ADU`
                                       }
                                       alt={opt.name}
+                                      wrapperClassName="h-full"
                                       className="h-full w-full object-contain"
                                       effect="opacity"
                                       threshold={100}
@@ -466,6 +468,7 @@ export default function StepTabbed({
                                 : `https://placehold.co/250x250?text=ADU`
                             }
                             alt={opt.name}
+                            wrapperClassName="h-full"
                             className="h-full w-full object-contain"
                             effect="opacity"
                             threshold={100}
@@ -516,7 +519,7 @@ export default function StepTabbed({
           )}
         </div>
       </section>
-      {(isTabActive && category.microwaves.length > 0) && (
+      {isTabActive && category.microwaves.length > 0 && (
         <section className="Appliance pt-0">
           <div className="container">
             <div className="top-text">
@@ -540,14 +543,18 @@ export default function StepTabbed({
                       onClick={() => handleMicrowaveSelect(item)}
                       className={`wrap md:flex-[1_1_20%] md:max-w-[20%] cursor-pointer relative border-2 rounded-lg transition px-3 py-1
                         ${
-                          isSelected ? "border-lightYellow" : "border-transparent"
+                          isSelected
+                            ? "border-lightYellow"
+                            : "border-transparent"
                         }`}
                     >
                       <div className="image-wrap overflow-hidden h-[165px] w-full ">
                         <LazyLoadImage
                           src={
                             item.image
-                              ? `${import.meta.env.VITE_API_DOMAIN}/${item.image}`
+                              ? `${import.meta.env.VITE_API_DOMAIN}/${
+                                  item.image
+                                }`
                               : `https://placehold.co/250x250?text=ADU`
                           }
                           alt={item.name}
@@ -557,7 +564,9 @@ export default function StepTabbed({
                       <div className="title text-left">
                         <h4
                           className={`font-bold ${
-                            index === 0 ? "text-xl text-marigold" : "text-[18px]"
+                            index === 0
+                              ? "text-xl text-marigold"
+                              : "text-[18px]"
                           }`}
                         >
                           {item.name}
@@ -588,7 +597,9 @@ export default function StepTabbed({
                   <LazyLoadImage
                     src={
                       category.microwave_root_image
-                        ? `${import.meta.env.VITE_API_DOMAIN}/${category.microwave_root_image}`
+                        ? `${import.meta.env.VITE_API_DOMAIN}/${
+                            category.microwave_root_image
+                          }`
                         : `https://placehold.co/250x250?text=ADU`
                     }
                     alt={category.name}
@@ -618,9 +629,20 @@ export default function StepTabbed({
               </Button> */}
             {/* </div> */}
             <div className="container">
-              <Button onClick={() => goNext(isTabActive)}>
-                {isLastStep ? "Review >" : `${nextCategory} >`}
-              </Button>
+              <div className="flex gap-3">
+                <Button
+                  className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer"
+                  onClick={goBack}
+                  disabled={currentStep === 0}
+                >
+                  {"< Back"}
+                </Button>
+                <Button 
+                  className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer"
+                  onClick={() => goNext(isTabActive)}>
+                  {isLastStep ? "Review >" : `${nextCategory} >`}
+                </Button>
+              </div>
               <StepDots categories={categories} currentStep={currentStep} />
             </div>
           </section>

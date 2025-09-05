@@ -75,7 +75,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
 
   return (
     <section className="step-two pt-0">
-      <div className="container">
+      <div className="container px-0">
         <div className="intro text-center">
           <h3 className="text-dark-teal text-2xl mt-10 font-helvetica-neue-bold">
             Step 2
@@ -225,7 +225,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                 <div className="mt-10 flex gap-4">
                   {selectedFloor && (
                     <button
-                      className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5"
+                      className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer"
                       onClick={handleChooseCustomizations}
                     >
                       Choose Your Customizations
