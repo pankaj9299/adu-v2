@@ -1,5 +1,5 @@
 export const findImageByProduct = (string) => {
-    const finder = string.replace(/[^a-zA-Z0-9]+/g, " ").toLowerCase();
+    const finder = string ? string.replace(/[^a-zA-Z0-9]+/g, " ").toLowerCase() : "";
 
     let imagePath = '';
     if (finder.includes('side by')) {

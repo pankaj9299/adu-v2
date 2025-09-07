@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import axios from "axios";
+import { findImageByProduct } from "../utils/helpers";
 
 const CheckoutForm = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const CheckoutForm = () => {
   const selectedProductState = useSelector(
     (state) => state.configurator.selectedProduct
   );
+  const productHeadImageUrl = findImageByProduct(selectedProductState?.product_name);
 
   const [filePath, setFilePath] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -73,7 +75,7 @@ const CheckoutForm = () => {
       setLoading(false); // only re-enable if still showing form
     }
   };
-
+  
   return (
     <>
       <section className="hero-banner">
@@ -90,145 +92,155 @@ const CheckoutForm = () => {
             </h3>
           </div>
           {!filePath ? (
-          <form 
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
-            onSubmit={handleSubmit}
+            <form
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              onSubmit={handleSubmit}
             >
-            {/* First Name */}
-            <div>
-              <label
-                htmlFor="firstName"
-                className="block text-[18px] font-normal text-thinGray"
-              >
-                First Name*
-              </label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                disabled={loading}
-                onChange={handleChange}
-                placeholder=""
-                className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                style={{ boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)" }}
-                required
-              />
-            </div>
+              {/* First Name */}
+              <div>
+                <label
+                  htmlFor="firstName"
+                  className="block text-[18px] font-normal text-thinGray"
+                >
+                  First Name*
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={formData.firstName}
+                  disabled={loading}
+                  onChange={handleChange}
+                  placeholder=""
+                  className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                  style={{
+                    boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
+                  }}
+                  required
+                />
+              </div>
 
-            {/* Last Name */}
-            <div>
-              <label
-                htmlFor="lastName"
-                className="block text-[18px] font-normal text-thinGray"
-              >
-                Last Name*
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                disabled={loading}
-                onChange={handleChange}
-                required
-                placeholder=""
-                className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                style={{ boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)" }}
-              />
-            </div>
+              {/* Last Name */}
+              <div>
+                <label
+                  htmlFor="lastName"
+                  className="block text-[18px] font-normal text-thinGray"
+                >
+                  Last Name*
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  disabled={loading}
+                  onChange={handleChange}
+                  required
+                  placeholder=""
+                  className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                  style={{
+                    boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
+                  }}
+                />
+              </div>
 
-            {/* Email */}
-            <div className="md:col-span-2">
-              <label
-                htmlFor="email"
-                className="block text-[18px] font-normal text-thinGray"
-              >
-                Email Address*
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                disabled={loading}
-                onChange={handleChange}
-                required
-                placeholder=""
-                className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                style={{ boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)" }}
-              />
-            </div>
+              {/* Email */}
+              <div className="md:col-span-2">
+                <label
+                  htmlFor="email"
+                  className="block text-[18px] font-normal text-thinGray"
+                >
+                  Email Address*
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  disabled={loading}
+                  onChange={handleChange}
+                  required
+                  placeholder=""
+                  className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                  style={{
+                    boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
+                  }}
+                />
+              </div>
 
-            {/* Zip */}
-            <div>
-              <label
-                htmlFor="zip"
-                className="block text-[18px] font-normal text-thinGray"
-              >
-                Zip Code*
-              </label>
-              <input
-                type="text"
-                id="zip"
-                name="zip"
-                value={formData.zip}
-                disabled={loading}
-                onChange={handleChange}
-                required
-                placeholder=""
-                className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                style={{ boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)" }}
-              />
-            </div>
+              {/* Zip */}
+              <div>
+                <label
+                  htmlFor="zip"
+                  className="block text-[18px] font-normal text-thinGray"
+                >
+                  Zip Code*
+                </label>
+                <input
+                  type="text"
+                  id="zip"
+                  name="zip"
+                  value={formData.zip}
+                  disabled={loading}
+                  onChange={handleChange}
+                  required
+                  placeholder=""
+                  className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                  style={{
+                    boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
+                  }}
+                />
+              </div>
 
-            {/* Phone */}
-            <div>
-              <label
-                htmlFor="phone"
-                className="block text-[18px] font-normal text-thinGray"
-              >
-                Phone Number*
-              </label>
-              <input
-                type="text"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                disabled={loading}
-                onChange={handleChange}
-                required
-                placeholder=""
-                className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                style={{ boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)" }}
-              />
-            </div>
+              {/* Phone */}
+              <div>
+                <label
+                  htmlFor="phone"
+                  className="block text-[18px] font-normal text-thinGray"
+                >
+                  Phone Number*
+                </label>
+                <input
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  disabled={loading}
+                  onChange={handleChange}
+                  required
+                  placeholder=""
+                  className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                  style={{
+                    boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
+                  }}
+                />
+              </div>
 
-            {/* Consent Note */}
-            <div className="md:col-span-2">
-              <p className="text-[15px] font-normal">
-                By providing a telephone number and when scheduling your
-                consultation you are consenting to be contacted by SMS text
-                message. Message & data rates may apply. You can reply STOP to
-                opt-out of further messaging.
-              </p>
-            </div>
+              {/* Consent Note */}
+              <div className="md:col-span-2">
+                <p className="text-[15px] font-normal">
+                  By providing a telephone number and when scheduling your
+                  consultation you are consenting to be contacted by SMS text
+                  message. Message & data rates may apply. You can reply STOP to
+                  opt-out of further messaging.
+                </p>
+              </div>
 
-            {/* Submit Button */}
-            <div className="md:col-span-1">
-              <button
-                type="submit"
-                disabled={loading}
-                className={`border-lightYellow border-1 font-semibold py-2 px-6 text-[19px] font-bold transition ${
+              {/* Submit Button */}
+              <div className="md:col-span-1">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`border-lightYellow hover:bg-lightYellow hover:text-white cursor-pointer border-1 font-semibold py-2 px-6 text-[19px] font-bold transition ${
                     loading
                       ? "bg-lightYellow text-white cursor-not-allowed"
                       : "text-lightYellow hover:bg-blue-700"
                   }`}
-              >
-                {loading ? "Creating Proposal ..." : "Get Budget Proposal"}
-              </button>
-            </div>
-          </form>
+                >
+                  {loading ? "Creating Proposal ..." : "Get Budget Proposal"}
+                </button>
+              </div>
+            </form>
           ) : (
             <div className="success-message mt-6">
               <p className="text-green text-xl font-semibold">
@@ -271,23 +283,21 @@ const CheckoutForm = () => {
               />
             </div>
             <div className="text-wrap w-full md:w-2/5">
-              <h3
-                className="font-normal inline-block text-center flex flex-col bg-darkRed rounded-[5px] rounded-l-none overflow-hidden py-1 px-2 text-white"
-                style={{
-                  clipPath:
-                    "polygon(10% 0%, 99% 0%, 99% 100%, 0% 100%, 0% 30%)",
-                }}
-              >
-                {selectedProductState?.product_name}
-              </h3>
-              <h4 className="max-sm:text-[20px] max-sm:my-2 md:text-[28px] text-green font-normal">
+              <img
+                src={productHeadImageUrl}
+                alt={selectedProductState?.product_name}
+                width="290"
+                height="38"
+              />
+              <h4 className="max-sm:text-[20px] max-sm:my-2 md:text-[28px] text-green font-normal font-arial tracking-[-5%] mt-3 mb-4">
                 {selectedProductState?.floor_name}
               </h4>
-              <p 
-                className="md:text-[25px] mt-2 text-green font-normal"
-                dangerouslySetInnerHTML={{ __html: selectedProductState?.product_subtitle }}
-                >
-              </p>
+              <p
+                className="md:text-[25px] text-green font-normal tracking-[0%]"
+                dangerouslySetInnerHTML={{
+                  __html: selectedProductState?.product_subtitle,
+                }}
+              ></p>
             </div>
           </div>
 
@@ -297,6 +307,7 @@ const CheckoutForm = () => {
                 selectedProductState?.floor_image
               }`}
               alt="top-view"
+              wrapperClassName="w-full"
               className="mx-auto block"
               effect="opacity"
               threshold={100}

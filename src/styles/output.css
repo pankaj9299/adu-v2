@@ -64,7 +64,6 @@
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --color-darkRed: #5A2812;
     --color-yellow: #F1E7CE;
     --color-lightYellow: #E2A002;
     --color-green: #263824;
@@ -560,9 +559,6 @@
   .rounded {
     border-radius: 0.25rem;
   }
-  .rounded-\[5px\] {
-    border-radius: 5px;
-  }
   .rounded-full {
     border-radius: calc(infinity * 1px);
   }
@@ -571,10 +567,6 @@
   }
   .rounded-md {
     border-radius: var(--radius-md);
-  }
-  .rounded-l-none {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
   }
   .border {
     border-style: var(--tw-border-style);
@@ -610,9 +602,6 @@
   }
   .bg-blue-200 {
     background-color: var(--color-blue-200);
-  }
-  .bg-darkRed {
-    background-color: var(--color-darkRed);
   }
   .bg-gray {
     background-color: var(--color-gray);
@@ -826,6 +815,10 @@
     --tw-tracking: -5%;
     letter-spacing: -5%;
   }
+  .tracking-\[0\%\] {
+    --tw-tracking: 0%;
+    letter-spacing: 0%;
+  }
   .text-wrap {
     text-wrap: wrap;
   }
@@ -933,6 +926,13 @@
       }
     }
   }
+  .hover\:bg-lightYellow {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-lightYellow);
+      }
+    }
+  }
   .hover\:text-black {
     &:hover {
       @media (hover: hover) {
@@ -944,6 +944,13 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-dark-teal);
+      }
+    }
+  }
+  .hover\:text-white {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white);
       }
     }
   }
