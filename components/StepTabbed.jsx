@@ -91,8 +91,6 @@ export default function StepTabbed({
     slidesToShow: optionCount > 6 ? 6 : 6,
     slidesToScroll: 1,
     arrows: true,
-    focusOnSelect: true,
-    swipeToSlide: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
