@@ -404,6 +404,10 @@ export default function StepTabbed({
                     ? dyn?.name ?? sub?.name ?? ""
                     : dynEntry?.name ?? sub?.name ?? "";
 
+                  const displaySubtitle = hasDynObject
+                    ? dyn?.subtitle ?? sub?.subtitle ?? ""
+                    : dynEntry?.subtitle ?? sub?.subtitle ?? "";
+
                   return (
                     <div
                       key={sub.id}
@@ -443,7 +447,7 @@ export default function StepTabbed({
                             {displayName}
                           </h4>
                           <h5 className="text-green text-[15px]">
-                            {sub.subtitle}
+                            {displaySubtitle}
                           </h5>
                           <div className="button mt-2">
                             <button className="text-thinGray text-[15px]">
