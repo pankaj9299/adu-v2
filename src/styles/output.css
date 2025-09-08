@@ -78,6 +78,7 @@
     --spacing-15: 3.75rem;
     --font-arial: "Arial", sans-serif;
     --font-helvetica-neue-bold: 'Helvetica Neue Medium', sans-serif;
+    --font-helvetica-neue-bold-v2: 'Helvetica Neue Bold', sans-serif;
   }
 }
 @layer base {
@@ -738,6 +739,9 @@
   .font-helvetica-neue-bold {
     font-family: var(--font-helvetica-neue-bold);
   }
+  .font-helvetica-neue-bold-v2 {
+    font-family: var(--font-helvetica-neue-bold-v2);
+  }
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
@@ -749,10 +753,6 @@
   .text-4xl {
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
-  }
-  .text-5xl {
-    font-size: var(--text-5xl);
-    line-height: var(--tw-leading, var(--text-5xl--line-height));
   }
   .text-6xl {
     font-size: var(--text-6xl);
@@ -1220,6 +1220,13 @@ html, body {
     font-weight: 700;
     font-display: swap;
     src: url("../fonts/helvetica-neue/HelveticaNeueBold.otf") format("opentype");
+  }
+  @font-face {
+    font-family: 'Helvetica Neue Super Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/helvetica-neue/HelveticaNeueBlack.otf") format("opentype");
   }
   @font-face {
     font-family: 'Helvetica Neue Medium';

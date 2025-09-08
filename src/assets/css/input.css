@@ -81,6 +81,7 @@ html, body {
   --font-arial: "Arial", sans-serif;
   /* --font-helvetica-neue-medium: 'Helvetica Neue Medium', sans-serif; */
   --font-helvetica-neue-bold: 'Helvetica Neue Medium', sans-serif;
+  --font-helvetica-neue-bold-v2: 'Helvetica Neue Bold', sans-serif;
 }
 
 @layer base {
@@ -90,6 +91,14 @@ html, body {
     font-weight: 700;
     font-display: swap;
     src: url("../fonts/helvetica-neue/HelveticaNeueBold.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: 'Helvetica Neue Super Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/helvetica-neue/HelveticaNeueBlack.otf") format("opentype");
   }
 
   @font-face {

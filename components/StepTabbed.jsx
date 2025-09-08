@@ -340,7 +340,7 @@ export default function StepTabbed({
         <div className={`container ${isTabActive && "mb-1"}`}>
           {/* Heading */}
           <div className="heading">
-            <h2 className="text-marigold text-5xl font-helvetica-neue-bold">
+            <h2 className="text-marigold text-3xl mb-3 font-helvetica-neue-bold">
               {category.name}
             </h2>
           </div>

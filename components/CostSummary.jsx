@@ -58,7 +58,7 @@ const CostSummary = () => {
           <h2 className="text-dark-green md:text-6xl mb-3">
             Project Cost Summary
           </h2>
-          <h3 className="text-dark-teal font-helvetica-neue-bold tracking-[-2%] text-3xl inline-block w-full md:w-1/2 mb-5">
+          <h3 className="text-dark-teal font-helvetica-neue-bold-v2 tracking-[-2%] text-3xl inline-block w-full md:w-1/2 mb-5">
             Base + Floor Plan
           </h3>
           <div className="title flex flex-col md:flex-row gap-6 items-center">
@@ -89,7 +89,7 @@ const CostSummary = () => {
           return (
             hasContent && (
               <div key={category.id} className="exterior-info mt-15">
-                <h3 className="text-dark-teal text-3xl inline-block w-1/2 mb-5">
+                <h3 className="text-dark-teal font-helvetica-neue-bold-v2 text-3xl  inline-block w-1/2 mb-5">
                   {category.name}
                 </h3>
 
