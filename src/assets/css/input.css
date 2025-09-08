@@ -80,7 +80,8 @@ html, body {
 
   --font-arial: "Arial", sans-serif;
   /* --font-helvetica-neue-medium: 'Helvetica Neue Medium', sans-serif; */
-  --font-helvetica-neue-bold: 'Helvetica Neue Medium', sans-serif;
+  /* --font-helvetica-neue-bold: 'Helvetica Neue Medium', sans-serif; */
+  --font-helvetica-neue-bold: 'Helvetica Neue Bold', sans-serif;
   --font-helvetica-neue-bold-v2: 'Helvetica Neue Bold', sans-serif;
 }
 

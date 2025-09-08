@@ -243,7 +243,7 @@ const CostSummary = () => {
             <div className="button">
               <Link
                 to="/"
-                className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 md:text-[19px] font-bold transition"
+                className="border-lightYellow border-1 text-lightYellow hover:bg-lightYellow hover:text-white font-semibold py-2 px-6 md:text-[19px] font-bold transition"
               >
                 Go Back to Customization
               </Link>
