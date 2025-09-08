@@ -52,6 +52,7 @@ export default function StepTabbed({
   const [isMobile, setIsMobile] = useState(false);
   const [isTabActive, setIsTabActive] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [dynamicOptions, setDynamicOptions] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
   const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null); // new state
   const [selectedImageOption, setSelectedImageOption] = useState(null);
@@ -90,6 +91,8 @@ export default function StepTabbed({
     slidesToShow: optionCount > 6 ? 6 : 6,
     slidesToScroll: 1,
     arrows: true,
+    focusOnSelect: true,
+    swipeToSlide: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
@@ -108,22 +111,63 @@ export default function StepTabbed({
     ],
   };
 
+  const getSelectedIdForSub = (sub) => {
+    // 1) local normalized selection
+    const local = selectedOptions.find(
+      (o) => (o.subcategoryId ?? o.id) === sub.id
+    );
+    if (local?.id) return local.id;
+
+    // 2) dynamicOptions fallback (covers both {subcategoryId} and {id} shapes)
+    const dynEntry =
+      dynamicOptions?.find((o) => (o.subcategoryId ?? o.id) === sub.id) ?? null;
+    if (dynEntry?.selectedOption?.id) return dynEntry.selectedOption.id;
+    if (dynEntry?.dynamicOption?.id) return dynEntry.dynamicOption.id;
+
+    // 3) sub’s own selectedOption
+    if (sub.selectedOption?.id) return sub.selectedOption.id;
+
+    // 4) default to first option
+    return sub.options?.[0]?.id ?? null;
+  };
+
+
   const handleOptionSelect = (subcategoryId, option) => {
     // 🔄 Update local UI state
+    console.log('select options: ', selectedOptions);
     setSelectedOptions((prev) => {
       const filtered = prev.filter(
-        (item) => item.subcategoryId !== subcategoryId
+        (item) => (item.subcategoryId ?? item.id) !== subcategoryId
       );
       return [
         ...filtered,
         {
           subcategoryId,
-          optionId: option.id,
-          optionName: option.name,
+          id: option.id,
+          name: option.name,
           image: option.image,
+          selectedOption: option,
+          dynamicOption: option,
         },
       ];
     });
+
+    setDynamicOptions((prev) => {
+      const filtered = prev.filter(
+        (item) => (item.subcategoryId ?? item.id) !== subcategoryId
+      );
+      return [
+        ...filtered,
+        {
+          subcategoryId,
+          id: option.id,
+          name: option.name,
+          image: option.image,
+          selectedOption: option,
+          dynamicOption: option,
+        },
+      ];
+    }); 
 
     // ✅ Update Redux state for the selected option
     if (selectedStateProduct?.categories) {
@@ -138,6 +182,7 @@ export default function StepTabbed({
             return {
               ...sub,
               selectedOption: option,
+              dynamicOption: option
             };
           }),
         };
@@ -157,7 +202,9 @@ export default function StepTabbed({
     setIsTabActive(true);
     setActiveTab(idx);
     setSelectedSubcategoryId(null); // reset on tab change
-
+    setSelectedOptions([]);
+    setDynamicOptions([]);
+    
     // State
     if (selectedStateProduct?.categories) {
       const updatedSubcategories = category.tabs[idx].subcategories.map(
@@ -167,6 +214,11 @@ export default function StepTabbed({
           return {
             ...sub,
             selectedOption: firstOption, // keep only the first option
+            dynamicOption: sub,
+            // dynamicOption:
+            //   sub.selectedOption && sub.selectedOption.length
+            //     ? sub.selectedOption
+            //     : [],
             options: sub?.options || [],
           };
         }
@@ -185,6 +237,8 @@ export default function StepTabbed({
         tab: updatedSubcategories,
         microwave: prevCategory?.microwave ?? null, // <-- keep it
       };
+
+      console.log('updatedCategory 77', updatedCategory);
 
       // 🔁 Merge into existing categories
       const mergedCategories = selectedStateProduct.categories.map((cat) =>
@@ -230,9 +284,28 @@ export default function StepTabbed({
     setActiveTab(tabIndex);
     setIsTabActive(true);
 
+    console.log('currentCategoryFromRedux', currentCategoryFromRedux);
     setSelectedImageOption(currentCategoryFromRedux);
+    setDynamicOptions(currentCategoryFromRedux.tab);
+    
+    // ✅ Normalize selectedOptions to a single, consistent shape
+    const normalized = currentCategoryFromRedux.tab.map((sub) => {
+      const sel = sub.selectedOption ?? sub.options?.[0] ?? null;
+      return {
+        subcategoryId: sub.id,
+        id: sel?.id ?? null,
+        name: sel?.name ?? sub.name ?? "",
+        image: sel?.image ?? sub.image ?? "",
+        // carry optional fields if you like
+        selectedOption: sel,
+        dynamicOption: sel,
+      };
+    });
+    setSelectedOptions(normalized);
   }, [category]);
-  // console.log('selectedOptions', selectedOptions);
+  console.log('dynamic loaded', dynamicOptions);
+  console.log('selected loaded', selectedOptions);
+  //console.log('currentTab?.subcategories', currentTab?.subcategories);
 
   // ✅ Helper: currently selected microwave id for this category (from Redux)
   const selectedMicrowaveId =
@@ -260,6 +333,8 @@ export default function StepTabbed({
     );
   };
 
+  // console.log('selected options: ', selectedOptions);
+  // console.log('dynamic options: ', dynamicOptions);
   return (
     <>
       <HeroBanner selectedOption={selectedImageOption} />
@@ -302,21 +377,40 @@ export default function StepTabbed({
               <h3 className="text-2xl font-hn-bold-tight inline-block w-3/4 text-thinGray mt-10 mb-5">
                 This style comes with the following finishes:
               </h3>
-              <div className="multiple-options flex flex-col md:flex-row gap-5">
+              <div className="multiple-options flex flex-col md:flex-row gap-x-8">
                 {currentTab?.subcategories?.map((sub) => {
-                  const selectedForThisSub = selectedOptions.find(
-                    (o) => o.subcategoryId === sub.id
-                  );
-
-                  const displayImage =
-                    selectedForThisSub?.image || sub.options[0]?.image;
-                  //const firstOption = sub.options[0];
                   const isActive = selectedSubcategoryId === sub.id;
+
+                  // Prefer clicked entry (subcategoryId), then fallback to Redux/tab entry (id)
+                  const dynFromClick = dynamicOptions?.find(
+                    (o) => String(o.subcategoryId) === String(sub.id)
+                  );
+                  const dynFromRedux = dynamicOptions?.find(
+                    (o) => String(o.id) === String(sub.id)
+                  );
+                  const dynEntry = dynFromClick ?? dynFromRedux;
+
+                  const dyn = dynEntry?.dynamicOption; // may be undefined
+                  const hasDynObject = !!dyn;
+
+                  console.log("Inn dynamicOptions", dynamicOptions, "dyn", dyn);
+
+                  const displayImage = hasDynObject
+                    ? dyn?.image ?? sub?.image ?? sub?.options?.[0]?.image ?? ""
+                    : dynEntry?.image ??
+                      sub?.image ??
+                      sub?.options?.[0]?.image ??
+                      "";
+
+                  const displayName = hasDynObject
+                    ? dyn?.name ?? sub?.name ?? ""
+                    : dynEntry?.name ?? sub?.name ?? "";
+
                   return (
                     <div
                       key={sub.id}
                       onClick={() => handleColorOptionClick(sub.id)}
-                      className="md:flex-[1_1_20%] md:max-w-[20%] cursor-pointer relative"
+                      className="md:flex-[1_1_16.666%] md:max-w-[16.666%] cursor-pointer relative"
                     >
                       {/* Shadow layer */}
                       {isActive && (
@@ -335,7 +429,7 @@ export default function StepTabbed({
                                 : `https://placehold.co/250x250?text=ADU`
                             }
                             alt={sub.label}
-                            wrapperClassName="h-full"
+                            wrapperClassName="h-full w-full"
                             className="w-full h-full object-contain"
                             effect="opacity"
                             threshold={100}
@@ -348,7 +442,7 @@ export default function StepTabbed({
                           } pb-4`}
                         >
                           <h4 className="text-secondary-green text-xl font-hn-bold-tight">
-                            {sub?.name}
+                            {displayName}
                           </h4>
                           <h5 className="text-green text-[15px]">
                             {sub.subtitle}
@@ -370,7 +464,7 @@ export default function StepTabbed({
                                 (o) => o.subcategoryId === sub.id
                               );
                               const isSelected = selectedForThisSub
-                                ? selectedForThisSub.optionId === opt.id
+                                ? selectedForThisSub.id === opt.id
                                 : index === 0;
 
                               return (
@@ -435,13 +529,8 @@ export default function StepTabbed({
               <div className="slick-wrapper w-full overflow-hidden relative">
                 <Slider {...settings}>
                   {selectedSubcategory.options.map((opt, index) => {
-                    const selectedForThisSub = selectedOptions.find(
-                      (o) => o.subcategoryId === selectedSubcategory.id
-                    );
-
-                    const isSelected = selectedForThisSub
-                      ? selectedForThisSub.optionId === opt.id
-                      : index === 0;
+                    const selectedId = getSelectedIdForSub(selectedSubcategory);
+                    const isSelected = selectedId === opt.id;
 
                     return (
                       <div
