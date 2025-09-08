@@ -91,7 +91,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
             <div className="text-center">Loading ...</div>
           ) : (
             <div className="flex flex-col md:flex-row items-center gap-5">
-              <div className="image-wrap w-full md:w-1/2">
+              <div className="image-wrap w-full md:w-3/5">
                 <LazyLoadImage
                   className="mx-auto block"
                   alt={selectedFloor.name}
@@ -102,7 +102,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                   }`}
                 />
               </div>
-              <div className="description w-full md:w-1/2">
+              <div className="description w-full md:w-2/5">
                 <h4 className="text-xl text-left font-normal my-3">
                   {/* {floors.length} Floor Plan Options: */}
                   Floor Plan Options:
