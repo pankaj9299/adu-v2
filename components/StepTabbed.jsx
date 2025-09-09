@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
 import StepDots from "./StepDots";
+import StepFooterNav from "./StepFooterNav";
 
 function SampleNextArrow({ className, style, onClick }) {
   return (
@@ -129,10 +130,9 @@ export default function StepTabbed({
     return sub.options?.[0]?.id ?? null;
   };
 
-
   const handleOptionSelect = (subcategoryId, option) => {
     // 🔄 Update local UI state
-    console.log('select options: ', selectedOptions);
+    console.log("select options: ", selectedOptions);
     setSelectedOptions((prev) => {
       const filtered = prev.filter(
         (item) => (item.subcategoryId ?? item.id) !== subcategoryId
@@ -165,7 +165,7 @@ export default function StepTabbed({
           dynamicOption: option,
         },
       ];
-    }); 
+    });
 
     // ✅ Update Redux state for the selected option
     if (selectedStateProduct?.categories) {
@@ -180,7 +180,7 @@ export default function StepTabbed({
             return {
               ...sub,
               selectedOption: option,
-              dynamicOption: option
+              dynamicOption: option,
             };
           }),
         };
@@ -202,7 +202,7 @@ export default function StepTabbed({
     setSelectedSubcategoryId(null); // reset on tab change
     setSelectedOptions([]);
     setDynamicOptions([]);
-    
+
     // State
     if (selectedStateProduct?.categories) {
       const updatedSubcategories = category.tabs[idx].subcategories.map(
@@ -223,8 +223,9 @@ export default function StepTabbed({
       );
 
       // ✅ Preserve previous microwave selection (if any)
-      const prevCategory =
-        selectedStateProduct.categories.find((c) => c.id === category.id);
+      const prevCategory = selectedStateProduct.categories.find(
+        (c) => c.id === category.id
+      );
 
       const updatedCategory = {
         id: category.id,
@@ -236,7 +237,7 @@ export default function StepTabbed({
         microwave: prevCategory?.microwave ?? null, // <-- keep it
       };
 
-      console.log('updatedCategory 77', updatedCategory);
+      console.log("updatedCategory 77", updatedCategory);
 
       // 🔁 Merge into existing categories
       const mergedCategories = selectedStateProduct.categories.map((cat) =>
@@ -282,10 +283,10 @@ export default function StepTabbed({
     setActiveTab(tabIndex);
     setIsTabActive(true);
 
-    console.log('currentCategoryFromRedux', currentCategoryFromRedux);
+    console.log("currentCategoryFromRedux", currentCategoryFromRedux);
     setSelectedImageOption(currentCategoryFromRedux);
     setDynamicOptions(currentCategoryFromRedux.tab);
-    
+
     // ✅ Normalize selectedOptions to a single, consistent shape
     const normalized = currentCategoryFromRedux.tab.map((sub) => {
       const sel = sub.selectedOption ?? sub.options?.[0] ?? null;
@@ -301,14 +302,13 @@ export default function StepTabbed({
     });
     setSelectedOptions(normalized);
   }, [category]);
-  console.log('dynamic loaded', dynamicOptions);
-  console.log('selected loaded', selectedOptions);
+  console.log("dynamic loaded", dynamicOptions);
+  console.log("selected loaded", selectedOptions);
   //console.log('currentTab?.subcategories', currentTab?.subcategories);
 
   // ✅ Helper: currently selected microwave id for this category (from Redux)
   const selectedMicrowaveId =
-    selectedStateProduct?.categories
-      ?.find((c) => c.id === category.id)
+    selectedStateProduct?.categories?.find((c) => c.id === category.id)
       ?.microwave?.microwave_id ?? null;
 
   // ✅ NEW: handle microwave select (one at a time, replaces previous)
@@ -710,34 +710,25 @@ export default function StepTabbed({
       )}
       {selectedProduct?.product_name && (
         <>
-          <section className="button p-0">
-            {/* <div className="container flex gap-5"> */}
-            {/* <Button onClick={goBack} disabled={currentStep === 0}>
-                {"< Back"}
-              </Button> */}
-            {/* <Button onClick={() => goNext(isTabActive)}>
-                {isLastStep ? "Review >" : `${nextCategory} >`}
-              </Button> */}
-            {/* </div> */}
-            <div className="container">
-              <div className="flex gap-3">
-                <Button
-                  className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer"
-                  onClick={goBack}
-                  disabled={currentStep === 0}
-                >
-                  {"< Back"}
-                </Button>
-                <Button 
-                  className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer"
-                  onClick={() => goNext(isTabActive)}>
-                  {isLastStep ? "Review >" : `${nextCategory} >`}
-                </Button>
-              </div>
-              <StepDots categories={categories} currentStep={currentStep} />
-            </div>
-          </section>
-          <CostSummary />
+          <StepFooterNav
+            goBack={goBack}
+            goNext={() => goNext(isTabActive)} // preserve your goNext(isTabActive) behavior
+            currentStep={currentStep}
+            isLastStep={isLastStep}
+            nextCategory={nextCategory}
+            categories={categories}
+          />
+
+          {/* Keep CostSummary; showFooterNav=false so we don’t render the footer twice */}
+          <CostSummary
+            showFooterNav={true}
+            goBack={goBack}
+            goNext={() => goNext(isTabActive)}
+            currentStep={currentStep}
+            isLastStep={isLastStep}
+            nextCategory={nextCategory}
+            categories={categories}
+          />
         </>
       )}
     </>

@@ -4,12 +4,13 @@ import SubcategorySelector from "./SubcategorySelector";
 import AddonsSelector from "./AddonsSelector";
 import HeroBanner from "./HeroBanner";
 import Intro from "./Intro";
-import Button from "./Button";
+//import Button from "./Button";
 import CostSummary from "./CostSummary";
 
 import { setProduct } from "../src/store/slices/configuratorSlice";
 import { useDispatch, useSelector } from "react-redux";
 import StepDots from "./StepDots";
+import StepFooterNav from "./StepFooterNav";
 // import { mergeCategoryWithSubcategory } from "../utils/mergeCategory";
 
 export default function StepDefault({ category, categories, nextCategory, goBack, goNext, currentStep, isLastStep }) {
@@ -98,14 +99,15 @@ export default function StepDefault({ category, categories, nextCategory, goBack
     <div>
       <HeroBanner selectedOption={selectedImageOption} />
       <Intro name={category.name} />
-      {(category.subcategories.length === 0 && category.addons.length === 0) ? (
+      {category.subcategories.length === 0 && category.addons.length === 0 ? (
         <section className="multiple-color py-20">
           <div className="container">
-            <h3 className="text-center">No selections to be made here. Please proceed.</h3>
+            <h3 className="text-center">
+              No selections to be made here. Please proceed.
+            </h3>
           </div>
         </section>
-      ) : 
-      (
+      ) : (
         <section className="multiple-color p-0 relative md:-top-15">
           <div className="container">
             {category.subcategories.map((sub, index) => (
@@ -113,7 +115,9 @@ export default function StepDefault({ category, categories, nextCategory, goBack
                 key={sub.id}
                 subcategory={sub}
                 category={category}
-                onSelectOption={index === 0 ? handleFirstSubcategoryChange : null}
+                onSelectOption={
+                  index === 0 ? handleFirstSubcategoryChange : null
+                }
               />
             ))}
             <AddonsSelector
@@ -127,15 +131,7 @@ export default function StepDefault({ category, categories, nextCategory, goBack
       {/* {selectedProduct?.product_name && <CostSummary />} */}
       {selectedProduct?.product_name && (
         <>
-          <section className="button py-0">
-            {/* <div className="container flex gap-5"> */}
-              {/* <Button onClick={goBack} disabled={currentStep === 0}>
-                {"< Back"}
-              </Button> */}
-              {/* <Button onClick={goNext}>
-                {isLastStep ? "Review >" : `${nextCategory} >`}
-              </Button> */}
-            {/* </div> */}
+          {/* <section className="button py-0">
             <div className="container">
               <div className="flex gap-3">
                 <Button 
@@ -151,8 +147,26 @@ export default function StepDefault({ category, categories, nextCategory, goBack
               </div>
               <StepDots categories={categories} currentStep={currentStep} />
             </div>
-          </section>
-          <CostSummary />
+          </section> */}
+          <StepFooterNav
+            goBack={goBack}
+            goNext={goNext}
+            currentStep={currentStep}
+            isLastStep={isLastStep}
+            nextCategory={nextCategory}
+            categories={categories}
+          />
+          <CostSummary
+            // pass through if you want CostSummary to also show the same footer,
+            // set to false if you ONLY want the footer here:
+            showFooterNav={true}
+            goBack={goBack}
+            goNext={goNext}
+            currentStep={currentStep}
+            isLastStep={isLastStep}
+            nextCategory={nextCategory}
+            categories={categories}
+          />
         </>
       )}
     </div>
