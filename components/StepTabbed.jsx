@@ -110,61 +110,117 @@ export default function StepTabbed({
     ],
   };
 
-  const getSelectedIdForSub = (sub) => {
-    // 1) local normalized selection
-    const local = selectedOptions.find(
-      (o) => (o.subcategoryId ?? o.id) === sub.id
-    );
-    if (local?.id) return local.id;
+  // Grab current category from Redux
+  const getCat = () =>
+    selectedStateProduct?.categories?.find((c) => c.id === category.id);
 
-    // 2) dynamicOptions fallback (covers both {subcategoryId} and {id} shapes)
-    const dynEntry =
-      dynamicOptions?.find((o) => (o.subcategoryId ?? o.id) === sub.id) ?? null;
-    if (dynEntry?.selectedOption?.id) return dynEntry.selectedOption.id;
-    if (dynEntry?.dynamicOption?.id) return dynEntry.dynamicOption.id;
+  // Grab subcategory from Redux by id
+  const getReduxSub = (subId) =>
+    getCat()?.tab?.find((s) => String(s.id) === String(subId));
 
-    // 3) sub’s own selectedOption
-    if (sub.selectedOption?.id) return sub.selectedOption.id;
+  const resolveDisplayForSub = (sub) => {
+    const rSub = getReduxSub(sub.id) ?? sub;
+    const dyn = rSub.dynamicOption; // sub (initial) or option (after click)
+    const opts = rSub.options ?? sub.options ?? [];
 
-    // 4) default to first option
-    return sub.options?.[0]?.id ?? null;
+    // Build a fast membership set for THIS subcategory's options
+    const idSet = new Set(opts.map((o) => String(o.id)));
+
+    // Is dynamicOption an option that belongs to THIS sub?
+    const dynIsOption = !!dyn && idSet.has(String(dyn.id));
+
+    // Pick the active option for display fallbacks
+    const activeOpt = dynIsOption
+      ? dyn
+      : rSub.selectedOption && idSet.has(String(rSub.selectedOption.id))
+      ? rSub.selectedOption
+      : opts[0] ?? null; // hard default to first option
+
+    // Display fields
+    const displayImage =
+      (dynIsOption ? dyn?.image : dyn?.image) ?? // if dyn is sub and has image, use it
+      rSub.image ??
+      activeOpt?.image ??
+      opts[0]?.image ??
+      "";
+
+    const displayName =
+      (dynIsOption ? dyn?.name : dyn?.name) ??
+      rSub.name ??
+      activeOpt?.name ??
+      "";
+
+    const displaySubtitle =
+      (dynIsOption ? dyn?.subtitle : dyn?.subtitle) ??
+      rSub.subtitle ??
+      activeOpt?.subtitle ??
+      "";
+
+    // Selected id for the ring — ALWAYS ensure it belongs to current opts
+
+    const selectedIdForRing = dynIsOption
+      ? String(dyn.id)
+      : rSub.selectedOption && idSet.has(String(rSub.selectedOption.id))
+      ? String(rSub.selectedOption.id)
+      : opts[0]?.id != null
+      ? String(opts[0].id)
+      : null;
+
+    return { displayImage, displayName, displaySubtitle, selectedIdForRing };
+  };
+
+  const getSelectedOptionIdForSub = (sub) => {
+    const rSub = getReduxSub(sub.id) ?? sub;
+    const opts = rSub.options ?? sub.options ?? [];
+    const selId = rSub.selectedOption?.id ?? opts[0]?.id ?? null; // default to first
+    return selId != null ? String(selId) : null;
   };
 
   const handleOptionSelect = (subcategoryId, option) => {
     // 🔄 Update local UI state
-    console.log("select options: ", selectedOptions);
-    setSelectedOptions((prev) => {
-      const filtered = prev.filter(
-        (item) => (item.subcategoryId ?? item.id) !== subcategoryId
-      );
-      return [
-        ...filtered,
-        {
-          subcategoryId,
-          id: option.id,
-          name: option.name,
-          image: option.image,
-          selectedOption: option,
-          dynamicOption: option,
-        },
-      ];
-    });
+    
+    // setSelectedOptions((prev) => {
+    //   const filtered = prev.filter(
+    //     (item) => (item.subcategoryId ?? item.id) !== subcategoryId
+    //   );
+    //   return [
+    //     ...filtered,
+    //     {
+    //       subcategoryId,
+    //       id: option.id,
+    //       name: option.name,
+    //       image: option.image,
+    //       selectedOption: option,
+    //       dynamicOption: option,
+    //     },
+    //   ];
+    // });
+
+    // setDynamicOptions((prev) => {
+    //   const filtered = prev.filter(
+    //     (item) => (item.subcategoryId ?? item.id) !== subcategoryId
+    //   );
+    //   return [
+    //     ...filtered,
+    //     {
+    //       subcategoryId,
+    //       id: option.id,
+    //       name: option.name,
+    //       image: option.image,
+    //       selectedOption: option,
+    //       dynamicOption: option,
+    //     },
+    //   ];
+    // });
 
     setDynamicOptions((prev) => {
-      const filtered = prev.filter(
-        (item) => (item.subcategoryId ?? item.id) !== subcategoryId
-      );
-      return [
-        ...filtered,
-        {
-          subcategoryId,
-          id: option.id,
-          name: option.name,
-          image: option.image,
-          selectedOption: option,
-          dynamicOption: option,
-        },
-      ];
+      const without = prev.filter((e) => e.subId !== subcategoryId);
+      return [...without, { subId: subcategoryId, selectedOption: option }];
+    });
+
+    setSelectedOptions((prev) => {
+      const without = prev.filter((e) => e.subId !== subcategoryId);
+      return [...without, { subId: subcategoryId, selectedOption: option }];
     });
 
     // ✅ Update Redux state for the selected option
@@ -174,15 +230,11 @@ export default function StepTabbed({
 
         return {
           ...cat,
-          tab: cat.tab.map((sub) => {
-            if (sub.id !== subcategoryId) return sub;
-
-            return {
-              ...sub,
-              selectedOption: option,
-              dynamicOption: option,
-            };
-          }),
+          tab: cat.tab.map((sub) =>
+            sub.id !== subcategoryId
+              ? sub
+              : { ...sub, selectedOption: option, dynamicOption: option }
+          ),
         };
       });
 
@@ -237,8 +289,6 @@ export default function StepTabbed({
         microwave: prevCategory?.microwave ?? null, // <-- keep it
       };
 
-      console.log("updatedCategory 77", updatedCategory);
-
       // 🔁 Merge into existing categories
       const mergedCategories = selectedStateProduct.categories.map((cat) =>
         cat.id === updatedCategory.id ? updatedCategory : cat
@@ -283,29 +333,21 @@ export default function StepTabbed({
     setActiveTab(tabIndex);
     setIsTabActive(true);
 
-    console.log("currentCategoryFromRedux", currentCategoryFromRedux);
     setSelectedImageOption(currentCategoryFromRedux);
-    setDynamicOptions(currentCategoryFromRedux.tab);
+    // setDynamicOptions(currentCategoryFromRedux.tab);
 
-    // ✅ Normalize selectedOptions to a single, consistent shape
+    // ✅ Normalize: one entry per subcategory
     const normalized = currentCategoryFromRedux.tab.map((sub) => {
       const sel = sub.selectedOption ?? sub.options?.[0] ?? null;
       return {
-        subcategoryId: sub.id,
-        id: sel?.id ?? null,
-        name: sel?.name ?? sub.name ?? "",
-        image: sel?.image ?? sub.image ?? "",
-        // carry optional fields if you like
-        selectedOption: sel,
-        dynamicOption: sel,
+        subId: sub.id,                // <-- stable key
+        selectedOption: sel,          // <-- the chosen option for this sub
       };
     });
     setSelectedOptions(normalized);
-  }, [category]);
-  console.log("dynamic loaded", dynamicOptions);
-  console.log("selected loaded", selectedOptions);
-  //console.log('currentTab?.subcategories', currentTab?.subcategories);
-
+    setDynamicOptions(normalized);
+  }, [category, selectedStateProduct]);
+  
   // ✅ Helper: currently selected microwave id for this category (from Redux)
   const selectedMicrowaveId =
     selectedStateProduct?.categories?.find((c) => c.id === category.id)
@@ -331,8 +373,7 @@ export default function StepTabbed({
     );
   };
 
-  // console.log('selected options: ', selectedOptions);
-  // console.log('dynamic options: ', dynamicOptions);
+  
   return (
     <>
       <HeroBanner selectedOption={selectedImageOption} />
@@ -379,34 +420,7 @@ export default function StepTabbed({
                 {currentTab?.subcategories?.map((sub) => {
                   const isActive = selectedSubcategoryId === sub.id;
 
-                  // Prefer clicked entry (subcategoryId), then fallback to Redux/tab entry (id)
-                  const dynFromClick = dynamicOptions?.find(
-                    (o) => String(o.subcategoryId) === String(sub.id)
-                  );
-                  const dynFromRedux = dynamicOptions?.find(
-                    (o) => String(o.id) === String(sub.id)
-                  );
-                  const dynEntry = dynFromClick ?? dynFromRedux;
-
-                  const dyn = dynEntry?.dynamicOption; // may be undefined
-                  const hasDynObject = !!dyn;
-
-                  console.log("Inn dynamicOptions", dynamicOptions, "dyn", dyn);
-
-                  const displayImage = hasDynObject
-                    ? dyn?.image ?? sub?.image ?? sub?.options?.[0]?.image ?? ""
-                    : dynEntry?.image ??
-                      sub?.image ??
-                      sub?.options?.[0]?.image ??
-                      "";
-
-                  const displayName = hasDynObject
-                    ? dyn?.name ?? sub?.name ?? ""
-                    : dynEntry?.name ?? sub?.name ?? "";
-
-                  const displaySubtitle = hasDynObject
-                    ? dyn?.subtitle ?? sub?.subtitle ?? ""
-                    : dynEntry?.subtitle ?? sub?.subtitle ?? "";
+                  const { displayImage, displayName, displaySubtitle } = resolveDisplayForSub(sub);
 
                   return (
                     <div
@@ -462,11 +476,9 @@ export default function StepTabbed({
                         <div className="inner-wrap mt-5 p-4 shadow-lg bg-white rounded-lg">
                           <Slider {...settings}>
                             {sub.options.map((opt, index) => {
-                              const selectedForThisSub = selectedOptions.find(
-                                (o) => o.subcategoryId === sub.id
-                              );
-                              const isSelected = selectedForThisSub
-                                ? selectedForThisSub.id === opt.id
+                              const selectedId = getSelectedOptionIdForSub(sub);
+                              const isSelected = selectedId
+                                ? String(opt.id) === selectedId
                                 : index === 0;
 
                               return (
@@ -531,8 +543,11 @@ export default function StepTabbed({
               <div className="slick-wrapper w-full overflow-hidden relative">
                 <Slider {...settings}>
                   {selectedSubcategory.options.map((opt, index) => {
-                    const selectedId = getSelectedIdForSub(selectedSubcategory);
-                    const isSelected = selectedId === opt.id;
+                    const selectedId =
+                      getSelectedOptionIdForSub(selectedSubcategory);
+                    const isSelected = selectedId
+                      ? String(opt.id) === selectedId
+                      : index === 0;
 
                     return (
                       <div
