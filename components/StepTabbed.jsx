@@ -118,55 +118,106 @@ export default function StepTabbed({
   const getReduxSub = (subId) =>
     getCat()?.tab?.find((s) => String(s.id) === String(subId));
 
+  // const resolveDisplayForSub = (sub) => {
+  //   const rSub = getReduxSub(sub.id) ?? sub;
+  //   const dyn = rSub.dynamicOption; // sub (initial) or option (after click)
+  //   const opts = rSub.options ?? sub.options ?? [];
+
+  //   // Build a fast membership set for THIS subcategory's options
+  //   const idSet = new Set(opts.map((o) => String(o.id)));
+
+  //   // Is dynamicOption an option that belongs to THIS sub?
+  //   const dynIsOption = !!dyn && idSet.has(String(dyn.id));
+
+  //   // Pick the active option for display fallbacks
+  //   const activeOpt = dynIsOption
+  //     ? dyn
+  //     : rSub.selectedOption && idSet.has(String(rSub.selectedOption.id))
+  //     ? rSub.selectedOption
+  //     : opts[0] ?? null; // hard default to first option
+
+  //   // Display fields
+  //   const displayImage =
+  //     (dynIsOption ? dyn?.image : dyn?.image) ?? // if dyn is sub and has image, use it
+  //     rSub.image ??
+  //     activeOpt?.image ??
+  //     opts[0]?.image ??
+  //     "";
+
+  //   const displayName =
+  //     (dynIsOption ? dyn?.name : dyn?.name) ??
+  //     rSub.name ??
+  //     activeOpt?.name ??
+  //     "";
+
+  //   const displaySubtitle =
+  //     (dynIsOption ? dyn?.subtitle : dyn?.subtitle) ??
+  //     rSub.subtitle ??
+  //     activeOpt?.subtitle ??
+  //     "";
+
+  //   // Selected id for the ring — ALWAYS ensure it belongs to current opts
+
+  //   const selectedIdForRing = dynIsOption
+  //     ? String(dyn.id)
+  //     : rSub.selectedOption && idSet.has(String(rSub.selectedOption.id))
+  //     ? String(rSub.selectedOption.id)
+  //     : opts[0]?.id != null
+  //     ? String(opts[0].id)
+  //     : null;
+
+  //   return { displayImage, displayName, displaySubtitle, selectedIdForRing };
+  // };
+
+  // Use dynamicOption normally (after handleTab), but for the ACTIVE sub
+// (after handleColorOptionClick) read from selectedOption instead.
+
   const resolveDisplayForSub = (sub) => {
     const rSub = getReduxSub(sub.id) ?? sub;
-    const dyn = rSub.dynamicOption; // sub (initial) or option (after click)
     const opts = rSub.options ?? sub.options ?? [];
 
-    // Build a fast membership set for THIS subcategory's options
-    const idSet = new Set(opts.map((o) => String(o.id)));
+    const isActive = String(sub.id) === String(selectedSubcategoryId);
 
-    // Is dynamicOption an option that belongs to THIS sub?
-    const dynIsOption = !!dyn && idSet.has(String(dyn.id));
+    // Pick the source object:
+    // - Active sub: use selectedOption (or first option)
+    // - Inactive sub: use dynamicOption (as set on handleTab), else fallbacks
+    const source = isActive
+      ? rSub.selectedOption ?? opts[0] ?? null
+      : rSub.dynamicOption ?? null;
 
-    // Pick the active option for display fallbacks
-    const activeOpt = dynIsOption
-      ? dyn
-      : rSub.selectedOption && idSet.has(String(rSub.selectedOption.id))
-      ? rSub.selectedOption
-      : opts[0] ?? null; // hard default to first option
+    // For inactive subs, if dynamicOption is the sub itself (your workflow),
+    // we still want to show its own name/image/subtitle; if it's an option, show that.
+    const isOptionLike =
+      !!source && opts.some((o) => String(o.id) === String(source.id));
 
-    // Display fields
     const displayImage =
-      (dynIsOption ? dyn?.image : dyn?.image) ?? // if dyn is sub and has image, use it
+      (isOptionLike ? source?.image : source?.image) ?? // option or sub, use its image if present
       rSub.image ??
-      activeOpt?.image ??
+      sub.image ??
       opts[0]?.image ??
       "";
 
     const displayName =
-      (dynIsOption ? dyn?.name : dyn?.name) ??
-      rSub.name ??
-      activeOpt?.name ??
-      "";
+      (isOptionLike ? source?.name : source?.name) ?? rSub.name ?? sub.name ?? "";
 
     const displaySubtitle =
-      (dynIsOption ? dyn?.subtitle : dyn?.subtitle) ??
+      (isOptionLike ? source?.subtitle : source?.subtitle) ??
       rSub.subtitle ??
-      activeOpt?.subtitle ??
+      sub.subtitle ??
       "";
 
-    // Selected id for the ring — ALWAYS ensure it belongs to current opts
-
-    const selectedIdForRing = dynIsOption
-      ? String(dyn.id)
-      : rSub.selectedOption && idSet.has(String(rSub.selectedOption.id))
-      ? String(rSub.selectedOption.id)
-      : opts[0]?.id != null
-      ? String(opts[0].id)
+    // For slider highlighting we always use the active sub's selectedOption (or first option)
+    const selectedIdForRing = isActive
+      ? String(rSub.selectedOption?.id ?? opts[0]?.id ?? "")
       : null;
 
-    return { displayImage, displayName, displaySubtitle, selectedIdForRing };
+    return {
+      displayImage,
+      displayName,
+      displaySubtitle,
+      selectedIdForRing,
+      isActive,
+    };
   };
 
   const getSelectedOptionIdForSub = (sub) => {
@@ -418,9 +469,9 @@ export default function StepTabbed({
               </h3>
               <div className="multiple-options flex flex-col md:flex-row gap-x-8">
                 {currentTab?.subcategories?.map((sub) => {
-                  const isActive = selectedSubcategoryId === sub.id;
+                  //const isActive = selectedSubcategoryId === sub.id;
 
-                  const { displayImage, displayName, displaySubtitle } = resolveDisplayForSub(sub);
+                  const { displayImage, displayName, displaySubtitle, isActive } = resolveDisplayForSub(sub);
 
                   return (
                     <div
@@ -475,11 +526,17 @@ export default function StepTabbed({
                       {isMobile && isActive && (
                         <div className="inner-wrap mt-5 p-4 shadow-lg bg-white rounded-lg">
                           <Slider {...settings}>
-                            {sub.options.map((opt, index) => {
-                              const selectedId = getSelectedOptionIdForSub(sub);
-                              const isSelected = selectedId
-                                ? String(opt.id) === selectedId
-                                : index === 0;
+                            {sub.options.map((opt) => {
+                              // const selectedId = getSelectedOptionIdForSub(sub);
+                              // const isSelected = selectedId
+                              //   ? String(opt.id) === selectedId
+                              //   : index === 0;
+                              const rSub = getReduxSub(sub.id) ?? sub;
+                              const opts = rSub.options ?? sub.options ?? [];
+                              const selectedId = String(
+                                rSub.selectedOption?.id ?? opts[0]?.id ?? ""
+                              );
+                              const isSelected = String(opt.id) === selectedId;
 
                               return (
                                 <div
@@ -543,11 +600,15 @@ export default function StepTabbed({
               <div className="slick-wrapper w-full overflow-hidden relative">
                 <Slider {...settings}>
                   {selectedSubcategory.options.map((opt, index) => {
-                    const selectedId =
-                      getSelectedOptionIdForSub(selectedSubcategory);
-                    const isSelected = selectedId
-                      ? String(opt.id) === selectedId
-                      : index === 0;
+                    // const selectedId =
+                    //   getSelectedOptionIdForSub(selectedSubcategory);
+                    // const isSelected = selectedId
+                    //   ? String(opt.id) === selectedId
+                    //   : index === 0;
+                    const rSub = getReduxSub(selectedSubcategory.id) ?? selectedSubcategory;
+                    const opts = rSub.options ?? selectedSubcategory.options ?? [];
+                    const selectedId = String(rSub.selectedOption?.id ?? opts[0]?.id ?? "");
+                    const isSelected = String(opt.id) === selectedId;
 
                     return (
                       <div
