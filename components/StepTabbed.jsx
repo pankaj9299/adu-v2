@@ -170,7 +170,7 @@ export default function StepTabbed({
   // };
 
   // Use dynamicOption normally (after handleTab), but for the ACTIVE sub
-// (after handleColorOptionClick) read from selectedOption instead.
+  // (after handleColorOptionClick) read from selectedOption instead.
 
   const resolveDisplayForSub = (sub) => {
     const rSub = getReduxSub(sub.id) ?? sub;
@@ -198,7 +198,10 @@ export default function StepTabbed({
       "";
 
     const displayName =
-      (isOptionLike ? source?.name : source?.name) ?? rSub.name ?? sub.name ?? "";
+      (isOptionLike ? source?.name : source?.name) ??
+      rSub.name ??
+      sub.name ??
+      "";
 
     const displaySubtitle =
       (isOptionLike ? source?.subtitle : source?.subtitle) ??
@@ -229,7 +232,7 @@ export default function StepTabbed({
 
   const handleOptionSelect = (subcategoryId, option) => {
     // 🔄 Update local UI state
-    
+
     // setSelectedOptions((prev) => {
     //   const filtered = prev.filter(
     //     (item) => (item.subcategoryId ?? item.id) !== subcategoryId
@@ -391,29 +394,72 @@ export default function StepTabbed({
     const normalized = currentCategoryFromRedux.tab.map((sub) => {
       const sel = sub.selectedOption ?? sub.options?.[0] ?? null;
       return {
-        subId: sub.id,                // <-- stable key
-        selectedOption: sel,          // <-- the chosen option for this sub
+        subId: sub.id, // <-- stable key
+        selectedOption: sel, // <-- the chosen option for this sub
       };
     });
     setSelectedOptions(normalized);
     setDynamicOptions(normalized);
   }, [category, selectedStateProduct]);
-  
-  // ✅ Helper: currently selected microwave id for this category (from Redux)
-  const selectedMicrowaveId =
-    selectedStateProduct?.categories?.find((c) => c.id === category.id)
-      ?.microwave?.microwave_id ?? null;
+
+  // ✅ Helper: currently selected microwave ids for this category (from Redux)
+  const selectedMicrowaveIds = new Set(
+    (
+      selectedStateProduct?.categories?.find((c) => c.id === category.id)
+        ?.microwave ?? []
+    ).map((m) => m.microwave_id)
+  );
 
   // ✅ NEW: handle microwave select (one at a time, replaces previous)
   const handleMicrowaveSelect = (microwaveItem) => {
     if (!selectedStateProduct?.categories) return;
 
+    const MASTER_ID = 67;
+    const MULTI_IDS = [68, 69, 70, 71];
+
+    const currentCat =
+      selectedStateProduct.categories.find((c) => c.id === category.id) ?? null;
+
+    // Normalize current state to an array
+    let current = Array.isArray(currentCat?.microwave)
+      ? [...currentCat.microwave]
+      : currentCat?.microwave
+      ? [currentCat.microwave]
+      : [];
+
+    const byId = (id) => category.microwaves.find((m) => m.microwave_id === id);
+    const hasId = (arr, id) => arr.some((m) => m.microwave_id === id);
+    const removeId = (arr, id) => arr.filter((m) => m.microwave_id !== id);
+
+    // Rule #2: clicking master -> keep only master
+    if (microwaveItem.microwave_id === MASTER_ID) {
+      current = [byId(MASTER_ID) ?? microwaveItem];
+    } else {
+      // We're toggling one of the multi items
+      // If master is present, remove it first (since we're going into granular mode)
+      current = removeId(current, MASTER_ID);
+
+      if (hasId(current, microwaveItem.microwave_id)) {
+        // toggle off
+        current = removeId(current, microwaveItem.microwave_id);
+      } else {
+        // toggle on
+        current = [...current, microwaveItem];
+      }
+
+      // Rule #1: if ALL multi ids are now selected, collapse to master only
+      const allMultiSelected = MULTI_IDS.every((id) => hasId(current, id));
+      if (allMultiSelected) {
+        current = [
+          byId(MASTER_ID) ?? { microwave_id: MASTER_ID, name: "Bundle" },
+        ];
+      }
+    }
+
+    // Write back to Redux
     const updatedCategories = selectedStateProduct.categories.map((cat) => {
       if (cat.id !== category.id) return cat;
-      return {
-        ...cat,
-        microwave: microwaveItem, // <-- sibling to `tab`, `tabNo`, etc.
-      };
+      return { ...cat, microwave: current };
     });
 
     dispatch(
@@ -424,7 +470,7 @@ export default function StepTabbed({
     );
   };
 
-  
+
   return (
     <>
       <HeroBanner selectedOption={selectedImageOption} />
@@ -471,7 +517,12 @@ export default function StepTabbed({
                 {currentTab?.subcategories?.map((sub) => {
                   //const isActive = selectedSubcategoryId === sub.id;
 
-                  const { displayImage, displayName, displaySubtitle, isActive } = resolveDisplayForSub(sub);
+                  const {
+                    displayImage,
+                    displayName,
+                    displaySubtitle,
+                    isActive,
+                  } = resolveDisplayForSub(sub);
 
                   return (
                     <div
@@ -605,9 +656,14 @@ export default function StepTabbed({
                     // const isSelected = selectedId
                     //   ? String(opt.id) === selectedId
                     //   : index === 0;
-                    const rSub = getReduxSub(selectedSubcategory.id) ?? selectedSubcategory;
-                    const opts = rSub.options ?? selectedSubcategory.options ?? [];
-                    const selectedId = String(rSub.selectedOption?.id ?? opts[0]?.id ?? "");
+                    const rSub =
+                      getReduxSub(selectedSubcategory.id) ??
+                      selectedSubcategory;
+                    const opts =
+                      rSub.options ?? selectedSubcategory.options ?? [];
+                    const selectedId = String(
+                      rSub.selectedOption?.id ?? opts[0]?.id ?? ""
+                    );
                     const isSelected = String(opt.id) === selectedId;
 
                     return (
@@ -703,11 +759,11 @@ export default function StepTabbed({
               </div>
               <div className="wrapper flex flex-col md:flex-row gap-5">
                 {category.microwaves.map((item, index) => {
-                  const isSelected = selectedMicrowaveId === item.microwave_id;
+                  const isSelected = selectedMicrowaveIds.has(item.microwave_id);
                   return (
                     <div
                       key={item.microwave_id}
-                      onClick={() => handleMicrowaveSelect(item)}
+                      onClick={() => handleMicrowaveSelect(item, index)}
                       className={`wrap md:flex-[1_1_20%] md:max-w-[20%] cursor-pointer relative border-2 rounded-lg transition px-3 py-1
                         ${
                           isSelected

@@ -20,12 +20,26 @@ const CostSummary = ({
   );
 
   // Only show footer if explicitly allowed AND at least one handler exists
-  const hasNavHandlers = typeof goBack === "function" || typeof goNext === "function";
+  const hasNavHandlers =
+    typeof goBack === "function" || typeof goNext === "function";
   const shouldShowFooter = Boolean(showFooterNav && hasNavHandlers);
 
   const imageUrl = findImageByProduct(selectedProductState.product_name);
 
   const parsePrice = (priceStr) => Number(priceStr?.replace(/[^\d]/g, "")) || 0;
+
+  // --- Microwave helpers ---
+  const normalizeMicrowaves = (category) => {
+    const m = category?.microwave;
+    if (!m) return [];
+    return Array.isArray(m) ? m : [m];
+  };
+
+  const microwavePrice = (m) => {
+    const dp = Number(m?.discount_price ?? 0);
+    const p = Number(m?.price ?? 0);
+    return dp > 0 ? dp : p;
+  };
 
   const calculateTotal = () => {
     const basePrice = parsePrice(selectedProductState.product_price);
@@ -51,13 +65,11 @@ const CostSummary = ({
           return sum + (addon.price || 0);
         }, 0) || 0;
 
-      let microwaveTotal = 0;
-      if ("microwave" in category && category.microwave !== null) {
-        microwaveTotal =
-          category.microwave.discount_price != 0
-            ? category.microwave.discount_price
-            : category.microwave.price;
-      }
+      // Handle microwave (array or single; bundle collapses to one item)
+      const microwaveTotal = normalizeMicrowaves(category).reduce(
+        (sum, m) => sum + microwavePrice(m),
+        0
+      );
 
       return catSum + subcatTotal + tabTotal + addonTotal + microwaveTotal;
     }, 0);
@@ -99,7 +111,8 @@ const CostSummary = ({
             const hasContent =
               (category.subcategories?.length ?? 0) > 0 ||
               (category.tab?.length ?? 0) > 0 ||
-              (category.addons?.length ?? 0) > 0;
+              (category.addons?.length ?? 0) > 0 ||
+              normalizeMicrowaves(category).length > 0;
 
             return (
               hasContent && (
@@ -170,11 +183,11 @@ const CostSummary = ({
                         </div>
                       ))}
 
-                      {/* Microwave */}
-                      {"microwave" in category &&
-                        category.microwave !== null && (
+                      {/* Microwave (supports bundle 67 or multiple items) */}
+                      {normalizeMicrowaves(category).length > 0 &&
+                        normalizeMicrowaves(category).map((m) => (
                           <div
-                            key={`addon-${category?.microwave.id}`}
+                            key={`microwave-${m.microwave_id}`}
                             className="flex justify-between border-b border-secondary-dark-gray"
                           >
                             <div className="left flex gap-4">
@@ -185,24 +198,19 @@ const CostSummary = ({
                               </div>
                               <div className="second">
                                 <p className="font-normal py-2 text-dark-green">
-                                  {category?.microwave.name}
+                                  {m?.name ?? "Microwave"}
                                 </p>
                               </div>
                             </div>
                             <div className="right">
                               <div className="third">
                                 <p className="font-normal py-2 text-dark-green">
-                                  $
-                                  {category?.microwave.discount_price
-                                    ? category?.microwave.discount_price?.toLocaleString() ||
-                                      "0"
-                                    : category?.microwave.price?.toLocaleString() ||
-                                      "0"}
+                                  ${microwavePrice(m).toLocaleString()}
                                 </p>
                               </div>
                             </div>
                           </div>
-                        )}
+                        ))}
 
                       {/* Addons */}
                       {category.addons?.map((addon) => (
