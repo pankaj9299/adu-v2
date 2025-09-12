@@ -67,6 +67,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
         floor_id: selectedFloor.id,
         floor_name: selectedFloor.name,
         floor_image: selectedFloor.image,
+        floor_image_two: selectedFloor.image_two,
       })
     );
     // TODO: Implement navigation to StepThree or customization logic
@@ -98,7 +99,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                   effect="opacity"
                   threshold={100}
                   src={`${import.meta.env.VITE_API_DOMAIN}/${
-                    selectedFloor.image
+                    selectedFloor.image_two
                   }`}
                 />
               </div>
