@@ -41,6 +41,14 @@ const CostSummary = ({
     return dp > 0 ? dp : p;
   };
 
+  // --- Bathroom helpers ---
+  const isBathroomName = (name) =>
+    typeof name === "string" && name.trim().toLowerCase() === "bathroom";
+  const bathroomDisplayText = (selectedOption) =>
+    (selectedOption?.subtitle && selectedOption.subtitle.trim()) ||
+    selectedOption?.name ||
+    "Not Selected";
+
   const calculateTotal = () => {
     const basePrice = parsePrice(selectedProductState.product_price);
 
@@ -137,7 +145,9 @@ const CostSummary = ({
                             </div>
                             <div className="second">
                               <p className="font-normal text-dark-green py-2">
-                                {sub.selectedOption?.name || "Not Selected"}
+                                {isBathroomName(category.name)
+                                  ? bathroomDisplayText(sub.selectedOption)
+                                  : sub.selectedOption?.name || "Not Selected"}
                               </p>
                             </div>
                           </div>
@@ -167,7 +177,9 @@ const CostSummary = ({
                             </div>
                             <div className="second">
                               <p className="font-normal py-2 text-dark-green">
-                                {tab.selectedOption?.name || "Not Selected"}
+                                {isBathroomName(category.name)
+                                  ? bathroomDisplayText(tab.selectedOption)
+                                  : tab.selectedOption?.name || "Not Selected"}
                               </p>
                             </div>
                           </div>

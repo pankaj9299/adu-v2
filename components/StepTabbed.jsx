@@ -50,6 +50,10 @@ export default function StepTabbed({
   currentStep,
   isLastStep,
 }) {
+    const isBathroom =
+      typeof category?.name === "string" &&
+      category.name.trim().toLowerCase() === "bathroom";
+
   const [isMobile, setIsMobile] = useState(false);
   const [isTabActive, setIsTabActive] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -183,7 +187,7 @@ export default function StepTabbed({
     // - Inactive sub: use dynamicOption (as set on handleTab), else fallbacks
     const source = isActive
       ? rSub.selectedOption ?? opts[0] ?? null
-      : rSub.dynamicOption ?? null;
+      : rSub.dynamicOption ?? opts[0] ?? null; // 👈 fallback to first option for inactive
 
     // For inactive subs, if dynamicOption is the sub itself (your workflow),
     // we still want to show its own name/image/subtitle; if it's an option, show that.
@@ -197,11 +201,14 @@ export default function StepTabbed({
       opts[0]?.image ??
       "";
 
-    const displayName =
-      (isOptionLike ? source?.name : source?.name) ??
-      rSub.name ??
-      sub.name ??
-      "";
+    // ✅ Bathroom-only: lock title to subcategory name; others unchanged
+    const displayName = isBathroom
+      ? sub.name ?? rSub.name ?? ""
+      : (isOptionLike ? source?.name : source?.name) ??
+        rSub.name ??
+        sub.name ??
+        opts[0]?.name ??
+        "";
 
     const displaySubtitle =
       (isOptionLike ? source?.subtitle : source?.subtitle) ??
@@ -306,8 +313,8 @@ export default function StepTabbed({
     setIsTabActive(true);
     setActiveTab(idx);
     setSelectedSubcategoryId(null); // reset on tab change
-    setSelectedOptions([]);
-    setDynamicOptions([]);
+    // setSelectedOptions([]);
+    // setDynamicOptions([]);
 
     // State
     if (selectedStateProduct?.categories) {
@@ -317,8 +324,11 @@ export default function StepTabbed({
 
           return {
             ...sub,
-            selectedOption: firstOption, // keep only the first option
-            dynamicOption: sub,
+            // ✅ Make the "default" be the first slick item
+            selectedOption: firstOption,
+            dynamicOption: firstOption,
+            //selectedOption: firstOption, // keep only the first option
+            //dynamicOption: sub,
             // dynamicOption:
             //   sub.selectedOption && sub.selectedOption.length
             //     ? sub.selectedOption
@@ -362,6 +372,14 @@ export default function StepTabbed({
           categories: finalCategories,
         })
       );
+
+      // ✅ Immediately reflect defaults in local UI state too
+      const normalized = updatedSubcategories.map((sub) => ({
+        subId: sub.id,
+        selectedOption: sub.selectedOption ?? sub.options?.[0] ?? null,
+      }));
+      setSelectedOptions(normalized);
+      setDynamicOptions(normalized);
     }
   };
 
@@ -698,10 +716,19 @@ export default function StepTabbed({
                           />
                         </div>
                         <div className="details">
-                          <h4 className="text-secondary-green text-xl font-bold mt-5">
-                            {opt.name}
-                          </h4>
-                          <h5 className="text-green text-[15px]">
+                          {/* Bathroom: hide title; subtitle styled like title. Others: unchanged */}
+                          {!isBathroom && (
+                            <h4 className="text-secondary-green text-xl font-bold mt-5">
+                              {opt.name}
+                            </h4>
+                          )}
+                          <h5
+                            className={
+                              isBathroom
+                                ? "text-secondary-green text-xl font-bold mt-5"
+                                : "text-green text-[15px]"
+                            }
+                          >
                             {opt.subtitle}
                           </h5>
                           {index === 0 && (
