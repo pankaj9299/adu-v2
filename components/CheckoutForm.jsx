@@ -56,6 +56,8 @@ const CheckoutForm = () => {
         selectedProduct: selectedProductState,
       };
 
+      console.log('payload', payload);
+
       const response = await axios.post(
         `${import.meta.env.VITE_API_DOMAIN}/pdfgenerator-save-and-email`,
         payload,

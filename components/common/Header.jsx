@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -8,8 +8,27 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log("window.scrollY =", window.scrollY); // 👈 should fire on scroll
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []); // run once on mount
+
+  console.log("scrollY", scrollY);
+
   return (
-    <header className="py-5 bg-gray mb-0">
+    // <header className={`py-5 ${headerClass} mb-0`}>
+    <header
+      className={`py-5 mb-0 ${
+        scrollY > 10 ? "bg-gray shadow-md" : "bg-white"
+      }`}
+    >
       <div className="container mx-auto px-4">
         <div className="wrapper w-full flex items-center justify-between">
           {/* Logo (Uncomment if needed) */}
@@ -102,7 +121,7 @@ const Header = () => {
         {/* Mobile Menu (Toggles based on state) */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+            isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <nav className="mt-4">

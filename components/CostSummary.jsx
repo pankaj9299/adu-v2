@@ -205,7 +205,7 @@ const CostSummary = ({
                             <div className="left flex gap-4">
                               <div className="first w-[173px] text-left">
                                 <p className="font-normal bg-yellow py-2 pl-5 text-dark-green">
-                                  Microwave
+                                  Appliances
                                 </p>
                               </div>
                               <div className="second">
