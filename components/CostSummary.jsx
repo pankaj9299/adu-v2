@@ -273,6 +273,20 @@ const CostSummary = ({
                   </p>
                 </div>
               </div>
+              {/* Monthly Expenses */}
+              <div className="flex justify-end">
+                <div className="w-full max-w-[715px] flex items-center justify-between gap-5 border-b border-gray pb-2 mt-5">
+                  <h3 className="font-bold text-lightYellow py-2 md:text-3xl font-helvetica-neue-bold">
+                    Approx. Monthly Payment
+                  </h3>
+                  <p className="text-[#263824] text-xl font-bold">$x,xxx /month</p>
+                </div>
+              </div>
+
+              <p className="text-[#263824] text-sm mt-3 text-right">
+                *Based on a 30-year term at 6%. This is an estimate only. Actual financing terms may vary.
+              </p>
+
             </div>
           </div>
 
