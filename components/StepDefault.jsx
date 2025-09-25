@@ -125,6 +125,14 @@ export default function StepDefault({ category, categories, nextCategory, goBack
               categoryId={category.id}
               categoryName={category.name}
             />
+            {/* Monthly Expenses */}
+            <div className="max-w-[700px] flex items-center justify-between border-b border-gray pb-2 mt-10">
+              <h3 className="text-2xl text-dark-teal font-helvetica-neue-bold mb-0">
+                Approx. Monthly Payment
+              </h3>
+              <p className="text-[#263824] text-xl font-bold">$x,xxx /month</p>
+            </div>
+            <p className="text-[#263824] text-sm mt-3">*Based on a 30-year term at 6%. This is an estimate only. Actual financing terms may vary.</p>
           </div>
         </section>
       )}
