@@ -11,11 +11,22 @@ import { setProduct } from "../src/store/slices/configuratorSlice";
 import { useDispatch, useSelector } from "react-redux";
 import StepDots from "./StepDots";
 import StepFooterNav from "./StepFooterNav";
+import { approxMonthlyPayment } from "../utils/helpers";
 // import { mergeCategoryWithSubcategory } from "../utils/mergeCategory";
 
-export default function StepDefault({ category, categories, nextCategory, goBack, goNext, currentStep, isLastStep }) {
+export default function StepDefault({
+  category,
+  categories,
+  nextCategory,
+  goBack,
+  goNext,
+  currentStep,
+  isLastStep,
+}) {
   const dispatch = useDispatch();
-  const selectedProduct = useSelector((state) => state.configurator.selectedProduct);
+  const selectedProduct = useSelector(
+    (state) => state.configurator.selectedProduct
+  );
 
   const [selectedImageOption, setSelectedImageOption] = useState(null);
 
@@ -28,20 +39,20 @@ export default function StepDefault({ category, categories, nextCategory, goBack
   //   if (!selectedProduct?.categories?.length) {
   //     const updatedSubcategories = category.subcategories.map((sub) => {
   //       const firstOption = sub.options?.[0] || null;
-  
+
   //       return {
   //         ...sub,
   //         selectedOption: firstOption, // keep only the first option
-  //         options: sub?.options || [], 
+  //         options: sub?.options || [],
   //       };
   //     });
-  
+
   //     const updatedCategory = {
   //       ...category,
   //       subcategories: updatedSubcategories,
   //       addons: [],
   //     };
-  
+
   //     dispatch(
   //       setProduct({
   //         ...selectedProduct,
@@ -49,10 +60,12 @@ export default function StepDefault({ category, categories, nextCategory, goBack
   //       })
   //     );
   //   }
-  // }, [category, dispatch, selectedProduct]);  
-  
+  // }, [category, dispatch, selectedProduct]);
+
   useEffect(() => {
-    const existing = selectedProduct?.categories?.find(cat => cat.id === category.id);
+    const existing = selectedProduct?.categories?.find(
+      (cat) => cat.id === category.id
+    );
     const hasFirstSubcategory = existing?.subcategories?.length > 0;
     const firstSelectedOption = existing?.subcategories?.[0]?.selectedOption;
     if (hasFirstSubcategory) {
@@ -64,37 +77,87 @@ export default function StepDefault({ category, categories, nextCategory, goBack
 
   useEffect(() => {
     if (!category || !category.id) return;
-  
+
     const existingCategories = selectedProduct?.categories || [];
-  
-    const categoryExists = existingCategories.some(cat => cat.id === category.id);
-  
+
+    const categoryExists = existingCategories.some(
+      (cat) => cat.id === category.id
+    );
+
     if (!categoryExists) {
       const updatedSubcategories = category.subcategories.map((sub) => {
         const firstOption = sub.options?.[0] || null;
-  
+
         return {
           ...sub,
           selectedOption: firstOption,
           options: sub.options || [],
         };
       });
-  
+
       const newCategory = {
         ...category,
         subcategories: updatedSubcategories,
         addons: [],
       };
-  
+
       const updatedProduct = {
         ...selectedProduct,
         categories: [...existingCategories, newCategory],
       };
-  
+
       dispatch(setProduct(updatedProduct));
     }
   }, [category, dispatch, selectedProduct]);
-  
+
+  // --- Microwave helpers ---
+  const normalizeMicrowaves = (category) => {
+    const m = category?.microwave;
+    if (!m) return [];
+    return Array.isArray(m) ? m : [m];
+  };
+
+  const parsePrice = (priceStr) => Number(priceStr?.replace(/[^\d]/g, "")) || 0;
+  const calculateTotal = () => {
+    const basePrice = parsePrice(selectedProduct.product_price);
+
+    const categories = selectedProduct.categories || [];
+
+    const categoryTotal = categories.reduce((catSum, category) => {
+      // Handle subcategories (default)
+      const subcatTotal =
+        category.subcategories?.reduce((sum, sub) => {
+          return sum + (sub.selectedOption?.price || 0);
+        }, 0) || 0;
+
+      // Handle tabbed subcategories (tabbed)
+      const tabTotal =
+        category.tab?.reduce((sum, tab) => {
+          return sum + (tab.selectedOption?.price || 0);
+        }, 0) || 0;
+
+      // Handle addons
+      const addonTotal =
+        category.addons?.reduce((sum, addon) => {
+          return sum + (addon.price || 0);
+        }, 0) || 0;
+
+      // Handle microwave (array or single; bundle collapses to one item)
+      const microwaveTotal = normalizeMicrowaves(category).reduce(
+        (sum, m) => sum + microwavePrice(m),
+        0
+      );
+
+      return catSum + subcatTotal + tabTotal + addonTotal + microwaveTotal;
+    }, 0);
+
+    return (basePrice + categoryTotal).toLocaleString();
+  };
+
+  // Monthly calculations
+  const principalRaw = calculateTotal();
+  const monthly = approxMonthlyPayment(principalRaw, 6, 30);
+
   return (
     <div>
       <HeroBanner selectedOption={selectedImageOption} />
@@ -130,9 +193,14 @@ export default function StepDefault({ category, categories, nextCategory, goBack
               <h3 className="text-2xl text-dark-teal font-helvetica-neue-bold mb-0">
                 Approx. Monthly Payment
               </h3>
-              <p className="text-[#263824] text-xl font-bold">$x,xxx /month</p>
+              <p className="text-[#263824] text-xl font-bold">
+                {monthly != null ? `$${monthly} /month` : "—"}
+              </p>
             </div>
-            <p className="text-[#263824] text-sm mt-3">*Based on a 30-year term at 6%. This is an estimate only. Actual financing terms may vary.</p>
+            <p className="text-[#263824] text-sm mt-3">
+              *Based on a 30-year term at 6%. This is an estimate only. Actual
+              financing terms may vary.
+            </p>
           </div>
         </section>
       )}

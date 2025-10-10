@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { findImageByProduct } from "../utils/helpers";
+import { approxMonthlyPayment, findImageByProduct } from "../utils/helpers";
 import StepFooterNav from "./StepFooterNav";
 
 const CostSummary = ({
@@ -84,6 +84,10 @@ const CostSummary = ({
 
     return (basePrice + categoryTotal).toLocaleString();
   };
+
+  // Monthly calculations
+  const principalRaw = calculateTotal();
+  const monthly = approxMonthlyPayment(principalRaw, 6, 30);
 
   return (
     <>
@@ -279,14 +283,16 @@ const CostSummary = ({
                   <h3 className="font-bold text-lightYellow py-2 md:text-3xl font-helvetica-neue-bold">
                     Approx. Monthly Payment
                   </h3>
-                  <p className="text-[#263824] text-xl font-bold">$x,xxx /month</p>
+                  <p className="text-[#263824] text-xl font-bold">
+                    {monthly != null ? `$${monthly} /month` : "—"}
+                  </p>
                 </div>
               </div>
 
               <p className="text-[#263824] text-sm mt-3 text-right">
-                *Based on a 30-year term at 6%. This is an estimate only. Actual financing terms may vary.
+                *Based on a 30-year term at 6%. This is an estimate only. Actual
+                financing terms may vary.
               </p>
-
             </div>
           </div>
 
