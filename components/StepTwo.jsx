@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { findImageByProduct } from '../utils/helpers';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { findImageByProduct } from "../utils/helpers";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
@@ -21,14 +21,14 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
   );
   const imageUrl = findImageByProduct(selectedProductState?.product_name);
   const dispatch = useDispatch();
-  
+
   // Redirect if page was reloaded and no selected product exists
   useEffect(() => {
     if (!selectedProductState || !selectedProductState.product_id) {
       // Reset redux state
       dispatch(setProduct(null));
-      
-      navigate('/', { replace: true });
+
+      navigate("/", { replace: true });
     }
   }, [selectedProductState, navigate]);
 
@@ -94,7 +94,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
             <div className="flex flex-col md:flex-row items-center gap-5">
               <div className="image-wrap w-full md:w-3/5">
                 <LazyLoadImage
-                  className="mx-auto block"
+                  className="mx-auto block max-h-[700px]"
                   alt={selectedFloor.name}
                   effect="opacity"
                   threshold={100}
