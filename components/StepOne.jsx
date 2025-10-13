@@ -1,9 +1,8 @@
 import React from "react";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { findImageByProduct } from '../utils/helpers';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { findImageByProduct } from "../utils/helpers";
 
 const StepOne = ({ products, onSelectProduct }) => {
-  
   return (
     <section className="step-one pt-0 h-full flex items-center">
       <div className="container">
@@ -24,12 +23,11 @@ const StepOne = ({ products, onSelectProduct }) => {
               const imageUrl = findImageByProduct(product.name);
               return (
                 <div key={product.id} className="wrap text-center">
-                  <div className="heading mb-2">
+                  <div className="heading mb-2 h-[45px] flex items-center justify-center">
                     <img
                       src={imageUrl}
                       alt={product.name}
-                      width="385"
-                      height="58"
+                      className="max-h-[45px] w-auto object-contain object-center"
                     />
                   </div>
                   <div className="image-wrap h-72 w-full bg-white overflow-hidden">

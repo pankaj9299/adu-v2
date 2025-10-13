@@ -183,11 +183,13 @@ export default function StepDefault({
                 }
               />
             ))}
-            <AddonsSelector
-              addons={category.addons}
-              categoryId={category.id}
-              categoryName={category.name}
-            />
+            {category.addons.length > 0 && (
+              <AddonsSelector
+                addons={category.addons}
+                categoryId={category.id}
+                categoryName={category.name}
+              />
+            )}
             {/* Monthly Expenses */}
             <div className="max-w-[700px] flex items-center justify-between border-b border-gray pb-2 mt-10">
               <h3 className="text-2xl text-dark-teal font-helvetica-neue-bold mb-0">
