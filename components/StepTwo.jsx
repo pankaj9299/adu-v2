@@ -138,6 +138,92 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                             .replace(/<\/pre>$/i, ""), // remove ending </pre>
                         }}
                       ></div>
+                      {/*
+                      <div className="detail">
+                        <div className="left">
+                          <div className="heading">
+                            <h3 className="text-[30px] text-left font-helvetica-neue-bold text-lightYellow">
+                              Areas
+                            </h3>
+                          </div>
+                          <div className="options flex gap-8 mt-4">
+                            <div className="first">
+                              {[
+                                { number: "01", title: "Entrance" },
+                                { number: "02", title: "Washer/Dryer" },
+                                { number: "03", title: "Kitchen" },
+                                { number: "04", title: "Living Room" },
+                              ].map((item, index) => (
+                                <div
+                                  key={index}
+                                  className="step-line flex gap-4 items-center border-b-2 border-lightYellow mb-4"
+                                >
+                                  <span className="step-number text-[24px] font-bold font-helvetica-neue-bold text-lightYellow">
+                                    {item.number}
+                                  </span>
+                                  <h4 className="step-title text-[17px] font-normal font-arial">
+                                    {item.title}
+                                  </h4>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="second">
+                              {[
+                                { number: "05", title: "Bathroom" },
+                                { number: "06", title: "Shower or Bathtub" },
+                                { number: "07", title: "Bedroom" },
+                                { number: "08", title: "Closet" },
+                              ].map((item, index) => (
+                                <div
+                                  key={index}
+                                  className="step-line flex gap-4 items-center border-b-2 border-lightYellow mb-4"
+                                >
+                                  <span className="step-number font-bold font-helvetica-neue-bold text-[24px] text-lightYellow">
+                                    {item.number}
+                                  </span>
+                                  <h4 className="step-title text-[17px] font-normal font-arial">
+                                    {item.title}
+                                  </h4>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="right mt-4">
+                          <div className="heading">
+                            <h3 className="text-[30px] text-left mb-4 font-helvetica-neue-bold font-bold text-dark-green">
+                              Add-Ons
+                            </h3>
+                          </div>
+                          <div className="options flex flex-wrap justify-between gap-5 max-w-sm">
+                            {[
+                              { number: "C1", title: "Dining Area" },
+                              {
+                                number: "C3",
+                                title:
+                                  "Bathtub or Bathtub <br>with Spa Feature",
+                              },
+                              { number: "C2", title: "Bathroom Closet" },
+                            ].map((item, index) => (
+                              <div
+                                key={index}
+                                className="step-line flex gap-4 items-center border-b-2 border-lightYellow"
+                              >
+                                <span className="step-number text-[24px] font-bold font-helvetica-neue-bold text-dark-green">
+                                  {item.number}
+                                </span>
+                                <h4
+                                  className="step-title text-[17px] font-normal font-arial max-w-3xs text-left"
+                                  dangerouslySetInnerHTML={{
+                                    __html: item.title,
+                                  }}
+                                ></h4>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      */}
                     </div>
                   </>
                 )}

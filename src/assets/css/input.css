@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -10,7 +11,7 @@ html, body {
 
 /* Add font-face here */
 @font-face {
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 200 700;
   font-display: swap;
@@ -23,18 +24,18 @@ html, body {
   --font-size-28: 1.75rem;
   --font-size-huge: 5rem;
   --font-size-banner: 6rem;
-  
+
   /* Custom colors */
   --color-brand: #3b82f6;
   --color-accent: #8b5cf6;
   --color-dark-green: #263824;
-  --color-khaki: #F1E7CE;
-  --color-marigold: #E2A002;
-  --color-dark-teal: #305D62;
-  --color-gray: #D9D9D9;
+  --color-khaki: #f1e7ce;
+  --color-marigold: #e2a002;
+  --color-dark-teal: #305d62;
+  --color-gray: #d9d9d9;
 
-  --font-family-arial: 'Arial', sans-serif;
-  --font-family-helvetica-neue-bold: 'Helvetica Neue Bold', sans-serif;
+  --font-family-arial: "Arial", sans-serif;
+  --font-family-helvetica-neue-bold: "Helvetica Neue Bold", sans-serif;
 }
 
 @custom-variant 3xl {
@@ -45,49 +46,49 @@ html, body {
 
 @theme {
   /* Custom colors */
-  --color-red: #EB0000;
+  --color-red: #eb0000;
   --color-darkGray: #282728;
   --color-purple: #373251;
-  --color-darkRed: #5A2812;
-  --color-yellow: #F1E7CE;
-  --color-lightYellow: #E2A002;
+  --color-darkRed: #5a2812;
+  --color-yellow: #f1e7ce;
+  --color-lightYellow: #e2a002;
   --color-green: #263824;
-  --color-thinGray: #305D62;
+  --color-thinGray: #305d62;
   --color-primary: #282728;
-  --color-primary-red: #EB0000;
+  --color-primary-red: #eb0000;
   --color-primary-white: #ffffff;
   --color-primary-black: #000000;
   --color-primary-dark-gray: #282728;
   --color-secondary: #0284c7;
-  --color-secondary-gray: #D3D7D7;
-  --color-secondary-dark-gray: #C4C4C4;
-  --color-secondary-light-gray: #F4F5F4;
-  --color-secondary-blue: #80DDF9;
-  --color-secondary-dark-blue: #10ADDC;
-  --color-secondary-gold: #305D62;
+  --color-secondary-gray: #d3d7d7;
+  --color-secondary-dark-gray: #c4c4c4;
+  --color-secondary-light-gray: #f4f5f4;
+  --color-secondary-blue: #80ddf9;
+  --color-secondary-dark-blue: #10addc;
+  --color-secondary-gold: #305d62;
   --color-secondary-green: #263824;
   --color-dark-green: #263824;
-  --color-khaki: #F1E7CE;
-  --color-marigold: #E2A002;
-  --color-dark-teal: #305D62;
-  --color-gray: #D9D9D9;
+  --color-khaki: #f1e7ce;
+  --color-marigold: #e2a002;
+  --color-dark-teal: #305d62;
+  --color-gray: #d9d9d9;
 
   /* Custom spacing for mb-15, mb-25, mb-34 */
   --spacing-10: 2.75rem; /* 10 * 0.25rem */
   --spacing-15: 3.75rem; /* 15 * 0.25rem */
   --spacing-25: 6.25rem; /* 25 * 0.25rem */
-  --spacing-34: 8.5rem;  /* 34 * 0.25rem */
+  --spacing-34: 8.5rem; /* 34 * 0.25rem */
 
   --font-arial: "Arial", sans-serif;
   /* --font-helvetica-neue-medium: 'Helvetica Neue Medium', sans-serif; */
   /* --font-helvetica-neue-bold: 'Helvetica Neue Medium', sans-serif; */
-  --font-helvetica-neue-bold: 'Helvetica Neue Bold', sans-serif;
-  --font-helvetica-neue-bold-v2: 'Helvetica Neue Bold', sans-serif;
+  --font-helvetica-neue-bold: "Helvetica Neue Bold", sans-serif;
+  --font-helvetica-neue-bold-v2: "Helvetica Neue Bold", sans-serif;
 }
 
 @layer base {
   @font-face {
-    font-family: 'Helvetica Neue Bold';
+    font-family: "Helvetica Neue Bold";
     font-style: normal;
     font-weight: 700;
     font-display: swap;
@@ -95,19 +96,21 @@ html, body {
   }
 
   @font-face {
-    font-family: 'Helvetica Neue Super Bold';
+    font-family: "Helvetica Neue Super Bold";
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url("../fonts/helvetica-neue/HelveticaNeueBlack.otf") format("opentype");
+    src: url("../fonts/helvetica-neue/HelveticaNeueBlack.otf")
+      format("opentype");
   }
 
   @font-face {
-    font-family: 'Helvetica Neue Medium';
+    font-family: "Helvetica Neue Medium";
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url("../fonts/helvetica-neue/HelveticaNeueMedium.otf") format("opentype");
+    src: url("../fonts/helvetica-neue/HelveticaNeueMedium.otf")
+      format("opentype");
   }
 
   * {
@@ -117,11 +120,17 @@ html, body {
     -webkit-tap-highlight-color: transparent;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-arial;
   }
 
-  h1, .h1 {
+  h1,
+  .h1 {
     @apply text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl leading-none tracking-normal 2xl:tracking-tighter;
   }
   h2 {
@@ -142,7 +151,8 @@ html, body {
   .body-large {
     @apply text-lg xl:text-xl 2xl:text-2xl 3xl:text-4xl font-medium leading-tight tracking-normal;
   }
-  p, .body-regular {
+  p,
+  .body-regular {
     @apply text-base 2xl:text-xl 3xl:text-3xl font-medium font-arial leading-normal 2xl:leading-snug tracking-normal;
   }
   .body-small {
@@ -182,15 +192,39 @@ html, body {
 }
 
 @layer utilities {
-  .text-tiny { font-size: var(--font-size-tiny); }
-  .text-28 { font-size: var(--font-size-28); }
-  .text-huge { font-size: var(--font-size-huge); }
-  .text-banner { font-size: var(--font-size-banner); }
-  .text-brand { color: var(--color-brand); }
-  .text-accent { color: var(--color-accent); }
-  .bg-brand { background-color: var(--color-brand); }
-  .bg-accent { background-color: var(--color-accent); }
-  
+  .text-tiny {
+    font-size: var(--font-size-tiny);
+  }
+  .text-28 {
+    font-size: var(--font-size-28);
+  }
+  .text-huge {
+    font-size: var(--font-size-huge);
+  }
+  .text-banner {
+    font-size: var(--font-size-banner);
+  }
+  .text-brand {
+    color: var(--color-brand);
+  }
+  .text-accent {
+    color: var(--color-accent);
+  }
+  .bg-brand {
+    background-color: var(--color-brand);
+  }
+  .bg-accent {
+    background-color: var(--color-accent);
+  }
+  .text-24px {
+    font-size: 24px;
+  }
+  .text-30px {
+    font-size: 30px;
+  }
+  .text-17px {
+    font-size: 17px;
+  }
 }
 
 .slick-prev:before,
@@ -205,8 +239,7 @@ html, body {
 
 .slick-prev {
   left: 0 !important;
-} 
-
+}
 
 /* Remove conflicting raw CSS to avoid overriding @apply */
 .container {
