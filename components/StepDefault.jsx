@@ -110,6 +110,7 @@ export default function StepDefault({
     }
   }, [category, dispatch, selectedProduct]);
 
+  const parsePrice = (priceStr) => Number(priceStr?.replace(/[^\d]/g, "")) || 0;
   // --- Microwave helpers ---
   const normalizeMicrowaves = (category) => {
     const m = category?.microwave;
@@ -117,7 +118,12 @@ export default function StepDefault({
     return Array.isArray(m) ? m : [m];
   };
 
-  const parsePrice = (priceStr) => Number(priceStr?.replace(/[^\d]/g, "")) || 0;
+  const microwavePrice = (m) => {
+    const dp = Number(m?.discount_price ?? 0);
+    const p = Number(m?.price ?? 0);
+    return dp > 0 ? dp : p;
+  };
+
   const calculateTotal = () => {
     const basePrice = parsePrice(selectedProduct.product_price);
 

@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
 import StepDots from "./StepDots";
 import StepFooterNav from "./StepFooterNav";
+import { approxMonthlyPayment } from "../utils/helpers";
 
 function SampleNextArrow({ className, style, onClick }) {
   return (
@@ -50,9 +51,9 @@ export default function StepTabbed({
   currentStep,
   isLastStep,
 }) {
-    const isBathroom =
-      typeof category?.name === "string" &&
-      category.name.trim().toLowerCase() === "bathroom";
+  const isBathroom =
+    typeof category?.name === "string" &&
+    category.name.trim().toLowerCase() === "bathroom";
 
   const [isMobile, setIsMobile] = useState(false);
   const [isTabActive, setIsTabActive] = useState(false);
@@ -488,6 +489,59 @@ export default function StepTabbed({
     );
   };
 
+  const parsePrice = (priceStr) => Number(priceStr?.replace(/[^\d]/g, "")) || 0;
+  // --- Microwave helpers ---
+  const normalizeMicrowaves = (category) => {
+    const m = category?.microwave;
+    if (!m) return [];
+    return Array.isArray(m) ? m : [m];
+  };
+
+  const microwavePrice = (m) => {
+    const dp = Number(m?.discount_price ?? 0);
+    const p = Number(m?.price ?? 0);
+    return dp > 0 ? dp : p;
+  };
+
+  const calculateTotal = () => {
+    const basePrice = parsePrice(selectedProduct.product_price);
+
+    const categories = selectedProduct.categories || [];
+
+    const categoryTotal = categories.reduce((catSum, category) => {
+      // Handle subcategories (default)
+      const subcatTotal =
+        category.subcategories?.reduce((sum, sub) => {
+          return sum + (sub.selectedOption?.price || 0);
+        }, 0) || 0;
+
+      // Handle tabbed subcategories (tabbed)
+      const tabTotal =
+        category.tab?.reduce((sum, tab) => {
+          return sum + (tab.selectedOption?.price || 0);
+        }, 0) || 0;
+
+      // Handle addons
+      const addonTotal =
+        category.addons?.reduce((sum, addon) => {
+          return sum + (addon.price || 0);
+        }, 0) || 0;
+
+      // Handle microwave (array or single; bundle collapses to one item)
+      const microwaveTotal = normalizeMicrowaves(category).reduce(
+        (sum, m) => sum + microwavePrice(m),
+        0
+      );
+
+      return catSum + subcatTotal + tabTotal + addonTotal + microwaveTotal;
+    }, 0);
+
+    return (basePrice + categoryTotal).toLocaleString();
+  };
+
+  // Monthly calculations
+  const principalRaw = calculateTotal();
+  const monthly = approxMonthlyPayment(principalRaw, 6, 30);
 
   return (
     <>
@@ -786,7 +840,9 @@ export default function StepTabbed({
               </div>
               <div className="wrapper flex flex-col md:flex-row gap-5">
                 {category.microwaves.map((item, index) => {
-                  const isSelected = selectedMicrowaveIds.has(item.microwave_id);
+                  const isSelected = selectedMicrowaveIds.has(
+                    item.microwave_id
+                  );
                   return (
                     <div
                       key={item.microwave_id}
@@ -867,6 +923,23 @@ export default function StepTabbed({
           </div>
         </section>
       )}
+      {/* Monthly Expenses */}
+      <section className="monthly-payments pt-0">
+        <div className="container">
+          <div className="max-w-[700px] flex items-center justify-between border-b border-gray pb-2 mt-10">
+            <h3 className="text-2xl text-dark-teal font-helvetica-neue-bold mb-0">
+              Approx. Monthly Payment
+            </h3>
+            <p className="text-[#263824] text-xl font-bold">
+              {monthly != null ? `$${monthly} /month` : "—"}
+            </p>
+          </div>
+          <p className="text-[#263824] text-sm mt-3">
+            *Based on a 30-year term at 6%. This is an estimate only. Actual
+            financing terms may vary.
+          </p>
+        </div>
+      </section>
       {selectedProduct?.product_name && (
         <>
           <StepFooterNav
