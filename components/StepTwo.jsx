@@ -94,7 +94,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
             <div className="flex flex-col md:flex-row items-center gap-5">
               <div className="image-wrap w-full md:w-3/5">
                 <LazyLoadImage
-                  className="mx-auto block max-h-[700px]"
+                  className="mx-auto block max-h-[572px] w-auto h-auto"
                   alt={selectedFloor.name}
                   effect="opacity"
                   threshold={100}
@@ -103,7 +103,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                   }`}
                 />
               </div>
-              <div className="description w-full md:w-2/5">
+              <div className="description w-full md:w-2/5 min-h-[651px]">
                 <h4 className="text-xl text-left font-normal my-3">
                   {/* {floors.length} Floor Plan Options: */}
                   Floor Plan Options:

@@ -416,6 +416,9 @@
   .h-\[350px\] {
     height: 350px;
   }
+  .h-auto {
+    height: auto;
+  }
   .h-full {
     height: 100%;
   }
@@ -428,8 +431,11 @@
   .max-h-\[45px\] {
     max-height: 45px;
   }
-  .max-h-\[700px\] {
-    max-height: 700px;
+  .max-h-\[572px\] {
+    max-height: 572px;
+  }
+  .min-h-\[651px\] {
+    min-height: 651px;
   }
   .min-h-screen {
     min-height: 100vh;
