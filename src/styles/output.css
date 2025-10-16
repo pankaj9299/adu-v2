@@ -76,6 +76,7 @@
     --color-gray: #d9d9d9;
     --spacing-10: 2.75rem;
     --spacing-15: 3.75rem;
+    --spacing-25: 6.25rem;
     --font-arial: "Arial", sans-serif;
     --font-helvetica-neue-bold: "Helvetica Neue Bold", sans-serif;
     --font-helvetica-neue-bold-v2: "Helvetica Neue Bold", sans-serif;
@@ -564,11 +565,11 @@
   .gap-x-0 {
     column-gap: calc(var(--spacing) * 0);
   }
-  .gap-x-7 {
-    column-gap: calc(var(--spacing) * 7);
-  }
   .gap-x-8 {
     column-gap: calc(var(--spacing) * 8);
+  }
+  .gap-x-25 {
+    column-gap: var(--spacing-25);
   }
   .divide-y {
     :where(& > :not(:last-child)) {

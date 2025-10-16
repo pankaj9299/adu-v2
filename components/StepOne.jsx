@@ -18,7 +18,7 @@ const StepOne = ({ products, onSelectProduct }) => {
           </h2>
         </div>
         <div className="col-three-wrap">
-          <div className="wrapper grid grid-cols-1 md:grid-cols-3 gap-x-7">
+          <div className="wrapper grid grid-cols-1 md:grid-cols-3 gap-x-25">
             {products.map((product, index) => {
               const imageUrl = findImageByProduct(product.name);
               return (
