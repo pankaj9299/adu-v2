@@ -1,25 +1,57 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useSelector } from "react-redux";
 import { findImageByProduct } from "../utils/helpers";
+import { useEffect, useMemo, useState } from "react";
 
 const HeroBanner = ({ selectedOption, defaultImage }) => {
   const selectedProduct = useSelector(
     (state) => state.configurator.selectedProduct
   );
   const imageUrl = findImageByProduct(selectedProduct?.product_name);
-  const imageSrc = selectedOption?.image_two
-    ? selectedOption.image_two.startsWith("http")
+
+  const imageSrc = useMemo(() => {
+    const src = selectedOption?.image_two
       ? selectedOption.image_two
-      : `${import.meta.env.VITE_API_DOMAIN}/${selectedOption.image_two}`
-    : selectedOption?.image
-    ? selectedOption.image.startsWith("http")
+      : selectedOption?.image
       ? selectedOption.image
-      : `${import.meta.env.VITE_API_DOMAIN}/${selectedOption.image}`
-    : defaultImage
-    ? defaultImage
-    : `${
-        import.meta.env.VITE_API_DOMAIN
-      }/uploads/category_options/1753111703_d87a932b81637b70ee4b.png`;
+      : defaultImage
+      ? defaultImage
+      : "/uploads/category_options/1753111703_d87a932b81637b70ee4b.png";
+
+    return src.startsWith("http")
+      ? src
+      : `${import.meta.env.VITE_API_DOMAIN}/${src.replace(/^\//, "")}`;
+  }, [selectedOption?.image_two, selectedOption?.image, defaultImage]);
+
+  // Track loading state whenever src changes
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    setIsLoading(true);
+    setHasError(false);
+
+    const img = new Image();
+    img.src = imageSrc;
+
+    img.onload = () => {
+      if (!cancelled) setIsLoading(false);
+    };
+    img.onerror = () => {
+      if (!cancelled) {
+        setHasError(true);
+        setIsLoading(false);
+      }
+    };
+
+    return () => {
+      cancelled = true;
+    };
+  }, [imageSrc]);
+
+  // Force LazyLoadImage to re-initialize when src changes
+  const imageKey = imageSrc;
 
   return (
     <section className="hero-banner pb-3 pt-0 mt-10">
@@ -41,11 +73,27 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
               />
             </div>
           </div>
-          <div className="image-wrap w-full md:w-3/5">
+          <div className="image-wrap relative w-full md:w-3/5 h-[450px]">
+            {/* Loader overlay (visible until image loaded) */}
+            {isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-full h-full rounded-xl animate-pulse bg-gray-200" />
+                <div className="absolute h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-gray-600" />
+              </div>
+            )}
+
+            {/* Actual image (fade in when loaded) */}
             <LazyLoadImage
-              src={imageSrc || "https://placehold.co/1072x500?text=ADU"}
-              className="w-full h-full object-contain"
-              alt="rooftop"
+              key={imageKey}
+              src={
+                hasError
+                  ? "https://placehold.co/1072x500?text=Image+unavailable"
+                  : imageSrc || "https://placehold.co/1072x500?text=ADU"
+              }
+              alt={selectedProduct?.product_name || "Hero image"}
+              className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                isLoading ? "opacity-0" : "opacity-100"
+              }`}
               effect="opacity"
               threshold={100}
             />
