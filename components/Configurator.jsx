@@ -14,35 +14,39 @@ export default function Configurator() {
   const [errorMessage, setErrorMessage] = useState("");
   const [config, setConfig] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
+  const [isCheckout, setIsCheckout] = useState(false);
   const containerRef = useRef(null);
 
-  const selectedProduct = useSelector((state) => state.configurator.selectedProduct);  
+  const selectedProduct = useSelector(
+    (state) => state.configurator.selectedProduct
+  );
 
   // Function to handle scrolling to top
   const scrollToTop = () => {
     // Try multiple methods to ensure scrolling works
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    
+
     // Also try smooth scrolling
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
-    
+
     // If containerRef exists, scroll that too
     if (containerRef.current) {
       containerRef.current.scrollIntoView({
         behavior: "smooth",
-        block: "start"
+        block: "start",
       });
     }
   };
 
   // Use effect to scroll when step changes - this ensures it happens after render
   useEffect(() => {
-    if (currentStep > 0) { // Don't scroll on initial load
+    if (currentStep > 0 || isCheckout) {
+      // Don't scroll on initial load
       // Use requestAnimationFrame to wait for DOM updates, then add extra delay
       requestAnimationFrame(() => {
         setTimeout(() => {
@@ -50,15 +54,15 @@ export default function Configurator() {
         }, 200); // Longer delay to ensure StepTabbed is fully rendered
       });
     }
-  }, [currentStep]);
+  }, [currentStep, isCheckout]);
 
   // Redirect if page was reloaded and no selected product exists
   useEffect(() => {
     if (!selectedProduct || !selectedProduct.product_id) {
       // Reset redux state
       dispatch(setProduct(null));
-      
-      navigate('/', { replace: true });
+
+      navigate("/", { replace: true });
     }
   }, [selectedProduct, navigate]);
 
@@ -80,11 +84,11 @@ export default function Configurator() {
 
   const categories = config.categories;
   const currentCategory = categories[currentStep];
-  let nextCategory = '';
+  let nextCategory = "";
   if (categories[currentStep + 1] != null) {
     nextCategory = categories[currentStep + 1].name;
   }
-  
+
   const goNext = (isTabActive = true) => {
     if (!isTabActive) {
       setErrorMessage("Please select a style before proceeding."); // or set a state error
@@ -95,14 +99,14 @@ export default function Configurator() {
       setCurrentStep(currentStep + 1);
       setErrorMessage("");
     } else {
-      navigate('/checkout', { replace: true });
+      setIsCheckout(true);
+      navigate("/checkout", { replace: true });
     }
     // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const goBack = () => {
     if (currentStep > 0) {
-      
       // Clone categories and remove the one at currentStep
       // const updatedCategories = [...selectedProduct.categories];
       // updatedCategories.splice(currentStep, 1); // remove the category at currentStep
@@ -112,36 +116,36 @@ export default function Configurator() {
       //   categories: updatedCategories,
       // };
       // dispatch(setProduct(updatedProduct)); // update Redux state
-      
+
       setCurrentStep((prev) => prev - 1);
       // window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       // Reset redux state
       dispatch(setProduct(null));
 
-      navigate('/', { replace: true });
+      navigate("/", { replace: true });
     }
   };
 
   return (
     <div ref={containerRef} className="relative">
       {currentCategory.type === "default" ? (
-        <StepDefault 
+        <StepDefault
           category={currentCategory}
           categories={categories}
-          nextCategory={nextCategory} 
+          nextCategory={nextCategory}
           goBack={goBack}
-          goNext={goNext} 
+          goNext={goNext}
           currentStep={currentStep}
           isLastStep={currentStep === categories.length - 1}
         />
       ) : (
-        <StepTabbed 
-          category={currentCategory} 
+        <StepTabbed
+          category={currentCategory}
           categories={categories}
-          nextCategory={nextCategory} 
+          nextCategory={nextCategory}
           goBack={goBack}
-          goNext={goNext} 
+          goNext={goNext}
           errorMessage={errorMessage}
           currentStep={currentStep}
           isLastStep={currentStep === categories.length - 1}
