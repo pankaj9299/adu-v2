@@ -439,8 +439,8 @@
   .max-h-96 {
     max-height: calc(var(--spacing) * 96);
   }
-  .max-h-\[45px\] {
-    max-height: 45px;
+  .max-h-\[38px\] {
+    max-height: 38px;
   }
   .max-h-\[572px\] {
     max-height: 572px;

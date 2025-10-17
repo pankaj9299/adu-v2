@@ -23,11 +23,11 @@ const StepOne = ({ products, onSelectProduct }) => {
               const imageUrl = findImageByProduct(product.name);
               return (
                 <div key={product.id} className="wrap text-center">
-                  <div className="heading mb-2 h-[45px] flex items-center justify-center">
+                  <div className="heading mb-2 h-[45px] flex items-center justify-center max-h-[38px]">
                     <img
                       src={imageUrl}
                       alt={product.name}
-                      className="max-h-[45px] w-auto object-contain object-center"
+                      className="w-full h-full object-contain object-center"
                     />
                   </div>
                   <div className="image-wrap h-72 w-full bg-white overflow-hidden">
