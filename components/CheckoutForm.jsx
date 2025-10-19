@@ -200,7 +200,7 @@ const CheckoutForm = () => {
                   htmlFor="phone"
                   className="block text-[18px] font-normal text-thinGray"
                 >
-                  Phone Number*
+                  Phone Number
                 </label>
                 <input
                   type="text"
@@ -209,7 +209,6 @@ const CheckoutForm = () => {
                   value={formData.phone}
                   disabled={loading}
                   onChange={handleChange}
-                  required
                   placeholder=""
                   className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                   style={{
@@ -292,7 +291,7 @@ const CheckoutForm = () => {
                 height="38"
               />
               <h4 className="max-sm:text-[20px] max-sm:my-2 md:text-[28px] text-green font-normal font-arial tracking-[-5%] mt-3 mb-4">
-                {selectedProductState?.floor_name}
+                {selectedProductState?.floor_name.replace('Floor', 'Floor Plan')}
               </h4>
               <p
                 className="md:text-[25px] text-green font-normal tracking-[0%]"

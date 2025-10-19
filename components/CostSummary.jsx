@@ -281,7 +281,7 @@ const CostSummary = ({
               <div className="flex justify-end">
                 <div className="w-full max-w-[715px] flex items-center justify-between gap-5 border-b border-gray pb-2 mt-5">
                   <h3 className="font-bold text-lightYellow py-2 md:text-3xl font-helvetica-neue-bold">
-                    Approx. Monthly Payment
+                    Approximate Monthly Payment
                   </h3>
                   <p className="text-[#263824] text-xl font-bold">
                     {monthly != null ? `$${monthly} /month` : "—"}

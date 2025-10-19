@@ -199,7 +199,7 @@ export default function StepDefault({
             {/* Monthly Expenses */}
             <div className="max-w-[700px] flex items-center justify-between border-b border-gray pb-2 mt-10">
               <h3 className="text-2xl text-dark-teal font-helvetica-neue-bold mb-0">
-                Approx. Monthly Payment
+                Approximate Monthly Payment
               </h3>
               <p className="text-[#263824] text-xl font-bold">
                 {monthly != null ? `$${monthly} /month` : "—"}

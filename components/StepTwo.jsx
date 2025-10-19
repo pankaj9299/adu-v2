@@ -91,7 +91,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
           {floors.length === 0 ? (
             <div className="text-center">Loading ...</div>
           ) : (
-            <div className="flex flex-col md:flex-row gap-5">
+            <div className={`flex flex-col md:flex-row mt-5 gap-${['Floor 1', 'Floor 2'].includes(selectedFloor.name) ? '10' : '5'}`}>
               <div className="image-wrap w-full md:w-3/5 md:ml-auto flex md:justify-end">
                 <LazyLoadImage
                   className="block max-h-[572px] w-auto h-auto"
