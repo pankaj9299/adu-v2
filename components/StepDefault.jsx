@@ -164,6 +164,33 @@ export default function StepDefault({
   const principalRaw = calculateTotal();
   const monthly = approxMonthlyPayment(principalRaw, 6, 30);
 
+  // helper to normalize an addon object to what HeroBanner expects
+  const toBannerOptionFromAddon = (addon) => {
+    // Try common fields; keep the whole object so HeroBanner can pick what it needs.
+    const image =
+      addon?.image ||
+      addon?.img ||
+      addon?.image_url ||
+      addon?.photo ||
+      addon?.thumbnail ||
+      addon?.url ||
+      addon?.src ||
+      null;
+
+    return { ...addon, image };
+  };
+
+  // Only-addons mode (no subcategories present)
+  const onlyAddonsMode =
+    (category?.subcategories?.length || 0) === 0 &&
+    (category?.addons?.length || 0) > 0;
+
+  // When user clicks an addon and we're in only-addons mode, update banner
+  const handleAddonClickForBanner = (addon) => {
+    if (!onlyAddonsMode) return; // guard (extra safety)
+    setSelectedImageOption(toBannerOptionFromAddon(addon));
+  };
+
   return (
     <div>
       <HeroBanner selectedOption={selectedImageOption} />
@@ -194,6 +221,10 @@ export default function StepDefault({
                 addons={category.addons}
                 categoryId={category.id}
                 categoryName={category.name}
+                // pass the click handler ONLY when there are no subcategories
+                onSelectAddon={
+                  onlyAddonsMode ? handleAddonClickForBanner : undefined
+                }
               />
             )}
             {/* Monthly Expenses */}

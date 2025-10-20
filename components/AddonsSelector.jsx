@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-export default function AddonsSelector({ addons, categoryId }) {
+export default function AddonsSelector({ addons, categoryId, onSelectAddon }) {
   const dispatch = useDispatch();
-  const selectedProduct = useSelector((state) => state.configurator.selectedProduct) || {};
+  const selectedProduct =
+    useSelector((state) => state.configurator.selectedProduct) || {};
 
   // Get selected addons from Redux for this category
   const selectedAddons =
-    selectedProduct.categories
-      ?.find((cat) => cat.id === categoryId)
-      ?.addons || [];
+    selectedProduct.categories?.find((cat) => cat.id === categoryId)?.addons ||
+    [];
 
   const toggleAddon = (addon) => {
     const updatedCategories = selectedProduct.categories.map((cat) => {
@@ -21,14 +21,16 @@ export default function AddonsSelector({ addons, categoryId }) {
       let updatedAddons;
 
       if (exists) {
-        updatedAddons = selectedAddons.filter((a) => a.id !== parseInt(addon.id));
+        updatedAddons = selectedAddons.filter(
+          (a) => a.id !== parseInt(addon.id)
+        );
       } else {
         updatedAddons = [
           ...selectedAddons,
           {
             id: parseInt(addon.id),
             name: addon.name,
-            price: addon.price
+            price: addon.price,
           },
         ];
       }
@@ -39,10 +41,24 @@ export default function AddonsSelector({ addons, categoryId }) {
       };
     });
 
-    dispatch(setProduct({
-      ...selectedProduct,
-      categories: updatedCategories,
-    }));
+    dispatch(
+      setProduct({
+        ...selectedProduct,
+        categories: updatedCategories,
+      })
+    );
+
+    // Tell parent to update the Hero image (if parent passed the handler)
+    if (onSelectAddon) {
+      const imageUrl = addon?.image
+        ? `${import.meta.env.VITE_API_DOMAIN}/${addon.image}`
+        : null;
+
+      onSelectAddon({
+        ...addon,
+        image: imageUrl,
+      });
+    }
   };
 
   return (
