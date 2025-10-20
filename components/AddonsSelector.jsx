@@ -13,25 +13,31 @@ export default function AddonsSelector({ addons, categoryId, onSelectAddon }) {
     selectedProduct.categories?.find((cat) => cat.id === categoryId)?.addons ||
     [];
 
+  const resolveImageUrl = (raw) =>
+    raw ? `${import.meta.env.VITE_API_DOMAIN}/${raw}` : null;
+
+  const toPayload = (addon) => ({
+    id: parseInt(addon.id),
+    name: addon.name,
+    price: addon.price,
+    image: resolveImageUrl(addon.image),
+  });
+
   const toggleAddon = (addon) => {
+    const clicked = toPayload(addon);
+    const exists = selectedAddons.find((a) => a.id === clicked.id);
+
     const updatedCategories = selectedProduct.categories.map((cat) => {
       if (cat.id !== categoryId) return cat;
 
-      const exists = selectedAddons.find((a) => a.id === parseInt(addon.id));
       let updatedAddons;
-
       if (exists) {
-        updatedAddons = selectedAddons.filter(
-          (a) => a.id !== parseInt(addon.id)
-        );
+        updatedAddons = selectedAddons.filter((a) => a.id !== clicked.id);
       } else {
+        // append to keep selection order (recency)
         updatedAddons = [
           ...selectedAddons,
-          {
-            id: parseInt(addon.id),
-            name: addon.name,
-            price: addon.price,
-          },
+          { id: clicked.id, name: clicked.name, price: clicked.price },
         ];
       }
 
@@ -48,15 +54,26 @@ export default function AddonsSelector({ addons, categoryId, onSelectAddon }) {
       })
     );
 
-    // Tell parent to update the Hero image (if parent passed the handler)
+    // ---- NEW: notify parent with updated list (including images) ----
     if (onSelectAddon) {
-      const imageUrl = addon?.image
-        ? `${import.meta.env.VITE_API_DOMAIN}/${addon.image}`
-        : null;
+      const updatedListIds =
+        updatedCategories.find((c) => c.id === categoryId)?.addons || [];
+
+      // Enrich updated list with images for the banner
+      const selectedList = updatedListIds.map((a) => {
+        const full = addons.find((x) => parseInt(x.id) === a.id);
+        return {
+          id: a.id,
+          name: a.name,
+          price: a.price,
+          image: resolveImageUrl(full?.image),
+        };
+      });
 
       onSelectAddon({
-        ...addon,
-        image: imageUrl,
+        isSelected: !exists, // true if now selected, false if removed
+        clicked, // {id, name, price, image}
+        selectedList, // updated list (ordered)
       });
     }
   };

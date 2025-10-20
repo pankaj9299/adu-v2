@@ -29,6 +29,7 @@ export default function StepDefault({
   );
 
   const [selectedImageOption, setSelectedImageOption] = useState(null);
+  const [initialHero, setInitialHero] = useState(null);
 
   const handleFirstSubcategoryChange = (selectedOption) => {
     // You can customize what "selectedOption" is (image URL, id, etc.)
@@ -185,10 +186,36 @@ export default function StepDefault({
     (category?.subcategories?.length || 0) === 0 &&
     (category?.addons?.length || 0) > 0;
 
-  // When user clicks an addon and we're in only-addons mode, update banner
-  const handleAddonClickForBanner = (addon) => {
-    if (!onlyAddonsMode) return; // guard (extra safety)
-    setSelectedImageOption(toBannerOptionFromAddon(addon));
+  // Track current shown addon id (if any)
+  const currentShownId = selectedImageOption?.id ?? null;
+
+  // Handler for AddonsSelector
+  const handleAddonSelectionChange = ({
+    isSelected,
+    clicked,
+    selectedList,
+  }) => {
+    // If nothing selected — keep showing whatever was last set (don’t flush)
+    if (!selectedList || selectedList.length === 0) {
+      // keep existing image (do not set to null or blank)
+      return;
+    }
+
+    if (isSelected) {
+      // show the one just selected
+      setSelectedImageOption(clicked);
+      return;
+    }
+
+    // Deselected case:
+    // If the deselected one isn't the one currently shown, keep current.
+    if (clicked.id !== currentShownId) {
+      return;
+    }
+
+    // If we just deselected the *shown* one, switch to the last remaining
+    const last = selectedList[selectedList.length - 1];
+    if (last) setSelectedImageOption(last);
   };
 
   return (
@@ -223,7 +250,7 @@ export default function StepDefault({
                 categoryName={category.name}
                 // pass the click handler ONLY when there are no subcategories
                 onSelectAddon={
-                  onlyAddonsMode ? handleAddonClickForBanner : undefined
+                  onlyAddonsMode ? handleAddonSelectionChange : undefined
                 }
               />
             )}
