@@ -53,7 +53,7 @@ export default function StepTabbed({
 }) {
   const isBathroom =
     typeof category?.name === "string" &&
-    ["bathroom"].includes(category.name.trim().toLowerCase());
+    ["bathroom", "kitchen"].includes(category.name.trim().toLowerCase());
 
   const [isMobile, setIsMobile] = useState(false);
   const [isTabActive, setIsTabActive] = useState(false);

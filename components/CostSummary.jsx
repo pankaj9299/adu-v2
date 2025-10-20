@@ -43,7 +43,7 @@ const CostSummary = ({
 
   // --- Bathroom helpers ---
   const isBathroomName = (name) =>
-    typeof name === "string" && name.trim().toLowerCase() === "bathroom";
+    typeof name === "string" && ["bathroom", "kitchen"].includes(name.trim().toLowerCase());
   const bathroomDisplayText = (selectedOption) =>
     (selectedOption?.subtitle && selectedOption.subtitle.trim()) ||
     selectedOption?.name ||
