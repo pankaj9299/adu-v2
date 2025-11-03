@@ -91,19 +91,65 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
           {floors.length === 0 ? (
             <div className="text-center">Loading ...</div>
           ) : (
-            <div className={`flex flex-col md:flex-row mt-5 gap-${['Floor 1', 'Floor 2'].includes(selectedFloor.name) ? '10' : '5'}`}>
-              <div className="image-wrap w-full md:w-3/5 md:ml-auto flex md:justify-end">
-                <LazyLoadImage
-                  className="block max-h-[572px] w-auto h-auto"
-                  alt={selectedFloor.name}
-                  effect="opacity"
-                  threshold={100}
-                  src={`${import.meta.env.VITE_API_DOMAIN}/${
-                    selectedFloor.image_two
-                  }`}
-                />
-              </div>
-              <div className="description w-full md:w-2/5 min-h-[651px]">
+            <div
+              className={`flex flex-col md:flex-row mt-5 gap-${
+                ["Floor 1", "Floor 2"].includes(selectedFloor.name) ? "10" : "5"
+              }`}
+            >
+              {selectedFloor.image_two ? (
+                <div className="image-wrap w-full md:w-3/5 md:ml-auto flex md:justify-end">
+                  <LazyLoadImage
+                    className="block max-h-[572px] w-auto h-auto"
+                    alt={selectedFloor.name}
+                    effect="opacity"
+                    threshold={100}
+                    src={`${import.meta.env.VITE_API_DOMAIN}/${
+                      selectedFloor.image_two
+                    }`}
+                  />
+                </div>
+              ) : (
+                <div className="image-wrap w-full md:w-1/2 md:ml-auto space-y-8">
+                  {/* Floor 1 */}
+                  <div className="relative">
+                    <span className="absolute left-0 -translate-x-[50%] top-1/2 -translate-y-1/2 -rotate-90 origin-center text-[37px] font-helvetica-neue-bold text-lightYellow tracking-tighter">
+                      First Floor
+                    </span>
+
+                    <LazyLoadImage
+                      className="block max-h-[420px] w-auto h-auto mx-auto"
+                      alt={selectedFloor.name}
+                      effect="opacity"
+                      threshold={100}
+                      src={`${import.meta.env.VITE_API_DOMAIN}/${
+                        selectedFloor.image
+                      }`}
+                    />
+                  </div>
+
+                  {/* Floor 2 */}
+                  <div className="relative">
+                    <span className="absolute left-0 -translate-x-[50%] top-1/2 -translate-y-1/2 -rotate-90 origin-center text-[37px] font-helvetica-neue-bold text-lightYellow tracking-tighter">
+                      Second Floor
+                    </span>
+
+                    <LazyLoadImage
+                      className="block max-h-[420px] w-auto h-auto mx-auto"
+                      alt={selectedFloor.name}
+                      effect="opacity"
+                      threshold={100}
+                      src={`${import.meta.env.VITE_API_DOMAIN}/${
+                        selectedFloor.image_three
+                      }`}
+                    />
+                  </div>
+                </div>
+              )}
+              <div
+                className={`description w-full  min-h-[651px] ${
+                  selectedFloor.image_three ? "md:w-1/2" : "md:w-2/5"
+                }`}
+              >
                 <h4 className="text-xl text-left font-normal my-3">
                   {/* {floors.length} Floor Plan Options: */}
                   Floor Plan Options:
