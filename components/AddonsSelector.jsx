@@ -128,13 +128,19 @@ export default function AddonsSelector({
             <div
               key={idx}
               className={`color-options w-1/2 [@media(max-width:370px)]:w-full ${
-                label ? "sm:w-[300px]" : "sm:w-[200px]"
+                // label ? "sm:w-[250px]" : "sm:w-[200px]"
+                label ? "sm:w-[250px]" : "sm:w-[250px]"
               } text-center cursor-pointer border-2 p-2 transition-all duration-150 ${
                 isSelected ? "border-lightYellow" : "border-transparent"
               }`}
               onClick={() => toggleAddon(opt)}
             >
-              <div className="image-wrap overflow-hidden w-full h-[170px]">
+              <div
+                className={`image-wrap overflow-hidden w-full h-[${
+                  // label ? "230" : "170"
+                  label ? "230" : "230"
+                }px]`}
+              >
                 <LazyLoadImage
                   src={`${import.meta.env.VITE_API_DOMAIN}/${opt.image}`}
                   alt={opt.name}
@@ -144,8 +150,8 @@ export default function AddonsSelector({
                   threshold={100}
                 />
               </div>
-              <h4 className="text-dark-green text-[19px] font-helvetica-neue-bold font-bold mt-3">
-                {opt.name}
+              <h4 className="text-marigold text-[19px] font-helvetica-neue-bold font-bold tracking-[-2%] mt-3">
+                + {opt.name}
               </h4>
             </div>
           );

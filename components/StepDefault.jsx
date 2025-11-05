@@ -223,13 +223,45 @@ export default function StepDefault({
       <HeroBanner selectedOption={selectedImageOption} />
       <Intro name={category.name} />
       {category.subcategories.length === 0 && category.addons.length === 0 ? (
-        <section className="multiple-color py-20">
-          <div className="container">
-            <h3 className="text-center">
-              No selections to be made here. Please proceed.
-            </h3>
-          </div>
-        </section>
+        <>
+          <section className="multiple-color py-20">
+            <div className="container">
+              <h3 className="text-center">
+                No selections to be made here. Please proceed.
+              </h3>
+            </div>
+          </section>
+          {category.addons_v2.length > 0 && (
+            <section className="multiple-color p-0 relative md:-top-15">
+              <div className="container">
+                <AddonsSelector
+                  addons={category.addons_v2}
+                  categoryId={category.id}
+                  categoryName={category.name}
+                  label={`${
+                    category.name == "Bedroom (Downstairs)"
+                      ? "Bedroom (Upstairs)"
+                      : ""
+                  }`}
+                />
+
+                {/* Monthly Expenses */}
+                <div className="max-w-[700px] flex items-center justify-between border-b border-gray pb-2 mt-10">
+                  <h3 className="text-2xl text-dark-teal font-helvetica-neue-bold mb-0">
+                    Approximate Monthly Payment
+                  </h3>
+                  <p className="text-[#263824] text-xl font-bold">
+                    {monthly != null ? `$${monthly} /month` : "—"}
+                  </p>
+                </div>
+                <p className="text-[#263824] text-sm mt-3">
+                  *Based on a 30-year term at 6%. This is an estimate only.
+                  Actual financing terms may vary.
+                </p>
+              </div>
+            </section>
+          )}
+        </>
       ) : (
         <section className="multiple-color p-0 relative md:-top-15">
           <div className="container">
@@ -252,6 +284,13 @@ export default function StepDefault({
                 onSelectAddon={
                   onlyAddonsMode ? handleAddonSelectionChange : undefined
                 }
+              />
+            )}
+            {category.addons_v2.length > 0 && (
+              <AddonsSelector
+                addons={category.addons_v2}
+                categoryId={category.id}
+                categoryName={category.name}
               />
             )}
             {/* Monthly Expenses */}
