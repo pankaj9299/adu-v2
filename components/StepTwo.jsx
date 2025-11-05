@@ -68,6 +68,8 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
         floor_name: selectedFloor.name,
         floor_image: selectedFloor.image,
         floor_image_two: selectedFloor.image_two,
+        floor_image_three: selectedFloor.image_three,
+        floor_image_four: selectedFloor.image_four,
       })
     );
     // TODO: Implement navigation to StepThree or customization logic
@@ -96,7 +98,8 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                 ["Floor 1", "Floor 2"].includes(selectedFloor.name) ? "10" : "5"
               }`}
             >
-              {selectedFloor.image_two ? (
+              {selectedFloor.image_two &&
+              !["Floor 5", "Floor 6"].includes(selectedFloor.name) ? (
                 <div className="image-wrap w-full md:w-3/5 md:ml-auto flex md:justify-end">
                   <LazyLoadImage
                     className="block max-h-[572px] w-auto h-auto"

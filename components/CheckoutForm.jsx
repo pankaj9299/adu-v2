@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
 import { useNavigate } from "react-router-dom";
 
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "axios";
 import { findImageByProduct } from "../utils/helpers";
 
@@ -14,7 +14,9 @@ const CheckoutForm = () => {
   const selectedProductState = useSelector(
     (state) => state.configurator.selectedProduct
   );
-  const productHeadImageUrl = findImageByProduct(selectedProductState?.product_name);
+  const productHeadImageUrl = findImageByProduct(
+    selectedProductState?.product_name
+  );
 
   const [filePath, setFilePath] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -56,7 +58,7 @@ const CheckoutForm = () => {
         selectedProduct: selectedProductState,
       };
 
-      console.log('payload', payload);
+      console.log("payload", payload);
 
       const response = await axios.post(
         `${import.meta.env.VITE_API_DOMAIN}/pdfgenerator-save-and-email`,
@@ -77,7 +79,7 @@ const CheckoutForm = () => {
       setLoading(false); // only re-enable if still showing form
     }
   };
-  
+
   return (
     <>
       <section className="hero-banner">
@@ -291,7 +293,10 @@ const CheckoutForm = () => {
                 height="38"
               />
               <h4 className="max-sm:text-[20px] max-sm:my-2 md:text-[28px] text-green font-normal font-arial tracking-[-5%] mt-3 mb-4">
-                {selectedProductState?.floor_name.replace('Floor', 'Floor Plan')}
+                {selectedProductState?.floor_name.replace(
+                  "Floor",
+                  "Floor Plan"
+                )}
               </h4>
               <p
                 className="md:text-[25px] text-green font-normal tracking-[0%]"
@@ -302,18 +307,53 @@ const CheckoutForm = () => {
             </div>
           </div>
 
-          <div className="image-wrap">
-            <LazyLoadImage
-              src={`${import.meta.env.VITE_API_DOMAIN}/${
-                selectedProductState?.floor_image
-              }`}
-              alt="top-view"
-              wrapperClassName="w-full"
-              className="mx-auto block"
-              effect="opacity"
-              threshold={100}
-            />
-          </div>
+          {["Floor 5", "Floor 6"].includes(selectedProductState.floor_name) ? (
+            <div className="grid grid-cols-2 gap-5">
+              <div className="image-wrap">
+                <h4 className="text-marigold text-4xl font-helvetica-neue-bold font-bold tracking-[-2%]">
+                  First Floor
+                </h4>
+                <LazyLoadImage
+                  src={`${import.meta.env.VITE_API_DOMAIN}/${
+                    selectedProductState?.floor_image_two
+                  }`}
+                  alt="top-view"
+                  wrapperClassName="w-full"
+                  className="mx-auto block"
+                  effect="opacity"
+                  threshold={100}
+                />
+              </div>
+              <div className="image-wrap">
+                <h4 className="text-marigold text-4xl font-helvetica-neue-bold font-bold tracking-[-2%]">
+                  Second Floor
+                </h4>
+                <LazyLoadImage
+                  src={`${import.meta.env.VITE_API_DOMAIN}/${
+                    selectedProductState?.floor_image_four
+                  }`}
+                  alt="top-view"
+                  wrapperClassName="w-full"
+                  className="mx-auto block"
+                  effect="opacity"
+                  threshold={100}
+                />
+              </div>
+            </div>
+          ) : (
+            <div className="image-wrap">
+              <LazyLoadImage
+                src={`${import.meta.env.VITE_API_DOMAIN}/${
+                  selectedProductState?.floor_image
+                }`}
+                alt="top-view"
+                wrapperClassName="w-full"
+                className="mx-auto block"
+                effect="opacity"
+                threshold={100}
+              />
+            </div>
+          )}
         </div>
       </section>
 
