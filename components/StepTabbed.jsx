@@ -549,7 +549,7 @@ export default function StepTabbed({
       <section className="tab-with-slider p-0 relative md:-top-20">
         <div className={`container ${isTabActive && "mb-1"}`}>
           {/* Heading */}
-          <div className="heading">
+          <div className="heading max-w-md">
             <h2 className="text-marigold text-3xl mb-3 font-helvetica-neue-bold">
               {category.name}
             </h2>
@@ -810,10 +810,29 @@ export default function StepTabbed({
           )}
 
           {category.addons.length > 0 && isTabActive && (
+            <>
+              <AddonsSelector
+                addons={category.addons}
+                categoryId={category.id}
+                categoryName={category.name}
+                label={`${
+                  category.name == "Bathrooms (Downstairs & Upstairs)"
+                    ? "Bathroom (Downstairs)"
+                    : ""
+                }`}
+              />
+            </>
+          )}
+          {category.addons_v2.length > 0 && isTabActive && (
             <AddonsSelector
-              addons={category.addons}
+              addons={category.addons_v2}
               categoryId={category.id}
               categoryName={category.name}
+              label={`${
+                category.name == "Bathrooms (Downstairs & Upstairs)"
+                  ? "Bathroom (Upstairs)"
+                  : ""
+              }`}
             />
           )}
           {errorMessage && !isTabActive && (

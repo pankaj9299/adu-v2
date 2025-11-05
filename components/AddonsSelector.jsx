@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-export default function AddonsSelector({ addons, categoryId, onSelectAddon }) {
+export default function AddonsSelector({
+  addons,
+  categoryId,
+  onSelectAddon,
+  label = "",
+}) {
   const dispatch = useDispatch();
   const selectedProduct =
     useSelector((state) => state.configurator.selectedProduct) || {};
@@ -80,7 +85,16 @@ export default function AddonsSelector({ addons, categoryId, onSelectAddon }) {
 
   return (
     <div className="third-option">
-      <h3 className="text-2xl inline-block w-1/2 text-dark-teal font-helvetica-neue-bold mb-5 md:mt-10">
+      {label && (
+        <h2 className="text-marigold text-3xl font-helvetica-neue-bold md:mt-10">
+          {label}
+        </h2>
+      )}
+      <h3
+        className={`text-2xl inline-block w-1/2 text-dark-teal font-helvetica-neue-bold ${
+          label ? "mb-5" : "mb-5 md:mt-10"
+        }`}
+      >
         Add-Ons
       </h3>
       {/* <div className="buttons flex gap-6 flex-wrap">
@@ -113,7 +127,9 @@ export default function AddonsSelector({ addons, categoryId, onSelectAddon }) {
           return (
             <div
               key={idx}
-              className={`color-options w-1/2 [@media(max-width:370px)]:w-full sm:w-[200px] text-center cursor-pointer border-2 p-2 transition-all duration-150 ${
+              className={`color-options w-1/2 [@media(max-width:370px)]:w-full ${
+                label ? "sm:w-[300px]" : "sm:w-[200px]"
+              } text-center cursor-pointer border-2 p-2 transition-all duration-150 ${
                 isSelected ? "border-lightYellow" : "border-transparent"
               }`}
               onClick={() => toggleAddon(opt)}
