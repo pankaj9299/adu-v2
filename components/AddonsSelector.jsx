@@ -129,7 +129,7 @@ export default function AddonsSelector({
               key={idx}
               className={`color-options w-1/2 [@media(max-width:370px)]:w-full ${
                 // label ? "sm:w-[250px]" : "sm:w-[200px]"
-                label ? "sm:w-[250px]" : "sm:w-[250px]"
+                label ? "sm:w-[340px]" : "sm:w-[250px]"
               } text-center cursor-pointer border-2 p-2 transition-all duration-150 ${
                 isSelected ? "border-lightYellow" : "border-transparent"
               }`}
@@ -138,7 +138,7 @@ export default function AddonsSelector({
               <div
                 className={`image-wrap overflow-hidden w-full h-[${
                   // label ? "230" : "170"
-                  label ? "230" : "230"
+                  label ? "320" : "230"
                 }px]`}
               >
                 <LazyLoadImage
