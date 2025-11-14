@@ -301,7 +301,7 @@ const CheckoutForm = () => {
                 )}
               </h4>
               <p
-                className="md:text-[25px] text-green font-normal tracking-[0%]"
+                className="md:text-[25px] text-green font-normal tracking-[-5%]"
                 dangerouslySetInnerHTML={{
                   __html: selectedProductState?.floor_subtitle,
                 }}
