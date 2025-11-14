@@ -43,7 +43,8 @@ const CostSummary = ({
 
   // --- Bathroom helpers ---
   const isBathroomName = (name) =>
-    typeof name === "string" && ["bathroom", "kitchen"].includes(name.trim().toLowerCase());
+    typeof name === "string" &&
+    ["bathroom", "kitchen"].includes(name.trim().toLowerCase());
   const bathroomDisplayText = (selectedOption) =>
     (selectedOption?.subtitle && selectedOption.subtitle.trim()) ||
     selectedOption?.name ||
@@ -109,7 +110,7 @@ const CostSummary = ({
                 className="h-[38px] w-auto"
               />
               <h3 className="font-normal font-arial text-dark-green shrink-0 tracking-[-5%]">
-                {selectedProductState.floor_name}
+                {selectedProductState.floor_name.replace("Floor", "Floor Plan")}
               </h3>
               <span className="flex-1 border-b border-secondary-dark-gray text-dark-green font-arial mt-[14px]"></span>
               <p className="text-dark-green">
