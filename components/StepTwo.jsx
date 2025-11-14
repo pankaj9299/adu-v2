@@ -66,6 +66,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
         ...selectedProductState,
         floor_id: selectedFloor.id,
         floor_name: selectedFloor.name,
+        floor_subtitle: selectedFloor.subtitle,
         floor_image: selectedFloor.image,
         floor_image_two: selectedFloor.image_two,
         floor_image_three: selectedFloor.image_three,

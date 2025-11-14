@@ -18,6 +18,8 @@ const CheckoutForm = () => {
     selectedProductState?.product_name
   );
 
+  console.log("VRRR", selectedProductState);
+
   const [filePath, setFilePath] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -301,13 +303,13 @@ const CheckoutForm = () => {
               <p
                 className="md:text-[25px] text-green font-normal tracking-[0%]"
                 dangerouslySetInnerHTML={{
-                  __html: selectedProductState?.product_subtitle,
+                  __html: selectedProductState?.floor_subtitle,
                 }}
               ></p>
             </div>
           </div>
 
-          {["Floor 5", "Floor 6"].includes(selectedProductState.floor_name) ? (
+          {["Floor 5", "Floor 6"].includes(selectedProductState?.floor_name) ? (
             <div className="grid grid-cols-2 gap-5">
               <div className="image-wrap">
                 <h4 className="text-marigold text-4xl font-helvetica-neue-bold font-bold tracking-[-2%]">
