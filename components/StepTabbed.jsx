@@ -928,7 +928,7 @@ export default function StepTabbed({
                         : `https://placehold.co/250x250?text=ADU`
                     }
                     alt={category.name}
-                    className="w-full h-full object-contain"
+                    className="w-full h-[60px] object-contain"
                   />
                 </div>
                 <div
