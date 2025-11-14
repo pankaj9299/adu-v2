@@ -276,7 +276,7 @@ const CheckoutForm = () => {
           </div>
 
           <div className="content-with-image flex flex-col md:flex-row gap-10 items-center md:mb-20">
-            <div className="image-wrap w-full md:w-3/5 h-[350px] overflow-hidden">
+            <div className="image-wrap w-full md:w-3/5">
               <LazyLoadImage
                 src={`${import.meta.env.VITE_API_DOMAIN}/${
                   selectedProductState?.product_image
