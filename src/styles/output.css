@@ -928,10 +928,6 @@
     --tw-tracking: -5%;
     letter-spacing: -5%;
   }
-  .tracking-\[0\%\] {
-    --tw-tracking: 0%;
-    letter-spacing: 0%;
-  }
   .tracking-tighter {
     --tw-tracking: var(--tracking-tighter);
     letter-spacing: var(--tracking-tighter);
