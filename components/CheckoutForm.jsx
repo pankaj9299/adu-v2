@@ -223,16 +223,20 @@ const CheckoutForm = () => {
 
               {/* Consent Note */}
               <div className="md:col-span-2">
-                <p className="text-[15px] font-normal">
-                  By providing a telephone number and when scheduling your
-                  consultation you are consenting to be contacted by SMS text
-                  message. Message & data rates may apply. You can reply STOP to
-                  opt-out of further messaging.
-                </p>
+                <div className="flex items-start gap-3">
+                  <input type="checkbox" className="mt-1" required />
+
+                  <p className="text-[15px] font-normal">
+                    By providing a telephone number and when scheduling your
+                    consultation you are consenting to be contacted by SMS text
+                    message. Message & data rates may apply. You can reply STOP
+                    to opt-out of further messaging.
+                  </p>
+                </div>
               </div>
 
               {/* Submit Button */}
-              <div className="md:col-span-1">
+              <div className="md:col-span-2 mt-2">
                 <button
                   type="submit"
                   disabled={loading}
