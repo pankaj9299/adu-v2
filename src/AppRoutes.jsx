@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { setProduct } from "./store/slices/configuratorSlice";
 import axios from "axios";
 import TestSlider from "../components/TestSlider";
+import Appliances from "../components/Appliances";
 
 export default function AppRoutes() {
   const location = useLocation();
@@ -64,6 +65,7 @@ export default function AppRoutes() {
       />
       <Route path="/configurator" element={<Configurator />} />
       <Route path="/checkout" element={<CheckoutForm />} />
+      <Route path="/appliances" element={<Appliances />} />
       <Route path="/test" element={<TestSlider />} />
     </Routes>
   );
