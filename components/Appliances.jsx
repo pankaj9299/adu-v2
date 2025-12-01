@@ -61,11 +61,11 @@ const appliances = [
   {
     model: "Two-Story Container",
     room: ["Kitchenette", "Laundry"],
-    image: "/image/appliances/side_by_side.svg",
+    image: "/image/appliances/two_story.svg",
     items: [
       {
-        image: "/image/appliances/cooktop.svg",
-        title: "Summit 12\" Wide 230V 2-Burner Radiant Cooktop",
+        image: "/image/appliances/fridge.svg",
+        title: "15.6 cu. ft. Top Freezer Refrigerator in Stainless Steel",
         blurb: 
           `<p>Two-burner 3000W electric cooktop with 230V operation</p>
           <p>Intuitive touch controls for smarter cooking</p>
