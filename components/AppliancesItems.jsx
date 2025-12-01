@@ -23,7 +23,6 @@ const AppliancesItems = ({ appliance }) => {
               effect="opacity"
               threshold={100}
             />
-            {/* <img src={appliance.image} height={460} className="mx-auto" /> */}
           </div>
           <div className="slider-container mt-8 px-10 md:px-16">
             <Slider {...settings}>
