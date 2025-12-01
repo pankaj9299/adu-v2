@@ -389,6 +389,9 @@
   .inline-block {
     display: inline-block;
   }
+  .inline-grid {
+    display: inline-grid;
+  }
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
@@ -615,6 +618,9 @@
   }
   .gap-12 {
     gap: calc(var(--spacing) * 12);
+  }
+  .gap-20 {
+    gap: calc(var(--spacing) * 20);
   }
   .gap-30 {
     gap: calc(var(--spacing) * 30);
@@ -1386,6 +1392,7 @@ html, body {
 :root {
   --font-size-tiny: 0.625rem;
   --font-size-28: 1.75rem;
+  --font-size-20: 1.25rem;
   --font-size-huge: 5rem;
   --font-size-banner: 6rem;
   --color-brand: #3b82f6;
@@ -1730,6 +1737,11 @@ html, body {
     --tw-tracking: -0.02em;
     letter-spacing: -0.02em;
   }
+  .active-filter {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 2px;
+    border-color: var(--color-lightYellow);
+  }
 }
 @layer utilities {
   .text-tiny {
@@ -1737,6 +1749,9 @@ html, body {
   }
   .text-28 {
     font-size: var(--font-size-28);
+  }
+  .text-20 {
+    font-size: var(--font-size-20);
   }
   .text-huge {
     font-size: var(--font-size-huge);

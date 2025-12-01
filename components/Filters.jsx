@@ -1,24 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const Filters = () => {
+const Filters = ({ initialRoom, appliances, handleItems }) => {
+  const handleSort = (model) => {
+    const sortedObj = appliances.filter((item) => item.model === model);
+    handleItems(sortedObj);
+  };
+
   return (
     <section className="filters">
       <div className="container">
         <div className="flex gap-30">
-          <h4>Model:</h4>
-          <ul className="flex gap-30">
-            <li>Single Container</li>
-            <li>Side-by-Side Container</li>
-            <li>Two-Story Container</li>
+          <p className="text-20 font-helvetica-neue-bold">Model:</p>
+          <ul className="flex gap-30 cursor-pointer text-20 font-arial">
+            {appliances.map((item, index) => (
+              <li
+                className={`${index === 0 ? "active-filter" : ""}`}
+                key={item.model}
+                onClick={() => handleSort(item.model)}
+              >
+                {item.model}
+              </li>
+            ))}
           </ul>
         </div>
-        <div className="flex gap-30">
-          <h4>Room:</h4>
-          <ul className="flex gap-30">
-            <li>Single Container</li>
-            <li>Side-by-Side Container</li>
-            <li>Two-Story Container</li>
+        <div className="flex gap-30 mt-3">
+          <p className="text-20 font-helvetica-neue-bold">Room:</p>
+          <ul className="inline-grid grid-cols-2 gap-20 cursor-pointer text-20 font-arial">
+            {initialRoom.map((item, index) => (
+              <li
+                className={`${index === 0 ? "active-filter" : ""}`}
+                key={item.room}
+              >
+                {item.room}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
