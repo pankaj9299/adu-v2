@@ -11,11 +11,11 @@ const AppliancesItems = ({ appliance }) => {
   };
 
   return (
-    <section className="appliances-items">
+    <section className="appliances-items pt-0">
       <div className="container">
         <>
           <div className="img-wrapper">
-            <img src={appliance.image} height={560} className="mx-auto" />
+            <img src={appliance.image} height={460} className="mx-auto" />
           </div>
           <div className="slider-container mt-8 px-10 md:px-16">
             <Slider {...settings}>
