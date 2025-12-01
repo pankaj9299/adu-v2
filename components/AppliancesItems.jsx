@@ -1,4 +1,5 @@
 import Slider from "react-slick";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const AppliancesItems = ({ appliance }) => {
   if (!appliance) return null;
@@ -15,7 +16,14 @@ const AppliancesItems = ({ appliance }) => {
       <div className="container">
         <>
           <div className="img-wrapper">
-            <img src={appliance.image} height={460} className="mx-auto" />
+            <LazyLoadImage
+              src={appliance.image}
+              alt={"Hero image"}
+              className={`mx-auto h-[460px]`}
+              effect="opacity"
+              threshold={100}
+            />
+            {/* <img src={appliance.image} height={460} className="mx-auto" /> */}
           </div>
           <div className="slider-container mt-8 px-10 md:px-16">
             <Slider {...settings}>
@@ -23,11 +31,12 @@ const AppliancesItems = ({ appliance }) => {
                 <div key={slide.id || slide.title}>
                   <div className="shadow-md grid grid-cols-1 md:grid-cols-10 gap-5 items-center p-8">
                     <div className="img-wrapper md:col-span-3">
-                      <img
+                      <LazyLoadImage
                         src={slide.image}
-                        height={237}
-                        className="mx-auto"
                         alt={slide.title}
+                        className={`mx-auto h-[237px]`}
+                        effect="opacity"
+                        threshold={100}
                       />
                     </div>
                     <div className="text-wrapper md:col-span-7">
