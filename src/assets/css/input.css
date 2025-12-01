@@ -9,6 +9,23 @@ body {
   overflow-x: hidden;
 }
 
+.appliances-items .slick-prev {
+  left: -50px !important;
+}
+
+.appliances-items .slick-next {
+  right: -40px !important;
+}
+
+.appliances-items .text-wrapper p {
+  margin-top: 10px;
+}
+
+.appliances-items .text-wrapper a {
+  color: #E2A002;
+  text-decoration: underline;
+}
+
 /* Add font-face here */
 @font-face {
   font-family: "Arial";

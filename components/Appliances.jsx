@@ -7,51 +7,98 @@ const appliances = [
   {
     model: "Single Container",
     room: ["Kitchenette"],
-    image: "",
+    image: "/image/appliances/single_container.svg",
     items: [
       {
-        image: "",
-        title: "",
-        blurb: "",
+        image: "/image/appliances/cooktop.svg",
+        title: "Summit 12\" Wide 230V 2-Burner Radiant Cooktop",
+        blurb: 
+          `<p>Two-burner 3000W electric cooktop with 230V operation</p>
+          <p>Intuitive touch controls for smarter cooking</p>
+          <p>Smooth ceramic glass surface made with Jet Black Schott Glass offers a modern look that's easy to clean</p>
+          <p>Rear 7" burner offers 1800W for faster heating of larger cooking vessels</p>
+          <p><a href="#">Download Appliances Packet ></a></p>`,
+      },
+      {
+        image: "/image/appliances/cooktop.svg",
+        title: "Summit 12\" Wide 230V 2-Burner Radiant Cooktop",
+        blurb: 
+          `<p>Two-burner 3000W electric cooktop with 230V operation</p>
+          <p>Intuitive touch controls for smarter cooking</p>
+          <p>Smooth ceramic glass surface made with Jet Black Schott Glass offers a modern look that's easy to clean</p>
+          <p>Rear 7" burner offers 1800W for faster heating of larger cooking vessels</p>
+          <p><a href="#">Download Appliances Packet ></a></p>`,
       },
     ],
   },
   {
     model: "Side-by-Side Container",
     room: ["Kitchenette"],
-    image: "",
+    image: "/image/appliances/side_by_side.svg",
     items: [
       {
-        image: "",
-        title: "",
-        blurb: "",
+        image: "/image/appliances/washer.svg",
+        title: "Samsung 4.5 cu. ft. Front Load Washer w/ Vibration Reduction Technology+",
+        blurb: 
+          `<p>Two-burner 3000W electric cooktop with 230V operation</p>
+          <p>Intuitive touch controls for smarter cooking</p>
+          <p>Smooth ceramic glass surface made with Jet Black Schott Glass offers a modern look that's easy to clean</p>
+          <p>Rear 7" burner offers 1800W for faster heating of larger cooking vessels</p>
+          <p><a href="#">Download Appliances Packet ></a></p>`,
+      },
+      {
+        image: "/image/appliances/cooktop.svg",
+        title: "Summit 12\" Wide 230V 2-Burner Radiant Cooktop",
+        blurb: 
+          `<p>Two-burner 3000W electric cooktop with 230V operation</p>
+          <p>Intuitive touch controls for smarter cooking</p>
+          <p>Smooth ceramic glass surface made with Jet Black Schott Glass offers a modern look that's easy to clean</p>
+          <p>Rear 7" burner offers 1800W for faster heating of larger cooking vessels</p>
+          <p><a href="#">Download Appliances Packet ></a></p>`,
       },
     ],
   },
   {
     model: "Two-Story Container",
     room: ["Kitchenette", "Laundry"],
-    image: "",
+    image: "/image/appliances/side_by_side.svg",
     items: [
       {
-        image: "",
-        title: "",
-        blurb: "",
+        image: "/image/appliances/cooktop.svg",
+        title: "Summit 12\" Wide 230V 2-Burner Radiant Cooktop",
+        blurb: 
+          `<p>Two-burner 3000W electric cooktop with 230V operation</p>
+          <p>Intuitive touch controls for smarter cooking</p>
+          <p>Smooth ceramic glass surface made with Jet Black Schott Glass offers a modern look that's easy to clean</p>
+          <p>Rear 7" burner offers 1800W for faster heating of larger cooking vessels</p>
+          <p><a href="#">Download Appliances Packet ></a></p>`,
+      },
+      {
+        image: "/image/appliances/cooktop.svg",
+        title: "Summit 12\" Wide 230V 2-Burner Radiant Cooktop",
+        blurb: 
+          `<p>Two-burner 3000W electric cooktop with 230V operation</p>
+          <p>Intuitive touch controls for smarter cooking</p>
+          <p>Smooth ceramic glass surface made with Jet Black Schott Glass offers a modern look that's easy to clean</p>
+          <p>Rear 7" burner offers 1800W for faster heating of larger cooking vessels</p>
+          <p><a href="#">Download Appliances Packet ></a></p>`,
       },
     ],
   },
 ];
 
 const Appliances = () => {
-  const [items, setItems] = useState({});
   const initialRoom = appliances.filter(
     (item) => item.model === "Single Container"
   );
+  const [items, setItems] = useState(initialRoom[0]);
 
   const handleItems = (obj) => {
     setItems(obj);
   };
 
+  console.log('appliances[0]', items);
+  
   return (
     <>
       <section className="appliances p-0">
@@ -77,7 +124,7 @@ const Appliances = () => {
         appliances={appliances}
         handleItems={handleItems}
       />
-      <AppliancesItems items={items} />
+      <AppliancesItems appliance={items} />
     </>
   );
 };

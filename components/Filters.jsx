@@ -1,9 +1,11 @@
 import { useState } from "react";
 
 const Filters = ({ initialRoom, appliances, handleItems }) => {
+  const [activeClass, setActiveClass] = useState(appliances[0].model);
   const handleSort = (model) => {
     const sortedObj = appliances.filter((item) => item.model === model);
-    handleItems(sortedObj);
+    handleItems(sortedObj[0]);
+    setActiveClass(sortedObj[0].model);
   };
 
   return (
@@ -12,9 +14,9 @@ const Filters = ({ initialRoom, appliances, handleItems }) => {
         <div className="flex gap-30">
           <p className="text-20 font-helvetica-neue-bold">Model:</p>
           <ul className="flex gap-30 cursor-pointer text-20 font-arial">
-            {appliances.map((item, index) => (
+            {appliances.map((item) => (
               <li
-                className={`${index === 0 ? "active-filter" : ""}`}
+                className={`${activeClass === item.model ? "active-filter" : ""}`}
                 key={item.model}
                 onClick={() => handleSort(item.model)}
               >

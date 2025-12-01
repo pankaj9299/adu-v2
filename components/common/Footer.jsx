@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-4">
           <div>
             <div className="img-wrapper mb-15">
-              <img src="https://placehold.co/200x50" alt="logo" />
+              <img src="/image/logo.svg" alt="logo" />
             </div>
             <h3 className="text-[30px] text-left font-normal font-helvetica-neue-bold text-lightYellow tracking-[-5%]">
               Be the first to know what we launch next
