@@ -1,14 +1,29 @@
 import { useState } from "react";
 
-const Filters = ({ appliances, handleItems }) => {
-  const [activeClass, setActiveClass] = useState(appliances[0].model);
+const Filters = ({ appliances, handleItems, updateModel, updateRoom }) => {
+  
+  const [activeModelClass, setActiveModelClass] = useState(appliances[0].model);
+  const [activeRoomClass, setActiveRoomClass] = useState(appliances[0].room[0]);
   const [rooms, setRooms] = useState(appliances[0].room);
-  const handleSort = (model) => {
+  const handleModel = (model) => {
     const sortedObj = appliances.filter((item) => item.model === model);
+    console.log('sortedObj', sortedObj);
     handleItems(sortedObj[0]);
-    setActiveClass(sortedObj[0].model);
+    setActiveModelClass(sortedObj[0].model);
+    setActiveRoomClass(sortedObj[0].room[0]);
     setRooms(sortedObj[0].room);
+
+    updateModel(model);
+    updateRoom(sortedObj[0].room[0]);
+
+    // console.log('sortedObj[0]', sortedObj[0]);
   };
+  const handleRoom = (room) => {
+    updateRoom(room);
+    setActiveRoomClass(room);
+  }
+
+  console.log('activeModelClass: ', activeModelClass, ' -- activeRoomClass: ', activeRoomClass);
 
   return (
     <section className="filters">
@@ -19,10 +34,10 @@ const Filters = ({ appliances, handleItems }) => {
             {appliances.map((item) => (
               <li
                 className={`${
-                  activeClass === item.model ? "active-filter" : ""
+                  activeModelClass === item.model ? "active-filter" : ""
                 }`}
                 key={item.model}
-                onClick={() => handleSort(item.model)}
+                onClick={() => handleModel(item.model)}
               >
                 {item.model}
               </li>
@@ -32,10 +47,11 @@ const Filters = ({ appliances, handleItems }) => {
         <div className="flex gap-30 mt-3">
           <p className="text-20 font-helvetica-neue-bold">Room:</p>
           <ul className="inline-grid grid-cols-2 gap-20 cursor-pointer text-20 font-arial">
-            {rooms.map((item, index) => (
+            {rooms.map((item) => (
               <li
-                className={`${index === 0 ? "active-filter" : ""}`}
+                className={`${activeRoomClass === item ? "active-filter" : ""}`}
                 key={item}
+                onClick={() => handleRoom(item)}
               >
                 {item}
               </li>

@@ -98,7 +98,7 @@ const appliances = [
       },
       {
         name: "Laundry",
-        image: "/image/appliances/two_story.svg",
+        image: "/image/appliances/laundary.svg",
         items: [
           {
             image: "/image/appliances/fridge.svg",
@@ -129,10 +129,20 @@ const Appliances = () => {
     (item) => item.model === "Single Container"
   );
   const [items, setItems] = useState(initialRoom[0]);
+  const [selectedModel, setSelectedModel] = useState(initialRoom[0].model);
+  const [selectedRoom, setSelectedRoom] = useState(initialRoom[0].room[0]);
 
   const handleItems = (obj) => {
     setItems(obj);
   };
+
+  const updateModel = (model) => {
+    setSelectedModel(model);
+  }
+
+  const updateRoom = (room) => {
+    setSelectedRoom(room);
+  }
 
   return (
     <>
@@ -154,8 +164,17 @@ const Appliances = () => {
           </div>
         </div>
       </section>
-      <Filters appliances={appliances} handleItems={handleItems} />
-      <AppliancesItems appliance={items} />
+      <Filters 
+        appliances={appliances} 
+        handleItems={handleItems}
+        updateModel={updateModel}
+        updateRoom={updateRoom}
+       />
+      <AppliancesItems 
+        appliance={items} 
+        selectedModel={selectedModel}
+        selectedRoom={selectedRoom}
+        />
     </>
   );
 };
