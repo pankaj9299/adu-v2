@@ -6,15 +6,15 @@ import AppliancesItems from "./AppliancesItems";
 const appliances = [
   {
     model: "Single Container",
-    image: "/image/appliances/single_container.svg",
+    image: "/image/appliances/single_container.webp",
     room: ["Kitchenette"],
     rooms: [
       {
         name: "Kitchenette",
-        image: "/image/appliances/single_container.svg",
+        image: "/image/appliances/single_container.webp",
         items: [
           {
-            image: "/image/appliances/cooktop.svg",
+            image: "/image/appliances/cooktop.webp",
             title: 'Summit 12" Wide 230V 2-Burner Radiant Cooktop',
             blurb: `<p>Two-burner 3000W electric cooktop with 230V operation</p>
               <p>Intuitive touch controls for smarter cooking</p>
@@ -23,7 +23,7 @@ const appliances = [
               <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/fridge_1.svg",
+            image: "/image/appliances/fridge_1.webp",
             title: 'Frigidaire 4.5 Cu. Ft. Compact Refrigerator',
             blurb: `<p>In-door gallon storage bin provides convenient space for gallon containers and tall bottles</p>
               <p>Easily adjust shelves up and down to create more space for taller items.</p>
@@ -32,7 +32,7 @@ const appliances = [
               <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/microwave.svg",
+            image: "/image/appliances/microwave.webp",
             title: 'Haier 1.4 Cubic Foot OTR Microwave',
             blurb: `<p>Sensor cooking adjusts cooking time and power level automatically</p>
               <p>Hidden vent streamlines the exterior while making it simpler to clean</p>
@@ -46,15 +46,15 @@ const appliances = [
   },
   {
     model: "Side-by-Side Container",
-    image: "/image/appliances/side_by_side.svg",
+    image: "/image/appliances/side_by_side.webp",
     room: ["Kitchen"],
     rooms: [
       {
         name: "Kitchen",
-        image: "/image/appliances/side_by_side.svg",
+        image: "/image/appliances/side_by_side.webp",
         items: [
           {
-            image: "/image/appliances/washer.svg",
+            image: "/image/appliances/washer.webp",
             title:
               "Samsung 4.5 cu. ft. Front Load Washer w/ Vibration Reduction Technology+",
             blurb: `<p>Reduces noise and vibration for extra quiet washing</p>
@@ -64,7 +64,7 @@ const appliances = [
               <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/dryer.svg",
+            image: "/image/appliances/dryer.webp",
             title: 'Samsung 7.5 cu. ft. Electric Dryer w/ Sensor Dry in White',
             blurb: `<p>Sensor dry helps prevent over drying for optimal fabric care</p>
             <p>10 preset drying cycles cover almost every drying need</p>
@@ -73,7 +73,7 @@ const appliances = [
               <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/fridge_2.svg",
+            image: "/image/appliances/fridge_2.webp",
             title: '15.6 cu. ft. Top Freezer Refrigerator in Stainless Steel',
             blurb: `<p>Multi-vent technology keeps items evenly cooled on every shelf.</p>
             <p>Minimalist exterior with signature flat door design and recessed handles</p>
@@ -82,7 +82,7 @@ const appliances = [
               <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/Dishwasher.svg",
+            image: "/image/appliances/Dishwasher.webp",
             title: 'Smart Dishwasher with StormWash™ in Stainless Steel',
             blurb: `<p>StormWash™ rotating jets let you skip pre-rinse, delivering heavy duty cleaning from every angle</p>
             <p>AutoRelease™ door automatically opens at end-of-cycle to circulate air for better drying performance</p>
@@ -90,7 +90,7 @@ const appliances = [
             <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/Stove.svg",
+            image: "/image/appliances/Stove.webp",
             title: 'Bespoke 6.3 cu. ft. Smart Slide-In Electric Range in Stainless Steel',
             blurb: `<p>Precision knobs & glass touch controls</p>
             <p>Powerful self-cleaning and fingerprint resistant finish</p>
@@ -99,7 +99,7 @@ const appliances = [
               <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/Microwave_1.svg",
+            image: "/image/appliances/Microwave_1.webp",
             title: 'Bespoke 2.1 cu. ft. Over-the-Range Microwave in Matte Black Steel',
             blurb: `<p>Sensor Cook automatically adjusts cooking time for optimal results</p>
             <p>Extra power ventilation refreshes air quickly to remove steam and odors</p>
@@ -113,15 +113,15 @@ const appliances = [
   },
   {
     model: "Two-Story Container",
-    image: "/image/appliances/two_story.svg",
+    image: "/image/appliances/two_story.webp",
     room: ["Kitchen", "Laundry"],
     rooms: [
       {
         name: "Kitchen",
-        image: "/image/appliances/two_story.svg",
+        image: "/image/appliances/two_story.webp",
         items: [
           {
-            image: "/image/appliances/fridge_2.svg",
+            image: "/image/appliances/fridge_2.webp",
             title: '15.6 cu. ft. Top Freezer Refrigerator in Stainless Steel',
             blurb: `<p>Multi-vent technology keeps items evenly cooled on every shelf.</p>
             <p>Minimalist exterior with signature flat door design and recessed handles</p>
@@ -130,7 +130,7 @@ const appliances = [
               <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/Dishwasher.svg",
+            image: "/image/appliances/Dishwasher.webp",
             title: 'Smart Dishwasher with StormWash™ in Stainless Steel',
             blurb: `<p>StormWash™ rotating jets let you skip pre-rinse, delivering heavy duty cleaning from every angle</p>
             <p>AutoRelease™ door automatically opens at end-of-cycle to circulate air for better drying performance</p>
@@ -138,7 +138,7 @@ const appliances = [
             <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/Stove.svg",
+            image: "/image/appliances/Stove.webp",
             title: 'Bespoke 6.3 cu. ft. Smart Slide-In Electric Range in Stainless Steel',
             blurb: `<p>Precision knobs & glass touch controls</p>
             <p>Powerful self-cleaning and fingerprint resistant finish</p>
@@ -147,7 +147,7 @@ const appliances = [
               <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/Microwave_1.svg",
+            image: "/image/appliances/Microwave_1.webp",
             title: 'Bespoke 2.1 cu. ft. Over-the-Range Microwave in Matte Black Steel',
             blurb: `<p>Sensor Cook automatically adjusts cooking time for optimal results</p>
             <p>Extra power ventilation refreshes air quickly to remove steam and odors</p>
@@ -159,10 +159,10 @@ const appliances = [
       },
       {
         name: "Laundry",
-        image: "/image/appliances/laundary.svg",
+        image: "/image/appliances/laundary.webp",
         items: [
           {
-            image: "/image/appliances/washer.svg",
+            image: "/image/appliances/washer.webp",
             title:
               "Samsung 4.5 cu. ft. Front Load Washer w/ Vibration Reduction Technology+",
             blurb: `<p>Reduces noise and vibration for extra quiet washing</p>
@@ -172,7 +172,7 @@ const appliances = [
               <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/dryer.svg",
+            image: "/image/appliances/dryer.webp",
             title: 'Samsung 7.5 cu. ft. Electric Dryer w/ Sensor Dry in White',
             blurb: `<p>Sensor dry helps prevent over drying for optimal fabric care</p>
             <p>10 preset drying cycles cover almost every drying need</p>
