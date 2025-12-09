@@ -241,6 +241,23 @@ const Pricing = () => {
             </div>
           </div>
         </div>
+        <div className="cta-wrapper px-10 pt-10 grid grid-cols-10 gap-5 items-center">
+          <div className="text-dark-green col-span-7">
+            <h4 className="font-arial text-4xl font-bold tracking-[-2%]">
+              Not sure which is best for you?
+            </h4>
+            <p className="text-xl font-arial font-normal mt-3">
+              Let our financing experts walk you through your options, answer
+              your questions, and help you find a plan that fits your budget and
+              timeline.
+            </p>
+          </div>
+          <div className="col-span-3">
+            <button className="border-lightYellow text-white tracking-[-5%] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+              Schedule a Call
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );
