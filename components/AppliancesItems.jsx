@@ -3,7 +3,9 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const AppliancesItems = ({ appliance, selectedRoom }) => {
   if (!appliance) return null;
-  const activeItems = appliance.rooms.filter(item => item.name === selectedRoom);
+  const activeItems = appliance.rooms.filter(
+    (item) => item.name === selectedRoom
+  );
   const mainImg = activeItems[0].image;
   //console.log('appliance', appliance.rooms, 'selectedModel', selectedModel, 'selectedRoom', selectedRoom, ' - activeItems: ', activeItems);
   //console.log('appliance', appliance, ' --- mainImg: ', mainImg, ' --- selectedRoom: ', selectedRoom);
@@ -24,7 +26,7 @@ const AppliancesItems = ({ appliance, selectedRoom }) => {
             <LazyLoadImage
               src={mainImg}
               alt={"Hero image"}
-              className={`h-[460px] mx-auto`}
+              className={`h-[560px] mx-auto`}
               wrapperClassName="w-full text-center"
               effect="opacity"
               threshold={100}
@@ -32,7 +34,7 @@ const AppliancesItems = ({ appliance, selectedRoom }) => {
           </div>
           <div className="slider-container mt-8 px-10 md:px-16">
             <Slider {...settings}>
-              {activeItems.map((room) => (
+              {activeItems.map((room) =>
                 room.items.map((slide) => (
                   <div key={slide.id || slide.title}>
                     <div className="shadow-md grid grid-cols-1 md:grid-cols-10 gap-5 items-center p-8">
@@ -46,15 +48,18 @@ const AppliancesItems = ({ appliance, selectedRoom }) => {
                         />
                       </div>
                       <div className="text-wrapper md:col-span-7">
-                        <h4>{slide.title}</h4>
+                        <h4 className="text-dark-green font-helvetica-neue-bold tracking-[-2%]">
+                          {slide.title}
+                        </h4>
                         <div
+                          className="prose-p:text-dark-green prose prose-p:text-base prose-p:leading-normal font-arial tracking-[0%]"
                           dangerouslySetInnerHTML={{ __html: slide.blurb }}
                         />
                       </div>
                     </div>
                   </div>
                 ))
-              ))}
+              )}
             </Slider>
           </div>
         </>

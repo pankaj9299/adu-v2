@@ -443,8 +443,8 @@
   .h-\[450px\] {
     height: 450px;
   }
-  .h-\[460px\] {
-    height: 460px;
+  .h-\[560px\] {
+    height: 560px;
   }
   .h-auto {
     height: auto;
@@ -993,6 +993,10 @@
     --tw-tracking: -5%;
     letter-spacing: -5%;
   }
+  .tracking-\[0\%\] {
+    --tw-tracking: 0%;
+    letter-spacing: 0%;
+  }
   .tracking-tighter {
     --tw-tracking: var(--tracking-tighter);
     letter-spacing: var(--tracking-tighter);
@@ -1426,8 +1430,13 @@ html, body {
 .appliances-items .text-wrapper p {
   margin-top: 10px;
 }
+.appliances-items .slider-container p {
+  font-size: 15px;
+  letter-spacing: normal;
+  color: #263824;
+}
 .appliances-items .text-wrapper a {
-  color: #E2A002;
+  color: #e2a002;
   text-decoration: underline;
 }
 @font-face {

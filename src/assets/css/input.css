@@ -21,8 +21,14 @@ body {
   margin-top: 10px;
 }
 
+.appliances-items .slider-container p {
+  font-size: 15px;
+  letter-spacing: normal;
+  color: #263824;
+}
+
 .appliances-items .text-wrapper a {
-  color: #E2A002;
+  color: #e2a002;
   text-decoration: underline;
 }
 

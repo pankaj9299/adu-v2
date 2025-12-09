@@ -24,7 +24,7 @@ const appliances = [
           },
           {
             image: "/image/appliances/fridge_1.webp",
-            title: 'Frigidaire 4.5 Cu. Ft. Compact Refrigerator',
+            title: "Frigidaire 4.5 Cu. Ft. Compact Refrigerator",
             blurb: `<p>In-door gallon storage bin provides convenient space for gallon containers and tall bottles</p>
               <p>Easily adjust shelves up and down to create more space for taller items.</p>
               <p>True full-width freezer cools to -8 F.</p>
@@ -33,7 +33,7 @@ const appliances = [
           },
           {
             image: "/image/appliances/microwave.webp",
-            title: 'Haier 1.4 Cubic Foot OTR Microwave',
+            title: "Haier 1.4 Cubic Foot OTR Microwave",
             blurb: `<p>Sensor cooking adjusts cooking time and power level automatically</p>
               <p>Hidden vent streamlines the exterior while making it simpler to clean</p>
               <p>300 CFM ventilation Quickly moves smoke and steam up from the cooktop surface</p>
@@ -65,7 +65,7 @@ const appliances = [
           },
           {
             image: "/image/appliances/dryer.webp",
-            title: 'Samsung 7.5 cu. ft. Electric Dryer w/ Sensor Dry in White',
+            title: "Samsung 7.5 cu. ft. Electric Dryer w/ Sensor Dry in White",
             blurb: `<p>Sensor dry helps prevent over drying for optimal fabric care</p>
             <p>10 preset drying cycles cover almost every drying need</p>
             <p>7.5 cu. ft. large capacity for fewer loads and less time in the laundry room</p>
@@ -74,7 +74,7 @@ const appliances = [
           },
           {
             image: "/image/appliances/fridge_2.webp",
-            title: '15.6 cu. ft. Top Freezer Refrigerator in Stainless Steel',
+            title: "15.6 cu. ft. Top Freezer Refrigerator in Stainless Steel",
             blurb: `<p>Multi-vent technology keeps items evenly cooled on every shelf.</p>
             <p>Minimalist exterior with signature flat door design and recessed handles</p>
             <p>Space for gallon beverages provides more shelf space inside the fridge</p>
@@ -83,7 +83,7 @@ const appliances = [
           },
           {
             image: "/image/appliances/Dishwasher.webp",
-            title: 'Smart Dishwasher with StormWash™ in Stainless Steel',
+            title: "Smart Dishwasher with StormWash™ in Stainless Steel",
             blurb: `<p>StormWash™ rotating jets let you skip pre-rinse, delivering heavy duty cleaning from every angle</p>
             <p>AutoRelease™ door automatically opens at end-of-cycle to circulate air for better drying performance</p>
             <p>Height-adjustable upper rack makes it easy to accommodate various dishware shapes and sizes.</p>
@@ -91,7 +91,8 @@ const appliances = [
           },
           {
             image: "/image/appliances/Stove.webp",
-            title: 'Bespoke 6.3 cu. ft. Smart Slide-In Electric Range in Stainless Steel',
+            title:
+              "Bespoke 6.3 cu. ft. Smart Slide-In Electric Range in Stainless Steel",
             blurb: `<p>Precision knobs & glass touch controls</p>
             <p>Powerful self-cleaning and fingerprint resistant finish</p>
             <p>6.3 cu. ft. oven capacity accommodates large dishes and roasting pans</p>
@@ -100,7 +101,8 @@ const appliances = [
           },
           {
             image: "/image/appliances/Microwave_1.webp",
-            title: 'Bespoke 2.1 cu. ft. Over-the-Range Microwave in Matte Black Steel',
+            title:
+              "Bespoke 2.1 cu. ft. Over-the-Range Microwave in Matte Black Steel",
             blurb: `<p>Sensor Cook automatically adjusts cooking time for optimal results</p>
             <p>Extra power ventilation refreshes air quickly to remove steam and odors</p>
             <p>Eco Mode button conserves power by turning off the display when not in use</p>
@@ -122,7 +124,7 @@ const appliances = [
         items: [
           {
             image: "/image/appliances/fridge_2.webp",
-            title: '15.6 cu. ft. Top Freezer Refrigerator in Stainless Steel',
+            title: "15.6 cu. ft. Top Freezer Refrigerator in Stainless Steel",
             blurb: `<p>Multi-vent technology keeps items evenly cooled on every shelf.</p>
             <p>Minimalist exterior with signature flat door design and recessed handles</p>
             <p>Space for gallon beverages provides more shelf space inside the fridge</p>
@@ -131,7 +133,7 @@ const appliances = [
           },
           {
             image: "/image/appliances/Dishwasher.webp",
-            title: 'Smart Dishwasher with StormWash™ in Stainless Steel',
+            title: "Smart Dishwasher with StormWash™ in Stainless Steel",
             blurb: `<p>StormWash™ rotating jets let you skip pre-rinse, delivering heavy duty cleaning from every angle</p>
             <p>AutoRelease™ door automatically opens at end-of-cycle to circulate air for better drying performance</p>
             <p>Height-adjustable upper rack makes it easy to accommodate various dishware shapes and sizes.</p>
@@ -139,7 +141,8 @@ const appliances = [
           },
           {
             image: "/image/appliances/Stove.webp",
-            title: 'Bespoke 6.3 cu. ft. Smart Slide-In Electric Range in Stainless Steel',
+            title:
+              "Bespoke 6.3 cu. ft. Smart Slide-In Electric Range in Stainless Steel",
             blurb: `<p>Precision knobs & glass touch controls</p>
             <p>Powerful self-cleaning and fingerprint resistant finish</p>
             <p>6.3 cu. ft. oven capacity accommodates large dishes and roasting pans</p>
@@ -148,7 +151,8 @@ const appliances = [
           },
           {
             image: "/image/appliances/Microwave_1.webp",
-            title: 'Bespoke 2.1 cu. ft. Over-the-Range Microwave in Matte Black Steel',
+            title:
+              "Bespoke 2.1 cu. ft. Over-the-Range Microwave in Matte Black Steel",
             blurb: `<p>Sensor Cook automatically adjusts cooking time for optimal results</p>
             <p>Extra power ventilation refreshes air quickly to remove steam and odors</p>
             <p>Eco Mode button conserves power by turning off the display when not in use</p>
@@ -173,7 +177,7 @@ const appliances = [
           },
           {
             image: "/image/appliances/dryer.webp",
-            title: 'Samsung 7.5 cu. ft. Electric Dryer w/ Sensor Dry in White',
+            title: "Samsung 7.5 cu. ft. Electric Dryer w/ Sensor Dry in White",
             blurb: `<p>Sensor dry helps prevent over drying for optimal fabric care</p>
             <p>10 preset drying cycles cover almost every drying need</p>
             <p>7.5 cu. ft. large capacity for fewer loads and less time in the laundry room</p>
@@ -200,11 +204,11 @@ const Appliances = () => {
 
   const updateModel = (model) => {
     setSelectedModel(model);
-  }
+  };
 
   const updateRoom = (room) => {
     setSelectedRoom(room);
-  }
+  };
 
   return (
     <>
@@ -226,17 +230,17 @@ const Appliances = () => {
           </div>
         </div>
       </section>
-      <Filters 
-        appliances={appliances} 
+      <Filters
+        appliances={appliances}
         handleItems={handleItems}
         updateModel={updateModel}
         updateRoom={updateRoom}
-       />
-      <AppliancesItems 
-        appliance={items} 
+      />
+      <AppliancesItems
+        appliance={items}
         selectedModel={selectedModel}
         selectedRoom={selectedRoom}
-        />
+      />
     </>
   );
 };
