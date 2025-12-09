@@ -1,0 +1,249 @@
+const Pricing = () => {
+  return (
+    <section className="pricing-wrapper py-20">
+      <div className="container md:p-0">
+        <div className="intro">
+          <h2 className="text-dark-green text-center text-4xl font-helvetica-neue-bold tracking-[-2%] mb-30">
+            We’ve partnered with financing providers who understand ADUs— <br />
+            <span className="text-marigold">
+              no confusing loan jargon or hoops to jump through.
+            </span>
+          </h2>
+        </div>
+        <div className="pricing-table mt-10">
+          <div className="grid grid-cols-3 gap-0">
+            <div className="self-center">
+              <h2 className="font-arial font-normal leading-[80px] text-85 text-dark-green">
+                Financing <br />
+                Options
+              </h2>
+              <p className="mt-10 text-dark-green text-2xl font-helvetica-neue-bold tracking-[-2%]">
+                Simple, transparent options
+                <br /> designed to fit your budget.
+              </p>
+            </div>
+            <div className="bg-dark-green py-7">
+              <h3 className="text-white text-3xl font-helvetica-neue-bold tracking-[-2%] px-5 mb-2">
+                Fixed Rate
+              </h3>
+              <hr className="max-w-3xs border-marigold border-2" />
+              <div className="px-5 text-white">
+                <p className="my-5">
+                  Peace of mind of a fixed rate, often at a lower rate than a
+                  HELOC. Typically for faster projects.
+                </p>
+                <p className="text-xl font-helvetica-neue-bold tracking-[-2%]">
+                  Loan Amounts of <br />
+                  $100,000 - $500,000
+                </p>
+                <p className="text-sm">
+                  No need to refinance your existing mortgage.
+                </p>
+              </div>
+              <div className="table-wrapper mt-5">
+                <div className="grid grid-cols-2 gap-5 text-white bg-white/10 px-7 py-5">
+                  <h3 className="text-base font-arial">Rate</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Fixed Rate
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-white px-7 py-5">
+                  <h3 className="text-base font-arial">Terms</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Up to 30 years
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-white bg-white/10 px-7 py-5">
+                  <h3 className="text-base font-arial">Borrowing Power</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Up to 85% loan-to-value
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-white px-7 py-5">
+                  <h3 className="text-base font-arial">Disbursement</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Full loan amount distributed at closing
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div className="py-7">
+              <h3 className="text-dark-green text-3xl font-helvetica-neue-bold tracking-[-2%] px-5 mb-2">
+                HELOC
+              </h3>
+              <hr className="max-w-3xs border-marigold border-2" />
+              <div className="px-5 text-dark-green">
+                <p className="my-5">
+                  Flexibility of drawing what you need, when you need it, and
+                  only pay on what you use.
+                </p>
+                <p className="text-xl font-helvetica-neue-bold tracking-[-2%]">
+                  Loan Amounts of <br />
+                  $100,000 - $500,000
+                </p>
+                <p className="text-sm">
+                  No need to refinance your existing mortgage.
+                </p>
+              </div>
+              <div className="table-wrapper mt-5">
+                <div className="grid grid-cols-2 gap-5 text-dark-green bg-white/10 px-7 py-5">
+                  <h3 className="text-base font-arial">Rate</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Variable or Fixed Rate
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-dark-green px-7 py-5">
+                  <h3 className="text-base font-arial">Terms</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    3-5 year draw phase up to 30 years repayment
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-dark-green bg-white/10 px-7 py-5">
+                  <h3 className="text-base font-arial">Borrowing Power</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Up to 90% loan-to-value
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-dark-green px-7 py-5">
+                  <h3 className="text-base font-arial">Disbursement</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Line of credit with checkbook to spend funds
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div className="bg-maroon py-7">
+              <h3 className="text-white text-3xl font-helvetica-neue-bold tracking-[-2%] px-5 mb-2">
+                Renovation Loan
+              </h3>
+              <hr className="max-w-3xs border-marigold border-2" />
+              <div className="px-5 text-white">
+                <p className="my-5">
+                  Whether purchasing a property or refinancing, you can add the
+                  construction budget into your loan.
+                </p>
+                <p className="text-xl font-helvetica-neue-bold tracking-[-2%]">
+                  Loan Amounts of <br />
+                  $150,000 - $3,000,000
+                </p>
+              </div>
+              <div className="table-wrapper mt-5">
+                <div className="grid grid-cols-2 gap-5 text-white bg-white/10 px-7 py-5">
+                  <h3 className="text-base font-arial">Rate</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Adjustable or Fixed Rate
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-white px-7 py-5">
+                  <h3 className="text-base font-arial">Terms</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Up to 30 years
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-white bg-white/10 px-7 py-5">
+                  <h3 className="text-base font-arial">Borrowing Power</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Up to 110% of FUTURE loan-to-value
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-white px-7 py-5">
+                  <h3 className="text-base font-arial">Disbursement</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Draws provided as needed during construction
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div className="bg-khaki py-7">
+              <h3 className="text-dark-green text-3xl font-helvetica-neue-bold tracking-[-2%] px-5 mb-2">
+                Construction Loan
+              </h3>
+              <hr className="max-w-3xs border-marigold border-2" />
+              <div className="px-5 text-dark-green">
+                <p className="my-5">
+                  Whether purchasing or refinancing a lot, you can finance
+                  construction as part of your mortgage.
+                </p>
+                <p className="text-xl font-helvetica-neue-bold tracking-[-2%]">
+                  Loan Amounts of <br />
+                  $150,000 - $3,000,000
+                </p>
+              </div>
+              <div className="table-wrapper mt-5">
+                <div className="grid grid-cols-2 gap-5 text-dark-green bg-white/10 px-7 py-5">
+                  <h3 className="text-base font-arial">Rate</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Fixed Rate, Interest-only
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-dark-green px-7 py-5">
+                  <h3 className="text-base font-arial">Terms</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    30 year term, 3-year refinance
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-dark-green bg-white/10 px-7 py-5">
+                  <h3 className="text-base font-arial">Borrowing Power</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Up to 80% of FUTURE loan-to-value
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-dark-green px-7 py-5">
+                  <h3 className="text-base font-arial">Disbursement</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Draws provided as needed during construction
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div className="bg-dark-teal py-7">
+              <h3 className="text-white text-3xl font-helvetica-neue-bold tracking-[-2%] px-5 mb-2">
+                ReLOC
+              </h3>
+              <hr className="max-w-3xs border-marigold border-2" />
+              <div className="px-5 text-white">
+                <p className="my-5">
+                  If you’re 62 or older, this loan can cover the cost of
+                  construction with no monthly payment – and no need to
+                  refinance.
+                </p>
+                <p className="text-xl font-helvetica-neue-bold tracking-[-2%]">
+                  Loan Amounts of <br />
+                  $150,000 - $3,000,000
+                </p>
+              </div>
+              <div className="table-wrapper mt-5">
+                <div className="grid grid-cols-2 gap-5 text-white bg-white/10 px-7 py-5">
+                  <h3 className="text-base font-arial">Rate</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Fixed Rate
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-white px-7 py-5">
+                  <h3 className="text-base font-arial">Terms</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    30 year term, no pre-payment penalty
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-white bg-white/10 px-7 py-5">
+                  <h3 className="text-base font-arial">Borrowing Power</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Depends on home equity and age of applicants
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-5 text-white px-7 py-5">
+                  <h3 className="text-base font-arial">Disbursement</h3>
+                  <h3 className="text-base font-arial font-bold tracking-[-2%]">
+                    Line of credit with checkbook to spend funds
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Pricing;

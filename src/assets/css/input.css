@@ -46,6 +46,7 @@ body {
   --font-size-tiny: 0.625rem;
   --font-size-28: 1.75rem;
   --font-size-20: 1.25rem;
+  --font-size-85: 5.3125rem;
   --font-size-huge: 5rem;
   --font-size-banner: 6rem;
 
@@ -57,6 +58,7 @@ body {
   --color-marigold: #e2a002;
   --color-dark-teal: #305d62;
   --color-gray: #d9d9d9;
+  --color-maroon: #481e08;
 
   --font-family-arial: "Arial", sans-serif;
   --font-family-helvetica-neue-bold: "Helvetica Neue Bold", sans-serif;
@@ -96,6 +98,7 @@ body {
   --color-marigold: #e2a002;
   --color-dark-teal: #305d62;
   --color-gray: #d9d9d9;
+  --color-maroon: #481e08;
 
   /* Custom spacing for mb-15, mb-25, mb-34 */
   --spacing-10: 2.75rem; /* 10 * 0.25rem */
@@ -228,6 +231,9 @@ body {
   }
   .text-20 {
     font-size: var(--font-size-20);
+  }
+  .text-85 {
+    font-size: var(--font-size-85);
   }
   .text-huge {
     font-size: var(--font-size-huge);

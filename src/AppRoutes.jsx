@@ -9,6 +9,7 @@ import { setProduct } from "./store/slices/configuratorSlice";
 import axios from "axios";
 import TestSlider from "../components/TestSlider";
 import Appliances from "../components/Appliances";
+import Financing from "../components/Financing";
 
 export default function AppRoutes() {
   const location = useLocation();
@@ -66,6 +67,7 @@ export default function AppRoutes() {
       <Route path="/configurator" element={<Configurator />} />
       <Route path="/checkout" element={<CheckoutForm />} />
       <Route path="/appliances" element={<Appliances />} />
+      <Route path="/financing" element={<Financing />} />
       <Route path="/test" element={<TestSlider />} />
     </Routes>
   );

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,18 +25,16 @@ const Header = () => {
   return (
     // <header className={`py-5 ${headerClass} mb-0`}>
     <header
-      className={`py-5 mb-0 ${
-        scrollY > 10 ? "bg-gray shadow-md" : "bg-white"
-      }`}
+      className={`py-5 mb-0 ${scrollY > 10 ? "bg-gray shadow-md" : "bg-white"}`}
     >
       <div className="container mx-auto px-4">
         <div className="wrapper w-full flex items-center justify-between">
           {/* Logo (Uncomment if needed) */}
-          {/* <div className="logo w-[140px] h-[70px]">
+          <div className="logo w-[140px] h-[70px]">
             <Link to="/">
               <img src="/image/Group 2@2x.png" alt="logo" />
             </Link>
-          </div> */}
+          </div>
 
           {/* Desktop Navigation */}
           <div className="links-with-button hidden md:flex items-center justify-center gap-12 w-full">
