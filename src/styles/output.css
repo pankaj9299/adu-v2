@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.18 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -331,6 +331,9 @@
   .my-7 {
     margin-block: calc(var(--spacing) * 7);
   }
+  .my-10 {
+    margin-block: var(--spacing-10);
+  }
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
@@ -618,6 +621,9 @@
   .grid-cols-11 {
     grid-template-columns: repeat(11, minmax(0, 1fr));
   }
+  .grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
   .flex-col {
     flex-direction: column;
   }
@@ -875,6 +881,9 @@
   .p-\[80px_50px_80px_190px\] {
     padding: 80px 50px 80px 190px;
   }
+  .p-\[80px_190px_80px_50px\] {
+    padding: 80px 190px 80px 50px;
+  }
   .px-0 {
     padding-inline: calc(var(--spacing) * 0);
   }
@@ -999,6 +1008,10 @@
     font-size: var(--text-6xl);
     line-height: var(--tw-leading, var(--text-6xl--line-height));
   }
+  .text-7xl {
+    font-size: var(--text-7xl);
+    line-height: var(--tw-leading, var(--text-7xl--line-height));
+  }
   .text-base {
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
@@ -1041,6 +1054,14 @@
   }
   .text-\[40px\] {
     font-size: 40px;
+  }
+  .leading-\[74px\] {
+    --tw-leading: 74px;
+    line-height: 74px;
+  }
+  .leading-\[76px\] {
+    --tw-leading: 76px;
+    line-height: 76px;
   }
   .leading-\[80px\] {
     --tw-leading: 80px;
