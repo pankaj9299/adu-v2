@@ -2,7 +2,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ColTwoImageV2 = () => {
   return (
-    <section>
+    <section className="pb-0">
       <div className="grid grid-cols-12 bg-dark-green">
         <div className="col-span-6">
           <LazyLoadImage
@@ -14,7 +14,7 @@ const ColTwoImageV2 = () => {
             threshold={100}
           />
         </div>
-        <div className="col-span-6 p-[80px_190px_80px_50px] self-center">
+        <div className="col-span-6 p-[80px_100px_80px_50px] self-center">
           <h3 className="text-white font-arial text-7xl leading-[74px] tracking-[-5%]">
             How Our Financing Works
           </h3>
