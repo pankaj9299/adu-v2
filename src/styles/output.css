@@ -481,9 +481,6 @@
   .h-\[228px\] {
     height: 228px;
   }
-  .h-\[237px\] {
-    height: 237px;
-  }
   .h-\[450px\] {
     height: 450px;
   }
@@ -650,6 +647,9 @@
   }
   .flex-wrap {
     flex-wrap: wrap;
+  }
+  .place-items-center {
+    place-items: center;
   }
   .items-center {
     align-items: center;

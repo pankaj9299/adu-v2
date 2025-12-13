@@ -37,12 +37,12 @@ const AppliancesItems = ({ appliance, selectedRoom }) => {
               {activeItems.map((room) =>
                 room.items.map((slide) => (
                   <div key={slide.id || slide.title}>
-                    <div className="shadow-md grid grid-cols-1 md:grid-cols-10 gap-5 items-center p-8">
+                    <div className="shadow-md grid grid-cols-1 md:grid-cols-10 gap-5 items-center place-items-center p-8">
                       <div className="img-wrapper md:col-span-3">
                         <LazyLoadImage
                           src={slide.image}
                           alt={slide.title}
-                          className={`mx-auto h-[237px]`}
+                          className={`mx-auto h-full`}
                           effect="opacity"
                           threshold={100}
                         />

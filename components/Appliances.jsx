@@ -32,7 +32,7 @@ const appliances = [
               <p><a href="#">Download Appliances Packet ></a></p>`,
           },
           {
-            image: "/image/appliances/microwave.webp",
+            image: "/image/appliances/microwave.png",
             title: "Haier 1.4 Cubic Foot OTR Microwave",
             blurb: `<p>Sensor cooking adjusts cooking time and power level automatically</p>
               <p>Hidden vent streamlines the exterior while making it simpler to clean</p>
