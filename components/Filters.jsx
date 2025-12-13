@@ -32,14 +32,14 @@ const Filters = ({ appliances, handleItems, updateModel, updateRoom }) => {
   return (
     <section className="filters">
       <div className="container">
-        <div className="flex gap-30">
+        <div className="flex max-sm:flex-col md:gap-30 sm:gap-5">
           <p className="text-20 text-dark-green font-helvetica-neue-bold tracking-[-2%]">
             Model:
           </p>
-          <ul className="flex gap-30 cursor-pointer text-20 font-arial">
+          <ul className="flex max-sm:flex-col md:gap-30 sm:gap-5 cursor-pointer text-20 font-arial">
             {appliances.map((item) => (
               <li
-                className={`text-dark-green font-normal ${
+                className={`text-dark-green font-normal max-sm:inline-flex w-fit ${
                   activeModelClass === item.model ? "active-filter" : ""
                 }`}
                 key={item.model}
@@ -50,14 +50,14 @@ const Filters = ({ appliances, handleItems, updateModel, updateRoom }) => {
             ))}
           </ul>
         </div>
-        <div className="flex gap-30 mt-3">
+        <div className="flex max-sm:flex-col md:gap-30 sm:gap-5 mt-3">
           <p className="text-20 text-dark-green font-helvetica-neue-bold tracking-[-2%]">
             Room:
           </p>
-          <ul className="inline-grid grid-cols-2 gap-20 cursor-pointer text-20 font-arial">
+          <ul className="inline-grid max-sm:flex-col grid-cols-2 gap-20 cursor-pointer text-20 font-arial">
             {rooms.map((item) => (
               <li
-                className={`text-dark-green font-normal tracking-[0%] ${
+                className={`text-dark-green font-normal tracking-[0%] max-sm:inline-flex w-fit ${
                   activeRoomClass === item ? "active-filter" : ""
                 }`}
                 key={item}

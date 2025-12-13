@@ -224,7 +224,7 @@ const Appliances = () => {
               threshold={100}
             />
             <div className="absolute inset-0 bg-black/20"></div>
-            <h1 className="absolute bottom-20 right-40 text-white">
+            <h1 className="absolute max-sm:bottom-10 md:bottom-20 max-sm:right-20 md:right-40 text-white">
               Our Appliances
             </h1>
           </div>
