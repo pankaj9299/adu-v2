@@ -26,7 +26,7 @@ const AppliancesItems = ({ appliance, selectedRoom }) => {
             <LazyLoadImage
               src={mainImg}
               alt={"Hero image"}
-              className={`h-[560px] mx-auto`}
+              className={`md:h-[560px] max-sm:h-full mx-auto`}
               wrapperClassName="w-full text-center"
               effect="opacity"
               threshold={100}
