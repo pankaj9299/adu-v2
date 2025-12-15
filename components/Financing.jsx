@@ -4,6 +4,7 @@ import ColTwoImage from "./financing/ColTwoImage";
 import ColTwoImageV2 from "./financing/ColTwoImageV2";
 import Cta from "./financing/Cta";
 import Resources from "./financing/Resources";
+import Calculator from "./financing/Calculator";
 
 const Financing = () => {
   return (
@@ -11,6 +12,7 @@ const Financing = () => {
       <Banner />
       <Pricing />
       <ColTwoImage />
+      <Calculator />
       <ColTwoImageV2 />
       <Resources />
       <Cta />
