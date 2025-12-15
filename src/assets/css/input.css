@@ -59,6 +59,7 @@ body {
   --color-dark-teal: #305d62;
   --color-gray: #d9d9d9;
   --color-maroon: #481e08;
+  --color-adugrey: #eeeeee;
 
   --font-family-arial: "Arial", sans-serif;
   --font-family-helvetica-neue-bold: "Helvetica Neue Bold", sans-serif;
@@ -99,6 +100,7 @@ body {
   --color-dark-teal: #305d62;
   --color-gray: #d9d9d9;
   --color-maroon: #481e08;
+  --color-adugrey: #eeeeee;
 
   /* Custom spacing for mb-15, mb-25, mb-34 */
   --spacing-10: 2.75rem; /* 10 * 0.25rem */

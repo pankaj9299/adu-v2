@@ -2,7 +2,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ColTwoImageV2 = () => {
   return (
-    <section className="pb-0">
+    <section className="py-0">
       <div className="grid grid-cols-12 bg-dark-green">
         <div className="col-span-6">
           <LazyLoadImage
