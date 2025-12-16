@@ -20,7 +20,7 @@ const appliances = [
               <p>Intuitive touch controls for smarter cooking</p>
               <p>Smooth ceramic glass surface made with Jet Black Schott Glass offers a modern look that's easy to clean</p>
               <p>Rear 7" burner offers 1800W for faster heating of larger cooking vessels</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+              <p><a href="/image/appliances/pdfs/Summit.pdf" target="_blank">Download Appliances Packet ></a></p>`,
           },
           {
             image: "/image/appliances/fridge_1.webp",
@@ -29,7 +29,7 @@ const appliances = [
               <p>Easily adjust shelves up and down to create more space for taller items.</p>
               <p>True full-width freezer cools to -8 F.</p>
               <p>Bright interior lighting makes it easy to see what’s inside</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+              <p><a target="_blank" href="/image/appliances/pdfs/Frigidaire.pdf">Download Appliances Packet ></a></p>`,
           },
           {
             image: "/image/appliances/microwave.png",
@@ -38,7 +38,7 @@ const appliances = [
               <p>Hidden vent streamlines the exterior while making it simpler to clean</p>
               <p>300 CFM ventilation Quickly moves smoke and steam up from the cooktop surface</p>
               <p>LED surface light distributes bright, clear light across the cooking surface</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+              <p><a target="_blank" href="/image/appliances/pdfs/Haier.pdf">Download Appliances Packet ></a></p>`,
           },
         ],
       },
@@ -61,7 +61,7 @@ const appliances = [
               <p>Self Clean+ eliminates 99% of bacteria in the drum.</p>
               <p>10 preset washing cycles & 6 additional washing options</p>
               <p>1200 RPM maximum spin speed</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+              <p><a target="_blank" href="/image/appliances/pdfs/Samsung4.5.pdf">Download Appliances Packet ></a></p>`,
           },
           {
             image: "/image/appliances/dryer.webp",
@@ -70,7 +70,7 @@ const appliances = [
             <p>10 preset drying cycles cover almost every drying need</p>
             <p>7.5 cu. ft. large capacity for fewer loads and less time in the laundry room</p>
             <p>9 additional drying options with 5 temperature levels</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+            <p><a target="_blank" href="/image/appliances/pdfs/Samsung7.5.pdf">Download Appliances Packet ></a></p>`,
           },
           {
             image: "/image/appliances/fridge_2.webp",
@@ -79,7 +79,7 @@ const appliances = [
             <p>Minimalist exterior with signature flat door design and recessed handles</p>
             <p>Space for gallon beverages provides more shelf space inside the fridge</p>
             <p>Interior LED lighting</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+            <p><a target="_blank" href="/image/appliances/pdfs/Samsung15.6.pdf">Download Appliances Packet ></a></p>`,
           },
           {
             image: "/image/appliances/Dishwasher.webp",
@@ -97,7 +97,7 @@ const appliances = [
             <p>Powerful self-cleaning and fingerprint resistant finish</p>
             <p>6.3 cu. ft. oven capacity accommodates large dishes and roasting pans</p>
             <p>Cook fast and evenly with the powerful heat of the 17K BTU Power Burner</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+            <p><a target="_blank" href="/image/appliances/pdfs/Bespoke6.3.pdf">Download Appliances Packet ></a></p>`,
           },
           {
             image: "/image/appliances/Microwave_1.webp",
@@ -107,7 +107,7 @@ const appliances = [
             <p>Extra power ventilation refreshes air quickly to remove steam and odors</p>
             <p>Eco Mode button conserves power by turning off the display when not in use</p>
             <p>Beautiful ceramic blue enamel interior is scratch resistant and easy to clean</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+            <p><a target="_blank" href="/image/appliances/pdfs/Bespoke2.1.pdf">Download Appliances Packet ></a></p>`,
           },
         ],
       },
@@ -129,7 +129,7 @@ const appliances = [
             <p>Minimalist exterior with signature flat door design and recessed handles</p>
             <p>Space for gallon beverages provides more shelf space inside the fridge</p>
             <p>Interior LED lighting</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+            <p><a target="_blank" href="/image/appliances/pdfs/Samsung15.6.pdf">Download Appliances Packet ></a></p>`,
           },
           {
             image: "/image/appliances/Dishwasher.webp",
@@ -147,7 +147,7 @@ const appliances = [
             <p>Powerful self-cleaning and fingerprint resistant finish</p>
             <p>6.3 cu. ft. oven capacity accommodates large dishes and roasting pans</p>
             <p>Cook fast and evenly with the powerful heat of the 17K BTU Power Burner</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+            <p><a target="_blank" href="/image/appliances/pdfs/Bespoke6.3.pdf">Download Appliances Packet ></a></p>`,
           },
           {
             image: "/image/appliances/Microwave_1.webp",
@@ -157,7 +157,7 @@ const appliances = [
             <p>Extra power ventilation refreshes air quickly to remove steam and odors</p>
             <p>Eco Mode button conserves power by turning off the display when not in use</p>
             <p>Beautiful ceramic blue enamel interior is scratch resistant and easy to clean</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+            <p><a target="_blank" href="/image/appliances/pdfs/Bespoke2.1.pdf">Download Appliances Packet ></a></p>`,
           },
         ],
       },
@@ -173,7 +173,7 @@ const appliances = [
               <p>Self Clean+ eliminates 99% of bacteria in the drum.</p>
               <p>10 preset washing cycles & 6 additional washing options</p>
               <p>1200 RPM maximum spin speed</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+              <p><a target="_blank" href="/image/appliances/pdfs/Samsung4.5.pdf">Download Appliances Packet ></a></p>`,
           },
           {
             image: "/image/appliances/dryer.webp",
@@ -182,7 +182,7 @@ const appliances = [
             <p>10 preset drying cycles cover almost every drying need</p>
             <p>7.5 cu. ft. large capacity for fewer loads and less time in the laundry room</p>
             <p>9 additional drying options with 5 temperature levels</p>
-              <p><a href="#">Download Appliances Packet ></a></p>`,
+            <p><a target="_blank" href="/image/appliances/pdfs/Samsung7.5.pdf">Download Appliances Packet ></a></p>`,
           },
         ],
       },
