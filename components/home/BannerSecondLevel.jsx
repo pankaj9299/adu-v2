@@ -2,7 +2,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const BannerSecondLevel = () => {
   return (
-    <section className="banner h-[800px] relative">
+    <section className="banner h-[800px] relative pb-0">
       <div className="container p-0">
         <div className="main-wrappper max-w-3xl items-center gap-5">
           <div className="content-wrap  md:w-full ">
