@@ -87,7 +87,7 @@ const appliances = [
             blurb: `<p>StormWash™ rotating jets let you skip pre-rinse, delivering heavy duty cleaning from every angle</p>
             <p>AutoRelease™ door automatically opens at end-of-cycle to circulate air for better drying performance</p>
             <p>Height-adjustable upper rack makes it easy to accommodate various dishware shapes and sizes.</p>
-            <p><a href="#">Download Appliances Packet ></a></p>`,
+            `,
           },
           {
             image: "/image/appliances/Stove.webp",
@@ -137,7 +137,7 @@ const appliances = [
             blurb: `<p>StormWash™ rotating jets let you skip pre-rinse, delivering heavy duty cleaning from every angle</p>
             <p>AutoRelease™ door automatically opens at end-of-cycle to circulate air for better drying performance</p>
             <p>Height-adjustable upper rack makes it easy to accommodate various dishware shapes and sizes.</p>
-            <p><a href="#">Download Appliances Packet ></a></p>`,
+            `,
           },
           {
             image: "/image/appliances/Stove.webp",

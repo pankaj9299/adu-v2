@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const formatINR = (value) => {
   if (!Number.isFinite(value)) return "0";
-  return value.toLocaleString("en-IN");
+  return value.toLocaleString("en-US");
 };
 
 const Calculator = () => {
@@ -374,7 +374,7 @@ const Calculator = () => {
                   Max Amount Qualified:
                 </label>
                 <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center p-2 pointer-events-none w-20">
+                  <div class="absolute inset-y-0 top-px start-0 flex items-center p-2 pointer-events-none w-20">
                     <img
                       src="/image/financing/white-dollar.svg"
                       className="w-15 h-9.5"
@@ -400,7 +400,7 @@ const Calculator = () => {
                   Monthly Payment on Max Amount:
                 </label>
                 <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center p-2 pointer-events-none w-20">
+                  <div class="absolute inset-y-0 top-px start-0 flex items-center p-2 pointer-events-none w-20">
                     <img
                       src="/image/financing/white-dollar.svg"
                       className="w-15 h-9.5"

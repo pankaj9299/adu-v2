@@ -1,0 +1,32 @@
+/* Allow arrows to escape container */
+.slider-wrap .slick-list {
+  overflow: visible !important;
+}
+
+/* Arrow positioning */
+.slider-wrap .slick-prev,
+.slider-wrap .slick-next {
+  z-index: 30;
+  width: 40px;
+  height: 40px;
+}
+
+.slider-wrap .slick-prev::before,
+.slider-wrap .slick-next::before {
+  color:#E2A002 !important;
+}
+
+
+/* Move arrows outward */
+.slider-wrap .slick-prev {
+  left: -60px;
+}
+
+.slider-wrap .slick-next {
+  right: -60px;
+}
+
+.slider-wrap .slick-list {
+  margin: 0 -10px;
+}
+
