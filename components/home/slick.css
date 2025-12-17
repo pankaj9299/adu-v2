@@ -7,13 +7,14 @@
 .slider-wrap .slick-prev,
 .slider-wrap .slick-next {
   z-index: 30;
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
 }
 
 .slider-wrap .slick-prev::before,
 .slider-wrap .slick-next::before {
   color:#E2A002 !important;
+  font-size: 45px !important;
 }
 
 

@@ -108,6 +108,15 @@ const Process = () => {
                 />
               </div>
             </div>
+            <div className="absolute top-[-100px] right-[25%]">
+              <LazyLoadImage
+                src="/image/homepage/Group 96.png"
+                alt={"banner"}
+                className={``}
+                wrapperClassName=""
+                effect="opacity"
+              />
+            </div>
           </div>
         </section>
         <section className="beauty pt-30">
