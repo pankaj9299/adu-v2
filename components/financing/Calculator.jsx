@@ -81,7 +81,7 @@ const Calculator = () => {
       <section>
         <div className="container md:p-0">
           <div className="text-wrapper">
-            <h2 className="font-arial font-normal leading-[80px] text-green text-85 tracking-[-5%]">
+            <h2 className="font-arial font-normal leading-[80px] text-green text-85 tracking-[-0.05em]">
               How Much Do You Qualify For?
             </h2>
             <p className="text-2xl text-green my-10">
@@ -97,7 +97,7 @@ const Calculator = () => {
           </div>
           <div className="form-wrapper">
             <div className="income">
-              <h3 className="bg-marigold text-white pt-8 pb-7 px-5 text-3xl font-helvetica-neue-bold leading-0 tracking-[-2%]">
+              <h3 className="bg-marigold text-white pt-8 pb-7 px-5 text-3xl font-helvetica-neue-bold leading-0 tracking-[-0.02em]">
                 Income
               </h3>
               <div className="flex gap-5 mt-5 px-7">
@@ -159,7 +159,7 @@ const Calculator = () => {
               </div>
             </div>
             <div className="expenses mt-5">
-              <h3 className="bg-marigold text-white pt-8 pb-7 px-5 text-3xl font-helvetica-neue-bold leading-0 tracking-[-2%]">
+              <h3 className="bg-marigold text-white pt-8 pb-7 px-5 text-3xl font-helvetica-neue-bold leading-0 tracking-[-0.02em]">
                 Expenses
               </h3>
               <div className="flex flex-row gap-5 mt-5 px-7">
@@ -370,7 +370,7 @@ const Calculator = () => {
           <div className="flex flex-row gap-5">
             <div className="basis-1/2">
               <div className="input-wrapper">
-                <label className="block font-helvetica-neue-bold text-3xl text-green tracking-[-2%] mb-2">
+                <label className="block font-helvetica-neue-bold text-3xl text-green tracking-[-0.02em] mb-2">
                   Max Amount Qualified:
                 </label>
                 <div class="relative">
@@ -396,7 +396,7 @@ const Calculator = () => {
             </div>
             <div className="basis-1/2">
               <div className="input-wrapper">
-                <label className="block font-helvetica-neue-bold text-3xl text-green tracking-[-2%] mb-2">
+                <label className="block font-helvetica-neue-bold text-3xl text-green tracking-[-0.02em] mb-2">
                   Monthly Payment on Max Amount:
                 </label>
                 <div class="relative">

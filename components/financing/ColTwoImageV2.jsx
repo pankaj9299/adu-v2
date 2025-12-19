@@ -15,7 +15,7 @@ const ColTwoImageV2 = () => {
           />
         </div>
         <div className="col-span-6 p-[80px_100px_80px_50px] self-center">
-          <h3 className="text-white font-arial text-7xl leading-[74px] tracking-[-5%]">
+          <h3 className="text-white font-arial text-7xl leading-[74px] tracking-[-0.05em]">
             How Our Financing Works
           </h3>
           <p className="text-white my-10">
@@ -28,7 +28,7 @@ const ColTwoImageV2 = () => {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <div className="btn-wrapper">
-            <button className="border-lightYellow text-white tracking-[-5%] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+            <button className="border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
               Explore Models
             </button>
           </div>

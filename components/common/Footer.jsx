@@ -9,7 +9,7 @@ const Footer = () => {
             <div className="img-wrapper mb-15">
               <img src="/image/logo.svg" alt="logo" />
             </div>
-            <h3 className="text-[30px] text-left font-normal font-helvetica-neue-bold text-lightYellow tracking-[-5%]">
+            <h3 className="text-[30px] text-left font-normal font-helvetica-neue-bold text-lightYellow tracking-[-0.05em]">
               Be the first to know what we launch next
             </h3>
 
@@ -36,7 +36,7 @@ const Footer = () => {
           <div className="text-white">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <h3 className="mb-5 text-[30px] font-normal font-helvetica-neue-bold text-white tracking-[-2%]">
+                <h3 className="mb-5 text-[30px] font-normal font-helvetica-neue-bold text-white tracking-[-0.02em]">
                   Explore
                 </h3>
                 <ul className="space-y-5 font-arial">
@@ -67,7 +67,7 @@ const Footer = () => {
                   </li>
                 </ul>
 
-                <h3 className="mt-20 mb-5 text-[30px] font-normal font-helvetica-neue-bold text-white tracking-[-2%]">
+                <h3 className="mt-20 mb-5 text-[30px] font-normal font-helvetica-neue-bold text-white tracking-[-0.02em]">
                   Contact
                 </h3>
                 <ul className="space-y-1">

@@ -15,21 +15,21 @@ const Process = () => {
         <section className="bg-green overflow-visible pt-20">
           <div className="container relative p-0 overflow-visible">
             <div className="text-wrapper mb-15">
-              <h2 className="text-white font-arial font-normal leading-[80px] text-85 tracking-[-5%]">
+              <h2 className="text-white font-arial font-normal leading-[80px] text-85 tracking-[-0.05em]">
                 A Streamlined Process
               </h2>
-              <p className="text-white font-helvetica-neue-bold text-4xl tracking-[-2%] mt-4">
+              <p className="text-white font-helvetica-neue-bold text-4xl tracking-[-0.02em] mt-4">
                 ADUs made easy. All you have to do is say{" "}
                 <span className="text-marigold">go.</span>
               </p>
             </div>
             <div className="flex flex-row gap-0">
               <div className="basis-1/3 text-white">
-                <p className="pb-1 border-b-2 border-marigold text-khaki text-2xl font-helvetica-neue-bold tracking-[-2%]">
+                <p className="pb-1 border-b-2 border-marigold text-khaki text-2xl font-helvetica-neue-bold tracking-[-0.02em]">
                   Step 1
                 </p>
                 <div className="max-w-3xs">
-                  <h3 className="my-5 text-4xl font-helvetica-neue-bold tracking-[-2%]">
+                  <h3 className="my-5 text-4xl font-helvetica-neue-bold tracking-[-0.02em]">
                     Envision It
                   </h3>
                   <p className="text-lg">
@@ -38,18 +38,18 @@ const Process = () => {
                     start with confidence.
                   </p>
                   <div className="btn-wrapper mt-10">
-                    <button className="border-lightYellow text-white tracking-[-5%] bg-lightYellow md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+                    <button className="border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
                       Start Designing
                     </button>
                   </div>
                 </div>
               </div>
               <div className="basis-1/3 text-white">
-                <p className="pb-1 border-b-2 border-marigold text-khaki text-2xl font-helvetica-neue-bold tracking-[-2%]">
+                <p className="pb-1 border-b-2 border-marigold text-khaki text-2xl font-helvetica-neue-bold tracking-[-0.02em]">
                   Step 2
                 </p>
                 <div className="max-w-3xs">
-                  <h3 className="my-5 text-4xl font-helvetica-neue-bold tracking-[-2%]">
+                  <h3 className="my-5 text-4xl font-helvetica-neue-bold tracking-[-0.02em]">
                     Plan It
                   </h3>
                   <p className="text-lg">
@@ -60,11 +60,11 @@ const Process = () => {
                 </div>
               </div>
               <div className="basis-1/3 text-white">
-                <p className="pb-1 border-b-2 border-marigold text-khaki text-2xl font-helvetica-neue-bold tracking-[-2%]">
+                <p className="pb-1 border-b-2 border-marigold text-khaki text-2xl font-helvetica-neue-bold tracking-[-0.02em]">
                   Step 3
                 </p>
                 <div className="max-w-3xs">
-                  <h3 className="my-5 text-4xl font-helvetica-neue-bold tracking-[-2%]">
+                  <h3 className="my-5 text-4xl font-helvetica-neue-bold tracking-[-0.02em]">
                     Approve It
                   </h3>
                   <p className="text-lg">
@@ -78,11 +78,11 @@ const Process = () => {
             </div>
             <div className="flex flex-row-reverse gap-0 mt-10 h-[420px] relative overflow-visible">
               <div className="basis-1/2 pl-15 text-white">
-                <p className="pb-1 border-b-2 border-marigold text-khaki text-2xl font-helvetica-neue-bold tracking-[-2%]">
+                <p className="pb-1 border-b-2 border-marigold text-khaki text-2xl font-helvetica-neue-bold tracking-[-0.02em]">
                   Step 4
                 </p>
                 <div className="w-full">
-                  <h3 className="my-5 text-4xl font-helvetica-neue-bold tracking-[-2%]">
+                  <h3 className="my-5 text-4xl font-helvetica-neue-bold tracking-[-0.02em]">
                     Ship It
                   </h3>
                   <p className="text-lg">
@@ -122,7 +122,7 @@ const Process = () => {
         <section className="beauty pt-30">
           <div className="container p-0">
             <div className="text-wrap">
-              <h2 className="text-green font-arial font-normal leading-[80px] text-85 tracking-[-5%]">
+              <h2 className="text-green font-arial font-normal leading-[80px] text-85 tracking-[-0.05em]">
                 Beauty Inside & Out
               </h2>
               <p className="text-lg text-green mt-5">
@@ -187,7 +187,7 @@ const Process = () => {
               </Slider>
             </div>
             <div className="btn-wrapper text-center">
-              <button className="border-lightYellow text-white tracking-[-5%] bg-lightYellow md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+              <button className="border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
                 Download Product Catalog
               </button>
             </div>

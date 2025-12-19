@@ -150,7 +150,7 @@ export default function AddonsSelector({
                   threshold={100}
                 />
               </div>
-              <h4 className="text-marigold text-[19px] font-helvetica-neue-bold font-bold tracking-[-2%] mt-3">
+              <h4 className="text-marigold text-[19px] font-helvetica-neue-bold font-bold tracking-[-0.02em] mt-3">
                 + {opt.name}
               </h4>
             </div>

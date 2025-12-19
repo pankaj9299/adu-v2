@@ -298,14 +298,14 @@ const CheckoutForm = () => {
                 width="290"
                 height="38"
               />
-              <h4 className="max-sm:text-[20px] max-sm:my-2 md:text-[28px] text-green font-normal font-arial tracking-[-5%] mt-3 mb-4">
+              <h4 className="max-sm:text-[20px] max-sm:my-2 md:text-[28px] text-green font-normal font-arial tracking-[-0.05em] mt-3 mb-4">
                 {selectedProductState?.floor_name.replace(
                   "Floor",
                   "Floor Plan"
                 )}
               </h4>
               <p
-                className="md:text-[25px] text-green font-normal tracking-[-5%]"
+                className="md:text-[25px] text-green font-normal tracking-[-0.05em]"
                 dangerouslySetInnerHTML={{
                   __html: selectedProductState?.floor_subtitle,
                 }}
@@ -316,7 +316,7 @@ const CheckoutForm = () => {
           {["Floor 5", "Floor 6"].includes(selectedProductState?.floor_name) ? (
             <div className="grid grid-cols-2 gap-5">
               <div className="image-wrap">
-                <h4 className="text-marigold text-4xl font-helvetica-neue-bold font-bold tracking-[-2%]">
+                <h4 className="text-marigold text-4xl font-helvetica-neue-bold font-bold tracking-[-0.02em]">
                   First Floor
                 </h4>
                 <LazyLoadImage
@@ -331,7 +331,7 @@ const CheckoutForm = () => {
                 />
               </div>
               <div className="image-wrap">
-                <h4 className="text-marigold text-4xl font-helvetica-neue-bold font-bold tracking-[-2%]">
+                <h4 className="text-marigold text-4xl font-helvetica-neue-bold font-bold tracking-[-0.02em]">
                   Second Floor
                 </h4>
                 <LazyLoadImage

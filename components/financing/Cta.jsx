@@ -17,18 +17,18 @@ const Cta = () => {
         <div className="absolute inset-0 z-10 flex items-center">
           <div className="container md:p-0">
             <div className="text-wrapper">
-              <h1 className="text-white text-85 tracking-[-5%]">
+              <h1 className="text-white text-85 tracking-[-0.05em]">
                 Your Custom ADU Container <br />
                 is Waiting For You
               </h1>
 
-              <p className="text-khaki text-2xl font-helvetica-neue-bold mt-2 tracking-[-2%]">
+              <p className="text-khaki text-2xl font-helvetica-neue-bold mt-2 tracking-[-0.02em]">
                 Built to your needs, budget, style, and timeline. Click below to
                 start customizing your new home.
               </p>
 
               <div className="mt-7 flex gap-4">
-                <button className="border-lightYellow text-white tracking-[-5%] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+                <button className="border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
                   Customize Your ADU
                 </button>
               </div>

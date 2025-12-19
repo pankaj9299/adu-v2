@@ -7,8 +7,8 @@ const Banner = () => {
                 <div className="flex flex-row-reverse">
                     <div className="basis-1/2">
                         <div className="pl-15 mt-40">
-                            <h1 className="font-arial font-normal leading-[80px] text-85 text-green tracking-[-5%]">How it Works</h1>
-                            <p className="text-3xl text-marigold font-helvetica-neue-bold tracking-[-2%]">The Build Process</p>
+                            <h1 className="font-arial font-normal leading-[80px] text-85 text-green tracking-[-0.05em]">How it Works</h1>
+                            <p className="text-3xl text-marigold font-helvetica-neue-bold tracking-[-0.02em]">The Build Process</p>
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,7 @@ const ColThree = () => {
     <section className="step-one pt-0 h-full flex items-center">
       <div className="container">
         <div className="intro text-center mb-10">
-          <h1 className="md:text-[87px] font-normal text-dark-green mb-0 tracking-[-5%]">
+          <h1 className="md:text-[87px] font-normal text-dark-green mb-0 tracking-[-0.05em]">
             Built Around Your<span className="[clip-path:polygon(40px_0,100%_0,100%_100%,0_100%,0_40px)] bg-khaki px-6 py-3 inline-block w-[300px]">Vision</span>
           </h1>
         </div>

@@ -16,7 +16,7 @@ const ImageWithText = () => {
               />
             </div>
             <div className="basis-1/2 self-center">
-              <h2 className="text-marigold mb-3 font-helvetica-neue-bold text-4xl tracking-[-2%]">
+              <h2 className="text-marigold mb-3 font-helvetica-neue-bold text-4xl tracking-[-0.02em]">
                 Why Shipping <br />
                 Containers Work
               </h2>
@@ -34,7 +34,7 @@ const ImageWithText = () => {
                 projects, you still get custom touches with modular efficiency.
               </p>
               <div className="mt-10">
-                <button className="border-dark-teal text-white tracking-[-5%] bg-dark-teal md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+                <button className="border-dark-teal text-white tracking-[-0.05em] bg-dark-teal md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
                   Get in Touch
                 </button>
               </div>

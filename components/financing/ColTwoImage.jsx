@@ -5,17 +5,17 @@ const ColTwoImage = () => {
     <section>
       <div className="grid grid-cols-11 bg-dark-green">
         <div className="col-span-5 p-[80px_50px_80px_190px]">
-          <h3 className="text-white font-helvetica-neue-bold text-4xl tracking-[-2%]">
+          <h3 className="text-white font-helvetica-neue-bold text-4xl tracking-[-0.02em]">
             Get our Single Container,
             <br />
             <span className="text-marigold">One-Bedroom Model</span> for <br />
             as low as:
           </h3>
-          <h2 className="text-white font-arial font-normal leading-[80px] text-85 tracking-[-5%] my-7">
+          <h2 className="text-white font-arial font-normal leading-[80px] text-85 tracking-[-0.05em] my-7">
             $XXX,XXX
           </h2>
           <div className="btn-wrapper">
-            <button className="border-lightYellow text-white tracking-[-5%] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+            <button className="border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
               Explore Models
             </button>
           </div>

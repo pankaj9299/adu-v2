@@ -48,7 +48,7 @@ const AppliancesItems = ({ appliance, selectedRoom }) => {
                         />
                       </div>
                       <div className="text-wrapper md:col-span-7">
-                        <h4 className="text-dark-green font-helvetica-neue-bold tracking-[-2%]">
+                        <h4 className="text-dark-green font-helvetica-neue-bold tracking-[-0.02em]">
                           {slide.title}
                         </h4>
                         <div

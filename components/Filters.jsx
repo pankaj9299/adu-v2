@@ -33,7 +33,7 @@ const Filters = ({ appliances, handleItems, updateModel, updateRoom }) => {
     <section className="filters">
       <div className="container">
         <div className="flex max-sm:flex-col md:gap-30 sm:gap-5">
-          <p className="text-20 text-dark-green font-helvetica-neue-bold tracking-[-2%]">
+          <p className="text-20 text-dark-green font-helvetica-neue-bold tracking-[-0.02em]">
             Model:
           </p>
           <ul className="flex max-sm:flex-col md:gap-30 sm:gap-5 cursor-pointer text-20 font-arial">
@@ -51,7 +51,7 @@ const Filters = ({ appliances, handleItems, updateModel, updateRoom }) => {
           </ul>
         </div>
         <div className="flex max-sm:flex-col md:gap-30 sm:gap-5 mt-3">
-          <p className="text-20 text-dark-green font-helvetica-neue-bold tracking-[-2%]">
+          <p className="text-20 text-dark-green font-helvetica-neue-bold tracking-[-0.02em]">
             Room:
           </p>
           <ul className="inline-grid max-sm:flex-col grid-cols-2 gap-20 cursor-pointer text-20 font-arial">

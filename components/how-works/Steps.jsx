@@ -46,7 +46,7 @@ const Steps = () => {
                   lifestyle.
                 </p>
                 <div className="btn-wrapper">
-                  <button className="border-marigold text-white tracking-[-2%] bg-marigold md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+                  <button className="border-marigold text-white tracking-[-0.02em] bg-marigold md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
                     Let’s Get Started
                   </button>
                 </div>

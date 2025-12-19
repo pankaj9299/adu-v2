@@ -98,7 +98,7 @@ const CostSummary = ({
             <h2 className="text-dark-green md:text-6xl mb-3">
               Project Cost Summary
             </h2>
-            <h3 className="text-dark-teal font-helvetica-neue-bold-v2 tracking-[-2%] text-3xl inline-block w-full md:w-1/2 mb-5">
+            <h3 className="text-dark-teal font-helvetica-neue-bold-v2 tracking-[-0.02em] text-3xl inline-block w-full md:w-1/2 mb-5">
               Base + Floor Plan
             </h3>
             <div className="title flex flex-col md:flex-row gap-6 items-center">
@@ -109,7 +109,7 @@ const CostSummary = ({
                 height="38"
                 className="h-[38px] w-auto"
               />
-              <h3 className="font-normal font-arial text-dark-green shrink-0 tracking-[-5%]">
+              <h3 className="font-normal font-arial text-dark-green shrink-0 tracking-[-0.05em]">
                 {selectedProductState.floor_name.replace("Floor", "Floor Plan")}
               </h3>
               <span className="flex-1 border-b border-secondary-dark-gray text-dark-green font-arial mt-[14px]"></span>
