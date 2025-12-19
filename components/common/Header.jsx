@@ -57,12 +57,12 @@ const Header = () => {
                   </Link>
                 </li>
                 <li className="button-text text-lg">
-                  <a
+                  <Link
                     className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
-                    href="#"
+                    to="/how-it-works"
                   >
                     How it Works
-                  </a>
+                  </Link>
                 </li>
                 <li className="button-text text-lg">
                   <a
