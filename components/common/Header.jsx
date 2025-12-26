@@ -30,9 +30,9 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="wrapper w-full flex items-center justify-between">
           {/* Logo (Uncomment if needed) */}
-          <div className="logo w-[140px] h-[70px]">
-            <Link to="/">
-              <img src="/image/Group 2@2x.png" alt="logo" />
+          <div className="logo w-auto h-[40px] xl:w-[140px] xl:h-[70px]">
+            <Link to="/" className="block h-full w-full">
+              <img src="/image/Group 2@2x.png" className="h-full w-full object-contain" alt="logo" />
             </Link>
           </div>
 

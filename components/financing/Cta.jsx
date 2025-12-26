@@ -7,7 +7,7 @@ const Cta = () => {
         <LazyLoadImage
           src="/image/financing/cta.png"
           alt="Hero image"
-          className="w-full h-[590px] object-cover"   // adjust height
+          className="w-full h-[320px] sm:h-[420px] md:h-[520px] xl:h-[590px] object-cover"
           wrapperClassName="w-full block leading-none"
           effect="opacity"
           threshold={100}
@@ -15,20 +15,31 @@ const Cta = () => {
 
         {/* Overlay */}
         <div className="absolute inset-0 z-10 flex items-center">
-          <div className="container md:p-0">
-            <div className="text-wrapper">
-              <h1 className="text-white text-85 tracking-[-0.05em]">
-                Your Custom ADU Container <br />
+          <div className="container px-4 md:px-0 md:p-0">
+            <div className="text-wrapper max-w-3xl">
+              <h1 className="text-white text-3xl sm:text-4xl md:text-6xl xl:text-[85px] tracking-[-0.05em] leading-tight">
+                Your Custom ADU Container <br className="hidden sm:block" />
                 is Waiting For You
               </h1>
 
-              <p className="text-khaki text-2xl font-helvetica-neue-bold mt-2 tracking-[-0.02em]">
+              <p className="text-khaki text-sm sm:text-base md:text-xl xl:text-2xl font-helvetica-neue-bold mt-2 tracking-[-0.02em]">
                 Built to your needs, budget, style, and timeline. Click below to
                 start customizing your new home.
               </p>
 
-              <div className="mt-7 flex gap-4">
-                <button className="border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+              <div className="mt-6 md:mt-7 flex flex-col sm:flex-row gap-4">
+                <button
+                  className="
+    w-full sm:w-auto
+    border-lightYellow bg-lightYellow text-white
+    font-helvetica-neue-bold tracking-[-0.05em]
+    text-base sm:text-lg
+    px-6 py-3 sm:px-5 sm:pt-2 sm:pb-1
+    rounded-md
+    hover:bg-green
+    cursor-pointer
+  "
+                >
                   Customize Your ADU
                 </button>
               </div>
