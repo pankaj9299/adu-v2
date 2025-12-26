@@ -31,3 +31,12 @@
   margin: 0 -10px;
 }
 
+/* Hide slick arrows on mobile */
+@media (max-width: 639px) {
+  .slick-prev,
+  .slick-next {
+    display: none !important;
+  }
+}
+
+
