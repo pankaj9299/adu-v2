@@ -28,7 +28,7 @@ const CheckoutForm = () => {
     if (!selectedProductState || !selectedProductState.product_id) {
       // Reset redux state
       dispatch(setProduct(null));
-      navigate("/", { replace: true });
+      navigate("/models", { replace: true });
     }
   }, [selectedProductState, navigate]);
 

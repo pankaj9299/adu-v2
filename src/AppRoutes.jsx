@@ -48,8 +48,9 @@ export default function AppRoutes() {
 
   return (
     <Routes>
+      <Route path="/" element={<HomePage />} />
       <Route
-        path="/"
+        path="/models"
         element={
           <StepOne
             products={apiProducts}
@@ -61,7 +62,7 @@ export default function AppRoutes() {
         path="/step-two"
         element={
           <StepTwo
-            onBack={() => navigate("/")}
+            onBack={() => navigate("/models")}
             selectedProduct={location.state?.selectedProduct || null}
           />
         }
@@ -69,7 +70,6 @@ export default function AppRoutes() {
       <Route path="/configurator" element={<Configurator />} />
       <Route path="/checkout" element={<CheckoutForm />} />
       <Route path="/appliances" element={<Appliances />} />
-      <Route path="/home" element={<HomePage />} />
       <Route path="/financing" element={<Financing />} />
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/test" element={<TestSlider />} />

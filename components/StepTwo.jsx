@@ -28,7 +28,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
       // Reset redux state
       dispatch(setProduct(null));
 
-      navigate("/", { replace: true });
+      navigate("/models", { replace: true });
     }
   }, [selectedProductState, navigate]);
 

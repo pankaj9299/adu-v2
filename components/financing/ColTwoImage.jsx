@@ -1,4 +1,5 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 
 const ColTwoImage = () => {
   return (
@@ -18,9 +19,15 @@ const ColTwoImage = () => {
           </h2>
 
           <div className="btn-wrapper">
-            <button className="w-full sm:w-auto border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+            <Link
+              className="w-full md:w-auto border-lightYellow text-white tracking-[-0.02em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md px-8 pt-[13px] pb-[10px] px-5 hover:bg-green cursor-pointer"
+              to="/models"
+            >
               Explore Models
-            </button>
+            </Link>
+            {/* <button className="w-full sm:w-auto border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+              Explore Models
+            </button> */}
           </div>
         </div>
 

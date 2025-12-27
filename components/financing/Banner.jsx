@@ -1,4 +1,5 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -25,10 +26,16 @@ const Banner = () => {
           <p className="text-khaki text-sm xl:text-2xl font-helvetica-neue-bold mt-2 tracking-[-0.02em]">
             Simple, transparent options designed to fit your budget.
           </p>
-          <div className="mt-7 flex gap-4">
-            <button className="border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+          <div className="mt-9 flex gap-4">
+            <Link
+              className="text-white tracking-[-0.02em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer"
+              to="/contact-us"
+            >
               Talk to a Lender
-            </button>
+            </Link>
+            {/* <button className="border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+              Talk to a Lender
+            </button> */}
           </div>
         </div>
       </div>

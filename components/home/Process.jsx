@@ -201,6 +201,7 @@
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 import "../home/slick.css";
 
 const Process = () => {
@@ -226,7 +227,7 @@ const Process = () => {
   return (
     <>
       {/* PROCESS SECTION */}
-      <section className="bg-green overflow-hidden pt-14 md:pt-20">
+      <section className="bg-green overflow-visible pt-14 md:pt-20">
         <div className="container relative mx-auto px-5 lg:px-0 overflow-visible">
           {/* Header */}
           <div className="mb-10 md:mb-14">
@@ -267,11 +268,14 @@ const Process = () => {
                 </p>
 
                 <div className="mt-8 sm:mt-10">
-                  <button className="bg-lightYellow text-white tracking-[-0.05em]
-                    font-helvetica-neue-bold px-6 py-2 md:text-lg
-                    hover:bg-green transition-colors">
+                  <Link
+                    className="bg-lightYellow text-white tracking-[-0.02em]
+                font-helvetica-neue-bold px-8 pt-[15px] pb-[12px] md:text-lg
+                hover:bg-green transition-colors"
+                    to="/models"
+                  >
                     Start Designing
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -319,9 +323,9 @@ const Process = () => {
 
           {/* Step 4 */}
           <div className="mt-14 lg:mt-16 relative">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center overflow-visible">
               {/* Image (mobile in flow, desktop overlapped) */}
-              <div className="relative">
+              <div className="relative h-full">
                 <div className="lg:hidden">
                   <LazyLoadImage
                     src="/image/homepage/step-img.png"
@@ -394,10 +398,10 @@ const Process = () => {
             </h2>
 
             <p className="text-base sm:text-lg text-green mt-4 sm:mt-5">
-              Every detail of our interiors is intentionally crafted to feel good
-              the moment you step inside. Thoughtful layouts, smart storage, and
-              elevated finishes come together to create a space that’s
-              comfortable, functional, and effortlessly stylish.
+              Every detail of our interiors is intentionally crafted to feel
+              good the moment you step inside. Thoughtful layouts, smart
+              storage, and elevated finishes come together to create a space
+              that’s comfortable, functional, and effortlessly stylish.
             </p>
           </div>
 
@@ -427,13 +431,14 @@ const Process = () => {
           </div>
 
           <div className="text-center pb-10">
-            <button
-              className="bg-lightYellow text-white tracking-[-0.05em]
-              font-helvetica-neue-bold px-6 py-2 md:text-lg
-              hover:bg-green transition-colors"
+            <Link
+              className="bg-lightYellow text-white tracking-[-0.02em]
+                font-helvetica-neue-bold px-7 pt-[15px] pb-[12px] md:text-lg
+                hover:bg-green transition-colors"
+              to="/models"
             >
               Download Product Catalog
-            </button>
+            </Link>
           </div>
         </div>
       </section>

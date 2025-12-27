@@ -32,7 +32,11 @@ const Header = () => {
           {/* Logo (Uncomment if needed) */}
           <div className="logo w-auto h-[40px] xl:w-[140px] xl:h-[70px]">
             <Link to="/" className="block h-full w-full">
-              <img src="/image/Group 2@2x.png" className="h-full w-full object-contain" alt="logo" />
+              <img
+                src="/image/Group 2@2x.png"
+                className="h-full w-full object-contain"
+                alt="logo"
+              />
             </Link>
           </div>
 
@@ -43,7 +47,7 @@ const Header = () => {
                 <li className="button-text text-lg">
                   <Link
                     className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
-                    to="/"
+                    to="/models"
                   >
                     Explore Models
                   </Link>

@@ -452,12 +452,12 @@ const Calculator = () => {
           <div className="form-wrapper">
             {/* INCOME */}
             <div className="income">
-              <h3 className="bg-marigold text-white pt-6 md:pt-8 pb-5 md:pb-7 px-5 text-xl md:text-3xl font-helvetica-neue-bold tracking-[-0.02em]">
+              <h3 className="bg-marigold text-white pt-4 md:pt-5 pb-3 md:pb-4 px-5 text-xl md:text-3xl font-helvetica-neue-bold tracking-[-0.02em]">
                 Income
               </h3>
 
               {/* 3 columns on md+, stacked on mobile */}
-              <div className="flex flex-col md:flex-row gap-5 mt-5 px-4 md:px-7">
+              <div className="flex flex-col md:flex-row gap-5 mt-7 px-4 md:px-7">
                 <div className="input-wrapper w-full md:basis-1/3">
                   <label className="block text-sm sm:text-base md:text-xl text-green font-bold font-arial mb-2">
                     Monthly Employment Income
@@ -519,13 +519,13 @@ const Calculator = () => {
             </div>
 
             {/* EXPENSES */}
-            <div className="expenses mt-5">
-              <h3 className="bg-marigold text-white pt-6 md:pt-8 pb-5 md:pb-7 px-5 text-xl md:text-3xl font-helvetica-neue-bold tracking-[-0.02em]">
+            <div className="expenses mt-8">
+              <h3 className="bg-marigold text-white pt-4 md:pt-5 pb-3 md:pb-4 px-5 text-xl md:text-3xl font-helvetica-neue-bold tracking-[-0.02em]">
                 Expenses
               </h3>
 
               {/* 2 columns on md+, stacked on mobile */}
-              <div className="flex flex-col md:flex-row gap-5 mt-5 px-4 md:px-7">
+              <div className="flex flex-col md:flex-row gap-5 mt-7 px-4 md:px-7">
                 <div className="w-full md:basis-1/2">
                   <div className="input-wrapper">
                     <label className="block text-sm sm:text-base md:text-xl text-green font-bold font-arial mb-2">

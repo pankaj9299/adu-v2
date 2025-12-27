@@ -48,36 +48,44 @@
 // export default BannerSecondLevel;
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 
 const BannerSecondLevel = () => {
   return (
     <section className="relative pb-16 pt-20 lg:pt-0 min-h-[600px] lg:min-h-screen overflow-hidden">
       <div className="container mx-auto px-5 lg:px-0">
         <div className="max-w-3xl flex flex-col justify-center">
-          <div className="content-wrap w-full">
+          <div className="content-wrap w-full md:pt-15">
             {/* Heading */}
-            <h1 className="font-arial font-normal text-dark-green my-6 tracking-[-0.05em]
-              text-4xl sm:text-5xl md:text-6xl lg:text-[85px]">
+            <h1
+              className="font-arial font-normal text-dark-green my-6 tracking-[-0.05em]
+              text-4xl sm:text-5xl md:text-6xl lg:text-[85px]"
+            >
               Light Into Endless Possibilities
             </h1>
 
-            <h2 className="font-helvetica-neue-bold font-normal text-marigold mb-4
-              text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+            <h2
+              className="font-helvetica-neue-bold font-normal text-marigold mb-4
+              text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+            >
               Redefining the Equilibrium of Housing
             </h2>
 
-            <p className="text-green font-Arial text-base sm:text-lg max-w-lg">
+            <p className="text-green font-Arial text-base sm:text-lg max-w-lg mt-8">
               More customization than ordinary prefab, more efficiency than
               traditional stick-build construction.
             </p>
 
             {/* CTA */}
-            <div className="mt-6">
-              <button className="bg-dark-teal text-white tracking-[-0.05em]
-                font-helvetica-neue-bold px-6 py-2 md:text-lg
-                hover:bg-green transition-colors">
+            <div className="mt-12">
+              <Link
+                className="bg-dark-teal text-white tracking-[-0.02em]
+                font-helvetica-neue-bold px-17 pt-[15px] pb-[12px] md:text-lg
+                hover:bg-green transition-colors"
+                to="/contact-us"
+              >
                 Get in Touch
-              </button>
+              </Link>
             </div>
 
             {/* Decorative image */}

@@ -1,4 +1,5 @@
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -41,29 +42,29 @@ const Footer = () => {
                 </h3>
                 <ul className="space-y-5 font-arial">
                   <li>
-                    <a href="#">Download Our Catalog</a>
+                    <Link to="/">Download Our Catalog</Link>
                   </li>
                   <li>
-                    <a href="#">Explore Our Models</a>
+                    <Link to="/models">Explore Our Models</Link>
                   </li>
                   <li>
-                    <a href="#">Financing</a>
+                    <Link to="/financing">Financing</Link>
                   </li>
                   <li>
-                    <a href="#">About</a>
+                    <Link to="/about">About</Link>
                   </li>
                   <li>
-                    <a href="#">How it Works</a>
+                    <Link to="/how-it-works">How it Works</Link>
                   </li>
                 </ul>
               </div>
               <div>
                 <ul className="space-y-5 font-arial">
                   <li>
-                    <a href="#">Terms & Conditions</a>
+                    <Link to="/terms-and-condition">Terms & Conditions</Link>
                   </li>
                   <li>
-                    <a href="#">Privacy Policy</a>
+                    <Link to="/privacy-policy">Privacy Policy</Link>
                   </li>
                 </ul>
 
@@ -72,10 +73,12 @@ const Footer = () => {
                 </h3>
                 <ul className="space-y-1">
                   <li>
-                    <a href="#">866.###.####</a>
+                    <a href="tel:866.###.####">866.###.####</a>
                   </li>
                   <li>
-                    <a href="#">info@adu-container.com</a>
+                    <a href="mailto:info@adu-container.com">
+                      info@adu-container.com
+                    </a>
                   </li>
                 </ul>
               </div>

@@ -62,7 +62,7 @@ export default function Configurator() {
       // Reset redux state
       dispatch(setProduct(null));
 
-      navigate("/", { replace: true });
+      navigate("/models", { replace: true });
     }
   }, [selectedProduct, navigate]);
 
@@ -123,7 +123,7 @@ export default function Configurator() {
       // Reset redux state
       dispatch(setProduct(null));
 
-      navigate("/", { replace: true });
+      navigate("/models", { replace: true });
     }
   };
 

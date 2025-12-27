@@ -1,4 +1,5 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 
 const Cta = () => {
   return (
@@ -28,20 +29,12 @@ const Cta = () => {
               </p>
 
               <div className="mt-6 md:mt-7 flex flex-col sm:flex-row gap-4">
-                <button
-                  className="
-    w-full sm:w-auto
-    border-lightYellow bg-lightYellow text-white
-    font-helvetica-neue-bold tracking-[-0.05em]
-    text-base sm:text-lg
-    px-6 py-3 sm:px-5 sm:pt-2 sm:pb-1
-    rounded-md
-    hover:bg-green
-    cursor-pointer
-  "
+                <Link
+                  className="w-full md:w-auto border-lightYellow text-white tracking-[-0.02em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md px-8 pt-[10px] pb-[8px] px-5 hover:bg-green cursor-pointer"
+                  to="/models"
                 >
                   Customize Your ADU
-                </button>
+                </Link>
               </div>
             </div>
           </div>

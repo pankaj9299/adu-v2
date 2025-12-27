@@ -54,7 +54,7 @@
 //               </p>
 //             </div>
 //             <div className="slider-wrap relative overflow-visible px-16 my-10">
-              
+
 //             </div>
 //             <div className="btn-wrapper text-center">
 //               <button className="border-dark-teal text-white tracking-[-0.05em] bg-dark-teal md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
@@ -70,6 +70,7 @@
 // export default Cta;
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 
 const Cta = () => {
   return (
@@ -90,10 +91,15 @@ const Cta = () => {
                 <p className="text-green font-bold my-5">
                   See how much you qualify for using our financing calculator
                 </p>
-                <div className="btn-wrapper">
-                  <button className="border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+                <div className="btn-wrapper mt-10">
+                  <Link
+                    className="bg-lightYellow text-white tracking-[-0.02em]
+                font-helvetica-neue-bold px-10 pt-[15px] pb-[12px] md:text-lg
+                hover:bg-green transition-colors"
+                    to="/models"
+                  >
                     Get an Estimate
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -134,9 +140,17 @@ const Cta = () => {
           <div className="slider-wrap relative overflow-visible px-16 my-10"></div>
 
           <div className="btn-wrapper text-center">
-            <button className="border-dark-teal text-white tracking-[-0.05em] bg-dark-teal md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+            <Link
+              className="bg-dark-teal text-white tracking-[-0.02em]
+                font-helvetica-neue-bold px-15 pt-[15px] pb-[12px] md:text-lg
+                hover:bg-green transition-colors"
+              to="/contact-us"
+            >
               Schedule a Call
-            </button>
+            </Link>
+            {/* <button className="border-dark-teal text-white tracking-[-0.05em] bg-dark-teal md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+              Schedule a Call
+            </button> */}
           </div>
         </div>
       </section>
@@ -145,4 +159,3 @@ const Cta = () => {
 };
 
 export default Cta;
-
