@@ -200,9 +200,9 @@
 // export default Process;
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import "./slick.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import "../home/slick.css";
 
 const Process = () => {
   const settings = {
@@ -406,7 +406,7 @@ const Process = () => {
           </div>
 
           {/* Slider */}
-          <div className="relative overflow-visible my-8 sm:my-10">
+          <div className="slider-wrap relative overflow-visible my-8 sm:my-10">
             <Slider {...settings}>
               {[
                 "/image/homepage/slide1.png",
