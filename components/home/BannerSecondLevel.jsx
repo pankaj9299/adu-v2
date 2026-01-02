@@ -52,7 +52,7 @@ import { Link } from "react-router-dom";
 
 const BannerSecondLevel = () => {
   return (
-    <section className="relative pb-16 pt-20 lg:pt-0 min-h-[600px] lg:min-h-screen overflow-hidden">
+    <section className="relative pb-16 pt-20 lg:pt-0 min-h-[600px] lg:pb-[200px] overflow-hidden">
       <div className="container mx-auto px-5 lg:px-0">
         <div className="max-w-3xl flex flex-col justify-center">
           <div className="content-wrap w-full md:pt-15">
