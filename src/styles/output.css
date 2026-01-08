@@ -3031,6 +3031,9 @@ html, body {
 .floor-5 .options .step-line h4 {
   text-align: left;
 }
+.hardcore-text p {
+  margin: 20px 0;
+}
 @property --tw-translate-x {
   syntax: "*";
   inherits: false;

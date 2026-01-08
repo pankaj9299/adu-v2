@@ -17,17 +17,17 @@ const Footer = () => {
             <div className="social mt-10">
               <ul className="flex gap-4">
                 <li>
-                  <a href="#">
+                  <a href="https://www.facebook.com/aducontainerco">
                     <FaFacebook className="text-marigold w-10 h-10" />
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="https://www.instagram.com/aducontainerco/">
                     <FaInstagram className="text-marigold w-10 h-10" />
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="https://www.youtube.com/@ADUContainerCo">
                     <FaYoutube className="text-marigold w-10 h-10" />
                   </a>
                 </li>
@@ -61,7 +61,7 @@ const Footer = () => {
               <div>
                 <ul className="space-y-5 font-arial">
                   <li>
-                    <Link to="/terms-and-condition">Terms & Conditions</Link>
+                    <Link to="/terms-and-condition">Conditions of Use</Link>
                   </li>
                   <li>
                     <Link to="/privacy-policy">Privacy Policy</Link>

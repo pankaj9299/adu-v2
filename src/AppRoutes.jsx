@@ -14,6 +14,7 @@ import HomePage from "../components/HomePage";
 import HowItWorks from "../components/HowItWorks";
 import ContactUs from "../components/ContactUs";
 import AboutUs from "../components/AboutUs";
+import TermsAndCondition from "../components/TermsAndCondition";
 
 export default function AppRoutes() {
   const location = useLocation();
@@ -76,6 +77,7 @@ export default function AppRoutes() {
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/about-us" element={<AboutUs />} />
+      <Route path="/terms-and-condition" element={<TermsAndCondition />} />
       <Route path="/test" element={<TestSlider />} />
     </Routes>
   );

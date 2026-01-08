@@ -307,3 +307,7 @@ body {
 .floor-5 .options .step-line h4 {
   text-align: left;
 }
+
+.hardcore-text p {
+  margin: 20px 0;
+}
