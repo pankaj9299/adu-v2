@@ -1,7 +1,27 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
+import "../components/home/slick.css";
+import Slider from "react-slick";
 
 const AboutUs = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    arrows: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024, // < lg
+        settings: { slidesToShow: 2, slidesToScroll: 2 },
+      },
+      {
+        breakpoint: 640, // < sm
+        settings: { slidesToShow: 1, slidesToScroll: 1 },
+      },
+    ],
+  };
   return (
     <section className="about-us">
       <div className="container">
@@ -19,6 +39,44 @@ const AboutUs = () => {
             The idea for ADU-Container Company comes from 13+ years of
             experience.
           </h2>
+          {/* Slider */}
+          <div className="slider-wrap relative overflow-visible my-8 sm:my-10">
+            <Slider {...settings}>
+              {[
+                "/image/about/car1.png",
+                "/image/about/car2.png",
+                "/image/about/car3.png",
+                "/image/about/car4.png",
+                "/image/about/car5.png",
+                "/image/about/car6.png",
+                "/image/about/car7.png",
+                "/image/about/car8.png",
+                "/image/about/car9.png",
+                "/image/about/car10.png",
+                "/image/about/car11.png",
+                "/image/about/car12.png",
+                "/image/about/car13.png",
+                "/image/about/car14.png",
+                "/image/about/car15.png",
+                "/image/about/car16.png",
+                "/image/about/car17.png",
+                "/image/about/car18.png",
+              ].map((src, idx) => (
+                <div key={idx} className="px-2">
+                  <div className="h-[240px] sm:h-[280px] md:h-[300px] w-full">
+                    <LazyLoadImage
+                      src={src}
+                      alt={`Slide ${idx + 1}`}
+                      className="h-full w-full object-cover"
+                      wrapperClassName="h-full w-full"
+                      effect="opacity"
+                    />
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
+
           <p>
             Drake Boroja, CEO of ADU-Container Company, began designing and
             building Container homes in the Michigan area over a decade ago,
