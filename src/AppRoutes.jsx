@@ -12,6 +12,8 @@ import Appliances from "../components/Appliances";
 import Financing from "../components/Financing";
 import HomePage from "../components/HomePage";
 import HowItWorks from "../components/HowItWorks";
+import ContactUs from "../components/ContactUs";
+import AboutUs from "../components/AboutUs";
 
 export default function AppRoutes() {
   const location = useLocation();
@@ -72,6 +74,8 @@ export default function AppRoutes() {
       <Route path="/appliances" element={<Appliances />} />
       <Route path="/financing" element={<Financing />} />
       <Route path="/how-it-works" element={<HowItWorks />} />
+      <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/about-us" element={<AboutUs />} />
       <Route path="/test" element={<TestSlider />} />
     </Routes>
   );
