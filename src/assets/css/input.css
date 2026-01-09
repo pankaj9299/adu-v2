@@ -310,4 +310,10 @@ body {
 
 .hardcore-text p {
   margin: 20px 0;
+  color: #263824;
+  font-size: 18px;
+}
+
+.hardcore-text .address p {
+  margin: 0;
 }

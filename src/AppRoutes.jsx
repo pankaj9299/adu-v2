@@ -15,6 +15,7 @@ import HowItWorks from "../components/HowItWorks";
 import ContactUs from "../components/ContactUs";
 import AboutUs from "../components/AboutUs";
 import TermsAndCondition from "../components/TermsAndCondition";
+import PrivacyPolicy from "../components/PrivacyPolicy";
 
 export default function AppRoutes() {
   const location = useLocation();
@@ -78,6 +79,7 @@ export default function AppRoutes() {
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/terms-and-condition" element={<TermsAndCondition />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/test" element={<TestSlider />} />
     </Routes>
   );
