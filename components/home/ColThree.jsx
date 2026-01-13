@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "axios";
 import { findImageByProduct } from "../../utils/helpers";
+import { Link } from "react-router-dom";
 
 const ColThree = () => {
-    const [apiProducts, setApiProducts] = useState([]);
+  const [apiProducts, setApiProducts] = useState([]);
 
   useEffect(() => {
     axios
@@ -14,11 +15,14 @@ const ColThree = () => {
   }, []);
 
   return (
-    <section className="step-one pt-0 h-full flex items-center">
+    <section className="step-one p-0 h-full flex items-center">
       <div className="container">
         <div className="intro text-center mb-10">
           <h1 className="md:text-[87px] font-normal text-dark-green mb-0 tracking-[-0.05em]">
-            Built Around Your<span className="[clip-path:polygon(40px_0,100%_0,100%_100%,0_100%,0_40px)] bg-khaki px-6 py-3 inline-block w-[300px]">Vision</span>
+            Built Around Your
+            <span className="[clip-path:polygon(40px_0,100%_0,100%_100%,0_100%,0_40px)] bg-khaki px-6 py-3 inline-block w-[300px]">
+              Vision
+            </span>
           </h1>
         </div>
         <div className="col-three-wrap">
@@ -85,7 +89,7 @@ const ColThree = () => {
                         </ul>
                       </>
                     ) : product.name === "Two-Story Container" ? (
-                        <>
+                      <>
                         <p className="text-lg font-bold text-green mt-5">
                           2 - 3 Bedrooms <br />2 Bathroom
                         </p>
@@ -104,15 +108,25 @@ const ColThree = () => {
                         </ul>
                       </>
                     ) : (
-                        <p className="text-lg font-bold text-green mt-5">
-                          Studio - 1 Bedroom <br />1 Bathroom
-                        </p>
+                      <p className="text-lg font-bold text-green mt-5">
+                        Studio - 1 Bedroom <br />1 Bathroom
+                      </p>
                     )}
                   </div>
                 </div>
               );
             })}
           </div>
+        </div>
+        <div className="text-center mb-10 mt-25">
+          <Link
+            className="bg-lightYellow text-white tracking-[-0.02em]
+                font-helvetica-neue-bold px-10 pt-[15px] pb-[12px] md:text-lg
+                hover:bg-green transition-colors"
+            to="/models"
+          >
+            Customize Your Model
+          </Link>
         </div>
       </div>
     </section>

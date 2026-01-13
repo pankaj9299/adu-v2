@@ -433,6 +433,9 @@
   .mt-20 {
     margin-top: calc(var(--spacing) * 20);
   }
+  .mt-25 {
+    margin-top: var(--spacing-25);
+  }
   .mt-\[14px\] {
     margin-top: 14px;
   }
@@ -1955,11 +1958,6 @@
   .md\:mt-10 {
     @media (width >= 48rem) {
       margin-top: var(--spacing-10);
-    }
-  }
-  .md\:mt-20 {
-    @media (width >= 48rem) {
-      margin-top: calc(var(--spacing) * 20);
     }
   }
   .md\:mb-10 {

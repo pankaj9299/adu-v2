@@ -9,7 +9,7 @@ const Resources = () => {
           <div className="col-span-12 md:col-span-4">
             <div className="h-full w-full flex items-center justify-center">
               <LazyLoadImage
-                src="/image/financing/lady.png"
+                src="/image/financing/lady.jpg"
                 alt="Meredith Munger"
                 className="max-w-full h-auto"
                 wrapperClassName="w-full text-center"
@@ -30,10 +30,8 @@ const Resources = () => {
               The ADU Lender NMLS 2126086
             </p>
 
-            <p className="text-xl md:text-2xl text-green tracking-[-0.02em] mt-8 md:mt-20">
-              <a className="underline" href="#">
-                Meredith bio
-              </a>
+            <p className="text-xl md:text-xl font-normal text-green tracking-[-0.02em] mt-10">
+              Meredith Munger helps people achieve their housing goals. She is a loan officer at CrossCountry Mortgage and ADUloans.net with a focus on helping families, buy, build, renovate and refinance property, notably Accessory Dwelling Units, (ADUs). She operates ADUloans.net and serves as a founding member of the ADU Coalition and Casita Coalition, advocating for attainable housing all throughout California.
             </p>
           </div>
         </div>

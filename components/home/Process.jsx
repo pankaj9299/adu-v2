@@ -227,7 +227,7 @@ const Process = () => {
   return (
     <>
       {/* PROCESS SECTION */}
-      <section className="bg-green overflow-visible pt-14 md:pt-20">
+      <section className="bg-green overflow-visible pt-14 md:pt-20 z-20">
         <div className="container relative mx-auto px-5 lg:px-0 overflow-visible">
           {/* Header */}
           <div className="mb-10 md:mb-14">
@@ -431,14 +431,14 @@ const Process = () => {
           </div>
 
           <div className="text-center pb-10">
-            <Link
+            <a
               className="bg-lightYellow text-white tracking-[-0.02em]
                 font-helvetica-neue-bold px-7 pt-[15px] pb-[12px] md:text-lg
                 hover:bg-green transition-colors"
-              to="/models"
+              target="_blank" href="/pdf/Catalog.pdf"
             >
               Download Product Catalog
-            </Link>
+            </a>
           </div>
         </div>
       </section>
