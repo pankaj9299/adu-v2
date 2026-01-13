@@ -71,6 +71,14 @@ const Header = () => {
                 <li className="button-text text-lg">
                   <Link
                     className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                    to="/appliances"
+                  >
+                    Appliances
+                  </Link>
+                </li>
+                <li className="button-text text-lg">
+                  <Link
+                    className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
                     to="/contact-us"
                   >
                     Contact Us

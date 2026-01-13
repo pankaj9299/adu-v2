@@ -112,7 +112,7 @@ const AboutUs = () => {
           <iframe
             width="100%"
             height="580"
-            src="https://www.youtube.com/embed/iQx2DYpAqog?si=Jo9ZHDamXsziUrMz"
+            src="https://www.youtube.com/embed/og3J4GmEpC0?si=GSYn9olyxShd1aCM"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
