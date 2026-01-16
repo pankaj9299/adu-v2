@@ -15,7 +15,7 @@ const ColTwoImage = () => {
           </h3>
 
           <h2 className="text-white font-arial font-normal leading-tight md:leading-[80px] text-5xl md:text-7xl xl:text-[85px] tracking-[-0.05em] my-5 md:my-7">
-            $80,000
+            $79,950
           </h2>
 
           <div className="btn-wrapper">

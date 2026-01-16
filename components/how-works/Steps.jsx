@@ -232,6 +232,7 @@
 // export default Steps;
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 
 const Steps = () => {
   return (
@@ -289,9 +290,9 @@ const Steps = () => {
                   lifestyle.
                 </p>
                 <div className="btn-wrapper">
-                  <button className="border-marigold text-white tracking-[-0.02em] bg-marigold md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+                  <Link className="border-marigold text-white tracking-[-0.02em] bg-marigold md:text-lg font-helvetica-neue-bold pt-3 pb-2 px-5 hover:bg-green cursor-pointer" to="/models">
                     Let’s Get Started
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

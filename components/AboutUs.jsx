@@ -78,7 +78,7 @@ const AboutUs = () => {
           </div>
 
           <p>
-            Drake Boroja, CEO of ADU-Container Company, began designing and
+            Drake, CEO of ADU-Container Company, began designing and
             building Container homes in the Michigan area over a decade ago,
             completing unique projects for homeowners, major retailers, and
             more.
