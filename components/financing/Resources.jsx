@@ -31,7 +31,13 @@ const Resources = () => {
             </p>
 
             <p className="text-xl md:text-xl font-normal text-green tracking-[-0.02em] mt-10">
-              Meredith Munger helps people achieve their housing goals. She is a loan officer at CrossCountry Mortgage and ADUloans.net with a focus on helping families, buy, build, renovate and refinance property, notably Accessory Dwelling Units, (ADUs). She operates ADUloans.net and serves as a founding member of the ADU Coalition and Casita Coalition, advocating for attainable housing all throughout California.
+              Meredith Munger helps people achieve their housing goals. She is a
+              loan officer at CrossCountry Mortgage and ADUloans.net with a
+              focus on helping families, buy, build, renovate and refinance
+              property, notably Accessory Dwelling Units, (ADUs). She operates
+              ADUloans.net and serves as a founding member of the ADU Coalition
+              and Casita Coalition, advocating for attainable housing all
+              throughout California.
             </p>
           </div>
         </div>
@@ -63,12 +69,16 @@ const Resources = () => {
                   </h3>
 
                   <p className="mt-4 mb-7 text-dark-green/90">
-                    When building an ADU, your HELOC Strategy is important to saving
-                    thousands while keeping your payment reasonable.
+                    When building an ADU, your HELOC Strategy is important to
+                    saving thousands while keeping your payment reasonable.
                   </p>
 
                   <p className="mt-auto">
-                    <a className="underline italic font-bold text-thinGray" href="#">
+                    <a
+                      className="underline italic font-bold text-thinGray"
+                      href="https://youtu.be/aC7OKPr7aB8?si=hdX-kTiNlyrQfO2B"
+                      target="_blank"
+                    >
                       Watch Now
                     </a>
                   </p>
@@ -96,12 +106,16 @@ const Resources = () => {
                   </h3>
 
                   <p className="mt-4 mb-7 text-dark-green/90">
-                    The length of the loan, loan type, buy-downs and interest-only
-                    features are several other factors...
+                    The length of the loan, loan type, buy-downs and
+                    interest-only features are several other factors...
                   </p>
 
                   <p className="mt-auto">
-                    <a className="underline italic font-bold text-thinGray" href="#">
+                    <a
+                      className="underline italic font-bold text-thinGray"
+                      href="https://youtu.be/tGfPfaXAfqw?si=xZmRTFbiCzyXoODA"
+                      target="_blank"
+                    >
                       Watch Now
                     </a>
                   </p>
@@ -129,12 +143,17 @@ const Resources = () => {
                   </h3>
 
                   <p className="mt-4 mb-7 text-dark-green/90">
-                    There&apos;s a reason why ADU pros typically send their client to us first:
-                    They need to know what budget they are designing to...
+                    There&apos;s a reason why ADU pros typically send their
+                    client to us first: They need to know what budget they are
+                    designing to...
                   </p>
 
                   <p className="mt-auto">
-                    <a className="underline italic font-bold text-thinGray" href="#">
+                    <a
+                      className="underline italic font-bold text-thinGray"
+                      href="https://youtube.com/shorts/OzCFHE0YKk0"
+                      target="_blank"
+                    >
                       Watch Now
                     </a>
                   </p>
