@@ -73,7 +73,7 @@ const Footer = () => {
                 </h3>
                 <ul className="space-y-1">
                   <li>
-                    <a href="tel:866.###.####">866.###.####</a>
+                    <a href="tel:800-910-1717">800-910-1717</a>
                   </li>
                   <li>
                     <a href="mailto:info@adu-container.com">
