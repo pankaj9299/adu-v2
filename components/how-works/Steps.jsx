@@ -338,9 +338,9 @@ const Steps = () => {
                 Report.
               </p>
               <div className="btn-wrapper">
-                <button className="border-marigold text-white tracking-[-0.02em] bg-marigold md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
+                <a href="https://buy.stripe.com/eVq3cuchXerF99sbNjejK00" target="_blank" className="border-marigold text-white tracking-[-0.02em] bg-marigold md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
                   Order a Site Assessment | $495
-                </button>
+                </a>
               </div>
               <p className="text-green mt-3">Delivery in 2 – 3 weeks.</p>
             </div>
