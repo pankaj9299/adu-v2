@@ -61,7 +61,7 @@ const BannerSecondLevel = () => {
               className="font-arial font-normal text-dark-green my-6 tracking-[-0.05em]
               text-4xl sm:text-5xl md:text-6xl lg:text-[85px]"
             >
-              1Light Into a Door of Endless Possibilities
+              Light Into a Door of Endless Possibilities
             </h1>
 
             <h2
