@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 
 const HeroBanner = ({ selectedOption, defaultImage }) => {
   const selectedProduct = useSelector(
-    (state) => state.configurator.selectedProduct
+    (state) => state.configurator.selectedProduct,
   );
   const imageUrl = findImageByProduct(selectedProduct?.product_name);
 
@@ -13,10 +13,10 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
     const src = selectedOption?.image_two
       ? selectedOption.image_two
       : selectedOption?.image
-      ? selectedOption.image
-      : defaultImage
-      ? defaultImage
-      : "/uploads/category_options/1753111703_d87a932b81637b70ee4b.png";
+        ? selectedOption.image
+        : defaultImage
+          ? defaultImage
+          : "/uploads/category_options/1753111703_d87a932b81637b70ee4b.png";
 
     return src.startsWith("http")
       ? src
@@ -62,7 +62,7 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
               You are customizing
             </h3> */}
             <h1 className="text-6xl font-normal font-arial text-secondary-green tracking-[-0.05em] mb-5">
-              {selectedProduct?.floor_name?.replace("Floor", "Floor Plan")}
+              1{selectedProduct?.floor_name?.replace("Floor", "Floor Plan")}
             </h1>
             <div className="heading">
               <img
