@@ -62,7 +62,7 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
               You are customizing
             </h3> */}
             <h1 className="text-6xl font-normal font-arial text-secondary-green tracking-[-0.05em] mb-5">
-              1{selectedProduct?.floor_name?.replace("Floor", "Floor Plan")}
+              {selectedProduct?.floor_name?.replace("Floor", "Floor Plan")}
             </h1>
             <div className="heading">
               <img
