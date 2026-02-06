@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [isModelsOpen, setIsModelsOpen] = useState(false);
+  const modelsRef = useRef(null);
+  const modelsMobileRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -19,6 +22,35 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []); // run once on mount
+
+  useEffect(() => {
+    const handlePointerDown = (e) => {
+      const clickedOutsideDesktop =
+        modelsRef.current && !modelsRef.current.contains(e.target);
+
+      const clickedOutsideMobile =
+        modelsMobileRef.current && !modelsMobileRef.current.contains(e.target);
+
+      // Close only if click is outside BOTH (whichever exists on screen)
+      if (clickedOutsideDesktop && clickedOutsideMobile) {
+        setIsModelsOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (modelsRef.current && !modelsRef.current.contains(e.target)) {
+        setIsModelsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   console.log("scrollY", scrollY);
 
@@ -44,14 +76,63 @@ const Header = () => {
           <div className="links-with-button hidden md:flex items-center justify-center gap-12 w-full">
             <nav className="flex-1">
               <ul className="flex gap-10 justify-center">
-                <li className="button-text text-lg">
-                  <Link
-                    className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
-                    to="/models"
+                <li className="relative button-text text-lg" ref={modelsRef}>
+                  <button
+                    type="button"
+                    onClick={() => setIsModelsOpen((v) => !v)}
+                    className="text-marigold text-base font-normal inline-flex items-center leading-none hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                    aria-haspopup="menu"
+                    aria-expanded={isModelsOpen}
                   >
                     Explore Models
-                  </Link>
+                    <svg
+                      className={`ml-1 w-4 h-4 inline transition-transform duration-200 ${
+                        isModelsOpen ? "rotate-180" : ""
+                      }`}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  {isModelsOpen && (
+                    <ul className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 bg-white shadow-lg border rounded-md py-2 z-50">
+                      <li>
+                        <Link
+                          to="/models"
+                          onClick={() => setIsModelsOpen(false)}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Customize Your Own ADU
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/gallery"
+                          onClick={() => setIsModelsOpen(false)}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          View Gallery
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/appliances"
+                          onClick={() => setIsModelsOpen(false)}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Appliances
+                        </Link>
+                      </li>
+                    </ul>
+                  )}
                 </li>
+
                 <li className="button-text text-lg">
                   <Link
                     className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
@@ -71,14 +152,14 @@ const Header = () => {
                 <li className="button-text text-lg">
                   <Link
                     className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
-                    to="/appliances"
+                    to="/about-us"
                   >
-                    Appliances
+                    About Us
                   </Link>
                 </li>
                 <li className="button-text text-lg">
                   <Link
-                    className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                    className="bg-marigold text-white font-normal rounded-sm px-3 py-2"
                     to="/contact-us"
                   >
                     Contact Us
@@ -136,15 +217,60 @@ const Header = () => {
         >
           <nav className="mt-4">
             <ul className="flex flex-col gap-4">
-              <li className="button-text text-lg">
-                <Link
-                  className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
-                  to="/models"
-                  onClick={toggleMenu} // Close menu on link click
+              <li className="button-text text-lg" ref={modelsMobileRef}>
+                <button
+                  type="button"
+                  onClick={() => setIsModelsOpen((v) => !v)}
+                  className="w-full text-marigold text-base font-normal inline-flex items-center leading-none"
+                  aria-haspopup="menu"
+                  aria-expanded={isModelsOpen}
                 >
                   Explore Models
-                </Link>
+                  <svg
+                    className={`ml-1 w-4 h-4 inline transition-transform duration-200 ${
+                      isModelsOpen ? "rotate-180" : ""
+                    }`}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {isModelsOpen && (
+                  <ul className="ml-4 mt-2 flex flex-col gap-2">
+                    <li>
+                      <Link
+                        to="/models"
+                        className="text-sm text-gray-600 hover:text-dark-teal"
+                      >
+                        Customize Your Own ADU
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/gallery"
+                        className="text-sm text-gray-600 hover:text-dark-teal"
+                      >
+                        View Gallery
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/appliances"
+                        className="text-sm text-gray-600 hover:text-dark-teal"
+                      >
+                        Appliances
+                      </Link>
+                    </li>
+                  </ul>
+                )}
               </li>
+
               <li className="button-text text-lg">
                 <Link
                   className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
