@@ -91,7 +91,7 @@ const BannerSecondLevel = () => {
             {/* Decorative image */}
             <div className="mt-12 sm:mt-16 max-w-xs">
               <LazyLoadImage
-                src="/image/homepage/Group 96.png"
+                src="/image/homepage/hero.png"
                 alt="decorative graphic"
                 className="w-full h-auto"
                 effect="opacity"
