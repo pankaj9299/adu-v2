@@ -412,8 +412,11 @@ const Process = () => {
                 "/image/homepage/slide1.png",
                 "/image/homepage/slide2.png",
                 "/image/homepage/slide3.png",
-                "/image/homepage/slide1.png",
-                "/image/homepage/slide2.png",
+                "/image/homepage/slide4.png",
+                "/image/homepage/slide5.jpg",
+                "/image/homepage/slide6.jpg",
+                "/image/homepage/slide7.jpg",
+                "/image/homepage/slide8.jpg",
               ].map((src, idx) => (
                 <div key={idx} className="px-2">
                   <div className="h-[240px] sm:h-[280px] md:h-[300px] w-full">
