@@ -489,6 +489,9 @@
   .mb-15 {
     margin-bottom: var(--spacing-15);
   }
+  .mb-20 {
+    margin-bottom: calc(var(--spacing) * 20);
+  }
   .mb-30 {
     margin-bottom: calc(var(--spacing) * 30);
   }
@@ -1010,6 +1013,9 @@
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 2px;
   }
+  .border-\[\#305D62\] {
+    border-color: #305D62;
+  }
   .border-black\/10 {
     border-color: color-mix(in srgb, #000 10%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1270,6 +1276,9 @@
   }
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
+  }
+  .pt-25 {
+    padding-top: var(--spacing-25);
   }
   .pt-30 {
     padding-top: calc(var(--spacing) * 30);
@@ -1532,6 +1541,9 @@
   .decoration-2 {
     text-decoration-thickness: 2px;
   }
+  .underline-offset-4 {
+    text-underline-offset: 4px;
+  }
   .underline-offset-6 {
     text-underline-offset: 6px;
   }
@@ -1689,6 +1701,13 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-dark-teal);
+      }
+    }
+  }
+  .hover\:text-lightYellow {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-lightYellow);
       }
     }
   }

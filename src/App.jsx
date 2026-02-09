@@ -9,6 +9,7 @@ function App() {
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-1">
+          <div id="page-top"></div>
           <AppRoutes />
         </main>
         <Footer />

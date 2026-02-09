@@ -16,6 +16,7 @@ import ContactUs from "../components/ContactUs";
 import AboutUs from "../components/AboutUs";
 import TermsAndCondition from "../components/TermsAndCondition";
 import PrivacyPolicy from "../components/PrivacyPolicy";
+import Gallery from "../components/Gallery";
 
 export default function AppRoutes() {
   const location = useLocation();
@@ -44,7 +45,7 @@ export default function AppRoutes() {
         product_subtitle: product.subtitle,
         product_price: `$${product.price.toLocaleString()}`,
         product_image: product.image,
-      })
+      }),
     );
 
     navigate("/step-two", { state: { selectedProduct: product } });
@@ -71,6 +72,7 @@ export default function AppRoutes() {
           />
         }
       />
+      <Route path="/gallery" element={<Gallery />} />
       <Route path="/configurator" element={<Configurator />} />
       <Route path="/checkout" element={<CheckoutForm />} />
       <Route path="/appliances" element={<Appliances />} />
