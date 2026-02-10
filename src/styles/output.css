@@ -399,6 +399,9 @@
   .my-10 {
     margin-block: var(--spacing-10);
   }
+  .my-15 {
+    margin-block: var(--spacing-15);
+  }
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
@@ -825,6 +828,9 @@
   }
   .resize {
     resize: both;
+  }
+  .\[grid-template-columns\:repeat\(auto-fit\,minmax\(360px\,520px\)\)\] {
+    grid-template-columns: repeat(auto-fit,minmax(360px,520px));
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -1277,9 +1283,6 @@
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
   }
-  .pt-25 {
-    padding-top: var(--spacing-25);
-  }
   .pt-30 {
     padding-top: calc(var(--spacing) * 30);
   }
@@ -1321,9 +1324,6 @@
   }
   .pb-16 {
     padding-bottom: calc(var(--spacing) * 16);
-  }
-  .pb-20 {
-    padding-bottom: calc(var(--spacing) * 20);
   }
   .pb-\[8px\] {
     padding-bottom: 8px;
@@ -1386,6 +1386,10 @@
   .text-6xl {
     font-size: var(--text-6xl);
     line-height: var(--tw-leading, var(--text-6xl--line-height));
+  }
+  .text-7xl {
+    font-size: var(--text-7xl);
+    line-height: var(--tw-leading, var(--text-7xl--line-height));
   }
   .text-base {
     font-size: var(--text-base);

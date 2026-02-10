@@ -1,4 +1,5 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 
 const Resources = () => {
   return (
@@ -74,13 +75,12 @@ const Resources = () => {
                   </p>
 
                   <p className="mt-auto">
-                    <a
+                    <Link
                       className="underline italic font-bold text-thinGray"
-                      href="https://youtu.be/aC7OKPr7aB8?si=hdX-kTiNlyrQfO2B"
-                      target="_blank"
+                      to="/financing/heloc-strategy-building-adus"
                     >
                       Watch Now
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </div>
@@ -111,13 +111,12 @@ const Resources = () => {
                   </p>
 
                   <p className="mt-auto">
-                    <a
+                    <Link
                       className="underline italic font-bold text-thinGray"
-                      href="https://youtu.be/tGfPfaXAfqw?si=xZmRTFbiCzyXoODA"
-                      target="_blank"
+                      to="/financing/why-interest-rates-are-not-as-important-as-you-think"
                     >
                       Watch Now
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </div>
@@ -149,13 +148,12 @@ const Resources = () => {
                   </p>
 
                   <p className="mt-auto">
-                    <a
+                    <Link
                       className="underline italic font-bold text-thinGray"
-                      href="https://youtube.com/shorts/OzCFHE0YKk0"
-                      target="_blank"
+                      to="/financing/first-step-build-adu-budget-guide"
                     >
                       Watch Now
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </div>

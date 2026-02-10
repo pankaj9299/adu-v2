@@ -10,6 +10,8 @@ import axios from "axios";
 import TestSlider from "../components/TestSlider";
 import Appliances from "../components/Appliances";
 import Financing from "../components/Financing";
+import FinancingLayout from "../components/FinancingLayout";
+import FinancingDetail from "../components/FinancingDetail";
 import HomePage from "../components/HomePage";
 import HowItWorks from "../components/HowItWorks";
 import ContactUs from "../components/ContactUs";
@@ -76,7 +78,13 @@ export default function AppRoutes() {
       <Route path="/configurator" element={<Configurator />} />
       <Route path="/checkout" element={<CheckoutForm />} />
       <Route path="/appliances" element={<Appliances />} />
-      <Route path="/financing" element={<Financing />} />
+      <Route path="/financing" element={<FinancingLayout />}>
+        {/* /financing */}
+        <Route index element={<Financing />} />
+
+        {/* /financing/:slug */}
+        <Route path=":slug" element={<FinancingDetail />} />
+      </Route>
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/about-us" element={<AboutUs />} />

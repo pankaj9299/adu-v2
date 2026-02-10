@@ -6,7 +6,7 @@ import Cta from "./financing/Cta";
 import Resources from "./financing/Resources";
 import Calculator from "./financing/Calculator";
 
-const Financing = () => {
+export default function FinancingHome() {
   return (
     <>
       <Banner />
@@ -18,6 +18,4 @@ const Financing = () => {
       <Cta />
     </>
   );
-};
-
-export default Financing;
+}
