@@ -10,13 +10,14 @@ const IntroImagesV2 = ({
   reverse = false, // swap image/text order on lg
   rootImg = false,
   rootImgSrc = "/image/single_container.png",
+  className = "p-0",
 }) => {
   const detailsHtml = Array.isArray(details)
     ? details.map((line) => `${line}<br />`).join("")
     : details;
 
   return (
-    <section className="p-0">
+    <section className={className}>
       <div className="container">
         {rootImg && (
           <div className="img-wrapper mb-10">
@@ -33,7 +34,7 @@ const IntroImagesV2 = ({
           }`}
         >
           <div className="w-full lg:flex-[3]">
-            <h3 className="text-xl sm:text-2xl text-marigold font-helvetica-neue-bold tracking-[-0.02em]">
+            <h3 className="text-40 text-marigold font-helvetica-neue-bold tracking-[-0.02em]">
               First Floor
             </h3>
             <LazyLoadImage
@@ -43,7 +44,7 @@ const IntroImagesV2 = ({
               wrapperClassName="w-full"
               effect={imageEffect}
             />
-            <h3 className="text-xl sm:text-2xl text-marigold font-helvetica-neue-bold tracking-[-0.02em]">
+            <h3 className="text-40 text-marigold font-helvetica-neue-bold tracking-[-0.02em] mt-5">
               Second Floor
             </h3>
             <LazyLoadImage
@@ -56,12 +57,12 @@ const IntroImagesV2 = ({
           </div>
 
           <div className="w-full lg:flex-[2]">
-            <h3 className="text-xl sm:text-2xl text-marigold font-helvetica-neue-bold tracking-[-0.02em] mt-10">
+            <h3 className="text-4xl xs:text-2xl text-marigold font-helvetica-neue-bold tracking-[-0.02em] mt-10">
               {title}
             </h3>
 
             <p
-              className="text-green mt-4 mb-6 sm:mb-7"
+              className="text-green mt-4 mb-6 sm:mb-7 text-2xl"
               dangerouslySetInnerHTML={{ __html: detailsHtml }}
             />
           </div>

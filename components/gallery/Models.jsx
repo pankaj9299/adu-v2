@@ -15,7 +15,7 @@ const modelsData = [
 
 const Models = () => {
   return (
-    <section className="pt-25">
+    <section className="">
       <div className="container">
         <div className="col-three-wrap">
           <div className="intro mb-20">

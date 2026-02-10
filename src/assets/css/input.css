@@ -46,12 +46,14 @@ body {
   --font-size-tiny: 0.625rem;
   --font-size-28: 1.75rem;
   --font-size-20: 1.25rem;
+  --font-size-40: 40px;
   --font-size-85: 5.3125rem;
   --font-size-huge: 5rem;
   --font-size-banner: 6rem;
 
   /* Custom colors */
   --color-brand: #3b82f6;
+  --color-brand2: #3b6fd5;
   --color-accent: #8b5cf6;
   --color-dark-green: #263824;
   --color-khaki: #f1e7ce;
@@ -234,6 +236,9 @@ body {
   .text-20 {
     font-size: var(--font-size-20);
   }
+  .text-40 {
+    font-size: var(--font-size-40);
+  }
   .text-85 {
     font-size: var(--font-size-85);
   }
@@ -245,6 +250,9 @@ body {
   }
   .text-brand {
     color: var(--color-brand);
+  }
+  .text-brand2 {
+    color: var(--color-brand2);
   }
   .text-accent {
     color: var(--color-accent);

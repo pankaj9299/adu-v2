@@ -18,11 +18,13 @@ const Gallery = () => {
         details={["160 sq ft", "1 Bedroom", "1 Bathroom"]}
         rootImg={true}
         rootImgSrc="/image/single_container.png"
+        className="pb-10"
       />
       <Video
         videoId="dQw4w9WgXcQ"
         ctaText="Customize This Model"
         ctaLink="/models"
+        className="pb-15"
       />
       <ImageWithText
         imageSrc="/image/gallery/adu2.png"
@@ -30,6 +32,7 @@ const Gallery = () => {
         title="ADU_02 Floor Plan"
         details={["160 sq ft", "Studio", "1 Bathroom"]}
         rootImg={false}
+        className="pb-15"
       />
       <Video
         videoId="dQw4w9WgXcQ"
@@ -44,11 +47,13 @@ const Gallery = () => {
         details={["320 sq ft", "2 Bedrooms", "1 Bathroom"]}
         rootImg={true}
         rootImgSrc="/image/side_by_side.png"
+        className="pb-15"
       />
       <Video
         videoId="dQw4w9WgXcQ"
         ctaText="Customize This Model"
         ctaLink="/models"
+        className="pb-15"
       />
       <ImageWithText
         imageSrc="/image/gallery/adu4.png"
@@ -56,6 +61,7 @@ const Gallery = () => {
         title="ADU_04 Floor Plan"
         details={["320 sq ft", "1 Bedroom", "1 Bathroom"]}
         rootImg={false}
+        className="pb-15"
       />
       <Video
         videoId="dQw4w9WgXcQ"
@@ -73,6 +79,29 @@ const Gallery = () => {
         reverse={false}
         rootImg={true}
         rootImgSrc="/image/two_story_container.png"
+        className="pb-15"
+      />
+      <Video
+        videoId="dQw4w9WgXcQ"
+        ctaText="Customize This Model"
+        ctaLink="/models"
+        className="pb-15"
+      />
+      <IntroImagesV2
+        imageSrc1="/image/gallery/adu_6_1.png"
+        imageSrc2="/image/gallery/adu_6_2.png"
+        alt="ADU 06"
+        title="ADU_06 Floor Plan"
+        details={["640 sq ft", "2 Bedroom", "2 Bathroom"]}
+        imageEffect="opacity"
+        reverse={false}
+        className="pb-15"
+      />
+      <Video
+        videoId="dQw4w9WgXcQ"
+        ctaText="Customize This Model"
+        ctaLink="/models"
+        className="pb-15"
       />
     </>
   );

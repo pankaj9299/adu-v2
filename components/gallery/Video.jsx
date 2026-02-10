@@ -6,6 +6,7 @@ const Video = ({
   ctaText = "Customize This Model",
   ctaLink = "/models",
   showBackToTop = true,
+  className = "p-0",
 }) => {
   const scrollToTop = () => {
     const el = document.getElementById("page-top");
@@ -13,7 +14,7 @@ const Video = ({
   };
 
   return (
-    <section className="p-0">
+    <section className={className}>
       <div className="container">
         <iframe
           width="100%"
@@ -41,9 +42,9 @@ const Video = ({
           {showBackToTop && (
             <button
               onClick={scrollToTop}
-              className="block mx-auto mt-6 text-sm text-green
-                underline underline-offset-4 hover:text-lightYellow
-                transition-colors"
+              className="block mx-auto mt-6 text-sm text-brand2
+                 italic underline-offset-4 hover:text-lightYellow
+                transition-colors text-xl"
             >
               Back to top ↑
             </button>
