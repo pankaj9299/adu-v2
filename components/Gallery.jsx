@@ -21,7 +21,7 @@ const Gallery = () => {
         className="pb-10"
       />
       <Video
-        videoId="dQw4w9WgXcQ"
+        videoId="LYDY0YVY_ow"
         ctaText="Customize This Model"
         ctaLink="/models"
         className="pb-15"
@@ -35,7 +35,7 @@ const Gallery = () => {
         className="pb-15"
       />
       <Video
-        videoId="dQw4w9WgXcQ"
+        videoId="Bz9FqhkbVmE"
         ctaText="Customize This Model"
         ctaLink="/models"
       />
@@ -50,7 +50,7 @@ const Gallery = () => {
         className="pb-15"
       />
       <Video
-        videoId="dQw4w9WgXcQ"
+        videoId="gzsTH2-zsr8"
         ctaText="Customize This Model"
         ctaLink="/models"
         className="pb-15"
@@ -64,7 +64,7 @@ const Gallery = () => {
         className="pb-15"
       />
       <Video
-        videoId="dQw4w9WgXcQ"
+        videoId="45hTFzmI_rI"
         ctaText="Customize This Model"
         ctaLink="/models"
       />
@@ -82,7 +82,7 @@ const Gallery = () => {
         className="pb-15"
       />
       <Video
-        videoId="dQw4w9WgXcQ"
+        videoId="w_7Zat6frZM"
         ctaText="Customize This Model"
         ctaLink="/models"
         className="pb-15"
@@ -98,7 +98,7 @@ const Gallery = () => {
         className="pb-15"
       />
       <Video
-        videoId="dQw4w9WgXcQ"
+        videoId="i9ZTZjv4-XI"
         ctaText="Customize This Model"
         ctaLink="/models"
         className="pb-15"
