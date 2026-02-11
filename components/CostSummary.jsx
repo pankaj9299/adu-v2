@@ -273,7 +273,7 @@ const CostSummary = ({
                   </h3>
                 </div>
                 <div>
-                  <p className="font-bold py-2 text-dark-green">
+                  <p className="font-bold text-xl py-2 text-dark-green">
                     ${calculateTotal()}
                   </p>
                 </div>

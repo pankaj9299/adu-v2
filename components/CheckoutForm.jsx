@@ -268,7 +268,7 @@ const CheckoutForm = () => {
           ) : (
             <div className="success-message mt-6">
               <p className="text-green text-xl font-semibold">
-                ✅ Your budget proposal is ready!
+                ✅ Thank you for configuring your container home with ADU Container Co.—your budgetary proposal has been successfully submitted, and a detailed PDF copy has been emailed to you for your review.
               </p>
               <div className="mt-[20px]">
                 <a
