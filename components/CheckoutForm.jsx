@@ -39,20 +39,27 @@ const CheckoutForm = () => {
     email: "",
     zip: "",
     phone: "",
+    consent: false,
   });
 
   // Handle form input change
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   // Handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (formData.phone.trim() && !formData.consent) {
+      alert("Please provide consent to be contacted via SMS.");
+      return;
+    }
+    
     setLoading(true); // disable form + show loading
     try {
       const payload = {
@@ -224,7 +231,15 @@ const CheckoutForm = () => {
               {/* Consent Note */}
               <div className="md:col-span-2">
                 <div className="flex items-start gap-3">
-                  <input type="checkbox" className="mt-1" required />
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    checked={formData.consent}
+                    onChange={handleChange}
+                    disabled={loading}
+                    required={formData.phone.trim().length > 0}
+                    className="mt-1"
+                  />
 
                   <p className="text-[15px] font-normal">
                     By providing a telephone number and when scheduling your
@@ -301,7 +316,7 @@ const CheckoutForm = () => {
               <h4 className="max-sm:text-[20px] max-sm:my-2 md:text-[28px] text-green font-normal font-arial tracking-[-0.05em] mt-3 mb-4">
                 {selectedProductState?.floor_name.replace(
                   "Floor",
-                  "Floor Plan"
+                  "Floor Plan",
                 )}
               </h4>
               <p
