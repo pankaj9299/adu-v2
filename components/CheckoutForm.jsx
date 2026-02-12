@@ -94,13 +94,13 @@ const CheckoutForm = () => {
       <section className="hero-banner">
         <div className="container">
           <div className="intro">
-            <h1 className="md:text-[87px] font-normal text-secondary-green mb-10">
-              Get Your Budget Proposal
+            <h1 className="md:text-[87px] tracking-[-0.05em] font-normal text-secondary-green mb-10">
+              Get Your Budgetary Proposal
             </h1>
-            <h3 className="md:text-[30px] text-lightYellow mb-2">
+            <h3 className="md:text-[30px] text-lightYellow font-helvetica-neue-bold tracking-[-0.02em] mb-4">
               You created something beautiful. Now let’s make it yours.
             </h3>
-            <h3 className="md:text-[30px] text-thinGray mb-10 max-sm:my-5">
+            <h3 className="md:text-[30px] text-thinGray font-helvetica-neue-bold tracking-[-0.02em] mb-10 max-sm:my-5">
               Request your full Budget Proposal below.
             </h3>
           </div>
@@ -257,23 +257,24 @@ const CheckoutForm = () => {
                       : "text-lightYellow hover:bg-blue-700"
                   }`}
                 >
-                  {loading ? "Creating Proposal ..." : "Get Budget Proposal"}
+                  {loading ? "Creating Proposal ..." : "Get Budgetary Proposal"}
                 </button>
               </div>
             </form>
           ) : (
             <div className="success-message mt-6">
-              <p className="text-green text-xl font-semibold">
-                ✅ Thank you for configuring your container home with ADU Container Co.—your budgetary proposal has been successfully submitted, and a detailed PDF copy has been emailed to you for your review.
+              <p className="text-green text-3xl font-helvetica-neue-bold tracking-[-0.02em]">
+                Success! Your Budgetary Proposal is on its way to your email inbox.
               </p>
-              <div className="mt-[20px]">
+              <p className="text-2xl text-black font-arial">Or you can click below to download it now.</p>
+              <div className="mt-10">
                 <a
                   href={`${filePath}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="border-lightYellow border-1 text-lightYellow font-semibold py-2 px-6 md:text-[19px] font-bold transition"
                 >
-                  Download Proposal
+                  Download Now
                 </a>
               </div>
             </div>
@@ -285,7 +286,7 @@ const CheckoutForm = () => {
       <section className="step-two">
         <div className="container">
           <div className="intro">
-            <h2 className="md:text-[87px] text-green font-normal md:mb-10">
+            <h2 className="md:text-[87px] text-green font-normal md:mb-10 tracking-[-0.05em]">
               Your Selections
             </h2>
           </div>

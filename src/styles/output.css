@@ -453,9 +453,6 @@
   .mt-\[14px\] {
     margin-top: 14px;
   }
-  .mt-\[20px\] {
-    margin-top: 20px;
-  }
   .mt-auto {
     margin-top: auto;
   }
@@ -1511,6 +1508,9 @@
   }
   .text-\[0\] {
     color: 0;
+  }
+  .text-black {
+    color: var(--color-black);
   }
   .text-dark-green {
     color: var(--color-dark-green);

@@ -163,7 +163,7 @@ const CostSummary = ({
                           <div className="left flex gap-4">
                             <div className="first w-[173px] text-left">
                               <p className="font-normal bg-yellow pl-5 text-dark-green py-2">
-                                {sub.name}
+                                {sub.name.replace('Pick', '')}
                               </p>
                             </div>
                             <div className="second">
