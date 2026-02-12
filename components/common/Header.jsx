@@ -128,7 +128,7 @@ const Header = () => {
 
                 <li className="button-text text-lg">
                   <Link
-                    className="text-marigold text-[16px] min-[1000px]:text-[length:var(--font-size-22)] font-bold font-helvetica-neue-bold tracking-[-0.05em] hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                    className="text-marigold text-[16px] min-[1000px]:text-[length:var(--font-size-22)] font-bold font-helvetica-neue-bold tracking-[-0.05em]"
                     to="/financing"
                   >
                     Financing
@@ -136,7 +136,7 @@ const Header = () => {
                 </li>
                 <li className="button-text text-lg">
                   <Link
-                    className="text-marigold text-[16px] min-[1000px]:text-[length:var(--font-size-22)] font-bold font-helvetica-neue-bold tracking-[-0.05em] hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                    className="text-marigold text-[16px] min-[1000px]:text-[length:var(--font-size-22)] font-bold font-helvetica-neue-bold tracking-[-0.05em]"
                     to="/how-it-works"
                   >
                     How it Works
@@ -144,7 +144,7 @@ const Header = () => {
                 </li>
                 <li className="button-text text-lg">
                   <Link
-                    className="text-marigold text-[16px] min-[1000px]:text-[length:var(--font-size-22)] font-bold font-helvetica-neue-bold tracking-[-0.05em] hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                    className="text-marigold text-[16px] min-[1000px]:text-[length:var(--font-size-22)] font-bold font-helvetica-neue-bold tracking-[-0.05em]"
                     to="/about-us"
                   >
                     About Us
