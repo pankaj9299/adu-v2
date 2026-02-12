@@ -41,17 +41,6 @@ const Header = () => {
     return () => document.removeEventListener("pointerdown", handlePointerDown);
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (modelsRef.current && !modelsRef.current.contains(e.target)) {
-        setIsModelsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   console.log("scrollY", scrollY);
 
   return (
@@ -62,7 +51,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="wrapper w-full flex items-center justify-between">
           {/* Logo (Uncomment if needed) */}
-          <div className="logo w-auto h-[40px] xl:w-[140px] xl:h-[70px]">
+          <div className="logo w-auto h-[70px] xl:w-[280px] xl:h-[80px]">
             <Link to="/" className="block h-full w-full">
               <img
                 src="/image/Group 2@2x.png"
@@ -76,11 +65,15 @@ const Header = () => {
           <div className="links-with-button hidden md:flex items-center justify-center gap-12 w-full">
             <nav className="flex-1">
               <ul className="flex gap-10 justify-center">
-                <li className="relative button-text text-lg" ref={modelsRef}>
+                <li 
+                  className="relative button-text text-lg" 
+                  ref={modelsRef}
+                  onMouseEnter={() => setIsModelsOpen(true)}
+                  onMouseLeave={() => setIsModelsOpen(false)}
+                  >
                   <button
                     type="button"
-                    onClick={() => setIsModelsOpen((v) => !v)}
-                    className="text-marigold text-base font-normal inline-flex items-center leading-none hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                    className="text-marigold text-[16px] min-[1000px]:text-[length:var(--font-size-22)] font-bold font-helvetica-neue-bold tracking-[-0.05em] inline-flex items-center leading-none"
                     aria-haspopup="menu"
                     aria-expanded={isModelsOpen}
                   >
@@ -101,30 +94,30 @@ const Header = () => {
                   </button>
 
                   {isModelsOpen && (
-                    <ul className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 bg-white shadow-lg border rounded-md py-2 z-50">
-                      <li>
+                    <ul className="absolute top-full left-1/2 -translate-x-1/2 w-3xs bg-white border border-marigold py-3 z-50">
+                      <li className="px-4">
                         <Link
                           to="/models"
                           onClick={() => setIsModelsOpen(false)}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          className="block border-b border-[#F1E7CE] text-lg text-marigold font-helvetica-neue-light font-semibold tracking-[-0.05em]"
                         >
                           Customize Your Own ADU
                         </Link>
                       </li>
-                      <li>
+                      <li className="px-4 py-2">
                         <Link
                           to="/gallery"
                           onClick={() => setIsModelsOpen(false)}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          className="block border-b border-[#F1E7CE] text-lg text-marigold font-helvetica-neue-light font-semibold tracking-[-0.05em]"
                         >
                           View Gallery
                         </Link>
                       </li>
-                      <li>
+                      <li className="px-4">
                         <Link
                           to="/appliances"
                           onClick={() => setIsModelsOpen(false)}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          className="block text-lg text-marigold font-helvetica-neue-light font-semibold tracking-[-0.05em]"
                         >
                           Appliances
                         </Link>
@@ -135,7 +128,7 @@ const Header = () => {
 
                 <li className="button-text text-lg">
                   <Link
-                    className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                    className="text-marigold text-[16px] min-[1000px]:text-[length:var(--font-size-22)] font-bold font-helvetica-neue-bold tracking-[-0.05em] hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
                     to="/financing"
                   >
                     Financing
@@ -143,7 +136,7 @@ const Header = () => {
                 </li>
                 <li className="button-text text-lg">
                   <Link
-                    className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                    className="text-marigold text-[16px] min-[1000px]:text-[length:var(--font-size-22)] font-bold font-helvetica-neue-bold tracking-[-0.05em] hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
                     to="/how-it-works"
                   >
                     How it Works
@@ -151,7 +144,7 @@ const Header = () => {
                 </li>
                 <li className="button-text text-lg">
                   <Link
-                    className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                    className="text-marigold text-[16px] min-[1000px]:text-[length:var(--font-size-22)] font-bold font-helvetica-neue-bold tracking-[-0.05em] hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
                     to="/about-us"
                   >
                     About Us
@@ -159,7 +152,7 @@ const Header = () => {
                 </li>
                 <li className="button-text text-lg">
                   <Link
-                    className="bg-marigold text-white font-normal rounded-sm px-3 py-2"
+                    className="bg-marigold text-white text-[16px] min-[1000px]:text-[length:var(--font-size-22)] font-bold font-helvetica-neue-bold tracking-[-0.05em] px-5 pt-4 pb-3"
                     to="/contact-us"
                   >
                     Contact Us
@@ -221,7 +214,7 @@ const Header = () => {
                 <button
                   type="button"
                   onClick={() => setIsModelsOpen((v) => !v)}
-                  className="w-full text-marigold text-base font-normal inline-flex items-center leading-none"
+                  className="w-full text-marigold text-base font-helvetica-neue-bold tracking-[-0.05em] inline-flex items-center leading-none"
                   aria-haspopup="menu"
                   aria-expanded={isModelsOpen}
                 >
@@ -246,7 +239,7 @@ const Header = () => {
                     <li>
                       <Link
                         to="/models"
-                        className="text-sm text-gray-600 hover:text-dark-teal"
+                        className="text-sm font-helvetica-neue-bold tracking-[-0.05em]"
                       >
                         Customize Your Own ADU
                       </Link>
@@ -254,7 +247,7 @@ const Header = () => {
                     <li>
                       <Link
                         to="/gallery"
-                        className="text-sm text-gray-600 hover:text-dark-teal"
+                        className="text-sm font-helvetica-neue-bold tracking-[-0.05em]"
                       >
                         View Gallery
                       </Link>
@@ -262,7 +255,7 @@ const Header = () => {
                     <li>
                       <Link
                         to="/appliances"
-                        className="text-sm text-gray-600 hover:text-dark-teal"
+                        className="text-sm font-helvetica-neue-bold tracking-[-0.05em]"
                       >
                         Appliances
                       </Link>
@@ -273,7 +266,7 @@ const Header = () => {
 
               <li className="button-text text-lg">
                 <Link
-                  className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                  className="text-marigold text-base font-helvetica-neue-bold tracking-[-0.05em]"
                   to="/financing"
                   onClick={toggleMenu}
                 >
@@ -282,7 +275,7 @@ const Header = () => {
               </li>
               <li className="button-text text-lg">
                 <Link
-                  className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                  className="text-marigold text-base font-helvetica-neue-bold tracking-[-0.05em]"
                   to="/how-it-works"
                   onClick={toggleMenu}
                 >
@@ -291,7 +284,7 @@ const Header = () => {
               </li>
               <li className="button-text text-lg">
                 <Link
-                  className="text-marigold text-base font-normal hover:text-dark-teal hover:underline hover:decoration-marigold hover:underline-offset-5"
+                  className="text-marigold text-base font-helvetica-neue-bold tracking-[-0.05em]"
                   to="/contact-us"
                   onClick={toggleMenu}
                 >

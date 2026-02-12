@@ -46,6 +46,7 @@ body {
   --font-size-tiny: 0.625rem;
   --font-size-28: 1.75rem;
   --font-size-20: 1.25rem;
+  --font-size-22: 1.37rem;
   --font-size-40: 40px;
   --font-size-85: 5.3125rem;
   --font-size-huge: 5rem;
@@ -65,6 +66,8 @@ body {
 
   --font-family-arial: "Arial", sans-serif;
   --font-family-helvetica-neue-bold: "Helvetica Neue Bold", sans-serif;
+  --font-family-helvetica-neue-light: "Helvetica Neue Light", sans-serif;
+  --font-family-helvetica-neue-medium: "Helvetica Neue Medium", sans-serif;
 }
 
 @custom-variant 3xl {
@@ -111,10 +114,11 @@ body {
   --spacing-34: 8.5rem; /* 34 * 0.25rem */
 
   --font-arial: "Arial", sans-serif;
-  /* --font-helvetica-neue-medium: 'Helvetica Neue Medium', sans-serif; */
+  --font-helvetica-neue-medium: 'Helvetica Neue Medium', sans-serif;
   /* --font-helvetica-neue-bold: 'Helvetica Neue Medium', sans-serif; */
   --font-helvetica-neue-bold: "Helvetica Neue Bold", sans-serif;
   --font-helvetica-neue-bold-v2: "Helvetica Neue Bold", sans-serif;
+  --font-helvetica-neue-light: "Helvetica Neue Light", sans-serif;
 }
 
 @layer base {
@@ -141,6 +145,15 @@ body {
     font-weight: 700;
     font-display: swap;
     src: url("../fonts/helvetica-neue/HelveticaNeueMedium.otf")
+      format("opentype");
+  }
+
+  @font-face {
+    font-family: "Helvetica Neue Light";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/helvetica-neue/HelveticaNeueLight.otf")
       format("opentype");
   }
 
@@ -235,6 +248,9 @@ body {
   }
   .text-20 {
     font-size: var(--font-size-20);
+  }
+  .text-22 {
+    font-size: var(--font-size-22);
   }
   .text-40 {
     font-size: var(--font-size-40);

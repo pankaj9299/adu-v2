@@ -13,11 +13,9 @@
     --color-green-200: oklch(92.5% 0.084 155.995);
     --color-blue-200: oklch(88.2% 0.059 254.128);
     --color-blue-700: oklch(48.8% 0.243 264.376);
-    --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-200: oklch(92.8% 0.006 264.531);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-600: oklch(44.6% 0.03 256.802);
-    --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -95,6 +93,7 @@
     --font-arial: "Arial", sans-serif;
     --font-helvetica-neue-bold: "Helvetica Neue Bold", sans-serif;
     --font-helvetica-neue-bold-v2: "Helvetica Neue Bold", sans-serif;
+    --font-helvetica-neue-light: "Helvetica Neue Light", sans-serif;
   }
 }
 @layer base {
@@ -564,9 +563,6 @@
   .h-\[38px\] {
     height: 38px;
   }
-  .h-\[40px\] {
-    height: 40px;
-  }
   .h-\[44px\] {
     height: 44px;
   }
@@ -578,6 +574,9 @@
   }
   .h-\[60px\] {
     height: 60px;
+  }
+  .h-\[70px\] {
+    height: 70px;
   }
   .h-\[102\%\] {
     height: 102%;
@@ -660,6 +659,9 @@
   .w-3\/4 {
     width: calc(3/4 * 100%);
   }
+  .w-3xs {
+    width: var(--container-3xs);
+  }
   .w-4 {
     width: calc(var(--spacing) * 4);
   }
@@ -677,9 +679,6 @@
   }
   .w-20 {
     width: calc(var(--spacing) * 20);
-  }
-  .w-56 {
-    width: calc(var(--spacing) * 56);
   }
   .w-\[2px\] {
     width: 2px;
@@ -1021,6 +1020,9 @@
   }
   .border-\[\#305D62\] {
     border-color: #305D62;
+  }
+  .border-\[\#F1E7CE\] {
+    border-color: #F1E7CE;
   }
   .border-black\/10 {
     border-color: color-mix(in srgb, #000 10%, transparent);
@@ -1367,6 +1369,9 @@
   .font-helvetica-neue-bold-v2 {
     font-family: var(--font-helvetica-neue-bold-v2);
   }
+  .font-helvetica-neue-light {
+    font-family: var(--font-helvetica-neue-light);
+  }
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
@@ -1416,6 +1421,9 @@
   }
   .text-\[15px\] {
     font-size: 15px;
+  }
+  .text-\[16px\] {
+    font-size: 16px;
   }
   .text-\[17px\] {
     font-size: 17px;
@@ -1505,12 +1513,6 @@
   }
   .text-dark-teal {
     color: var(--color-dark-teal);
-  }
-  .text-gray-600 {
-    color: var(--color-gray-600);
-  }
-  .text-gray-700 {
-    color: var(--color-gray-700);
   }
   .text-green {
     color: var(--color-green);
@@ -1679,13 +1681,6 @@
       }
     }
   }
-  .hover\:bg-gray-100 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-100);
-      }
-    }
-  }
   .hover\:bg-green {
     &:hover {
       @media (hover: hover) {
@@ -1809,6 +1804,11 @@
   .max-sm\:text-\[20px\] {
     @media (width < 40rem) {
       font-size: 20px;
+    }
+  }
+  .min-\[1000px\]\:text-\[length\:var\(--font-size-22\)\] {
+    @media (width >= 1000px) {
+      font-size: var(--font-size-22);
     }
   }
   .sm\:my-5 {
@@ -2595,9 +2595,9 @@
       grid-column: span 7 / span 7;
     }
   }
-  .xl\:h-\[70px\] {
+  .xl\:h-\[80px\] {
     @media (width >= 80rem) {
-      height: 70px;
+      height: 80px;
     }
   }
   .xl\:h-\[590px\] {
@@ -2615,9 +2615,9 @@
       min-height: 600px;
     }
   }
-  .xl\:w-\[140px\] {
+  .xl\:w-\[280px\] {
     @media (width >= 80rem) {
-      width: 140px;
+      width: 280px;
     }
   }
   .xl\:grid-cols-11 {
@@ -2710,6 +2710,7 @@ html, body {
   --font-size-tiny: 0.625rem;
   --font-size-28: 1.75rem;
   --font-size-20: 1.25rem;
+  --font-size-22: 1.37rem;
   --font-size-40: 40px;
   --font-size-85: 5.3125rem;
   --font-size-huge: 5rem;
@@ -2726,6 +2727,8 @@ html, body {
   --color-adugrey: #eeeeee;
   --font-family-arial: "Arial", sans-serif;
   --font-family-helvetica-neue-bold: "Helvetica Neue Bold", sans-serif;
+  --font-family-helvetica-neue-light: "Helvetica Neue Light", sans-serif;
+  --font-family-helvetica-neue-medium: "Helvetica Neue Medium", sans-serif;
 }
 @layer base {
   @font-face {
@@ -2748,6 +2751,13 @@ html, body {
     font-weight: 700;
     font-display: swap;
     src: url("../fonts/helvetica-neue/HelveticaNeueMedium.otf") format("opentype");
+  }
+  @font-face {
+    font-family: "Helvetica Neue Light";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/helvetica-neue/HelveticaNeueLight.otf") format("opentype");
   }
   * {
     margin: 0;
@@ -3074,6 +3084,9 @@ html, body {
   }
   .text-20 {
     font-size: var(--font-size-20);
+  }
+  .text-22 {
+    font-size: var(--font-size-22);
   }
   .text-40 {
     font-size: var(--font-size-40);
