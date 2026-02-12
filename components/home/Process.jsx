@@ -388,13 +388,13 @@ const Process = () => {
       {/* BEAUTY SECTION */}
       <section className="beauty pt-14 md:pt-20">
         <div className="container mx-auto px-5 lg:px-0">
-          <div className="max-w-4xl">
+          <div className="">
             <h2
               className="text-green font-arial font-normal tracking-[-0.05em]
               leading-tight md:leading-[1.05]
               text-4xl sm:text-5xl md:text-6xl lg:text-[85px]"
             >
-              Beauty Inside &amp; Out
+              Beauty Inside &amp; Out...
             </h2>
 
             <p className="text-base sm:text-lg text-green mt-4 sm:mt-5">
@@ -438,7 +438,7 @@ const Process = () => {
               className="bg-lightYellow text-white tracking-[-0.02em]
                 font-helvetica-neue-bold px-7 pt-[15px] pb-[12px] md:text-lg
                 hover:bg-green transition-colors"
-              target="_blank" href="/pdf/Catalog.pdf"
+              target="_blank" href="/pdf/ADU-Container Co Catalog 2026.pdf"
             >
               Download Product Catalog
             </a>

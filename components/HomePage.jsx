@@ -27,7 +27,7 @@ const HomePage = () => {
         imageAlt="Shipping container stairs"
         title={`And experience that shapes a better space`}
         description={[
-          "ADU Container CEO Drake Boroja brings over a decade of experience turning shipping containers into thoughtfully designed spaces, from luxury homes to well-known retail brands.",
+          "ADU Container CEO Drake Boroja brings over <strong>a decade of experience</strong> turning shipping containers into thoughtfully designed spaces, from luxury homes to well-known retail brands.",
           "Check out all of the projects that laid the groundwork for the iconic ADU Container you see today.",
         ]}
         ctaText="Learn More"

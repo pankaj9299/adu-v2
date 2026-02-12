@@ -42,7 +42,7 @@ const Footer = () => {
                 </h3>
                 <ul className="space-y-5 font-arial">
                   <li>
-                    <a target="_blank" href="/pdf/Catalog.pdf">Download Our Catalog</a>
+                    <a target="_blank" href="/pdf/ADU-Container Co Catalog 2026.pdf">Download Our Catalog</a>
                   </li>
                   <li>
                     <Link to="/models">Explore Our Models</Link>
