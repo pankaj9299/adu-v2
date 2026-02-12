@@ -253,7 +253,7 @@ const Process = () => {
             {/* Step 1 */}
             <div className="text-white">
               <p className="pb-1 border-b-2 border-marigold text-khaki text-xl sm:text-2xl font-helvetica-neue-bold tracking-[-0.02em]">
-                Step 1
+                STEP 1
               </p>
 
               <div className="max-w-md">
@@ -283,7 +283,7 @@ const Process = () => {
             {/* Step 2 */}
             <div className="text-white">
               <p className="pb-1 border-b-2 border-marigold text-khaki text-xl sm:text-2xl font-helvetica-neue-bold tracking-[-0.02em]">
-                Step 2
+                STEP 2
               </p>
 
               <div className="max-w-md">
@@ -302,7 +302,7 @@ const Process = () => {
             {/* Step 3 */}
             <div className="text-white">
               <p className="pb-1 border-b-2 border-marigold text-khaki text-xl sm:text-2xl font-helvetica-neue-bold tracking-[-0.02em]">
-                Step 3
+                STEP 3
               </p>
 
               <div className="max-w-md">

@@ -44,8 +44,8 @@ const ImageWithText = ({
                 className={`text-green text-base sm:text-lg ${
                   index !== description.length - 1 ? "my-4 sm:my-5" : ""
                 }`}
+                dangerouslySetInnerHTML={{ __html: text }}
               >
-                {text}
               </p>
             ))}
 

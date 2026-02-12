@@ -15,7 +15,7 @@ const HomePage = () => {
         title={`Why Shipping <br class="hidden sm:block" /> Containers Work`}
         description={[
           "Shipping containers hit the sweet spot between custom and modular.",
-          "They’re affordable, fast, and flexible, giving you more for less without sacrificing design.",
+          "<strong>They’re affordable, fast, and flexible, giving you more for less without sacrificing design.</strong>",
           "Container ADUs deliver beauty and function at a fraction of the cost.",
         ]}
         ctaText="Get in Touch"
