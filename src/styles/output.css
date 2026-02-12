@@ -24,6 +24,7 @@
     --container-sm: 24rem;
     --container-md: 28rem;
     --container-lg: 32rem;
+    --container-2xl: 42rem;
     --container-3xl: 48rem;
     --container-4xl: 56rem;
     --text-xs: 0.75rem;
@@ -1702,13 +1703,6 @@
       }
     }
   }
-  .hover\:text-dark-teal {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-dark-teal);
-      }
-    }
-  }
   .hover\:text-lightYellow {
     &:hover {
       @media (hover: hover) {
@@ -1727,20 +1721,6 @@
     &:hover {
       @media (hover: hover) {
         text-decoration-line: underline;
-      }
-    }
-  }
-  .hover\:decoration-marigold {
-    &:hover {
-      @media (hover: hover) {
-        text-decoration-color: var(--color-marigold);
-      }
-    }
-  }
-  .hover\:underline-offset-5 {
-    &:hover {
-      @media (hover: hover) {
-        text-underline-offset: 5px;
       }
     }
   }
