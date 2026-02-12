@@ -237,15 +237,11 @@ const CheckoutForm = () => {
                     checked={formData.consent}
                     onChange={handleChange}
                     disabled={loading}
-                    required={formData.phone.trim().length > 0}
                     className="mt-1"
                   />
 
                   <p className="text-[15px] font-normal">
-                    By providing a telephone number and when scheduling your
-                    consultation you are consenting to be contacted by SMS text
-                    message. Message & data rates may apply. You can reply STOP
-                    to opt-out of further messaging.
+                    By submitting this form, you agree to our Privacy Policy and consent to being contacted regarding your inquiry.
                   </p>
                 </div>
               </div>

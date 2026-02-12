@@ -83,7 +83,7 @@ const CostSummary = ({
       return catSum + subcatTotal + tabTotal + addonTotal + microwaveTotal;
     }, 0);
 
-    return (basePrice + categoryTotal).toLocaleString();
+    return (basePrice + categoryTotal + 20000).toLocaleString();
   };
 
   // Monthly calculations
@@ -117,6 +117,24 @@ const CostSummary = ({
                 {selectedProductState.product_price}
               </p>
             </div>
+          </div>
+          <div className="site-accessment">
+            <div className="title flex flex-col md:flex-row gap-6 items-center">
+              <h3 className="text-2xl text-dark-green font-arial my-5">
+                Site Preparation & Permits
+              </h3>
+              <span className="flex-1 border-b border-secondary-dark-gray text-dark-green font-arial mt-[14px]"></span>
+              <p className="text-dark-green">$20,000</p>
+            </div>
+            <p className="text-base text-dark-green">
+              <strong>*Permits & Site Preparation Work:</strong> Must first get
+              issued permits from City/County planning department before Site
+              Work can begin. This usally includes grading the land and
+              drainage, trench foundation, utility connections; water, sewer and
+              electrical, and potential electrical panel upgrade to support ADU.
+              All these steps are done in parallel while your ADU-Container is
+              being manufactured.
+            </p>
           </div>
 
           {/* Categories */}
@@ -296,24 +314,67 @@ const CostSummary = ({
               </p> */}
             </div>
           </div>
+        </div>
+      </section>
+      {location.pathname === "/checkout" && (
+        <section>
+          <div className="bg-dark-green py-10 md:py-15">
+            <div className="container">
+              <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                {/* Left */}
+                <div className="md:max-w-3xl">
+                  <h3 className="text-marigold font-arial text-3xl md:text-6xl mb-3 tracking-[-0.05em]">
+                    Need financing?
+                  </h3>
 
-          {location.pathname === "/checkout" && (
-            <div className="back-button text-center mt-10">
+                  <p className="text-lg md:text-2xl text-white font-normal font-arial mb-4 md:mb-5">
+                    Based on your selections, your monthly payment could be as
+                    low as:
+                  </p>
+
+                  <p className="font-bold text-2xl md:text-3xl font-arial text-white">
+                    {monthly != null ? `$${monthly} /month` : "—"}
+                  </p>
+
+                  <p className="text-white font-normal text-sm md:text-lg">
+                    *Based on a 30-year term at 6%. This is an estimate only.
+                    Actual financing terms may vary.
+                  </p>
+                </div>
+
+                {/* Right */}
+                <div className="md:shrink-0">
+                  <Link
+                    className="inline-flex w-full md:w-auto justify-center bg-lightYellow text-white tracking-[-0.02em]
+            font-helvetica-neue-bold px-8 md:px-10 pt-[15px] pb-[12px] text-base md:text-lg
+            hover:bg-green transition-colors"
+                    to="/financing"
+                    data-discover="true"
+                  >
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="container">
+            <div className="back-button text-center mt-24 mb-15">
               <h3 className="md:text-[30px] text-thinGray mb-5 font-helvetica-neue-bold">
                 Want to make a change?
               </h3>
               <div className="button">
                 <Link
-                  to="/"
+                  to="/models"
                   className="border-lightYellow border-1 text-lightYellow hover:bg-lightYellow hover:text-white font-semibold py-2 px-6 md:text-[19px] font-bold transition"
                 >
                   Go Back to Customization
                 </Link>
               </div>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
       {shouldShowFooter && (
         <StepFooterNav
           goBack={goBack}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button from "./Button";
 import HeroBanner from "./HeroBanner";
 import CostSummary from "./CostSummary";
@@ -55,6 +55,7 @@ export default function StepTabbed({
     typeof category?.name === "string" &&
     ["bathroom", "kitchen"].includes(category.name.trim().toLowerCase());
 
+    const didAutoInitRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isTabActive, setIsTabActive] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -395,9 +396,20 @@ export default function StepTabbed({
 
     // Having no redux state data
     if (!currentCategoryFromRedux || !currentCategoryFromRedux.tab?.length) {
-      setSelectedImageOption(category);
-      setActiveTab(0);
-      setIsTabActive(false);
+      // setSelectedImageOption(category);
+      // setActiveTab(0);
+      // setIsTabActive(false);
+      // return;
+
+      // ✅ Auto-select first tab by default (only once per category)
+      if (category?.tabs?.length && didAutoInitRef.current !== category.id) {
+        didAutoInitRef.current = category.id;
+        handleTab(0); // same as user click; sets defaults + redux + isTabActive(true)
+      } else {
+        setActiveTab(0);
+        setIsTabActive(true);
+        setSelectedImageOption(category?.tabs?.[0] ?? category);
+      }
       return;
     }
 
