@@ -97,11 +97,11 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
             <div
               className={`flex flex-col md:flex-row mt-5 gap-${
                 ["Floor 1", "Floor 2"].includes(selectedFloor.name) ? "10" : "5"
-              } ${selectedFloor.name == 'Floor 1' ? 'max-w-3xl m-auto' : ''}`}
+              } ${selectedFloor.name == 'Floor 1' ? 'max-w-2xl m-auto' : ''}`}
             >
               {selectedFloor.image_two &&
               !["Floor 5", "Floor 6"].includes(selectedFloor.name) ? (
-                <div className={`image-wrap w-full ${selectedFloor.name == 'Floor 1' ? 'basis-1/3' : 'md:w-3/5'} md:ml-auto flex md:justify-end`}>
+                <div className={`image-wrap w-full ${['Floor 1', 'Floor 2'].includes(selectedFloor.name) ? 'basis-1/2' : 'md:w-3/5'} md:ml-auto flex md:justify-end`}>
                   <LazyLoadImage
                     className="block max-h-[572px] w-auto h-auto"
                     alt={selectedFloor.name}
@@ -151,7 +151,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
               )}
               <div
                 className={`description w-full  min-h-[651px] ${
-                  selectedFloor.image_three ? "md:w-1/2" : selectedFloor.name === "Floor 1" ? "basis-2/3" : "md:w-2/5"
+                  selectedFloor.image_three ? "md:w-1/2" : ['Floor 1', 'Floor 2'].includes(selectedFloor.name) ? "basis-1/2" : "md:w-2/5"
                 }`}
               >
                 <h4 className="text-xl text-left font-normal my-3">

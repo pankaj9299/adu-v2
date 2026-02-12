@@ -779,7 +779,7 @@ export default function StepTabbed({
                           <h5
                             className={
                               isBathroom
-                                ? "text-secondary-green text-xl font-bold mt-5"
+                                ? "text-secondary-green text-xl font-bold tracking-[-0.02em] font-helvetica-neue-bold mt-5"
                                 : "text-green text-[15px]"
                             }
                           >
