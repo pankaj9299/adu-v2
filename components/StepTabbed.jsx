@@ -943,7 +943,7 @@ export default function StepTabbed({
         </section>
       )}
       {/* Monthly Expenses */}
-      <section className="monthly-payments pt-0">
+      {/* <section className="monthly-payments pt-0">
         <div className="container">
           <div className="max-w-[700px] flex items-center justify-between border-b border-gray pb-2 mt-10">
             <h3 className="text-2xl text-dark-teal font-helvetica-neue-bold mb-0">
@@ -958,7 +958,7 @@ export default function StepTabbed({
             financing terms may vary.
           </p>
         </div>
-      </section>
+      </section> */}
       {selectedProduct?.product_name && (
         <>
           <StepFooterNav
