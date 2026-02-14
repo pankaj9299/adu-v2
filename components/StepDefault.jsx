@@ -25,7 +25,7 @@ export default function StepDefault({
 }) {
   const dispatch = useDispatch();
   const selectedProduct = useSelector(
-    (state) => state.configurator.selectedProduct
+    (state) => state.configurator.selectedProduct,
   );
 
   const [selectedImageOption, setSelectedImageOption] = useState(null);
@@ -34,6 +34,7 @@ export default function StepDefault({
   const handleFirstSubcategoryChange = (selectedOption) => {
     // You can customize what "selectedOption" is (image URL, id, etc.)
     setSelectedImageOption(selectedOption);
+    setInitialHero(selectedOption);
   };
 
   // useEffect(() => {
@@ -65,16 +66,17 @@ export default function StepDefault({
 
   useEffect(() => {
     const existing = selectedProduct?.categories?.find(
-      (cat) => cat.id === category.id
+      (cat) => cat.id === category.id,
     );
+
     const hasFirstSubcategory = existing?.subcategories?.length > 0;
     const firstSelectedOption = existing?.subcategories?.[0]?.selectedOption;
-    if (hasFirstSubcategory) {
-      setSelectedImageOption(firstSelectedOption);
-    } else {
-      setSelectedImageOption(category);
-    }
-  }, [category]);
+
+    const defaultHero = hasFirstSubcategory ? firstSelectedOption : category;
+
+    setInitialHero(defaultHero);
+    setSelectedImageOption(defaultHero);
+  }, [category.id]); // ✅ important: not selectedProduct
 
   useEffect(() => {
     if (!category || !category.id) return;
@@ -82,7 +84,7 @@ export default function StepDefault({
     const existingCategories = selectedProduct?.categories || [];
 
     const categoryExists = existingCategories.some(
-      (cat) => cat.id === category.id
+      (cat) => cat.id === category.id,
     );
 
     if (!categoryExists) {
@@ -152,7 +154,7 @@ export default function StepDefault({
       // Handle microwave (array or single; bundle collapses to one item)
       const microwaveTotal = normalizeMicrowaves(category).reduce(
         (sum, m) => sum + microwavePrice(m),
-        0
+        0,
       );
 
       return catSum + subcatTotal + tabTotal + addonTotal + microwaveTotal;
@@ -198,6 +200,7 @@ export default function StepDefault({
     // If nothing selected — keep showing whatever was last set (don’t flush)
     if (!selectedList || selectedList.length === 0) {
       // keep existing image (do not set to null or blank)
+      setSelectedImageOption(initialHero || category);
       return;
     }
 

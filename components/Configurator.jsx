@@ -130,6 +130,7 @@ export default function Configurator() {
   return (
     <div ref={containerRef} className="relative">
       {currentCategory.type === "default" ? (
+        <>
         <StepDefault
           category={currentCategory}
           categories={categories}
@@ -139,6 +140,7 @@ export default function Configurator() {
           currentStep={currentStep}
           isLastStep={currentStep === categories.length - 1}
         />
+        </>
       ) : (
         <StepTabbed
           category={currentCategory}
