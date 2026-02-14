@@ -55,7 +55,7 @@ export default function StepTabbed({
     typeof category?.name === "string" &&
     ["bathroom", "kitchen"].includes(category.name.trim().toLowerCase());
 
-    const didAutoInitRef = useRef(null);
+  const didAutoInitRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isTabActive, setIsTabActive] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -68,7 +68,7 @@ export default function StepTabbed({
 
   const dispatch = useDispatch();
   const selectedStateProduct = useSelector(
-    (state) => state.configurator.selectedProduct
+    (state) => state.configurator.selectedProduct,
   );
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export default function StepTabbed({
   }, []);
 
   const selectedProduct = useSelector(
-    (state) => state.configurator.selectedProduct
+    (state) => state.configurator.selectedProduct,
   );
 
   const handleColorOptionClick = (subId) => {
@@ -87,7 +87,7 @@ export default function StepTabbed({
   };
 
   const selectedSubcategory = currentTab?.subcategories?.find(
-    (sub) => sub.id === selectedSubcategoryId
+    (sub) => sub.id === selectedSubcategoryId,
   );
 
   // Slick configurations
@@ -188,8 +188,8 @@ export default function StepTabbed({
     // - Active sub: use selectedOption (or first option)
     // - Inactive sub: use dynamicOption (as set on handleTab), else fallbacks
     const source = isActive
-      ? rSub.selectedOption ?? opts[0] ?? null
-      : rSub.dynamicOption ?? opts[0] ?? null; // 👈 fallback to first option for inactive
+      ? (rSub.selectedOption ?? opts[0] ?? null)
+      : (rSub.dynamicOption ?? opts[0] ?? null); // 👈 fallback to first option for inactive
 
     // For inactive subs, if dynamicOption is the sub itself (your workflow),
     // we still want to show its own name/image/subtitle; if it's an option, show that.
@@ -205,12 +205,12 @@ export default function StepTabbed({
 
     // ✅ Bathroom-only: lock title to subcategory name; others unchanged
     const displayName = isBathroom
-      ? sub.name ?? rSub.name ?? ""
-      : (isOptionLike ? source?.name : source?.name) ??
+      ? (sub.name ?? rSub.name ?? "")
+      : ((isOptionLike ? source?.name : source?.name) ??
         rSub.name ??
         sub.name ??
         opts[0]?.name ??
-        "";
+        "");
 
     const displaySubtitle =
       (isOptionLike ? source?.subtitle : source?.subtitle) ??
@@ -296,7 +296,7 @@ export default function StepTabbed({
           tab: cat.tab.map((sub) =>
             sub.id !== subcategoryId
               ? sub
-              : { ...sub, selectedOption: option, dynamicOption: option }
+              : { ...sub, selectedOption: option, dynamicOption: option },
           ),
         };
       });
@@ -305,7 +305,7 @@ export default function StepTabbed({
         setProduct({
           ...selectedStateProduct,
           categories: updatedCategories,
-        })
+        }),
       );
     }
   };
@@ -337,12 +337,12 @@ export default function StepTabbed({
             //     : [],
             options: sub?.options || [],
           };
-        }
+        },
       );
 
       // ✅ Preserve previous microwave selection (if any)
       const prevCategory = selectedStateProduct.categories.find(
-        (c) => c.id === category.id
+        (c) => c.id === category.id,
       );
 
       const updatedCategory = {
@@ -357,12 +357,12 @@ export default function StepTabbed({
 
       // 🔁 Merge into existing categories
       const mergedCategories = selectedStateProduct.categories.map((cat) =>
-        cat.id === updatedCategory.id ? updatedCategory : cat
+        cat.id === updatedCategory.id ? updatedCategory : cat,
       );
 
       // 🧪 Check if category is not found, push it
       const categoryExists = selectedStateProduct.categories.some(
-        (cat) => cat.id === updatedCategory.id
+        (cat) => cat.id === updatedCategory.id,
       );
       const finalCategories = categoryExists
         ? mergedCategories
@@ -372,7 +372,7 @@ export default function StepTabbed({
         setProduct({
           ...selectedStateProduct,
           categories: finalCategories,
-        })
+        }),
       );
 
       // ✅ Immediately reflect defaults in local UI state too
@@ -391,7 +391,7 @@ export default function StepTabbed({
     }
 
     const currentCategoryFromRedux = selectedStateProduct.categories.find(
-      (cat) => cat.id === category.id
+      (cat) => cat.id === category.id,
     );
 
     // Having no redux state data
@@ -438,7 +438,7 @@ export default function StepTabbed({
     (
       selectedStateProduct?.categories?.find((c) => c.id === category.id)
         ?.microwave ?? []
-    ).map((m) => m.microwave_id)
+    ).map((m) => m.microwave_id),
   );
 
   // ✅ NEW: handle microwave select (one at a time, replaces previous)
@@ -455,8 +455,8 @@ export default function StepTabbed({
     let current = Array.isArray(currentCat?.microwave)
       ? [...currentCat.microwave]
       : currentCat?.microwave
-      ? [currentCat.microwave]
-      : [];
+        ? [currentCat.microwave]
+        : [];
 
     const byId = (id) => category.microwaves.find((m) => m.microwave_id === id);
     const hasId = (arr, id) => arr.some((m) => m.microwave_id === id);
@@ -464,7 +464,17 @@ export default function StepTabbed({
 
     // Rule #2: clicking master -> keep only master
     if (microwaveItem.microwave_id === MASTER_ID) {
-      current = [byId(MASTER_ID) ?? microwaveItem];
+      //current = [byId(MASTER_ID) ?? microwaveItem];
+
+      const masterAlreadySelected = hasId(current, MASTER_ID);
+
+      // if ONLY master is selected -> unselect all
+      if (masterAlreadySelected && current.length === 1) {
+        current = [];
+      } else {
+        // otherwise select master only (also clears any multi selection)
+        current = [byId(MASTER_ID) ?? microwaveItem];
+      }
     } else {
       // We're toggling one of the multi items
       // If master is present, remove it first (since we're going into granular mode)
@@ -497,7 +507,7 @@ export default function StepTabbed({
       setProduct({
         ...selectedStateProduct,
         categories: updatedCategories,
-      })
+      }),
     );
   };
 
@@ -542,7 +552,7 @@ export default function StepTabbed({
       // Handle microwave (array or single; bundle collapses to one item)
       const microwaveTotal = normalizeMicrowaves(category).reduce(
         (sum, m) => sum + microwavePrice(m),
-        0
+        0,
       );
 
       return catSum + subcatTotal + tabTotal + addonTotal + microwaveTotal;
@@ -669,7 +679,7 @@ export default function StepTabbed({
                               const rSub = getReduxSub(sub.id) ?? sub;
                               const opts = rSub.options ?? sub.options ?? [];
                               const selectedId = String(
-                                rSub.selectedOption?.id ?? opts[0]?.id ?? ""
+                                rSub.selectedOption?.id ?? opts[0]?.id ?? "",
                               );
                               const isSelected = String(opt.id) === selectedId;
 
@@ -746,7 +756,7 @@ export default function StepTabbed({
                     const opts =
                       rSub.options ?? selectedSubcategory.options ?? [];
                     const selectedId = String(
-                      rSub.selectedOption?.id ?? opts[0]?.id ?? ""
+                      rSub.selectedOption?.id ?? opts[0]?.id ?? "",
                     );
                     const isSelected = String(opt.id) === selectedId;
 
@@ -872,7 +882,7 @@ export default function StepTabbed({
               <div className="wrapper flex flex-col md:flex-row gap-5">
                 {category.microwaves.map((item, index) => {
                   const isSelected = selectedMicrowaveIds.has(
-                    item.microwave_id
+                    item.microwave_id,
                   );
                   return (
                     <div
