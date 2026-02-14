@@ -6,6 +6,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 export default function AddonsSelector({
   addons,
   categoryId,
+  categoryImage,
   onSelectAddon,
   label = "",
 }) {
@@ -25,7 +26,8 @@ export default function AddonsSelector({
     id: parseInt(addon.id),
     name: addon.name,
     price: addon.price,
-    image: resolveImageUrl(addon.image),
+    // image: resolveImageUrl(addon.image),
+    image: addon.image,
   });
 
   const toggleAddon = (addon) => {
@@ -36,18 +38,31 @@ export default function AddonsSelector({
       if (cat.id !== categoryId) return cat;
 
       let updatedAddons;
+      let nextCatImage = categoryImage; // default keep
       if (exists) {
         updatedAddons = selectedAddons.filter((a) => a.id !== clicked.id);
+
+        // fallback to default image
+        nextCatImage = categoryImage;
       } else {
         // append to keep selection order (recency)
         updatedAddons = [
           ...selectedAddons,
-          { id: clicked.id, name: clicked.name, price: clicked.price },
+          {
+            id: clicked.id,
+            name: clicked.name,
+            price: clicked.price,
+            image: clicked.image,
+          },
         ];
+
+        // ✅ IMPORTANT: update root image
+        nextCatImage = clicked.image;
       }
 
       return {
         ...cat,
+        image: nextCatImage,
         addons: updatedAddons || [],
       };
     });
@@ -56,7 +71,7 @@ export default function AddonsSelector({
       setProduct({
         ...selectedProduct,
         categories: updatedCategories,
-      })
+      }),
     );
 
     // ---- NEW: notify parent with updated list (including images) ----
@@ -72,8 +87,11 @@ export default function AddonsSelector({
           name: a.name,
           price: a.price,
           image: resolveImageUrl(full?.image),
+          addon_image: a.image,
         };
       });
+
+      console.log("selectedList", selectedList);
 
       onSelectAddon({
         isSelected: !exists, // true if now selected, false if removed
@@ -121,7 +139,7 @@ export default function AddonsSelector({
       <div className="multiple-options flex flex-wrap gap-x-0 sm:gap-6">
         {addons.map((opt, idx) => {
           const isSelected = selectedAddons.some(
-            (item) => item.id === parseInt(opt.id)
+            (item) => item.id === parseInt(opt.id),
           );
 
           return (

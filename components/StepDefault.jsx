@@ -241,6 +241,7 @@ export default function StepDefault({
                   addons={category.addons_v2}
                   categoryId={category.id}
                   categoryName={category.name}
+                  categoryImage={category.image}
                   label={`${
                     category.name == "Bedroom (Downstairs)"
                       ? "Bedroom (Upstairs)"
@@ -283,6 +284,7 @@ export default function StepDefault({
                 addons={category.addons}
                 categoryId={category.id}
                 categoryName={category.name}
+                categoryImage={category.image}
                 // pass the click handler ONLY when there are no subcategories
                 onSelectAddon={
                   onlyAddonsMode ? handleAddonSelectionChange : undefined
@@ -294,6 +296,7 @@ export default function StepDefault({
                 addons={category.addons_v2}
                 categoryId={category.id}
                 categoryName={category.name}
+                categoryImage={category.image}
               />
             )}
             {/* Monthly Expenses */}
