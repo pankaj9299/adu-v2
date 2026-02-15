@@ -3167,7 +3167,6 @@ html, body {
 }
 .floor-5 .options .step-line {
   width: calc(50% - 12px);
-  padding-bottom: 10px;
 }
 .floor-5.left, .floor-5.right {
   max-width: 540px;

@@ -320,7 +320,7 @@ body {
 
 .floor-5 .options .step-line {
   width: calc(50% - 12px); /* adjust based on gap */
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
 }
 
 .floor-5.left,
