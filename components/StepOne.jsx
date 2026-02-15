@@ -7,7 +7,7 @@ const StepOne = ({ products, onSelectProduct }) => {
     <section className="step-one pt-0 h-full flex items-center">
       <div className="container">
         <div className="intro text-center">
-          <h1 className="md:text-[87px] font-normal text-dark-green my-7">
+          <h1 className="md:text-[87px] tracking-[-0.05em] font-normal text-dark-green my-7">
             Make it Your Own
           </h1>
           <h3 className="text-dark-teal text-2xl font-helvetica-neue-bold">
