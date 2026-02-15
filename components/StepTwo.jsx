@@ -17,7 +17,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
   const [selectedFloor, setSelectedFloor] = useState(null);
 
   const selectedProductState = useSelector(
-    (state) => state.configurator.selectedProduct
+    (state) => state.configurator.selectedProduct,
   );
   const imageUrl = findImageByProduct(selectedProductState?.product_name);
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
       .get(
         `${import.meta.env.VITE_API_DOMAIN}/admin/api/products/${
           selectedProduct.id
-        }/floors`
+        }/floors`,
       )
       .then((res) => {
         setFloors(res.data);
@@ -71,7 +71,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
         floor_image_two: selectedFloor.image_two,
         floor_image_three: selectedFloor.image_three,
         floor_image_four: selectedFloor.image_four,
-      })
+      }),
     );
     // TODO: Implement navigation to StepThree or customization logic
     navigate("/configurator", { replace: true });
@@ -97,11 +97,13 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
             <div
               className={`flex flex-col md:flex-row mt-5 gap-${
                 ["Floor 1", "Floor 2"].includes(selectedFloor.name) ? "10" : "5"
-              } ${selectedFloor.name == 'Floor 1' ? 'max-w-2xl m-auto' : ''}`}
+              } ${selectedFloor.name == "Floor 1" ? "max-w-2xl m-auto" : ""}`}
             >
               {selectedFloor.image_two &&
               !["Floor 5", "Floor 6"].includes(selectedFloor.name) ? (
-                <div className={`image-wrap w-full ${['Floor 1', 'Floor 2'].includes(selectedFloor.name) ? 'basis-1/2' : 'md:w-3/5'} md:ml-auto flex md:justify-end`}>
+                <div
+                  className={`image-wrap w-full ${["Floor 1", "Floor 2"].includes(selectedFloor.name) ? "basis-1/2" : "md:w-3/5"} md:ml-auto flex md:justify-end`}
+                >
                   <LazyLoadImage
                     className="block max-h-[572px] w-auto h-auto"
                     alt={selectedFloor.name}
@@ -151,7 +153,11 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
               )}
               <div
                 className={`description w-full  min-h-[651px] ${
-                  selectedFloor.image_three ? "md:w-1/2" : ['Floor 1', 'Floor 2'].includes(selectedFloor.name) ? "basis-1/2" : "md:w-2/5"
+                  selectedFloor.image_three
+                    ? "md:w-1/2"
+                    : ["Floor 1", "Floor 2"].includes(selectedFloor.name)
+                      ? "basis-1/2"
+                      : "md:w-2/5"
                 }`}
               >
                 <h4 className="text-xl text-left font-normal my-3">
@@ -281,7 +287,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
                 <div className="mt-10 flex gap-4">
                   {selectedFloor && (
                     <button
-                      className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer"
+                      className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer"
                       onClick={handleChooseCustomizations}
                     >
                       Choose Your Customizations

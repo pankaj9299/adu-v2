@@ -1334,6 +1334,9 @@
   .pb-16 {
     padding-bottom: calc(var(--spacing) * 16);
   }
+  .pb-25 {
+    padding-bottom: var(--spacing-25);
+  }
   .pb-\[8px\] {
     padding-bottom: 8px;
   }
@@ -1967,14 +1970,14 @@
       line-height: var(--tw-leading, var(--text-xl--line-height));
     }
   }
+  .md\:-top-7 {
+    @media (width >= 48rem) {
+      top: calc(var(--spacing) * -7);
+    }
+  }
   .md\:-top-15 {
     @media (width >= 48rem) {
       top: calc(var(--spacing-15) * -1);
-    }
-  }
-  .md\:-top-20 {
-    @media (width >= 48rem) {
-      top: calc(var(--spacing) * -20);
     }
   }
   .md\:right-40 {
@@ -2685,6 +2688,11 @@
     @media (width >= 80rem) {
       --tw-leading: 60px;
       line-height: 60px;
+    }
+  }
+  .\[\&_a\]\:text-\[\#305D62\] {
+    & a {
+      color: #305D62;
     }
   }
   .\[\@media\(max-width\:370px\)\]\:w-full {

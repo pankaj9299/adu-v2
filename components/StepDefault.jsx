@@ -227,9 +227,9 @@ export default function StepDefault({
       <Intro name={category.name} />
       {category.subcategories.length === 0 && category.addons.length === 0 ? (
         <>
-          <section className="multiple-color py-20">
+          <section className="multiple-color pb-25 pt-0">
             <div className="container">
-              <h3 className="text-center">
+              <h3 className="text-left text-base text-dark-green">
                 No selections to be made here. Please proceed.
               </h3>
             </div>

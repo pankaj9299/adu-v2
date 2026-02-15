@@ -71,6 +71,19 @@ export default function StepTabbed({
     (state) => state.configurator.selectedProduct,
   );
 
+  const handleRichContentClick = (e) => {
+    const a = e.target.closest("a[href]");
+    if (!a) return;
+
+    // If user is selecting text or it’s not a normal click, ignore
+    if (e.defaultPrevented) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    window.open(a.href, "_blank", "noopener,noreferrer");
+  };
+
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile(); // initial check
@@ -568,7 +581,7 @@ export default function StepTabbed({
   return (
     <>
       <HeroBanner selectedOption={selectedImageOption} />
-      <section className="tab-with-slider p-0 relative md:-top-20">
+      <section className="tab-with-slider p-0 relative md:-top-7">
         <div className={`container ${isTabActive && "mb-1"}`}>
           {/* Heading */}
           <div className="heading max-w-md">
@@ -869,7 +882,7 @@ export default function StepTabbed({
           <div className="container">
             <div className="top-text">
               <div
-                className="infomation flex gap-6 mt-1 text-[15px]"
+                className="infomation flex gap-6 mt-1 text-[15px] text-dark-green font-arial"
                 dangerouslySetInnerHTML={{ __html: category.body }}
               ></div>
             </div>
@@ -954,7 +967,8 @@ export default function StepTabbed({
                   />
                 </div>
                 <div
-                  className="content-wrap "
+                  onClick={handleRichContentClick}
+                  className="content-wrap [&_a]:text-[#305D62]"
                   dangerouslySetInnerHTML={{
                     __html: category.microwave_root_description,
                   }}
