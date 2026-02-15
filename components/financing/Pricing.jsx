@@ -570,12 +570,13 @@ const Pricing = () => {
           </div>
 
           <div className="md:col-span-3">
-            <Link
+            <a
+              href="https://calendly.com/aduloans"
+              target="_blank"
               className="w-full md:w-auto border-lightYellow text-white tracking-[-0.02em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md px-8 pt-[13px] pb-[10px] px-5 hover:bg-green cursor-pointer"
-              to="/contact-us"
             >
               Schedule a Call
-            </Link>
+            </a>
             {/* <button className="w-full md:w-auto border-lightYellow text-white tracking-[-0.05em] bg-lightYellow md:text-lg font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
               Schedule a Call
             </button> */}

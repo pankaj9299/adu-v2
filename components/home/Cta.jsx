@@ -140,14 +140,15 @@ const Cta = () => {
           <div className="slider-wrap relative overflow-visible px-16 my-10"></div>
 
           <div className="btn-wrapper text-center">
-            <Link
+            <a
+              href="https://calendly.com/aduloans"
+              target="_blank"
               className="bg-dark-teal text-white tracking-[-0.02em]
                 font-helvetica-neue-bold px-15 pt-[15px] pb-[12px] md:text-lg
                 hover:bg-green transition-colors"
-              to="/contact-us"
             >
               Schedule a Call
-            </Link>
+            </a>
             {/* <button className="border-dark-teal text-white tracking-[-0.05em] bg-dark-teal md:text-lg font-helvetica-neue-bold pt-2 pb-1 px-5 hover:bg-green cursor-pointer">
               Schedule a Call
             </button> */}

@@ -57,14 +57,15 @@ const FinancingDetail = () => {
             The ADU Lender NMLS 2126086
           </p>
           <div className="mt-9 flex gap-4 justify-center">
-            <Link
-              to={"/contact-us"}
+            <a
+              href="https://calendly.com/aduloans"
+              target="_blank"
               className="bg-lightYellow text-white tracking-[-0.02em]
               font-helvetica-neue-bold px-10 pt-[15px] pb-[12px] md:text-2xl
               hover:bg-green transition-colors"
             >
               Schedule a Call
-            </Link>
+            </a>
           </div>
         </div>
         <DetailCards title="Other Financing Resources" />
