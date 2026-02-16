@@ -68,7 +68,7 @@ const Footer = () => {
                   </li>
                 </ul> */}
 
-                <h3 className="mt-20 mb-5 text-[30px] font-normal font-helvetica-neue-bold text-white tracking-[-0.02em]">
+                <h3 className="mb-5 text-[30px] font-normal font-helvetica-neue-bold text-white tracking-[-0.02em]">
                   Contact
                 </h3>
                 <ul className="space-y-1">
