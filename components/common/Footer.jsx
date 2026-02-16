@@ -59,14 +59,14 @@ const Footer = () => {
                 </ul>
               </div>
               <div>
-                <ul className="space-y-5 font-arial">
+                {/* <ul className="space-y-5 font-arial">
                   <li>
                     <Link to="/terms-and-condition">Conditions of Use</Link>
                   </li>
                   <li>
                     <Link to="/privacy-policy">Privacy Policy</Link>
                   </li>
-                </ul>
+                </ul> */}
 
                 <h3 className="mt-20 mb-5 text-[30px] font-normal font-helvetica-neue-bold text-white tracking-[-0.02em]">
                   Contact
