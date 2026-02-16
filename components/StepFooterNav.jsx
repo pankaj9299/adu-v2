@@ -27,7 +27,9 @@ export default function StepFooterNav({
             className="border-lightYellow text-white bg-lightYellow md:text-lg font-bold font-helvetica-neue-bold rounded-md pt-2 pb-1 px-5 hover:bg-green cursor-pointer"
             onClick={goNext}
           >
-            {isLastStep ? "Review >" : `${nextCategory.replace('Bathrooms (Downstairs & Upstairs)', 'Bathrooms').replace('Bedroom (Downstairs)', 'Bedrooms').replace('Bathrooms (Upstairs & Downstairs)', 'Bathrooms').replace('Entertainment Area (Upstairs)', 'Entertainment Area')} >`}
+            {isLastStep
+              ? "Review >"
+              : `${nextCategory.replace("Bathrooms (Downstairs & Upstairs)", "Bathrooms").replace("Bedroom (Downstairs)", "Bedrooms").replace("Bathrooms (Upstairs & Downstairs)", "Bathrooms").replace("Entertainment Area (Upstairs)", "Entertainment Area")} >`}
           </Button>
         </div>
 
