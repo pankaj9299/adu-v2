@@ -9,6 +9,7 @@ export default function AddonsSelector({
   categoryImage,
   onSelectAddon,
   label = "",
+  updateCategoryImage = false,
 }) {
   const dispatch = useDispatch();
   const selectedProduct =
@@ -43,7 +44,9 @@ export default function AddonsSelector({
         updatedAddons = selectedAddons.filter((a) => a.id !== clicked.id);
 
         // fallback to default image
-        nextCatImage = categoryImage;
+        if (updateCategoryImage) {
+          nextCatImage = categoryImage;
+        }
       } else {
         // append to keep selection order (recency)
         updatedAddons = [
@@ -57,12 +60,14 @@ export default function AddonsSelector({
         ];
 
         // ✅ IMPORTANT: update root image
-        nextCatImage = clicked.image;
+        if (updateCategoryImage) {
+          nextCatImage = clicked.image;
+        }
       }
 
       return {
         ...cat,
-        image: nextCatImage,
+        ...(updateCategoryImage ? { image: nextCatImage } : {}), // ✅ don't touch image otherwise
         addons: updatedAddons || [],
       };
     });

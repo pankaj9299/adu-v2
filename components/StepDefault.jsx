@@ -188,6 +188,10 @@ export default function StepDefault({
     (category?.subcategories?.length || 0) === 0 &&
     (category?.addons?.length || 0) > 0;
 
+  const allowAddonToUpdateCategoryImage =
+    (category?.subcategories?.length || 0) === 0; // only-addons mode
+
+
   // Track current shown addon id (if any)
   const currentShownId = selectedImageOption?.id ?? null;
 
@@ -197,6 +201,7 @@ export default function StepDefault({
     clicked,
     selectedList,
   }) => {
+    console.log('You wrong!!!');
     // If nothing selected — keep showing whatever was last set (don’t flush)
     if (!selectedList || selectedList.length === 0) {
       // keep existing image (do not set to null or blank)
@@ -289,6 +294,7 @@ export default function StepDefault({
                 onSelectAddon={
                   onlyAddonsMode ? handleAddonSelectionChange : undefined
                 }
+                updateCategoryImage={allowAddonToUpdateCategoryImage}
               />
             )}
             {category.addons_v2.length > 0 && (
