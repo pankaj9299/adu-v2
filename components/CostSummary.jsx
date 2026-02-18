@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { approxMonthlyPayment, findImageByProduct } from "../utils/helpers";
 import StepFooterNav from "./StepFooterNav";
+
+import { useDispatch } from "react-redux";
+import { setProduct } from "../src/store/slices/configuratorSlice";
 
 const CostSummary = ({
   // existing props...
@@ -18,6 +21,7 @@ const CostSummary = ({
   const selectedProductState = useSelector(
     (state) => state.configurator.selectedProduct
   );
+  const dispatch = useDispatch();
 
   // Only show footer if explicitly allowed AND at least one handler exists
   const hasNavHandlers =
@@ -87,8 +91,63 @@ const CostSummary = ({
   };
 
   // Monthly calculations
-  const principalRaw = calculateTotal();
-  const monthly = approxMonthlyPayment(principalRaw, 6, 30);
+  const calculateTotalNumber = () => {
+    const basePrice = parsePrice(selectedProductState.product_price);
+    const categories = selectedProductState.categories || [];
+
+    const categoryTotal = categories.reduce((catSum, category) => {
+      const subcatTotal =
+        category.subcategories?.reduce(
+          (sum, sub) => sum + (sub.selectedOption?.price || 0),
+          0
+        ) || 0;
+
+      const tabTotal =
+        category.tab?.reduce(
+          (sum, tab) => sum + (tab.selectedOption?.price || 0),
+          0
+        ) || 0;
+
+      const addonTotal =
+        category.addons?.reduce(
+          (sum, addon) => sum + (addon.price || 0),
+          0
+        ) || 0;
+
+      const microwaveTotal = normalizeMicrowaves(category).reduce(
+        (sum, m) => sum + microwavePrice(m),
+        0
+      );
+
+      return catSum + subcatTotal + tabTotal + addonTotal + microwaveTotal;
+    }, 0);
+
+    return basePrice + categoryTotal + 20000;
+  };
+
+  const totalNumber = calculateTotalNumber();
+  const totalFormatted = totalNumber.toLocaleString();
+  const monthly = approxMonthlyPayment(totalNumber, 6, 30);
+
+  useEffect(() => {
+    if (!selectedProductState?.product_id) return;
+
+    // Prevent infinite loop
+    if (
+      selectedProductState.monthlyPayment === monthly &&
+      selectedProductState.totalPrice === totalNumber
+    ) {
+      return;
+    }
+
+    dispatch(
+      setProduct({
+        ...selectedProductState,
+        totalPrice: totalNumber,
+        monthlyPayment: monthly,
+      }),
+    );
+  }, [dispatch, selectedProductState?.product_id, totalNumber, monthly]);
 
   return (
     <>
@@ -292,7 +351,7 @@ const CostSummary = ({
                 </div>
                 <div>
                   <p className="font-bold text-xl py-2 text-dark-green">
-                    ${calculateTotal()}
+                    ${totalFormatted}
                   </p>
                 </div>
               </div>
