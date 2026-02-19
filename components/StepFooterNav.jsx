@@ -29,7 +29,7 @@ export default function StepFooterNav({
           >
             {isLastStep
               ? "Review >"
-              : `${nextCategory.replace("Bathrooms (Downstairs & Upstairs)", "Bathrooms").replace("Bedroom (Downstairs)", "Bedrooms").replace("Bathrooms (Upstairs & Downstairs)", "Bathrooms").replace("Entertainment Area (Upstairs)", "Entertainment Area")} >`}
+              : `${nextCategory.replace("Bedroom (Upstairs & Downstairs)", "Bedroom").replace("Bathrooms (Downstairs & Upstairs)", "Bathrooms").replace("Bedroom (Downstairs)", "Bedrooms").replace("Bathrooms (Upstairs & Downstairs)", "Bathrooms").replace("Entertainment Area (Upstairs)", "Entertainment Area")} >`}
           </Button>
         </div>
 
