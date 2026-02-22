@@ -7,15 +7,18 @@ import { useNavigate } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "axios";
 import { findImageByProduct } from "../utils/helpers";
+import { Link } from "react-router-dom";
 
 const CheckoutForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [formError, setFormError] = useState("");
+
   const selectedProductState = useSelector(
-    (state) => state.configurator.selectedProduct
+    (state) => state.configurator.selectedProduct,
   );
   const productHeadImageUrl = findImageByProduct(
-    selectedProductState?.product_name
+    selectedProductState?.product_name,
   );
 
   console.log("VRRR", selectedProductState);
@@ -49,17 +52,22 @@ const CheckoutForm = () => {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+
+    // Clear error when user interacts
+    if (formError) setFormError("");
   };
 
   // Handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Clear previous error
+    setFormError("");
     if (formData.phone.trim() && !formData.consent) {
-      alert("Please provide consent to be contacted via SMS.");
+      setFormError("consent_required");
       return;
     }
-    
+
     setLoading(true); // disable form + show loading
     try {
       const payload = {
@@ -75,7 +83,7 @@ const CheckoutForm = () => {
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: false, // set true only if using cookies/sessions
-        }
+        },
       );
 
       if (response.status === 200 && response.data?.filePath) {
@@ -83,7 +91,7 @@ const CheckoutForm = () => {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("Something went wrong. Please try again later.");
+      setFormError("Something went wrong. Please try again later.");
     } finally {
       setLoading(false); // only re-enable if still showing form
     }
@@ -105,168 +113,192 @@ const CheckoutForm = () => {
             </h3>
           </div>
           {!filePath ? (
-            <form
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-              onSubmit={handleSubmit}
-            >
-              {/* First Name */}
-              <div>
-                <label
-                  htmlFor="firstName"
-                  className="block text-[18px] font-normal text-thinGray"
-                >
-                  First Name*
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={formData.firstName}
-                  disabled={loading}
-                  onChange={handleChange}
-                  placeholder=""
-                  className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                  style={{
-                    boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
-                  }}
-                  required
-                />
-              </div>
-
-              {/* Last Name */}
-              <div>
-                <label
-                  htmlFor="lastName"
-                  className="block text-[18px] font-normal text-thinGray"
-                >
-                  Last Name*
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={formData.lastName}
-                  disabled={loading}
-                  onChange={handleChange}
-                  required
-                  placeholder=""
-                  className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                  style={{
-                    boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
-                  }}
-                />
-              </div>
-
-              {/* Email */}
-              <div className="md:col-span-2">
-                <label
-                  htmlFor="email"
-                  className="block text-[18px] font-normal text-thinGray"
-                >
-                  Email Address*
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  disabled={loading}
-                  onChange={handleChange}
-                  required
-                  placeholder=""
-                  className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                  style={{
-                    boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
-                  }}
-                />
-              </div>
-
-              {/* Zip */}
-              <div>
-                <label
-                  htmlFor="zip"
-                  className="block text-[18px] font-normal text-thinGray"
-                >
-                  Zip Code*
-                </label>
-                <input
-                  type="text"
-                  id="zip"
-                  name="zip"
-                  value={formData.zip}
-                  disabled={loading}
-                  onChange={handleChange}
-                  required
-                  placeholder=""
-                  className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                  style={{
-                    boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
-                  }}
-                />
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="block text-[18px] font-normal text-thinGray"
-                >
-                  Phone Number
-                </label>
-                <input
-                  type="text"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  disabled={loading}
-                  onChange={handleChange}
-                  placeholder=""
-                  className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                  style={{
-                    boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
-                  }}
-                />
-              </div>
-
-              {/* Consent Note */}
-              <div className="md:col-span-2">
-                <div className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    name="consent"
-                    checked={formData.consent}
-                    onChange={handleChange}
-                    disabled={loading}
-                    className="mt-1"
-                  />
-
-                  <p className="text-[15px] font-normal">
-                    By submitting this form, you agree to our Privacy Policy and consent to being contacted regarding your inquiry.
+            <>
+              {formError === "consent_required" && (
+                <div className="mb-6 p-4 rounded-md bg-red-50 border border-red-300">
+                  <p className="text-red-600 text-sm font-medium">
+                    You must agree to the{" "}
+                    <a
+                      href="/privacy-policy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline font-semibold hover:text-red-800"
+                    >
+                      Privacy Policy
+                    </a>{" "}
+                    and consent to being contacted before submitting this form.
                   </p>
                 </div>
-              </div>
+              )}
+              <form
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                onSubmit={handleSubmit}
+              >
+                {/* First Name */}
+                <div>
+                  <label
+                    htmlFor="firstName"
+                    className="block text-[18px] font-normal text-thinGray"
+                  >
+                    First Name*
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    disabled={loading}
+                    onChange={handleChange}
+                    placeholder=""
+                    className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                    style={{
+                      boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
+                    }}
+                    required
+                  />
+                </div>
 
-              {/* Submit Button */}
-              <div className="md:col-span-2 mt-2">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className={`border-lightYellow hover:bg-lightYellow hover:text-white cursor-pointer border-1 font-semibold py-2 px-6 text-[19px] font-bold transition ${
-                    loading
-                      ? "bg-lightYellow text-white cursor-not-allowed"
-                      : "text-lightYellow hover:bg-blue-700"
-                  }`}
-                >
-                  {loading ? "Creating Proposal ..." : "Get Budgetary Proposal"}
-                </button>
-              </div>
-            </form>
+                {/* Last Name */}
+                <div>
+                  <label
+                    htmlFor="lastName"
+                    className="block text-[18px] font-normal text-thinGray"
+                  >
+                    Last Name*
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    disabled={loading}
+                    onChange={handleChange}
+                    required
+                    placeholder=""
+                    className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                    style={{
+                      boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
+                    }}
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="md:col-span-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-[18px] font-normal text-thinGray"
+                  >
+                    Email Address*
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    disabled={loading}
+                    onChange={handleChange}
+                    required
+                    placeholder=""
+                    className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                    style={{
+                      boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
+                    }}
+                  />
+                </div>
+
+                {/* Zip */}
+                <div>
+                  <label
+                    htmlFor="zip"
+                    className="block text-[18px] font-normal text-thinGray"
+                  >
+                    Zip Code*
+                  </label>
+                  <input
+                    type="text"
+                    id="zip"
+                    name="zip"
+                    value={formData.zip}
+                    disabled={loading}
+                    onChange={handleChange}
+                    required
+                    placeholder=""
+                    className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                    style={{
+                      boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
+                    }}
+                  />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="block text-[18px] font-normal text-thinGray"
+                  >
+                    Phone Number
+                  </label>
+                  <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    disabled={loading}
+                    onChange={handleChange}
+                    placeholder=""
+                    className="mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                    style={{
+                      boxShadow: "2px 6px 22.1px -3px rgba(0, 0, 0, 0.2)",
+                    }}
+                  />
+                </div>
+
+                {/* Consent Note */}
+                <div className="md:col-span-2">
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      name="consent"
+                      checked={formData.consent}
+                      onChange={handleChange}
+                      disabled={loading}
+                      className="mt-1"
+                    />
+
+                    <p className="text-[15px] font-normal">
+                      By submitting this form, you agree to our Privacy Policy
+                      and consent to being contacted regarding your inquiry.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <div className="md:col-span-2 mt-2">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className={`border-lightYellow hover:bg-lightYellow hover:text-white cursor-pointer border-1 font-semibold py-2 px-6 text-[19px] font-bold transition ${
+                      loading
+                        ? "bg-lightYellow text-white cursor-not-allowed"
+                        : "text-lightYellow hover:bg-blue-700"
+                    }`}
+                  >
+                    {loading
+                      ? "Creating Proposal ..."
+                      : "Get Budgetary Proposal"}
+                  </button>
+                </div>
+              </form>
+            </>
           ) : (
             <div className="success-message mt-6">
               <p className="text-green text-3xl font-helvetica-neue-bold tracking-[-0.02em]">
-                Success! Your Budgetary Proposal is on its way to your email inbox.
+                Success! Your Budgetary Proposal is on its way to your email
+                inbox.
               </p>
-              <p className="text-2xl text-black font-arial">Or you can click below to download it now.</p>
+              <p className="text-2xl text-black font-arial">
+                Or you can click below to download it now.
+              </p>
               <div className="mt-10">
                 <a
                   href={`${filePath}`}
