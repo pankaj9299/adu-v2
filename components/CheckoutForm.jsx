@@ -266,7 +266,7 @@ const CheckoutForm = () => {
                     />
 
                     <p className="text-[15px] font-normal">
-                      By submitting this form, you agree to our Privacy Policy
+                      By submitting this form, you agree to our <Link to="/privacy-policy">Privacy Policy</Link>
                       and consent to being contacted regarding your inquiry.
                     </p>
                   </div>
