@@ -267,7 +267,7 @@ const CheckoutForm = () => {
 
                     <p className="text-[15px] font-normal">
                       By submitting this form, you agree to our <Link className="underline font-semibold hover:text-red-800" to="/privacy-policy">Privacy Policy</Link>
-                      and consent to being contacted regarding your inquiry.
+                       and consent to being contacted regarding your inquiry.
                     </p>
                   </div>
                 </div>
