@@ -183,7 +183,7 @@ const PrivacyPolicy = () => {
 
         <p>
           If you have any questions about this Privacy Policy or our privacy
-          practices, please contact us at:
+          practices, please <Link to="/contact-us">contact us</Link>.
         </p>
       </div>
     </section>

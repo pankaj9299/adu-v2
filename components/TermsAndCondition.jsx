@@ -184,8 +184,8 @@ const TermsAndCondition = () => {
         <p>14. Contact us</p>
 
         <p>
-          If you have any questions about these Conditions, please contact us
-          at:
+          If you have any questions about these Conditions, please{" "}
+          <Link to="/contact-us">contact us</Link>.
         </p>
       </div>
     </section>
