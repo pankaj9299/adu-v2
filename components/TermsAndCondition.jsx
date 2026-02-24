@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const TermsAndCondition = () => {
   return (
     <section className="hardcore-text">
