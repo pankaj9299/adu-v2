@@ -187,14 +187,6 @@ const TermsAndCondition = () => {
           If you have any questions about these Conditions, please contact us
           at:
         </p>
-        <div className="mt-10 address">
-        <p>ADU-Container Company, LLC</p>
-        <p>55 Cape Code</p>
-        <p>Irvine, CA 92620</p>
-        <p>[Street Address]</p>
-        <p>Email: [privacy@[company].com]</p>
-        <p>Phone: [XXX-XXX-XXXX]</p>
-        </div>
       </div>
     </section>
   );
