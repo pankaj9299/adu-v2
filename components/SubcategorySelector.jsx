@@ -4,6 +4,18 @@ import { setProduct } from "../src/store/slices/configuratorSlice";
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
+const getSizedImagePath = (path, size = "635x450") => {
+  if (!path) return "";
+
+  const lastDotIndex = path.lastIndexOf(".");
+  if (lastDotIndex === -1) return path; // no extension safety
+
+  const name = path.substring(0, lastDotIndex);
+  const ext = path.substring(lastDotIndex);
+
+  return `${name}-${size}${ext}`;
+};
+
 export default function SubcategorySelector({
   subcategory,
   category,
@@ -105,11 +117,15 @@ export default function SubcategorySelector({
             >
               <div className="image-wrap overflow-hidden w-full h-[130px]">
                 <LazyLoadImage
-                  src={`${import.meta.env.VITE_API_DOMAIN}/${opt.image}`}
+                  src={`${import.meta.env.VITE_API_DOMAIN}/${getSizedImagePath(opt.image)}`}
                   alt={opt.name}
                   className="w-full h-full object-cover"
                   effect="opacity"
                   threshold={100}
+                  onError={(e) => {
+                    const apiDomain = import.meta.env.VITE_API_DOMAIN;
+                    e.target.src = `${apiDomain}/${opt.image}`;
+                  }}
                 />
               </div>
               <h4 className="text-dark-green text-[19px] font-helvetica-neue-bold font-bold mt-3">
