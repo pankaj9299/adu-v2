@@ -18,13 +18,9 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
           ? defaultImage
           : "/uploads/category_options/1753111703_d87a932b81637b70ee4b.png";
 
-    // return src.startsWith("http")
-    //   ? src
-    //   : `${import.meta.env.VITE_API_DOMAIN}/${src.replace(/^\//, "")}`;
     return src.startsWith("http")
       ? src
-      : `${import.meta.env.VITE_API_DOMAIN}/${src.replace(/^\//, "").replace(/(\.[^/.]+)$/, "-635x450$1")}`;
-      
+      : `${import.meta.env.VITE_API_DOMAIN}/${src.replace(/^\//, "")}`;
   }, [selectedOption?.image_two, selectedOption?.image, defaultImage]);
 
   // Track loading state whenever src changes
@@ -87,13 +83,27 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
             )}
 
             {/* Actual image (fade in when loaded) */}
-            <LazyLoadImage
+            {/* <LazyLoadImage
               key={imageKey}
               src={
                 hasError
                   ? "https://placehold.co/1072x500?text=Image+unavailable"
                   : imageSrc || "https://placehold.co/1072x500?text=ADU"
               }
+              alt={selectedProduct?.product_name || "Hero image"}
+              className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                isLoading ? "opacity-0" : "opacity-100"
+              }`}
+              effect="opacity"
+              threshold={100}
+            /> */}
+            <LazyLoadImage
+              key={imageKey}
+              src={imageSrc.replace(/(\.[^/.]+)$/, "-635x450$1")}
+              onError={(e) => {
+                e.currentTarget.onerror = null; // prevent infinite loop
+                e.currentTarget.src = imageSrc; // fallback to original
+              }}
               alt={selectedProduct?.product_name || "Hero image"}
               className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
                 isLoading ? "opacity-0" : "opacity-100"
