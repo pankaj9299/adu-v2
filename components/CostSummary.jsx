@@ -392,7 +392,7 @@ const CostSummary = ({
                   </p>
 
                   <p className="font-bold text-2xl md:text-3xl font-arial text-white">
-                    {monthly != null ? `$${monthly} /month` : "—"}
+                    {monthly != null ? `$${Math.round(monthly)} /month` : "—"}
                   </p>
 
                   <p className="text-white font-normal text-sm md:text-lg">
