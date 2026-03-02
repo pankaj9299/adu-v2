@@ -38,7 +38,7 @@ body {
   font-style: normal;
   font-weight: 200 700;
   font-display: swap;
-  src: url("../fonts/arial/ARIAL.ttf") format("truetype");
+  src: url("../fonts/arial/ARIAL.TTF") format("truetype");
 }
 
 :root {
