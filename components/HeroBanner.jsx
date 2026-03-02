@@ -18,9 +18,13 @@ const HeroBanner = ({ selectedOption, defaultImage }) => {
           ? defaultImage
           : "/uploads/category_options/1753111703_d87a932b81637b70ee4b.png";
 
+    // return src.startsWith("http")
+    //   ? src
+    //   : `${import.meta.env.VITE_API_DOMAIN}/${src.replace(/^\//, "")}`;
     return src.startsWith("http")
       ? src
-      : `${import.meta.env.VITE_API_DOMAIN}/${src.replace(/^\//, "")}`;
+      : `${import.meta.env.VITE_API_DOMAIN}/${src.replace(/^\//, "").replace(/(\.[^/.]+)$/, "-635x450$1")}`;
+      
   }, [selectedOption?.image_two, selectedOption?.image, defaultImage]);
 
   // Track loading state whenever src changes
