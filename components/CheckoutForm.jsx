@@ -63,10 +63,10 @@ const CheckoutForm = () => {
 
     // Clear previous error
     setFormError("");
-    if (formData.phone.trim() && !formData.consent) {
-      setFormError("consent_required");
-      return;
-    }
+    // if (formData.phone.trim() && !formData.consent) {
+    //   setFormError("consent_required");
+    //   return;
+    // }
 
     setLoading(true); // disable form + show loading
     try {
