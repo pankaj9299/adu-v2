@@ -254,7 +254,7 @@ const CheckoutForm = () => {
                 </div>
 
                 {/* Consent Note */}
-                <div className="md:col-span-2">
+                {/* <div className="md:col-span-2">
                   <div className="flex items-start gap-3">
                     <input
                       type="checkbox"
@@ -269,7 +269,7 @@ const CheckoutForm = () => {
                       By submitting this form, you agree to our <Link className="underline font-semibold hover:text-red-800" to="/privacy-policy">Privacy Policy</Link> and consent to being contacted regarding your inquiry.
                     </p>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Submit Button */}
                 <div className="md:col-span-2 mt-2">
