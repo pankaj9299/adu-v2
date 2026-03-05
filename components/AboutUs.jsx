@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../components/home/slick.css";
 import Slider from "react-slick";
 
-const AboutUs = () => {
+const AboutUs = () => { 
   const settings = {
     dots: false,
     infinite: true,
