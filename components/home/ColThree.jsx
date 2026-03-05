@@ -3,11 +3,15 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "axios";
 import { findImageByProduct } from "../../utils/helpers";
 import { Link } from "react-router-dom";
+import { isReactSnap } from "../../utils/isReactSnap";
 
 const ColThree = () => {
   const [apiProducts, setApiProducts] = useState([]);
 
+  
+
   useEffect(() => {
+    if (isReactSnap) return; // don't call API during prerender
     axios
       .get(`${import.meta.env.VITE_API_DOMAIN}/admin/api/products`)
       .then((res) => setApiProducts(res.data))

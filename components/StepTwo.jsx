@@ -6,6 +6,7 @@ import { findImageByProduct } from "../utils/helpers";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
+import { isReactSnap } from "../utils/isReactSnap";
 
 const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
   let navigate = useNavigate();
@@ -34,6 +35,7 @@ const StepTwo = ({ selectedProduct: propSelectedProduct, onBack }) => {
 
   // Fetch floors for the selected product
   useEffect(() => {
+    if (isReactSnap) return; // don't call API during prerender
     axios
       .get(
         `${import.meta.env.VITE_API_DOMAIN}/admin/api/products/${

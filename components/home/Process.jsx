@@ -438,7 +438,7 @@ const Process = () => {
               className="bg-lightYellow text-white tracking-[-0.02em]
                 font-helvetica-neue-bold px-7 pt-[15px] pb-[12px] md:text-lg
                 hover:bg-green transition-colors"
-              target="_blank" href="/pdf/ADU-Container Co Catalog 2026.pdf"
+              target="_blank" href="https://adu-container.com/pdf/ADU-Container Co Catalog 2026.pdf"
             >
               Download Product Catalog
             </a>

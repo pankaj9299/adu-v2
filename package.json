@@ -21,8 +21,15 @@
       "/financing",
       "/how-it-works",
       "/about-us",
-      "/contact-us"
-    ]
+      "/contact-us",
+      "/models",
+      "/financing/heloc-strategy-building-adus",
+      "/financing/why-interest-rates-are-not-as-important-as-you-think"
+    ],
+    "puppeteerArgs": [
+      "--no-sandbox"
+    ],
+    "skipThirdPartyRequests": true
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
@@ -36,6 +43,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.7.0",
     "react-slick": "^0.30.3",
+    "serve": "^14.2.6",
     "slick-carousel": "^1.8.1",
     "tailwindcss": "^4.1.11"
   },

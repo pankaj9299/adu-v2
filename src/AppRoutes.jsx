@@ -19,6 +19,7 @@ import AboutUs from "../components/AboutUs";
 import TermsAndCondition from "../components/TermsAndCondition";
 import PrivacyPolicy from "../components/PrivacyPolicy";
 import Gallery from "../components/Gallery";
+import NotFound from "./pages/NotFound";
 
 export default function AppRoutes() {
   const location = useLocation();
@@ -91,6 +92,8 @@ export default function AppRoutes() {
       <Route path="/terms-and-condition" element={<TermsAndCondition />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/test" element={<TestSlider />} />
+      <Route path="/404.html" element={<NotFound />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

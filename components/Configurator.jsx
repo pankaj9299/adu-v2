@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setProduct } from "../src/store/slices/configuratorSlice";
+import { isReactSnap } from "../utils/isReactSnap";
 
 export default function Configurator() {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ export default function Configurator() {
   }, [selectedProduct, navigate]);
 
   useEffect(() => {
+    if (isReactSnap) return; // don't call API during prerender
     // fetch from your CodeIgniter backend
     if (selectedProduct) {
       axios

@@ -9,6 +9,6 @@ export default defineConfig({
     tailwindcss(),
   ],
   build: {
-    target: "es2018", // ✅ fixes "Unexpected token ?"
+    target: "es2019", // ✅ fixes "Unexpected token ?"
   },
 })
