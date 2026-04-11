@@ -1,12 +1,29 @@
-# React + Vite
+# ADU Container Product Configurator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A multi-step dynamic product configurator enabling users to customize modular ADU 
+(Accessory Dwelling Unit) containers in real time, with complex conditional UI state 
+managed across configuration steps.
 
-Currently, two official plugins are available:
+🔗 [Live Demo](http://adu-container.com) 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
+React.js · Vite · Redux Toolkit · Tailwind CSS · REST API
 
-## Expanding the ESLint configuration
+## ✨ Features
+- Multi-step configurator with dynamic conditional rendering
+- Real-time UI updates based on user selections
+- State persistence across steps via Redux Toolkit
+- Fully responsive design
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/pankaj9299/adu-v2.git
+cd adu-v2
+npm install
+npm run dev
+```
+
+## 👤 Role
+**Project Lead & Senior Frontend Developer** — Led architecture, component design, 
+Redux state strategy and production deployment.
