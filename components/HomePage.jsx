@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import BannerSecondLevel from "./home/BannerSecondLevel";
 import ColThree from "./home/ColThree";
 import ImageWithText from "./home/ImageWithText";
@@ -7,6 +8,22 @@ import Cta from "./home/Cta";
 const HomePage = () => {
   return (
     <>
+      <Helmet>
+        <title>Home | My App</title>
+        <meta name="description" content="Welcome to my app." />
+        <link rel="canonical" href="https://yoursite.com/" />
+
+        <meta property="og:title" content="Home | My App" />
+        <meta property="og:description" content="Welcome to my app." />
+        <meta property="og:url" content="https://yoursite.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://yoursite.com/og-home.png" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Home | My App" />
+        <meta name="twitter:description" content="Welcome to my app." />
+        <meta name="twitter:image" content="https://yoursite.com/og-home.png" />
+      </Helmet>
       <BannerSecondLevel />
       <ColThree />
       <ImageWithText
