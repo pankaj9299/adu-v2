@@ -12,69 +12,69 @@ const routes = [
     title: "ADU | Home",
     description:
       "Build your dream ADU with us. Explore models, configurator, financing and more.",
-    ogImage: "https://yoursite.com/og-home.png",
+    ogImage: "https://www.adu-container.com/og-home.png",
   },
   {
     path: "/models",
     title: "ADU Models | Browse Our Collection",
     description:
       "Browse our collection of ADU models and find the perfect fit for your property.",
-    ogImage: "https://yoursite.com/og-models.png",
+    ogImage: "https://www.adu-container.com/og-models.png",
   },
   {
     path: "/gallery",
     title: "Gallery | ADU",
     description: "View our gallery of completed ADU projects.",
-    ogImage: "https://yoursite.com/og-gallery.png",
+    ogImage: "https://www.adu-container.com/og-gallery.png",
   },
   {
     path: "/appliances",
     title: "Appliances | ADU",
     description: "Explore our appliance options for your ADU.",
-    ogImage: "https://yoursite.com/og-appliances.png",
+    ogImage: "https://www.adu-container.com/og-appliances.png",
   },
   {
     path: "/financing",
     title: "Financing | ADU",
     description: "Flexible financing options to help you build your ADU.",
-    ogImage: "https://yoursite.com/og-financing.png",
+    ogImage: "https://www.adu-container.com/og-financing.png",
   },
   {
     path: "/how-it-works",
     title: "How It Works | ADU",
     description:
       "Learn how our ADU building process works from start to finish.",
-    ogImage: "https://yoursite.com/og-how-it-works.png",
+    ogImage: "https://www.adu-container.com/og-how-it-works.png",
   },
   {
     path: "/contact-us",
     title: "Contact Us | ADU",
     description: "Get in touch with our team to start your ADU project.",
-    ogImage: "https://yoursite.com/og-contact.png",
+    ogImage: "https://www.adu-container.com/og-contact.png",
   },
   {
     path: "/about-us",
     title: "About Us | ADU",
     description:
       "Learn about our company and our mission to build quality ADUs.",
-    ogImage: "https://yoursite.com/og-about.png",
+    ogImage: "https://www.adu-container.com/og-about.png",
   },
   {
     path: "/terms-and-condition",
     title: "Terms and Conditions | ADU",
     description: "Read our terms and conditions.",
-    ogImage: "https://yoursite.com/og.png",
+    ogImage: "https://www.adu-container.com/og.png",
   },
   {
     path: "/privacy-policy",
     title: "Privacy Policy | ADU",
     description: "Read our privacy policy.",
-    ogImage: "https://yoursite.com/og.png",
+    ogImage: "https://www.adu-container.com/og.png",
   },
 ];
 
 function buildMetaTags(route) {
-  const url = `https://yoursite.com${route.path}`;
+  const url = `https://www.adu-container.com{route.path}`;
   return `
     <title>${route.title}</title>
     <meta name="description" content="${route.description}" />
