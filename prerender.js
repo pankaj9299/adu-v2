@@ -1,4 +1,3 @@
-// prerender.js
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -111,7 +110,7 @@ async function prerender() {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
     fs.writeFileSync(filePath, html);
 
-    console.log(`✅ Prerendered: ${route.path}`);
+    console.log(`Prerendered: ${route.path}`);
   }
 }
 
