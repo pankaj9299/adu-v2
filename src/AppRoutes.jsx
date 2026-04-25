@@ -57,7 +57,7 @@ export default function AppRoutes() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route
-        path="/models"
+        path="/models/:productId?"
         element={
           <StepOne
             products={apiProducts}

@@ -23,7 +23,7 @@ const Gallery = () => {
       <Video
         videoId="EHnH2u9LYrk"
         ctaText="Customize This Model"
-        ctaLink="/models"
+        ctaLink="/models/3"
         className="pb-15"
       />
       <ImageWithText
@@ -37,7 +37,7 @@ const Gallery = () => {
       <Video
         videoId="60qqwrvLwAs"
         ctaText="Customize This Model"
-        ctaLink="/models"
+        ctaLink="/models/3"
       />
       <Line />
       <ImageWithText
@@ -52,7 +52,7 @@ const Gallery = () => {
       <Video
         videoId="w2oHjsJHmJI"
         ctaText="Customize This Model"
-        ctaLink="/models"
+        ctaLink="/models/2"
         className="pb-15"
       />
       <ImageWithText
@@ -66,7 +66,7 @@ const Gallery = () => {
       <Video
         videoId="ICAQWQRlP_E"
         ctaText="Customize This Model"
-        ctaLink="/models"
+        ctaLink="/models/2"
       />
       <Line />
       <IntroImagesV2
@@ -84,7 +84,7 @@ const Gallery = () => {
       <Video
         videoId="N2dWK8Bw9KA"
         ctaText="Customize This Model"
-        ctaLink="/models"
+        ctaLink="/models/4"
         className="pb-15"
       />
       <IntroImagesV2
@@ -100,7 +100,7 @@ const Gallery = () => {
       <Video
         videoId="WyfjsQaVu4c"
         ctaText="Customize This Model"
-        ctaLink="/models"
+        ctaLink="/models/4"
         className="pb-15"
       />
     </>

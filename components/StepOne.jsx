@@ -1,8 +1,25 @@
-import React from "react";
+import { useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { findImageByProduct } from "../utils/helpers";
 
 const StepOne = ({ products, onSelectProduct }) => {
+  const { productId } = useParams();
+
+  // prevent double execution in React Strict Mode
+  const hasTriggered = useRef(false);
+
+  useEffect(() => {
+    if (!productId || !products?.length || hasTriggered.current) return;
+
+    const product = products.find((p) => String(p.id) === String(productId));
+
+    if (product) {
+      hasTriggered.current = true;
+      onSelectProduct(product);
+    }
+  }, [productId, products, onSelectProduct]);
+
   return (
     <section className="step-one pt-0 h-full flex items-center">
       <div className="container">
